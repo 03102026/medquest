@@ -178,6 +178,12 @@ body.dark .small-btn.unpublish{
   border-color:#5b4821;
 }
 
+
+/* Login sem a marca superior do cartão */
+.login-card{padding-top:34px}
+.login-card h1{margin-top:0}
+.login-brand-spacer{display:none!important}
+
 @media(max-width:1050px){.admin-grid{grid-template-columns:1fr}.catalog-grid{grid-template-columns:1fr}}
 @media(max-width:650px){.admin-two{grid-template-columns:1fr}.admin-q{flex-direction:column}.admin-actions{width:100%}}
 
@@ -224,7 +230,6 @@ window.MEDQUEST_CONFIG={
       <img class="logo-hero" src="medquest-login-logo.png" alt="MedQuest">
     </div>
     <div class="login-card">
-      <div class="login-brand-spacer" aria-hidden="true"></div>
 <h1>Entrar</h1>
       <p>Acesse sua área de estudos.</p>
       <label class="field"><span>✉</span><input id="email" type="email" placeholder="Seu e-mail" autocomplete="email"></label>
