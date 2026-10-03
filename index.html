@@ -75,6 +75,18 @@ body.dark .theme-toggle{background:#17212b;border-color:#334455}
 .theme-toggle:hover{transform:translateY(-1px)}
 .logo-hero{object-fit:contain}
 
+
+.weakness-card{background:linear-gradient(135deg,#f3fbfa,#f4f8ff);border:1px solid #dbece9}
+.weakness-layout{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.weakness-icon{width:52px;height:52px;border-radius:15px;background:#dff4ef;color:#087567;display:grid;place-items:center;font-size:24px;flex:none}
+.weakness-copy{flex:1;min-width:250px}.weakness-copy h3{margin:0 0 5px;font-size:18px}.weakness-copy p{margin:0;color:#5e7185;line-height:1.55}
+.weakness-score{font-size:27px;font-weight:900;white-space:nowrap;color:#b45309}.weakness-score.good{color:#087567}
+.weakness-action{white-space:nowrap}
+body.dark .weakness-card{background:linear-gradient(135deg,#152b2a,#172537);border-color:#2e4b4a}
+body.dark .weakness-icon{background:#193c38;color:#6ee2d0}
+body.dark .weakness-copy p{color:#a5b6c6}
+body.dark .weakness-score{color:#f3bd64}
+
 @media(max-width:1050px){.admin-grid{grid-template-columns:1fr}.catalog-grid{grid-template-columns:1fr}}
 @media(max-width:650px){.admin-two{grid-template-columns:1fr}.admin-q{flex-direction:column}.admin-actions{width:100%}}
 
@@ -100,11 +112,11 @@ window.MEDQUEST_CONFIG={
 <div id="loginScreen" class="login-screen"><button id="loginThemeToggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar tema" aria-label="Alternar tema" style="position:absolute;top:22px;right:24px;z-index:3">🌙</button>
   <div class="login-shell">
     <div class="login-visual">
-      <img class="logo-hero" src="medquest-logo.png" alt="MedQuest">
+      <img class="logo-hero" src="medquest-logo.svg" alt="MedQuest">
       <div class="visual-kicker">Sua jornada de estudos em Medicina</div>
     </div>
     <div class="login-card">
-      <div class="brand-mini"><img src="medquest-logo.png" alt=""><div><strong>MEDQUEST</strong><span class="brand-sub">ESTUDOS EM MEDICINA</span></div></div>
+      <div class="brand-mini"><img src="medquest-logo.svg" alt=""><div><strong>MEDQUEST</strong><span class="brand-sub">ESTUDOS EM MEDICINA</span></div></div>
       <h1>Entrar</h1>
       <p>Acesse sua área de estudos.</p>
       <label class="field"><span>✉</span><input id="email" type="email" placeholder="Seu e-mail" autocomplete="email"></label>
@@ -120,7 +132,7 @@ window.MEDQUEST_CONFIG={
 
 <div id="app" class="app hidden">
   <aside class="sidebar">
-    <div class="brand"><img src="medquest-logo.png" alt=""><div><div class="brand-text">MedQuest</div><span class="brand-sub">ESTUDOS EM MEDICINA</span></div></div>
+    <div class="brand"><img src="medquest-logo.svg" alt=""><div><div class="brand-text">MedQuest</div><span class="brand-sub">ESTUDOS EM MEDICINA</span></div></div>
     <nav class="nav">
       <button class="nav-btn active nav-home" data-page="home" onclick="go('home')"><span class="nav-ico">🏠</span><span>Início</span></button>
       <button class="nav-btn nav-questions" data-page="questions" onclick="go('questions')"><span class="nav-ico">📚</span><span>Questões</span></button>
@@ -151,7 +163,17 @@ window.MEDQUEST_CONFIG={
         </div>
         <div class="card"><div class="card-head"><h2>Seu ritmo</h2><span class="chip">Em preparação</span></div><div class="streak-number">0</div><b>dias seguidos</b><p class="muted">Seu histórico aparecerá aqui quando começar a responder.</p><div class="week"><div class="day">S</div><div class="day">T</div><div class="day">Q</div><div class="day">Q</div><div class="day">S</div><div class="day">S</div><div class="day">D</div></div></div>
       </div>
-      <div class="card" style="margin-top:18px;background:linear-gradient(120deg,#eefaf8,#f5f8ff)"><div class="card-head"><h2>💡 Dica de estudo</h2><span class="chip">MedQuest</span></div><p style="margin:0;color:#506276;line-height:1.6">O banco está conectado à sua conta. As questões cadastradas como publicadas aparecerão na área de questões.</p></div>
+      <div id="weaknessCard" class="card weakness-card" style="margin-top:18px">
+        <div class="card-head"><h2>🔎 Seu menor desempenho</h2><span class="chip">Baseado nas suas respostas</span></div>
+        <div id="weaknessContent" class="weakness-layout">
+          <div class="weakness-icon">📚</div>
+          <div class="weakness-copy">
+            <h3>Vamos descobrir onde revisar</h3>
+            <p>Responda algumas questões para o MedQuest identificar a matéria em que seu aproveitamento está mais baixo.</p>
+          </div>
+          <button class="primary weakness-action" onclick="go('questions')">Começar questões →</button>
+        </div>
+      </div>
     </section>
 
     <section id="questions" class="page">
@@ -250,7 +272,90 @@ async function bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.ge
 async function loadProfile(){if(!currentUser)return;const {data,error}=await sb.from('profiles').select('full_name,role').eq('id',currentUser.id).maybeSingle();const name=(data?.full_name||currentUser.email?.split('@')[0]||'Aluno');isAdmin=!error&&data?.role==='admin';document.getElementById('accountName').textContent=name;document.getElementById('profileName').value=name;document.getElementById('profileEmail').value=currentUser.email||'';const letter=name.trim().charAt(0).toUpperCase()||'A';document.getElementById('avatar').textContent=letter;document.getElementById('topAvatar').textContent=letter;document.getElementById('adminNav').style.display=isAdmin?'flex':'none';if(isAdmin)await loadAdminAll()}
 async function loadFilters(){if(!sb)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const ps=document.getElementById('filterPeriod'),ds=document.getElementById('filterDiscipline');ps.innerHTML='<option value="">Todos os períodos</option>'+(p.data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');ds.innerHTML='<option value="">Todas as disciplinas</option>'+(d.data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');}
 async function loadQuestions(){if(!sb)return;const state=document.getElementById('questionsState'),list=document.getElementById('questionList');state.classList.remove('hidden');list.classList.add('hidden');let q=sb.from('questions').select('id,statement,difficulty,discipline_id,subject_id,period_id,disciplines(name),subjects(name),periods(name)').eq('is_published',true).order('id',{ascending:true});const period=document.getElementById('filterPeriod').value,discipline=document.getElementById('filterDiscipline').value;if(period)q=q.eq('period_id',Number(period));if(discipline)q=q.eq('discipline_id',Number(discipline));const {data,error}=await q;if(error){state.innerHTML='<strong>Não foi possível carregar as questões.</strong><span>'+escapeHtml(error.message)+'</span>';return}if(!data?.length){state.innerHTML='<strong>Nenhuma questão publicada ainda.</strong><span>O banco está conectado, mas não há questões publicadas.</span>';return}list.innerHTML=data.map(x=>`<div class="card question-row"><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'Disciplina')}</span><span class="badge">${escapeHtml(x.periods?.name||'Período')}</span></div><h3>Questão #${x.id}</h3><p>${escapeHtml(x.statement).slice(0,180)}${x.statement.length>180?'...':''}</p></div><button class="primary" onclick="alert('A resolução completa da questão #${x.id} será conectada no próximo módulo.')">Responder →</button></div>`).join('');state.classList.add('hidden');list.classList.remove('hidden')}
-async function loadAttempts(){if(!sb||!currentUser)return;const {data}=await sb.from('attempts').select('id,question_id,is_correct,answered_at').eq('user_id',currentUser.id);const rows=data||[],correct=rows.filter(x=>x.is_correct).length,total=rows.length,wrong=total-correct,rate=total?Math.round(correct/total*100):0;document.getElementById('statSolved').textContent=total;document.getElementById('statRate').textContent=rate+'%';document.getElementById('statErrors').textContent=wrong;document.getElementById('perfRate').textContent=rate+'%';document.getElementById('perfCorrect').textContent=correct;document.getElementById('perfTotal').textContent=total;if(wrong)document.getElementById('errorList').innerHTML=`<strong>${wrong} questão(ões) errada(s).</strong><span>O detalhamento do caderno de erros será finalizado junto com a tela de resolução.</span>`}
+
+let weakestDisciplineId=null;
+function reviewWeakest(){
+  if(!weakestDisciplineId){go('questions');return}
+  const sel=document.getElementById('filterDiscipline');
+  if(sel)sel.value=String(weakestDisciplineId);
+  go('questions');
+  loadQuestions();
+}
+
+async function loadAttempts(){
+  if(!sb||!currentUser)return;
+  const {data,error}=await sb.from('attempts')
+    .select('id,question_id,is_correct,answered_at,questions(discipline_id,disciplines(name))')
+    .eq('user_id',currentUser.id);
+
+  if(error)return;
+
+  const rows=data||[];
+  const correct=rows.filter(x=>x.is_correct).length;
+  const total=rows.length;
+  const wrong=total-correct;
+  const rate=total?Math.round(correct/total*100):0;
+
+  document.getElementById('statSolved').textContent=total;
+  document.getElementById('statRate').textContent=rate+'%';
+  document.getElementById('statErrors').textContent=wrong;
+  document.getElementById('perfRate').textContent=rate+'%';
+  document.getElementById('perfCorrect').textContent=correct;
+  document.getElementById('perfTotal').textContent=total;
+
+  if(wrong){
+    document.getElementById('errorList').innerHTML=`<strong>${wrong} questão(ões) errada(s).</strong><span>O detalhamento do caderno de erros será finalizado junto com a tela de resolução.</span>`;
+  }
+
+  const byDiscipline={};
+  rows.forEach(r=>{
+    const q=r.questions;
+    const id=q?.discipline_id;
+    const name=q?.disciplines?.name;
+    if(!id||!name)return;
+    if(!byDiscipline[id])byDiscipline[id]={id,name,total:0,correct:0};
+    byDiscipline[id].total++;
+    if(r.is_correct)byDiscipline[id].correct++;
+  });
+
+  const list=Object.values(byDiscipline)
+    .map(x=>({...x,rate:Math.round(x.correct/x.total*100)}))
+    .sort((a,b)=>a.rate-b.rate || b.total-a.total);
+
+  const weak=list[0];
+  const box=document.getElementById('weaknessContent');
+
+  if(!weak){
+    weakestDisciplineId=null;
+    box.innerHTML=`<div class="weakness-icon">🌱</div>
+      <div class="weakness-copy">
+        <h3>Vamos descobrir seu ponto de atenção</h3>
+        <p>Responda algumas questões para o MedQuest identificar automaticamente a matéria em que seu desempenho está mais baixo.</p>
+      </div>
+      <button class="primary weakness-action" onclick="go('questions')">Começar questões →</button>`;
+  }else{
+    weakestDisciplineId=weak.id;
+    const scoreClass=weak.rate>=75?'good':'';
+    box.innerHTML=`<div class="weakness-icon">🧠</div>
+      <div class="weakness-copy">
+        <h3>${escapeHtml(weak.name)} merece uma revisão</h3>
+        <p>É a matéria com menor desempenho até agora: ${weak.total} questão(ões) respondida(s).</p>
+      </div>
+      <div class="weakness-score ${scoreClass}">${weak.rate}%</div>
+      <button class="primary weakness-action" onclick="reviewWeakest()">Revisar agora →</button>`;
+  }
+
+  const perfBox=document.getElementById('disciplinePerf');
+  if(list.length){
+    perfBox.innerHTML=list.slice().sort((a,b)=>b.rate-a.rate).map(x=>`<div class="progress-row">
+      <p><span>${escapeHtml(x.name)}</span><b>${x.rate}%</b></p>
+      <div class="progress"><span style="width:${x.rate}%"></span></div>
+    </div>`).join('');
+  }else{
+    perfBox.innerHTML='<div class="empty">Ainda não há dados suficientes.</div>';
+  }
+}
+
 async function saveProfile(){if(!sb||!currentUser)return;const name=document.getElementById('profileName').value.trim()||'Aluno';const {error}=await sb.from('profiles').update({full_name:name}).eq('id',currentUser.id);if(error){status('profileStatus',error.message);return}await loadProfile();status('profileStatus','Perfil atualizado.','ok')}
 function go(id){if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?`Olá, ${document.getElementById('accountName').textContent}! 👋`:l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();window.scrollTo({top:0,behavior:'smooth'})}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
