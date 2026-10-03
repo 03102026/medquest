@@ -20,7 +20,7 @@ button,input,select{font:inherit}button{cursor:pointer}.hidden{display:none!impo
 .status{margin-top:14px;padding:11px 12px;border-radius:11px;font-size:12px;display:none}.status.show{display:block}.status.error{background:#fff1f1;color:#a92929}.status.ok{background:#edf8f4;color:#16704f}
 .app{min-height:100vh;display:flex}.sidebar{width:var(--sidebar);position:fixed;left:0;top:0;bottom:0;background:#fff;border-right:1px solid var(--border);padding:20px 14px;z-index:10;display:flex;flex-direction:column}
 .brand{display:flex;align-items:center;gap:10px;padding:4px 10px 22px}.brand img{width:48px;height:40px;object-fit:contain}.brand-text{font-size:21px;font-weight:850;letter-spacing:-.035em}.nav{display:grid;gap:5px}.nav-btn{border:0;background:transparent;border-radius:11px;padding:12px 13px;text-align:left;color:#58687a;font-weight:700;display:flex;gap:11px;align-items:center;min-height:48px}.nav-btn:hover{background:#f2f8fa;color:var(--primary)}
-.nav-btn.active{box-shadow:inset 3px 0 0 #0b6e8e}.nav-btn.active .nav-ico{transform:scale(1.05)}.nav-home.active{background:#e9f7f5;color:#0a6d69}.nav-home.active .nav-ico{background:#cfeee8}.nav-questions.active{background:#edf4ff;color:#315da8}.nav-questions.active .nav-ico{background:#dbe8ff}.nav-sim.active{background:#fff6e7;color:#a66b11}.nav-sim.active .nav-ico{background:#ffe8b8}.nav-errors.active{background:#f4efff;color:#6848a8}.nav-errors.active .nav-ico{background:#e8ddff}.nav-performance.active{background:#edf9ef;color:#258045}.nav-performance.active .nav-ico{background:#d7f0dc}.nav-profile.active{background:#f1f5f9;color:#46586e}.nav-profile.active .nav-ico{background:#e2e8f0}.nav-ico{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;font-size:16px;flex:none}
+.nav-btn.active{box-shadow:inset 3px 0 0 #0b6e8e}.nav-btn.active .nav-ico{transform:scale(1.05)}.nav-home.active{background:#e9f7f5;color:#0a6d69}.nav-home.active .nav-ico{background:#cfeee8}.nav-questions.active{background:#edf4ff;color:#315da8}.nav-questions.active .nav-ico{background:#dbe8ff}.nav-sim.active{background:#fff6e7;color:#a66b11}.nav-sim.active .nav-ico{background:#ffe8b8}.nav-errors.active{background:#f4efff;color:#6848a8}.nav-errors.active .nav-ico{background:#e8ddff}.nav-performance.active{background:#edf9ef;color:#258045}.nav-performance.active .nav-ico{background:#d7f0dc}.nav-admin.active{background:#fff1e8;color:#9a5814}.nav-admin.active .nav-ico{background:#ffe2c9}.nav-profile.active{background:#f1f5f9;color:#46586e}.nav-profile.active .nav-ico{background:#e2e8f0}.nav-ico{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;font-size:16px;flex:none}
 .side-bottom{margin-top:auto}.account-mini{border-top:1px solid var(--border);padding:15px 9px 5px;display:flex;gap:10px;align-items:center}.avatar{width:38px;height:38px;border-radius:50%;background:#dff2f0;color:#0a6d69;font-weight:850;display:grid;place-items:center}.account-mini strong{font-size:13px}.account-mini small{display:block;color:#7b8999;font-size:11px}.logout{border:0;background:transparent;color:#667589;font-weight:700;padding:10px;border-radius:10px;width:100%;text-align:left}.logout:hover{background:#f6f7f9}
 .main{margin-left:var(--sidebar);width:calc(100% - var(--sidebar));padding:26px 30px 42px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:24px}.top-title h1{margin:0;font-size:27px;letter-spacing:-.03em}.top-title p{margin:5px 0 0;color:var(--muted)}.top-actions{display:flex;align-items:center;gap:10px}.icon-btn{width:43px;height:43px;border-radius:12px;border:1px solid var(--border);background:#fff;color:#52657a}.page{display:none}.page.active{display:block}
 .cards{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,1fr)}.card{background:var(--surface);border:1px solid var(--border);border-radius:17px;box-shadow:var(--shadow);padding:20px}.stat-card{display:flex;align-items:flex-start;justify-content:space-between}.stat-title{font-size:13px;color:var(--muted);font-weight:650}.stat-value{font-size:28px;font-weight:850;margin-top:7px}.stat-icon{width:42px;height:42px;border-radius:12px;background:#edf7fa;color:var(--primary);display:grid;place-items:center;font-weight:800}.stat-card:nth-child(1){background:linear-gradient(145deg,#fff,#eff8fb)}.stat-card:nth-child(2){background:linear-gradient(145deg,#fff,#effaf6)}.stat-card:nth-child(3){background:linear-gradient(145deg,#fff,#f7f1ff)}.stat-card:nth-child(4){background:linear-gradient(145deg,#fff,#fff7ec)}
@@ -32,28 +32,21 @@ button,input,select{font:inherit}button{cursor:pointer}.hidden{display:none!impo
 .empty{padding:45px;text-align:center;color:var(--muted);border:1px dashed #cfd8e1;border-radius:15px;background:#fafcfd}.empty strong{display:block;color:#42546a;margin-bottom:7px}
 .chart{height:235px;display:flex;align-items:flex-end;gap:17px;padding:15px 8px 5px}.bar-wrap{flex:1;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px}.bar{width:100%;max-width:42px;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#49b7aa,#0b6e8e)}.bar-label{font-size:11px;color:#7c8997}.kpi{font-size:34px;font-weight:900}.subkpi{font-size:12px;color:var(--muted)}
 .table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:13px 8px;border-bottom:1px solid var(--border);font-size:13px}.table th{color:#77869a}.profile{max-width:700px}.profile-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.profile label{font-size:12px;color:#64748b;font-weight:750;display:block;margin:7px 0}.profile input{width:100%;border:1px solid var(--border);border-radius:11px;padding:11px 12px;background:#fff}
+
+.admin-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:18px;margin-top:18px}.admin-form{display:grid;gap:12px}.admin-form label{font-size:12px;font-weight:800;color:#5d6d80;display:grid;gap:6px}.admin-form input,.admin-form textarea,.admin-form select{width:100%;border:1px solid var(--border);border-radius:11px;padding:11px 12px;background:#fff;color:var(--text);outline:0}.admin-form textarea{min-height:110px;resize:vertical;line-height:1.45}.admin-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.check-row{display:flex!important;align-items:center;grid-template-columns:auto 1fr!important;gap:8px!important}.check-row input{width:auto}.mini-card{background:#f8fafc;border:1px solid var(--border);border-radius:13px;padding:13px}.admin-list{display:grid;gap:10px}.admin-q{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;border:1px solid var(--border);padding:14px;border-radius:13px;background:#fff}.admin-q h4{margin:7px 0 4px;font-size:14px}.admin-q p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}.admin-actions{display:flex;gap:7px;flex-wrap:wrap}.small-btn{border:1px solid var(--border);background:#fff;border-radius:9px;padding:8px 10px;font-weight:750;color:#485a6e}.small-btn:hover{background:#f6fafb}.small-btn.publish{background:#eaf8f0;color:#107548;border-color:#cdebd9}.small-btn.unpublish{background:#fff7e7;color:#936117;border-color:#f3dfb1}.role-pill{font-size:11px;padding:5px 8px;border-radius:999px;font-weight:800;background:#eaf6ff;color:#1d5c93}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.admin-tab{border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 13px;font-weight:800;color:#5e6f82}.admin-tab.active{background:#eaf7f5;color:#0a6d69;border-color:#c8e8e2}.admin-pane{display:none}.admin-pane.active{display:block}.catalog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.success-box{padding:11px 12px;border-radius:10px;background:#edf8f4;color:#15704f;font-size:12px;font-weight:700}.error-box{padding:11px 12px;border-radius:10px;background:#fff1f1;color:#a92929;font-size:12px;font-weight:700}.admin-note{font-size:12px;color:#7b8999;line-height:1.5}
+@media(max-width:1050px){.admin-grid{grid-template-columns:1fr}.catalog-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.admin-two{grid-template-columns:1fr}.admin-q{flex-direction:column}.admin-actions{width:100%}}
+
 @media(max-width:1050px){.stats{grid-template-columns:repeat(2,1fr)}.content-grid{grid-template-columns:1fr}.subjects{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){:root{--sidebar:0px}.sidebar{display:none}.main{margin:0;width:100%;padding:18px}.login-shell{grid-template-columns:1fr;min-height:auto}.login-visual{padding:26px}.logo-hero{width:min(300px,70%)}.login-card{width:min(440px,calc(100% - 35px));padding:26px}.stats{grid-template-columns:1fr 1fr}.subjects{grid-template-columns:1fr}}
 @media(max-width:480px){.stats{grid-template-columns:1fr}.profile-row{grid-template-columns:1fr}}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-async function testConnection(){
-  if(!sb){status('loginStatus','Não foi possível inicializar o Supabase. Verifique se o navegador está com internet ativa.','error');return}
-  try{
-    const {error}=await sb.from('periods').select('id').limit(1);
-    if(error){status('loginStatus','❌ Conexão chegou ao Supabase, mas a API/banco respondeu com erro: '+error.message,'error');return}
-    status('loginStatus','✅ Conexão com o Supabase funcionando.','ok');
-  }catch(e){
-    status('loginStatus','❌ Não foi possível conectar ao Supabase: '+(e.message||e),'error');
-  }
-}
-
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-window.MEDQUEST_CONFIG = {
-  SUPABASE_URL: "https://stkugeihynxuypjntavz.supabase.co",
-  SUPABASE_PUBLISHABLE_KEY: "sb_publishable_uA0qJlRv1Lu29mwkg2M5oA_F8nioQC2"
+window.MEDQUEST_CONFIG={
+  SUPABASE_URL:"https://stkugeihynxuypjntavz.supabase.co",
+  SUPABASE_PUBLISHABLE_KEY:"sb_publishable_uA0qJlRv1Lu29mwkg2M5oA_F8nioQC2"
 };
 </script>
 </head>
@@ -75,7 +68,7 @@ window.MEDQUEST_CONFIG = {
       <button class="login-alt" onclick="signUp()">Criar conta</button>
       <button class="login-alt" onclick="resetPassword()">Esqueci minha senha</button>
       <div id="loginStatus" class="status"></div>
-      <p class="demo-note" style="font-size:12px;color:#8392a3;text-align:center;margin-top:16px">Este MedQuest já está apontado para o seu projeto Supabase.</p>
+      <p class="demo-note" style="font-size:12px;color:#8392a3;text-align:center;margin-top:16px">MedQuest conectado ao seu projeto Supabase.</p>
     </div>
   </div>
 </div>
@@ -89,6 +82,7 @@ window.MEDQUEST_CONFIG = {
       <button class="nav-btn nav-sim" data-page="simulados" onclick="go('simulados')"><span class="nav-ico">🎯</span><span>Simulados</span></button>
       <button class="nav-btn nav-errors" data-page="errors" onclick="go('errors')"><span class="nav-ico">🧠</span><span>Caderno de erros</span></button>
       <button class="nav-btn nav-performance" data-page="performance" onclick="go('performance')"><span class="nav-ico">📈</span><span>Desempenho</span></button>
+      <button id="adminNav" class="nav-btn nav-admin" data-page="admin" onclick="go('admin')" style="display:none"><span class="nav-ico">⚙️</span><span>Administração</span></button>
     </nav>
     <div class="side-bottom">
       <button class="nav-btn nav-profile" data-page="profile" onclick="go('profile')"><span class="nav-ico">👤</span><span>Perfil</span></button>
@@ -124,122 +118,98 @@ window.MEDQUEST_CONFIG = {
     <section id="simulados" class="page"><div class="card"><h2>🎯 Simulados</h2><p class="muted">A estrutura está pronta. Vamos conectar o gerador de simulados depois que o banco de questões estiver populado.</p></div></section>
     <section id="errors" class="page"><div class="card"><h2>🧠 Caderno de erros</h2><p class="muted">Os erros passarão a aparecer aqui automaticamente depois que o aluno responder questões.</p><div id="errorList" class="empty" style="margin-top:15px">Ainda não há tentativas registradas.</div></div></section>
     <section id="performance" class="page"><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="stat-title">Aproveitamento</div><div id="perfRate" class="kpi">0%</div><div class="subkpi">respostas registradas</div></div><div class="card"><div class="stat-title">Acertos</div><div id="perfCorrect" class="kpi">0</div><div class="subkpi">questões</div></div><div class="card"><div class="stat-title">Respondidas</div><div id="perfTotal" class="kpi">0</div><div class="subkpi">questões</div></div></div><div class="card" style="margin-top:18px"><h2>📈 Por disciplina</h2><div id="disciplinePerf" class="empty" style="margin-top:14px">Ainda não há dados suficientes.</div></div></section>
+
+    <section id="admin" class="page">
+      <div class="toolbar"><div><h2 style="margin:0">⚙️ Administração</h2><p class="muted" style="margin:5px 0 0">Gerencie questões e a estrutura acadêmica do MedQuest.</p></div><span class="role-pill">Administrador</span></div>
+      <div class="cards stats">
+        <div class="card stat-card"><div><div class="stat-title">Questões</div><div class="stat-value" id="adminQuestionCount">0</div></div><div class="stat-icon">📝</div></div>
+        <div class="card stat-card"><div><div class="stat-title">Publicadas</div><div class="stat-value" id="adminPublishedCount">0</div></div><div class="stat-icon">🌐</div></div>
+        <div class="card stat-card"><div><div class="stat-title">Disciplinas</div><div class="stat-value" id="adminDisciplineCount">0</div></div><div class="stat-icon">📚</div></div>
+        <div class="card stat-card"><div><div class="stat-title">Alunos</div><div class="stat-value" id="adminStudentCount">0</div></div><div class="stat-icon">👥</div></div>
+      </div>
+      <div class="admin-tabs" style="margin-top:20px">
+        <button class="admin-tab active" data-pane="adminQuestionsPane" onclick="adminTab('adminQuestionsPane',this)">📝 Questões</button>
+        <button class="admin-tab" data-pane="adminNewPane" onclick="adminTab('adminNewPane',this)">➕ Nova questão</button>
+        <button class="admin-tab" data-pane="adminCatalogPane" onclick="adminTab('adminCatalogPane',this)">🗂️ Cadastros</button>
+      </div>
+
+      <div id="adminQuestionsPane" class="admin-pane active">
+        <div class="card"><div class="card-head"><h2>Questões cadastradas</h2><button class="link-btn" onclick="loadAdminQuestions()">↻ Atualizar</button></div><div id="adminQuestionList" class="admin-list"><div class="empty">Carregando...</div></div></div>
+      </div>
+
+      <div id="adminNewPane" class="admin-pane">
+        <div class="admin-grid">
+          <div class="card">
+            <div class="card-head"><h2>➕ Cadastrar questão</h2></div>
+            <form class="admin-form" onsubmit="createQuestion(event)">
+              <div class="admin-two"><label>Período<select id="aPeriod" required></select></label><label>Disciplina<select id="aDiscipline" required onchange="loadAdminSubjects()"></select></label></div>
+              <div class="admin-two"><label>Assunto<select id="aSubject" required></select></label><label>Prova<select id="aExam"></select></label></div>
+              <label>Enunciado<textarea id="aStatement" placeholder="Digite o enunciado da questão..." required></textarea></label>
+              <div class="admin-two"><label>A<input id="aA" required></label><label>B<input id="aB" required></label></div>
+              <div class="admin-two"><label>C<input id="aC" required></label><label>D<input id="aD" required></label></div>
+              <label>E<input id="aE" placeholder="Opcional"></label>
+              <div class="admin-two"><label>Resposta correta<select id="aCorrect" required><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label><label>Dificuldade<select id="aDifficulty"><option value="facil">Fácil</option><option value="medio" selected>Média</option><option value="dificil">Difícil</option></select></label></div>
+              <label>Explicação<textarea id="aExplanation" placeholder="Explique por que a alternativa está correta..."></textarea></label>
+              <label class="check-row"><input id="aPublished" type="checkbox"> <span>Publicar imediatamente para os alunos</span></label>
+              <button class="primary" type="submit">💾 Salvar questão</button>
+              <div id="adminQuestionStatus"></div>
+            </form>
+          </div>
+          <div class="card"><div class="card-head"><h2>Como funciona</h2></div><p class="admin-note">Cadastre primeiro os períodos, disciplinas, assuntos e provas na aba <b>Cadastros</b>. Depois eles aparecem automaticamente nos campos desta tela.</p><div class="mini-card" style="margin-top:12px"><b>Rascunho</b><p class="admin-note">A questão fica guardada no banco mas não aparece para os alunos.</p></div><div class="mini-card" style="margin-top:10px"><b>Publicada</b><p class="admin-note">A questão aparece na área de questões para alunos autenticados.</p></div></div>
+        </div>
+      </div>
+
+      <div id="adminCatalogPane" class="admin-pane">
+        <div class="catalog-grid">
+          <div class="card"><h3>📅 Novo período</h3><form class="admin-form" onsubmit="createPeriod(event)"><label>Nome<input id="cPeriodName" placeholder="Ex.: P2" required></label><label>Ordem<input id="cPeriodOrder" type="number" value="2" min="0"></label><button class="primary">Adicionar período</button><div id="periodStatus"></div></form></div>
+          <div class="card"><h3>📚 Nova disciplina</h3><form class="admin-form" onsubmit="createDiscipline(event)"><label>Nome<input id="cDisciplineName" placeholder="Ex.: Fisiologia" required></label><button class="primary">Adicionar disciplina</button><div id="disciplineStatus"></div></form></div>
+          <div class="card"><h3>🧠 Novo assunto</h3><form class="admin-form" onsubmit="createSubject(event)"><label>Disciplina<select id="cSubjectDiscipline" required></select></label><label>Nome<input id="cSubjectName" placeholder="Ex.: Cardiovascular" required></label><button class="primary">Adicionar assunto</button><div id="subjectStatus"></div></form></div>
+          <div class="card"><h3>🧪 Nova prova</h3><form class="admin-form" onsubmit="createExam(event)"><label>Período<select id="cExamPeriod"></select></label><label>Nome<input id="cExamName" placeholder="Ex.: Integradora 1"></label><button class="primary">Adicionar prova</button><div id="examStatus"></div></form></div>
+        </div>
+      </div>
+    </section>
+
     <section id="profile" class="page"><div class="card profile"><div class="card-head"><h2>👤 Perfil</h2></div><div class="profile-row"><div><label>Nome</label><input id="profileName"></div><div><label>Curso</label><input value="Medicina" disabled></div></div><div><label>E-mail</label><input id="profileEmail" disabled></div><button class="primary" style="margin-top:17px" onclick="saveProfile()">Salvar alterações</button><div id="profileStatus" class="status"></div></div></section>
   </main>
 </div>
 
 <script>
 const cfg=window.MEDQUEST_CONFIG||{};
-const supabaseReady=cfg.SUPABASE_URL&&cfg.SUPABASE_URL.startsWith('http')&&cfg.SUPABASE_PUBLISHABLE_KEY&&!cfg.SUPABASE_PUBLISHABLE_KEY.includes('COLE_AQUI');
+const supabaseReady=cfg.SUPABASE_URL&&cfg.SUPABASE_URL.startsWith('https://')&&cfg.SUPABASE_PUBLISHABLE_KEY&&cfg.SUPABASE_PUBLISHABLE_KEY.startsWith('sb_publishable_');
 const sb=supabaseReady?window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
-
-const labels={home:['Olá! 👋','Continue de onde parou.'],questions:['Questões','Questões carregadas diretamente do banco.'],simulados:['Simulados','Conjuntos de questões para testar seu desempenho.'],errors:['Caderno de erros','Revise as questões que você errou.'],performance:['Desempenho','Acompanhe sua evolução nos estudos.'],profile:['Perfil','Gerencie seus dados.']};
-let currentUser=null;
-
-function status(id,msg,type){const el=document.getElementById(id);el.textContent=msg;el.className='status show '+(type||'error')}
-function clearStatus(id){const el=document.getElementById(id);if(el)el.className='status'}
+const labels={home:['Olá! 👋','Continue de onde parou.'],questions:['Questões','Questões carregadas diretamente do banco.'],simulados:['Simulados','Conjuntos de questões para testar seu desempenho.'],errors:['Caderno de erros','Revise as questões que você errou.'],performance:['Desempenho','Acompanhe sua evolução nos estudos.'],admin:['Administração','Gerencie o conteúdo do MedQuest.'],profile:['Perfil','Gerencie seus dados.']};
+let currentUser=null,isAdmin=false;
+function status(id,msg,type='error'){const e=document.getElementById(id);if(!e)return;e.innerHTML=msg;e.className=(type==='ok'?'success-box':'error-box')}
 function togglePassword(){const p=document.getElementById('password');p.type=p.type==='password'?'text':'password'}
-
-async function signIn(){
-  if(!sb){status('loginStatus','A conexão com o Supabase não foi carregada. Verifique sua internet e tente novamente.','error');return}
-  const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;
-  if(!email||!password){status('loginStatus','Digite seu e-mail e sua senha.','error');return}
-  const {error}=await sb.auth.signInWithPassword({email,password});
-  if(error){status('loginStatus',error.message,'error');return}
-  await bootstrap();
-}
-async function signUp(){
-  if(!sb){status('loginStatus','A conexão com o Supabase não foi carregada. Verifique sua internet e tente novamente.','error');return}
-  const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;
-  if(!email||password.length<6){status('loginStatus','Informe um e-mail e uma senha com pelo menos 6 caracteres.','error');return}
-  const {error}=await sb.auth.signUp({email,password,options:{data:{full_name:'Aluno'}}});
-  if(error){status('loginStatus',error.message,'error');return}
-  status('loginStatus','Conta criada. Se a confirmação de e-mail estiver ativa, confira sua caixa de entrada.','ok');
-}
-async function resetPassword(){
-  if(!sb){status('loginStatus','A conexão com o Supabase não foi carregada. Verifique sua internet e tente novamente.','error');return}
-  const email=document.getElementById('email').value.trim();
-  if(!email){status('loginStatus','Digite seu e-mail antes de recuperar a senha.','error');return}
-  const redirect=window.location.href.split('#')[0];
-  const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:redirect});
-  if(error){status('loginStatus',error.message,'error');return}
-  status('loginStatus','Enviamos as instruções de recuperação para seu e-mail.','ok');
-}
-async function signOut(){if(sb)await sb.auth.signOut();currentUser=null;document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden');}
-
-async function bootstrap(){
-  if(!sb)return;
-  const {data:{session}}=await sb.auth.getSession();
-  if(!session){return}
-  currentUser=session.user;
-  document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');
-  await loadProfile(); await loadFilters(); await loadQuestions(); await loadAttempts();
-  go('home');
-}
-async function loadProfile(){
-  if(!currentUser)return;
-  const {data}=await sb.from('profiles').select('full_name').eq('id',currentUser.id).maybeSingle();
-  const name=(data?.full_name||currentUser.email?.split('@')[0]||'Aluno');
-  document.getElementById('accountName').textContent=name;
-  document.getElementById('profileName').value=name;
-  document.getElementById('profileEmail').value=currentUser.email||'';
-  const letter=name.trim().charAt(0).toUpperCase()||'A';document.getElementById('avatar').textContent=letter;document.getElementById('topAvatar').textContent=letter;
-}
-async function loadFilters(){
-  if(!sb)return;
-  const [p,d]=await Promise.all([
-    sb.from('periods').select('id,name').order('sort_order',{ascending:true}),
-    sb.from('disciplines').select('id,name').order('name')
-  ]);
-  const ps=document.getElementById('filterPeriod'),ds=document.getElementById('filterDiscipline');
-  ps.innerHTML='<option value="">Todos os períodos</option>'+(p.data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');
-  ds.innerHTML='<option value="">Todas as disciplinas</option>'+(d.data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');
-}
-async function loadQuestions(){
-  if(!sb)return;
-  const state=document.getElementById('questionsState'),list=document.getElementById('questionList');
-  state.classList.remove('hidden');list.classList.add('hidden');
-  let q=sb.from('questions').select('id,statement,difficulty,discipline_id,subject_id,period_id,disciplines(name),subjects(name),periods(name)').eq('is_published',true).order('id',{ascending:true});
-  const period=document.getElementById('filterPeriod').value,discipline=document.getElementById('filterDiscipline').value;
-  if(period)q=q.eq('period_id',Number(period));if(discipline)q=q.eq('discipline_id',Number(discipline));
-  const {data,error}=await q;
-  if(error){state.innerHTML='<strong>Não foi possível carregar as questões.</strong><span>Verifique as tabelas e as políticas RLS no Supabase.</span>';return}
-  if(!data?.length){state.innerHTML='<strong>Nenhuma questão publicada ainda.</strong><span>O banco está conectado, mas você ainda não cadastrou questões.</span>';return}
-  list.innerHTML=data.map((x,i)=>`<div class="card question-row"><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'Disciplina')}</span><span class="badge">${escapeHtml(x.periods?.name||'Período')}</span></div><h3>Questão #${x.id}</h3><p>${escapeHtml(x.statement).slice(0,180)}${x.statement.length>180?'...':''}</p></div><button class="primary" onclick="openQuestion(${x.id})">Responder →</button></div>`).join('');
-  state.classList.add('hidden');list.classList.remove('hidden');
-}
-async function openQuestion(id){
-  alert('A tela completa de resolução será o próximo módulo. A questão #'+id+' já pode ser localizada no Supabase.');
-}
-async function loadAttempts(){
-  if(!sb||!currentUser)return;
-  const {data,error}=await sb.from('attempts').select('id,question_id,is_correct,answered_at').eq('user_id',currentUser.id);
-  if(error)return;
-  const rows=data||[],correct=rows.filter(x=>x.is_correct).length,total=rows.length,wrong=total-correct,rate=total?Math.round(correct/total*100):0;
-  document.getElementById('statSolved').textContent=total;document.getElementById('statRate').textContent=rate+'%';document.getElementById('statErrors').textContent=wrong;
-  document.getElementById('perfRate').textContent=rate+'%';document.getElementById('perfCorrect').textContent=correct;document.getElementById('perfTotal').textContent=total;
-  if(wrong)document.getElementById('errorList').innerHTML=`<strong>${wrong} questão(ões) errada(s).</strong><span>O caderno de erros detalhado será conectado ao módulo de resolução.</span>`;
-}
-async function saveProfile(){
-  if(!sb||!currentUser)return;
-  const name=document.getElementById('profileName').value.trim()||'Aluno';
-  const {error}=await sb.from('profiles').update({full_name:name}).eq('id',currentUser.id);
-  if(error){status('profileStatus',error.message,'error');return}
-  await loadProfile();status('profileStatus','Perfil atualizado.','ok');
-}
-function go(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');
-  const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=currentUser&&id==='home'?`Olá, ${document.getElementById('accountName').textContent}! 👋`:l[0];document.getElementById('pageSub').textContent=l[1];
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});
-}
+async function signIn(){if(!sb){status('loginStatus','O Supabase não foi inicializado.');return}const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;if(!email||!password){status('loginStatus','Digite seu e-mail e sua senha.');return}const {error}=await sb.auth.signInWithPassword({email,password});if(error){status('loginStatus',error.message);return}await bootstrap()}
+async function signUp(){if(!sb){status('loginStatus','O Supabase não foi inicializado.');return}const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;if(!email||password.length<6){status('loginStatus','Informe um e-mail e uma senha com pelo menos 6 caracteres.');return}const {error}=await sb.auth.signUp({email,password,options:{data:{full_name:'Aluno'}}});if(error){status('loginStatus',error.message);return}status('loginStatus','Conta criada. Se a confirmação de e-mail estiver ativa, confira sua caixa de entrada.','ok')}
+async function resetPassword(){if(!sb){status('loginStatus','O Supabase não foi inicializado.');return}const email=document.getElementById('email').value.trim();if(!email){status('loginStatus','Digite seu e-mail antes de recuperar a senha.');return}const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.href.split('#')[0]});if(error){status('loginStatus',error.message);return}status('loginStatus','Enviamos as instruções de recuperação para o seu e-mail.','ok')}
+async function signOut(){if(sb)await sb.auth.signOut();currentUser=null;isAdmin=false;document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden')}
+async function bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(!session)return;currentUser=session.user;document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');await loadProfile();await loadFilters();await loadQuestions();await loadAttempts();go('home')}
+async function loadProfile(){if(!currentUser)return;const {data,error}=await sb.from('profiles').select('full_name,role').eq('id',currentUser.id).maybeSingle();const name=(data?.full_name||currentUser.email?.split('@')[0]||'Aluno');isAdmin=!error&&data?.role==='admin';document.getElementById('accountName').textContent=name;document.getElementById('profileName').value=name;document.getElementById('profileEmail').value=currentUser.email||'';const letter=name.trim().charAt(0).toUpperCase()||'A';document.getElementById('avatar').textContent=letter;document.getElementById('topAvatar').textContent=letter;document.getElementById('adminNav').style.display=isAdmin?'flex':'none';if(isAdmin)await loadAdminAll()}
+async function loadFilters(){if(!sb)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const ps=document.getElementById('filterPeriod'),ds=document.getElementById('filterDiscipline');ps.innerHTML='<option value="">Todos os períodos</option>'+(p.data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');ds.innerHTML='<option value="">Todas as disciplinas</option>'+(d.data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');}
+async function loadQuestions(){if(!sb)return;const state=document.getElementById('questionsState'),list=document.getElementById('questionList');state.classList.remove('hidden');list.classList.add('hidden');let q=sb.from('questions').select('id,statement,difficulty,discipline_id,subject_id,period_id,disciplines(name),subjects(name),periods(name)').eq('is_published',true).order('id',{ascending:true});const period=document.getElementById('filterPeriod').value,discipline=document.getElementById('filterDiscipline').value;if(period)q=q.eq('period_id',Number(period));if(discipline)q=q.eq('discipline_id',Number(discipline));const {data,error}=await q;if(error){state.innerHTML='<strong>Não foi possível carregar as questões.</strong><span>'+escapeHtml(error.message)+'</span>';return}if(!data?.length){state.innerHTML='<strong>Nenhuma questão publicada ainda.</strong><span>O banco está conectado, mas não há questões publicadas.</span>';return}list.innerHTML=data.map(x=>`<div class="card question-row"><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'Disciplina')}</span><span class="badge">${escapeHtml(x.periods?.name||'Período')}</span></div><h3>Questão #${x.id}</h3><p>${escapeHtml(x.statement).slice(0,180)}${x.statement.length>180?'...':''}</p></div><button class="primary" onclick="alert('A resolução completa da questão #${x.id} será conectada no próximo módulo.')">Responder →</button></div>`).join('');state.classList.add('hidden');list.classList.remove('hidden')}
+async function loadAttempts(){if(!sb||!currentUser)return;const {data}=await sb.from('attempts').select('id,question_id,is_correct,answered_at').eq('user_id',currentUser.id);const rows=data||[],correct=rows.filter(x=>x.is_correct).length,total=rows.length,wrong=total-correct,rate=total?Math.round(correct/total*100):0;document.getElementById('statSolved').textContent=total;document.getElementById('statRate').textContent=rate+'%';document.getElementById('statErrors').textContent=wrong;document.getElementById('perfRate').textContent=rate+'%';document.getElementById('perfCorrect').textContent=correct;document.getElementById('perfTotal').textContent=total;if(wrong)document.getElementById('errorList').innerHTML=`<strong>${wrong} questão(ões) errada(s).</strong><span>O detalhamento do caderno de erros será finalizado junto com a tela de resolução.</span>`}
+async function saveProfile(){if(!sb||!currentUser)return;const name=document.getElementById('profileName').value.trim()||'Aluno';const {error}=await sb.from('profiles').update({full_name:name}).eq('id',currentUser.id);if(error){status('profileStatus',error.message);return}await loadProfile();status('profileStatus','Perfil atualizado.','ok')}
+function go(id){if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?`Olá, ${document.getElementById('accountName').textContent}! 👋`:l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();window.scrollTo({top:0,behavior:'smooth'})}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
-if(sb){
-  sb.auth.onAuthStateChange((_event,_session)=>{if(_session)bootstrap();});
-  bootstrap();
-} else {
-  status('loginStatus','MedQuest conectado ao projeto Supabase.','error');
-}
+function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane')loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions()}
+async function loadAdminAll(){if(!isAdmin)return;await loadAdminStats();await loadAdminCatalogOptions();await loadAdminFormOptions();await loadAdminQuestions()}
+async function loadAdminStats(){try{const [q,p,d,s]=await Promise.all([sb.from('questions').select('id,is_published',{count:'exact',head:true}),sb.from('questions').select('id',{count:'exact',head:true}).eq('is_published',true),sb.from('disciplines').select('id',{count:'exact',head:true}),sb.from('profiles').select('id',{count:'exact',head:true}).eq('role','student')]);document.getElementById('adminQuestionCount').textContent=q.count||0;document.getElementById('adminPublishedCount').textContent=p.count||0;document.getElementById('adminDisciplineCount').textContent=d.count||0;document.getElementById('adminStudentCount').textContent=s.count||0}catch(e){}}
+async function loadAdminCatalogOptions(){if(!isAdmin)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const periods=p.data||[],disc=d.data||[];document.getElementById('cSubjectDiscipline').innerHTML=disc.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');document.getElementById('cExamPeriod').innerHTML='<option value="">Sem período</option>'+periods.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');}
+async function loadAdminFormOptions(){if(!isAdmin)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const periods=p.data||[],disc=d.data||[];document.getElementById('aPeriod').innerHTML='<option value="">Selecione</option>'+periods.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');document.getElementById('aDiscipline').innerHTML='<option value="">Selecione</option>'+disc.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');await loadAdminSubjects();await loadAdminExams();}
+async function loadAdminSubjects(){const d=document.getElementById('aDiscipline').value;const select=document.getElementById('aSubject');if(!d){select.innerHTML='<option value="">Selecione a disciplina primeiro</option>';return}const {data}=await sb.from('subjects').select('id,name').eq('discipline_id',Number(d)).order('name');select.innerHTML='<option value="">Selecione</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('')}
+async function loadAdminExams(){const p=document.getElementById('aPeriod').value;let q=sb.from('exams').select('id,name').order('name');if(p)q=q.or(`period_id.eq.${Number(p)},period_id.is.null`);const {data}=await q;document.getElementById('aExam').innerHTML='<option value="">Sem prova</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('')}
+async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};if(!payload.period_id||!payload.discipline_id||!payload.subject_id){status('adminQuestionStatus','Preencha período, disciplina e assunto.');return}const {error}=await sb.from('questions').insert(payload);if(error){status('adminQuestionStatus','Erro ao salvar: '+escapeHtml(error.message));return}status('adminQuestionStatus','✅ Questão salva com sucesso.','ok');e.target.reset();await loadAdminAll();}
+async function loadAdminQuestions(){if(!isAdmin)return;const box=document.getElementById('adminQuestionList');const {data,error}=await sb.from('questions').select('id,statement,difficulty,is_published,created_at,disciplines(name),subjects(name),periods(name),exams(name)').order('id',{ascending:false}).limit(100);if(error){box.innerHTML='<div class="error-box">'+escapeHtml(error.message)+'</div>';return}if(!data?.length){box.innerHTML='<div class="empty"><strong>Nenhuma questão cadastrada.</strong><span>Crie a primeira na aba “Nova questão”.</span></div>';return}box.innerHTML=data.map(x=>`<div class="admin-q"><div><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'')}</span><span class="badge">${escapeHtml(x.periods?.name||'')}</span><span class="badge ${x.is_published?'green':'yellow'}">${x.is_published?'Publicada':'Rascunho'}</span></div><h4>#${x.id} — ${escapeHtml(x.subjects?.name||'Sem assunto')}</h4><p>${escapeHtml(x.statement).slice(0,220)}${x.statement.length>220?'...':''}</p></div><div class="admin-actions"><button class="small-btn ${x.is_published?'unpublish':'publish'}" onclick="toggleQuestion(${x.id},${!x.is_published})">${x.is_published?'Despublicar':'Publicar'}</button></div></div>`).join('')}
+async function toggleQuestion(id,published){if(!isAdmin)return;const {error}=await sb.from('questions').update({is_published:published}).eq('id',id);if(error){alert(error.message);return}await loadAdminAll()}
+async function createPeriod(e){e.preventDefault();const {error}=await sb.from('periods').insert({name:document.getElementById('cPeriodName').value.trim(),sort_order:Number(document.getElementById('cPeriodOrder').value||0)});if(error){status('periodStatus',error.message);return}status('periodStatus','✅ Período adicionado.','ok');e.target.reset();document.getElementById('cPeriodOrder').value=2;await loadAdminAll()}
+async function createDiscipline(e){e.preventDefault();const {error}=await sb.from('disciplines').insert({name:document.getElementById('cDisciplineName').value.trim()});if(error){status('disciplineStatus',error.message);return}status('disciplineStatus','✅ Disciplina adicionada.','ok');e.target.reset();await loadAdminAll()}
+async function createSubject(e){e.preventDefault();const {error}=await sb.from('subjects').insert({discipline_id:Number(document.getElementById('cSubjectDiscipline').value),name:document.getElementById('cSubjectName').value.trim()});if(error){status('subjectStatus',error.message);return}status('subjectStatus','✅ Assunto adicionado.','ok');e.target.reset();await loadAdminAll()}
+async function createExam(e){e.preventDefault();const period=document.getElementById('cExamPeriod').value;const name=document.getElementById('cExamName').value.trim();const {error}=await sb.from('exams').insert({period_id:period?Number(period):null,name});if(error){status('examStatus',error.message);return}status('examStatus','✅ Prova adicionada.','ok');e.target.reset();await loadAdminAll()}
+function numOrNull(id){const v=document.getElementById(id).value;return v?Number(v):null}
+if(sb){sb.auth.onAuthStateChange((_event,session)=>{if(session&&!currentUser)bootstrap()});bootstrap()}else{status('loginStatus','O MedQuest não conseguiu inicializar o Supabase.','error')}
 </script>
 </body>
 </html>
