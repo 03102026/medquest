@@ -1354,7 +1354,9 @@ async function signUp(){
 async function resetPassword(){if(!sb){status('loginStatus',sbProblem());return}const email=document.getElementById('email').value.trim();if(!email){status('loginStatus','Digite seu e-mail antes de recuperar a senha.');return}const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.href.split('#')[0]});if(error){status('loginStatus',error.message);return}status('loginStatus','Enviamos as instruções de recuperação para o seu e-mail.','ok')}
 function clearLocalUserData(uid){try{Object.keys(localStorage).forEach(k=>{if(k.indexOf('mq_')===0&&uid&&k.endsWith(uid))localStorage.removeItem(k)});Object.keys(sessionStorage).forEach(k=>{if(k.indexOf('mq_cat_')===0)sessionStorage.removeItem(k)})}catch(e){}}
 async function signOut(){const uid=currentUser?currentUser.id:'';if(sb)await sb.auth.signOut();clearLocalUserData(uid);window._allQ=null;window._attRows=null;window._catAt=0;window._sim=null;window._stmt={};currentUser=null;isAdmin=false;document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden')}
-async function bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(!session)return;currentUser=session.user;document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');await loadProfile();await loadAttempts();go('home')}
+let _bootP=null;
+function bootstrap(){if(_bootP)return _bootP;_bootP=_bootstrap().finally(()=>{_bootP=null});return _bootP}
+async function _bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(!session)return;currentUser=session.user;document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');await loadProfile();await loadAttempts();go('home')}
 async function loadProfile(){
   if(!currentUser)return;
   let r=await sb.from('profiles').select('full_name,role,email,institution_id,period_id,avatar_url').eq('id',currentUser.id).maybeSingle();
@@ -1859,16 +1861,30 @@ async function ensureAllQ(force){
   if(typeof fillProfilePrefs==='function')fillProfilePrefs();
 }
 /* enunciados: baixados só quando a tela precisa mostrar */
-window._stmt={};window._stmtBusy=new Set();window._qLimit=40;
-async function ensureStatements(ids){
-  const need=ids.filter(id=>window._stmt[id]===undefined&&!window._stmtBusy.has(id));
-  need.forEach(id=>window._stmtBusy.add(id));
+window._stmt={};window._stmtP={};window._qLimit=40;
+/* Compartilha as buscas em andamento: quem pede um enunciado que já está sendo baixado espera a mesma busca
+   (antes, um segundo pedido terminava na hora e redesenhava a tela em ciclo, travando a página). */
+function ensureStatements(ids){
+  ids=[...new Set((ids||[]).filter(id=>id!=null))];
+  const waits=[],need=[];
+  ids.forEach(id=>{
+    if(window._stmt[id]!==undefined)return;
+    if(window._stmtP[id]){waits.push(window._stmtP[id]);return}
+    need.push(id);
+  });
   for(let i=0;i<need.length;i+=150){
     const chunk=need.slice(i,i+150);
-    const r=await sb.from('questions').select('id,statement').in('id',chunk);
-    if(!r.error)(r.data||[]).forEach(x=>{window._stmt[x.id]=x.statement||''});
-    chunk.forEach(id=>{if(window._stmt[id]===undefined)window._stmt[id]='';window._stmtBusy.delete(id)});
+    const p=(async()=>{
+      try{
+        const r=await sb.from('questions').select('id,statement').in('id',chunk);
+        if(!r.error)(r.data||[]).forEach(x=>{window._stmt[x.id]=x.statement||''});
+      }catch(e){}
+      chunk.forEach(id=>{if(window._stmt[id]===undefined)window._stmt[id]='';delete window._stmtP[id]});
+    })();
+    chunk.forEach(id=>{window._stmtP[id]=p});
+    waits.push(p);
   }
+  return Promise.all(waits);
 }
 /* objetivos de aprendizagem: baixados só dos assuntos que aparecem na tela */
 window._objReq=new Set();
@@ -2405,7 +2421,7 @@ function renderAttempts(){
     eb.innerHTML=total?'<strong>🎉 Nenhum erro pendente.</strong><span>Quando você errar uma questão, ela aparece aqui para revisão.</span>':'Ainda não há tentativas registradas.';
   }
 
-  {const miss=wrongRows.slice(0,window._errLimit||40).map(r=>r.question_id).filter(id=>(window._stmt||{})[id]===undefined);if(miss.length)ensureStatements(miss).then(()=>renderAttempts())}
+  {const miss=wrongRows.slice(0,window._errLimit||40).map(r=>r.question_id).filter(id=>(window._stmt||{})[id]===undefined);if(miss.length)ensureStatements(miss).then(()=>{if(window._attRows)renderAttempts()})}
   const byDiscipline={};
   rows.forEach(r=>{
     const q=r.questions;
