@@ -957,6 +957,28 @@ body.dark .cal-pop{box-shadow:0 24px 60px rgba(0,0,0,.55)}
 }
 .sidebar-close{display:none;position:absolute;top:14px;right:12px;width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--muted);place-items:center}
 body.dark .sidebar-close{background:#17212b;border-color:#334455}
+
+/* página "e-mail verificado" */
+.verify-screen{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#0f2f3a 0%,#0b6e8e 60%,#20b5a2 100%);overflow:auto}
+.verify-screen.hidden{display:none}
+.verify-wrap{width:min(480px,100%);display:grid;gap:18px;justify-items:center}
+.verify-brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:900;font-size:26px;letter-spacing:-.04em}
+.verify-brand img{width:50px;height:50px;object-fit:contain;background:#fff;border-radius:15px;padding:6px;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.verify-card{width:100%;background:var(--surface);color:var(--text);border-radius:28px;padding:34px 30px 30px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.verify-ico{width:92px;height:92px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;background:rgba(26,156,98,.14)}
+.verify-ico.bad{background:rgba(227,160,8,.18)}
+.verify-ico svg{width:52px;height:52px;fill:none;stroke:#1a9c62;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.verify-ico.bad svg{stroke:#c58a06}
+.verify-ico .tick{stroke-dasharray:60;stroke-dashoffset:60;animation:vtick .7s .15s ease-out forwards}
+.verify-ico .ring{stroke-dasharray:160;stroke-dashoffset:160;animation:vtick .8s ease-out forwards;stroke-width:4}
+@keyframes vtick{to{stroke-dashoffset:0}}
+.verify-card h1{margin:0 0 8px;font-size:28px;letter-spacing:-.04em}
+.verify-card p{margin:0 0 22px;color:var(--muted);line-height:1.6;font-size:15.5px}
+.verify-card .primary{width:100%;padding:15px;font-size:16.5px}
+.verify-extra{margin-top:16px;text-align:left}
+.verify-extra input{width:100%;margin:6px 0 10px;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);font-size:15px}
+.verify-foot{color:rgba(255,255,255,.8);font-size:13px;text-align:center}
+@media(prefers-reduced-motion:reduce){.verify-ico .tick,.verify-ico .ring{animation:none;stroke-dashoffset:0}}
 </style>
 <script src="supabase.js"></script>
 <script>window.supabase||document.write('<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"><\/script>')</script>
@@ -993,6 +1015,19 @@ window.MEDQUEST_CONFIG={
 <meta name="theme-color" content="#f6f8fb" id="themeColorMeta">
 </head>
 <body>
+<div id="verifyScreen" class="verify-screen hidden" role="dialog" aria-modal="true" aria-labelledby="verifyTitle">
+  <div class="verify-wrap">
+    <div class="verify-brand"><img src="medquest-mark.png" alt=""><span>MedQuest</span></div>
+    <div class="verify-card">
+      <div id="verifyIco" class="verify-ico"><svg viewBox="0 0 60 60" aria-hidden="true"><circle class="ring" cx="30" cy="30" r="25"/><path class="tick" d="M18 31l8 8 17-18"/></svg></div>
+      <h1 id="verifyTitle">E-mail verificado!</h1>
+      <p id="verifyMsg">Sua conta está confirmada. Agora é só entrar e começar a estudar.</p>
+      <button id="verifyBtn" class="primary" type="button" onclick="verifyContinue()">Começar a estudar</button>
+      <div id="verifyExtra" class="verify-extra"></div>
+    </div>
+    <div class="verify-foot">Você pode fechar esta aba se preferir.</div>
+  </div>
+</div>
 
 <div id="loginScreen" class="login-screen landing"><button id="loginThemeToggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar tema" aria-label="Alternar tema" style="position:absolute;top:22px;right:24px;z-index:3">🌙</button>
   <div class="lp-wrap">
@@ -1311,9 +1346,10 @@ async function signUp(){
   if(!first||!last){status('loginStatus','Informe seu nome e sobrenome.');return}
   if(!email||password.length<8||!/[A-Za-z]/.test(password)||!/\d/.test(password)){status('loginStatus','Informe um e-mail e uma senha com pelo menos 8 caracteres, com letras e números.');return}
   const full=first+' '+last;
-  const {error}=await sb.auth.signUp({email,password,options:{data:{full_name:full,first_name:first,last_name:last}}});
+  const {error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname,data:{full_name:full,first_name:first,last_name:last}}});
   if(error){status('loginStatus',error.message);return}
-  status('loginStatus','Conta criada. Se a confirmação de e-mail estiver ativa, confira sua caixa de entrada.','ok');
+  window._pendingEmail=email;
+  status('loginStatus','✅ Conta criada! Enviamos um e-mail de confirmação para '+escapeHtml(email)+'. Clique no botão do e-mail para ativar sua conta. Não chegou? <button class="link-btn" type="button" onclick="resendConfirmation(window._pendingEmail)" style="padding:0">Reenviar e-mail</button>','ok');
 }
 async function resetPassword(){if(!sb){status('loginStatus',sbProblem());return}const email=document.getElementById('email').value.trim();if(!email){status('loginStatus','Digite seu e-mail antes de recuperar a senha.');return}const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.href.split('#')[0]});if(error){status('loginStatus',error.message);return}status('loginStatus','Enviamos as instruções de recuperação para o seu e-mail.','ok')}
 function clearLocalUserData(uid){try{Object.keys(localStorage).forEach(k=>{if(k.indexOf('mq_')===0&&uid&&k.endsWith(uid))localStorage.removeItem(k)});Object.keys(sessionStorage).forEach(k=>{if(k.indexOf('mq_cat_')===0)sessionStorage.removeItem(k)})}catch(e){}}
@@ -3296,6 +3332,61 @@ function renderSimProfile(){
 }
 setInterval(simTick,1000);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)simPersist();else if(window._sim)window._sim.last=Date.now()});
+/* ===== Link de confirmação do e-mail (página "e-mail verificado") ===== */
+(function(){
+  try{
+    const P=new URLSearchParams((location.hash||'').replace(/^#/,'')),Q=new URLSearchParams((location.search||'').replace(/^\?/,''));
+    const g=k=>P.get(k)||Q.get(k)||'';
+    window._authLink={type:g('type'),error:g('error_code')||g('error'),desc:g('error_description')};
+  }catch(e){window._authLink={type:'',error:'',desc:''}}
+})();
+function cleanAuthUrl(){try{history.replaceState(null,'',location.pathname)}catch(e){}}
+function showVerifyScreen(kind){
+  const el=document.getElementById('verifyScreen');if(!el)return;
+  const ico=document.getElementById('verifyIco'),t=document.getElementById('verifyTitle'),m=document.getElementById('verifyMsg'),b=document.getElementById('verifyBtn'),x=document.getElementById('verifyExtra');
+  x.innerHTML='';ico.classList.remove('bad');
+  if(kind==='ok'){
+    t.textContent='E-mail verificado!';
+    m.textContent='Sua conta está confirmada. Agora é só entrar e começar a estudar.';
+    b.textContent='Começar a estudar';b.style.display='';
+  }else if(kind==='change'){
+    t.textContent='Novo e-mail confirmado!';
+    m.textContent='Pronto: o e-mail da sua conta foi atualizado.';
+    b.textContent='Continuar';b.style.display='';
+  }else{
+    ico.classList.add('bad');
+    ico.innerHTML='<svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="25" style="stroke-width:4"/><path d="M30 17v16M30 41v1"/></svg>';
+    t.textContent='Link inválido ou expirado';
+    m.textContent='Este link de confirmação já foi usado ou venceu. Se você já confirmou, é só entrar. Se não, peça um novo e-mail abaixo.';
+    b.textContent='Ir para o login';b.style.display='';
+    x.innerHTML='<label style="font-weight:800;font-size:13px">Seu e-mail</label><input id="verifyEmail" type="email" autocomplete="email" placeholder="voce@exemplo.com"><button class="small-btn" type="button" style="width:100%" onclick="resendConfirmation(document.getElementById(\'verifyEmail\').value,\'verifyStatus\')">Reenviar e-mail de confirmação</button><div id="verifyStatus" class="status"></div>';
+  }
+  el.classList.remove('hidden');
+}
+function verifyContinue(){
+  const el=document.getElementById('verifyScreen');if(el)el.classList.add('hidden');
+  cleanAuthUrl();
+  if(!currentUser){const f=document.getElementById('email');if(f)f.focus()}
+}
+async function resendConfirmation(email,statusId){
+  email=(email||'').trim();
+  const sid=statusId||'loginStatus';
+  if(!sb){status(sid,sbProblem());return}
+  if(!email){status(sid,'Digite o e-mail usado no cadastro.');return}
+  const now=Date.now();
+  if(window._resentAt&&now-window._resentAt<45000){status(sid,'Aguarde alguns segundos antes de pedir outro e-mail.');return}
+  window._resentAt=now;
+  const {error}=await sb.auth.resend({type:'signup',email,options:{emailRedirectTo:location.origin+location.pathname}});
+  if(error){status(sid,error.message);return}
+  status(sid,'✅ Enviamos um novo e-mail de confirmação para '+escapeHtml(email)+'. Confira também a caixa de spam.','ok');
+}
+(function(){
+  const L=window._authLink||{};
+  if(L.type==='signup')showVerifyScreen('ok');
+  else if(L.type==='email_change')showVerifyScreen('change');
+  else if(L.error&&L.type!=='recovery')showVerifyScreen('error');
+})();
+
 /* ===== Ícones de linha (substituem os emojis da interface) ===== */
 const IC={
 'home':'<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/>',
@@ -3393,7 +3484,7 @@ iconize(document.body);
 _icObs.observe(document.body,{childList:true,subtree:true,characterData:true});
 startMockLoop();
 
-if(sb){sb.auth.onAuthStateChange((event,session)=>{if(event==='PASSWORD_RECOVERY'){window._recovery=true;setTimeout(showRecovery,350)}if(session&&!currentUser)bootstrap()});bootstrap()}else{status('loginStatus',sbProblem(),'error')}
+if(sb){sb.auth.onAuthStateChange((event,session)=>{if(event==='PASSWORD_RECOVERY'){window._recovery=true;setTimeout(showRecovery,350)}if(session&&!currentUser)bootstrap();if(window._authLink&&window._authLink.type&&event==='SIGNED_IN')setTimeout(cleanAuthUrl,1500)});bootstrap()}else{status('loginStatus',sbProblem(),'error')}
 </script>
 </body>
 </html>
