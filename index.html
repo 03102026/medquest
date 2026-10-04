@@ -190,6 +190,227 @@ body.dark .small-btn.unpublish{
 @media(max-width:1050px){.stats{grid-template-columns:repeat(2,1fr)}.content-grid{grid-template-columns:1fr}.subjects{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){:root{--sidebar:0px}.sidebar{display:none}.main{margin:0;width:100%;padding:18px}.login-shell{grid-template-columns:1fr;min-height:auto}.login-visual{padding:26px}.logo-hero{width:min(300px,70%)}.login-card{width:min(440px,calc(100% - 35px));padding:26px}.stats{grid-template-columns:1fr 1fr}.subjects{grid-template-columns:1fr}}
 @media(max-width:480px){.stats{grid-template-columns:1fr}.profile-row{grid-template-columns:1fr}}
+
+/* ===== MedQuest v20 — página de entrada (landing + login) ===== */
+.login-screen.landing{display:block;padding:0;overflow-x:hidden;--grad:linear-gradient(120deg,#0b6e8e,#20b5a2)}
+.lp-wrap{width:min(1120px,100% - 40px);margin:0 auto;position:relative;z-index:1}
+.lp-nav{display:flex;align-items:center;gap:10px;padding:22px 0}
+.lp-nav img{width:46px;height:46px;object-fit:contain}
+.wm{font-size:26px;font-weight:850;letter-spacing:-.04em;color:var(--text)}
+.wm b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lp-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;padding:26px 0 54px}
+.lp-kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);background:rgba(32,181,162,.12);border:1px solid rgba(32,181,162,.3);padding:7px 12px;border-radius:999px}
+.lp-copy h1{font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-.045em;margin:18px 0 16px}
+.lp-copy h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lp-copy>p{font-size:18px;line-height:1.6;color:var(--muted);max-width:560px;margin:0 0 22px}
+.lp-checks{list-style:none;padding:0;margin:0 0 26px;display:grid;gap:11px}
+.lp-checks li{display:flex;gap:11px;align-items:flex-start;font-weight:650;line-height:1.4}
+.lp-checks li:before{content:"✓";flex:none;width:23px;height:23px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:900;margin-top:1px}
+.lp-pills{display:flex;gap:9px;flex-wrap:wrap}
+.lp-pills span{font-size:13px;font-weight:750;padding:8px 13px;border-radius:999px;background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+.login-screen.landing .login-card{margin:0;width:100%;background:var(--surface);border:1px solid var(--border);border-radius:24px;box-shadow:0 24px 70px rgba(11,110,142,.16);position:relative;overflow:hidden}
+.login-screen.landing .login-card:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--grad)}
+.login-card h2{font-size:28px;margin:0 0 8px;letter-spacing:-.03em}
+.lp-section{padding:54px 0}
+.lp-title{text-align:center;margin:0 auto 32px;max-width:640px}
+.lp-title h2{font-size:clamp(26px,3.6vw,38px);letter-spacing:-.04em;margin:0 0 10px}
+.lp-title p{margin:0;color:var(--muted);font-size:17px;line-height:1.55}
+.lp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lp-feat{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:var(--shadow);transition:.16s}
+.lp-feat:hover{transform:translateY(-3px);border-color:#9fd6d0}
+.lp-ico{width:46px;height:46px;border-radius:14px;background:rgba(32,181,162,.14);display:grid;place-items:center;font-size:22px;margin-bottom:14px}
+.lp-feat h3{margin:0 0 7px;font-size:17px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lp-feat p{margin:0;color:var(--muted);line-height:1.55;font-size:14.5px}
+.lp-soon{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:#fff6e7;color:#a66b11}
+.lp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+.lp-step{position:relative;padding:24px 22px 22px;border-radius:18px;background:linear-gradient(145deg,var(--surface),rgba(32,181,162,.08));border:1px solid var(--border)}
+.lp-step:before{counter-increment:s;content:counter(s);width:36px;height:36px;border-radius:50%;background:var(--grad);color:#fff;font-weight:900;display:grid;place-items:center;margin-bottom:13px}
+.lp-step h3{margin:0 0 6px;font-size:17px}.lp-step p{margin:0;color:var(--muted);line-height:1.55;font-size:14.5px}
+.lp-cta{margin:20px 0 50px;border-radius:26px;padding:46px 28px;text-align:center;color:#fff;background:linear-gradient(120deg,#075a73,#0b6e8e 50%,#20b5a2)}
+.lp-cta h2{margin:0 0 10px;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.04em}
+.lp-cta p{margin:0 auto 22px;max-width:520px;opacity:.92;line-height:1.55}
+.lp-cta button{border:0;background:#fff;color:#075a73;font-weight:850;border-radius:14px;padding:15px 26px;font-size:16px}
+.lp-foot{text-align:center;color:var(--muted);font-size:12px;padding:0 0 28px}
+body.dark .lp-kicker{color:#6de0d1}
+body.dark .lp-soon{background:#352918;color:#ffd27d}
+body.dark .lp-feat:hover{border-color:#2e6b66}
+body.dark .login-screen.landing .login-card{box-shadow:0 24px 70px rgba(0,0,0,.4)}
+body.dark .login-card h2,body.dark .lp-copy h1{color:var(--text)}
+@media(max-width:900px){.lp-hero{grid-template-columns:1fr;gap:30px}.lp-grid,.lp-steps{grid-template-columns:1fr}.lp-section{padding:34px 0}}
+
+/* ===== Página de questões ===== */
+.filters input[type=search]{border:1px solid var(--border);border-radius:11px;padding:10px 12px;background:#fff;color:#33475c;outline:0;min-width:190px}
+body.dark .filters input[type=search]{background:#111a22;color:var(--text);border-color:var(--border)}
+.qcard{border-left:4px solid var(--accent);transition:.16s}
+.qcard:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(11,110,142,.14)}
+.q-num{flex:none;min-width:56px;height:56px;border-radius:15px;background:linear-gradient(135deg,#0b6e8e,#20b5a2);color:#fff;font-weight:900;display:grid;place-items:center;font-size:15px}
+.qcard .q-info{flex:1}.qcard .q-info p{font-size:14px;line-height:1.5;color:var(--text);margin-top:8px}
+.badge.amber{background:#fff6e7;color:#936117}body.dark .badge.amber{background:#3a2f19;color:#f3cf7a}
+.q-count{font-weight:800;color:var(--primary)}
+@media(max-width:650px){.qcard{flex-wrap:wrap}.qcard .primary{width:100%}.filters input[type=search]{width:100%}}
+
+/* ===== Resolução de questões (v21) ===== */
+.primary:disabled{opacity:.5;cursor:not-allowed}
+.solver-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;max-width:860px}
+.solver-card{padding:26px;max-width:860px}
+.solver-title{margin:14px 0 12px;font-size:20px;letter-spacing:-.02em}
+.solver-statement{font-size:16px;line-height:1.7;white-space:pre-wrap;margin-bottom:22px}
+.opt-list{display:grid;gap:10px}
+.opt{display:flex;gap:14px;align-items:flex-start;text-align:left;width:100%;padding:14px 16px;border:1.5px solid var(--border);border-radius:14px;background:var(--surface);color:var(--text);line-height:1.5;transition:.14s}
+.opt:hover{border-color:#8fd0c9;background:rgba(32,181,162,.06)}
+.opt-letter{flex:none;width:32px;height:32px;border-radius:50%;background:#eef3f7;color:#42546a;font-weight:850;display:grid;place-items:center}
+.opt.selected{border-color:var(--primary);background:rgba(11,110,142,.08)}
+.opt.selected .opt-letter{background:var(--primary);color:#fff}
+.opt-list.locked .opt{cursor:default}
+.opt-list.locked .opt:hover{border-color:var(--border);background:var(--surface)}
+.opt-list.locked .opt.correct:hover{border-color:#1a9c62;background:#eaf8f0}
+.opt-list.locked .opt.wrong:hover{border-color:#d33b3b;background:#fff1f1}
+.opt.correct{border-color:#1a9c62;background:#eaf8f0}.opt.correct .opt-letter{background:#1a9c62;color:#fff}
+.opt.wrong{border-color:#d33b3b;background:#fff1f1}.opt.wrong .opt-letter{background:#d33b3b;color:#fff}
+.feedback{margin-top:20px;border-radius:14px;padding:15px 18px;line-height:1.6;font-weight:700}
+.feedback.ok{background:#eaf8f0;color:#0f6b43;border:1px solid #cdebd9}
+.feedback.bad{background:#fff1f1;color:#a02222;border:1px solid #f3c9c9}
+.explain{margin-top:12px;padding:16px 18px;border-radius:14px;background:#f4f9fb;border:1px solid var(--border);white-space:pre-wrap;line-height:1.65}
+.explain b{display:block;margin-bottom:6px;color:var(--primary)}
+.save-warn{margin-top:10px;font-size:12px;color:#936117;background:#fff7e7;border:1px solid #f3dfb1;border-radius:10px;padding:9px 11px}
+.solver-actions{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:22px;flex-wrap:wrap}
+.solver-actions button:disabled{opacity:.45;cursor:not-allowed}
+body.dark .opt-letter{background:#223140;color:#c9d6e3}
+body.dark .opt.correct,body.dark .opt-list.locked .opt.correct:hover{background:#12312a;border-color:#2aa874}
+body.dark .opt.wrong,body.dark .opt-list.locked .opt.wrong:hover{background:#3a1c20;border-color:#d9534f}
+body.dark .feedback.ok{background:#12312a;color:#7fe0b0;border-color:#285943}
+body.dark .feedback.bad{background:#3a1c20;color:#ff9b96;border-color:#5b2a2e}
+body.dark .explain{background:#111a22}
+body.dark .save-warn{background:#3a2f19;color:#f3cf7a;border-color:#5b4821}
+@media(max-width:650px){.solver-card{padding:18px}.solver-actions .primary{order:-1;width:100%}}
+
+/* ===== MedQuest v23 — lúdico e intuitivo ===== */
+.hero-card{display:grid;grid-template-columns:1.25fr .95fr;gap:24px;align-items:center;background:linear-gradient(135deg,#f0fbf9,#f5f9ff);position:relative;overflow:hidden;margin-bottom:18px}
+.hero-hi{font-size:27px;font-weight:850;letter-spacing:-.035em}
+.hero-sub{color:var(--muted);margin:5px 0 15px;line-height:1.5}
+.level-row{display:flex;align-items:center;gap:10px;margin-bottom:9px;flex-wrap:wrap}
+.level-badge{font-weight:850;padding:6px 13px;border-radius:999px;background:linear-gradient(120deg,#0b6e8e,#20b5a2);color:#fff;font-size:13px}
+.xp-bar{height:11px;border-radius:999px;background:#dfeaf0;overflow:hidden}
+.xp-bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#20b5a2,#0b6e8e);transition:width .7s}
+.hero-cta{margin-top:18px;padding:15px 26px;font-size:16px;box-shadow:0 10px 26px rgba(11,110,142,.25)}
+.hero-next{font-size:13px;color:var(--muted);margin-top:9px}
+.hero-right{display:flex;gap:18px;justify-content:space-around;align-items:flex-start}
+.hero-side{text-align:center;flex:1}
+.ring-wrap{position:relative;width:112px;height:112px;margin:0 auto 4px}
+.ring-wrap svg{transform:rotate(-90deg);display:block}
+.ring-bg{stroke:#dfeaf0}
+.ring-fg{transition:stroke-dashoffset .9s ease}
+.ring-text{position:absolute;inset:0;display:grid;place-items:center;align-content:center;color:var(--muted);font-size:12px;line-height:1.1}
+.ring-text b{font-size:30px;color:var(--text);letter-spacing:-.03em}
+.flame{font-size:34px;animation:mqflick 1.6s ease-in-out infinite;display:inline-block}
+.hero-side .streak-number{font-size:40px;line-height:1}
+.hero-side .week{justify-content:center;margin-top:12px;gap:5px}
+.hero-side .day{width:26px;height:26px;font-size:10px}
+.day.today{outline:2px solid #20b5a2;outline-offset:1px}
+@keyframes mqflick{50%{transform:scale(1.12) rotate(-5deg)}}
+.mission{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.mission-ico{font-size:38px}
+.mission-body{flex:1;min-width:200px}
+.mission-body b{display:block;font-size:18px;margin-bottom:4px}
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px}
+.ach{border:1px solid var(--border);border-radius:16px;padding:15px 12px;text-align:center;background:var(--surface)}
+.ach .ico{font-size:30px;filter:grayscale(1);opacity:.35;display:block}
+.ach.on{border-color:#9fd6d0;background:linear-gradient(145deg,#f0fbf9,#ffffff)}
+.ach.on .ico{filter:none;opacity:1}
+.ach b{display:block;font-size:13px;margin-top:7px}
+.ach small{display:block;color:var(--muted);font-size:11px;margin-top:3px;line-height:1.35}
+.perf-row{margin-bottom:17px}
+.perf-row p{display:flex;align-items:center;gap:10px;margin:0 0 8px}
+.perf-ico{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:#eaf6f4;font-size:19px;flex:none}
+.perf-row p span{font-weight:750}
+.perf-row p small{display:block;color:var(--muted);font-weight:500}
+.perf-row p b{margin-left:auto;font-size:17px}
+.perf-bar{height:10px;background:#edf1f5;border-radius:999px;overflow:hidden}
+.perf-bar span{display:block;height:100%;border-radius:999px;transition:width .6s}
+.xp-chip{display:inline-block;margin-left:10px;font-size:12px;font-weight:850;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.7);animation:mqrise .8s ease-out}
+@keyframes mqrise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.confetti{position:fixed;left:50%;top:36%;pointer-events:none;z-index:9999}
+.confetti i{position:absolute;font-style:normal;font-size:24px;opacity:0;animation:mqcf 1.1s ease-out forwards}
+@keyframes mqcf{0%{opacity:1;transform:translate(0,0) scale(.5)}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1.15)}}
+.mq-shake{animation:mqshake .45s}
+@keyframes mqshake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+#toastBox{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;align-items:center;z-index:9999;pointer-events:none;width:max-content;max-width:92vw}
+.mq-toast{background:#0f2f3a;color:#fff;padding:13px 19px;border-radius:15px;font-weight:700;box-shadow:0 14px 36px rgba(0,0,0,.28);animation:mqtoast .35s;text-align:center}
+@keyframes mqtoast{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.onb{position:fixed;inset:0;background:rgba(7,30,40,.58);display:grid;place-items:center;z-index:9998;padding:20px}
+.onb-card{background:var(--surface);color:var(--text);border-radius:26px;max-width:430px;width:100%;padding:32px 28px 26px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.onb-ico{font-size:58px;margin-bottom:6px}
+.onb-card h3{font-size:22px;margin:6px 0 9px;letter-spacing:-.03em}
+.onb-card p{color:var(--muted);line-height:1.6;margin:0 0 20px}
+.onb-dots{display:flex;gap:7px;justify-content:center;margin-bottom:20px}
+.onb-dots i{width:8px;height:8px;border-radius:50%;background:#d5e0e7}
+.onb-dots i.on{background:#20b5a2;width:22px;border-radius:99px}
+.onb-actions{display:flex;gap:10px;justify-content:space-between}
+.onb-actions .primary{flex:1}
+body.dark .hero-card{background:linear-gradient(135deg,#10242a,#111c2a)}
+body.dark .xp-bar,body.dark .ring-bg{background:#233440;stroke:#233440}
+body.dark .perf-bar{background:#233440}
+body.dark .perf-ico{background:#173a38}
+body.dark .ach.on{background:linear-gradient(145deg,#12302d,#172431);border-color:#2e6b66}
+body.dark .xp-chip{background:rgba(0,0,0,.25)}
+body.dark .onb-dots i{background:#33444f}
+@media(max-width:900px){.hero-card{grid-template-columns:1fr}.hero-right{justify-content:space-around}}
+@media(max-width:560px){.hero-hi{font-size:22px}.hero-cta{width:100%}.hero-right{gap:8px}.ring-wrap{width:96px;height:96px}.ring-wrap svg{width:96px;height:96px}.ring-text b{font-size:25px}}
+@media(prefers-reduced-motion:reduce){.flame,.confetti i,.mq-shake,.xp-chip,.mq-toast{animation:none}.xp-bar span,.ring-fg,.perf-bar span{transition:none}}
+
+/* ===== MedQuest v24 — jornada por etapa + estudo com intenção ===== */
+.lp-title .lp-kicker{margin-bottom:14px}
+.jr{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-top:6px}
+.jr:before{content:"";position:absolute;left:12.5%;width:75%;top:38px;height:6px;border-radius:99px;background:repeating-linear-gradient(90deg,#c9d9e1 0 10px,transparent 10px 18px)}
+.jr:after{content:"";position:absolute;left:12.5%;width:25%;top:38px;height:6px;border-radius:99px;background:linear-gradient(90deg,#20b5a2,#0b6e8e)}
+.jr-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+.jr-ico{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;font-size:30px;background:var(--surface);border:4px solid #20b5a2;box-shadow:0 10px 28px rgba(32,181,162,.32);margin-bottom:16px;transition:.2s}
+.jr-node.live{cursor:pointer}
+.jr-node.live:hover .jr-ico{transform:translateY(-4px) scale(1.05)}
+.jr-node.soon .jr-ico{border:4px dashed #b8c8d2;box-shadow:none;filter:grayscale(1);opacity:.75}
+.jr-card{width:100%;flex:1;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:16px 15px;text-align:left;box-shadow:var(--shadow)}
+.jr-node.live .jr-card{border-color:#9fd6d0}
+.jr-tag{font-size:11px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:var(--primary)}
+.jr-card h3{margin:5px 0 7px;font-size:18px;letter-spacing:-.02em;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.jr-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+.lp-intent{padding-top:24px}
+.lp-intent-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
+.lp-intent h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.045em;line-height:1.06;margin:16px 0 14px}
+.lp-intent h2 em{font-style:normal;background:linear-gradient(120deg,#0b6e8e,#20b5a2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lp-intent .lp-copy-p{color:var(--muted);font-size:17px;line-height:1.65;margin:0 0 20px;max-width:520px}
+.mock-wrap{position:relative;padding:14px}
+.mock-wrap:before{content:"";position:absolute;inset:0;border-radius:30px;background:linear-gradient(135deg,rgba(32,181,162,.18),rgba(11,110,142,.14))}
+.mock{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:20px;box-shadow:0 26px 60px rgba(11,110,142,.2);transform:rotate(-1.4deg)}
+.mock-top{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.mock-top .ex{margin-left:auto;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mock-q{font-weight:700;line-height:1.5;margin:0 0 13px}
+.mock-opt{display:flex;gap:11px;align-items:center;border:1.5px solid var(--border);border-radius:12px;padding:9px 12px;margin-bottom:8px;font-size:14px}
+.mock-opt i{font-style:normal;flex:none;width:26px;height:26px;border-radius:50%;background:#eef3f7;color:#42546a;font-weight:850;display:grid;place-items:center;font-size:12px}
+.mock-opt.ok{border-color:#1a9c62;background:#eaf8f0}
+.mock-opt.ok i{background:#1a9c62;color:#fff}
+.mock-foot{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.mock-foot span{font-size:12px;font-weight:800;padding:6px 11px;border-radius:999px;background:rgba(32,181,162,.14);color:#0a6d69}
+.lp-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}
+.lp-tile{border-radius:20px;padding:22px;background:linear-gradient(145deg,var(--surface),rgba(32,181,162,.09));border:1px solid var(--border)}
+.lp-tile strong{display:block;font-size:26px;letter-spacing:-.04em;background:linear-gradient(120deg,#0b6e8e,#20b5a2);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:6px}
+.lp-tile span{color:var(--muted);line-height:1.5;font-size:14.5px}
+body.dark .jr-ico{box-shadow:0 10px 28px rgba(32,181,162,.2)}
+body.dark .jr-node.live .jr-card{border-color:#2e6b66}
+body.dark .mock-opt i{background:#223140;color:#c9d6e3}
+body.dark .mock-opt.ok{background:#12312a;border-color:#2aa874}
+body.dark .mock-foot span{color:#6de0d1}
+body.dark .jr:before{background:repeating-linear-gradient(90deg,#33444f 0 10px,transparent 10px 18px)}
+@media(max-width:900px){
+  .jr{grid-template-columns:1fr;gap:14px}
+  .jr:before{left:33px;right:auto;width:6px;top:36px;bottom:36px;height:auto;background:repeating-linear-gradient(180deg,#c9d9e1 0 10px,transparent 10px 18px)}
+  .jr:after{left:33px;width:6px;top:36px;height:calc(33% - 10px)}
+  .jr-node{flex-direction:row;align-items:flex-start;gap:14px;text-align:left}
+  .jr-ico{width:66px;height:66px;margin:0;flex:none}
+  .lp-intent-grid{grid-template-columns:1fr;gap:28px}
+  .mock{transform:none}
+  .lp-tiles{grid-template-columns:1fr;margin-top:30px}
+}
+@media(prefers-reduced-motion:reduce){.jr-ico{transition:none}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -224,22 +445,112 @@ window.MEDQUEST_CONFIG={
 </head>
 <body>
 
-<div id="loginScreen" class="login-screen"><button id="loginThemeToggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar tema" aria-label="Alternar tema" style="position:absolute;top:22px;right:24px;z-index:3">🌙</button>
-  <div class="login-shell">
-    <div class="login-visual">
-      <img class="logo-hero" src="medquest-login-logo.png" alt="MedQuest">
-    </div>
-    <div class="login-card">
-<h1>Entrar</h1>
-      <p>Acesse sua área de estudos.</p>
-      <label class="field"><span>✉</span><input id="email" type="email" placeholder="Seu e-mail" autocomplete="email"></label>
-      <label class="field"><span>⌾</span><input id="password" type="password" placeholder="Sua senha" autocomplete="current-password"><button onclick="togglePassword()">◉</button></label>
-      <button class="primary login-btn" onclick="signIn()">Entrar →</button>
-      <button class="login-alt" onclick="signUp()">Criar conta</button>
-      <button class="login-alt" onclick="resetPassword()">Esqueci minha senha</button>
-      <div id="loginStatus" class="status"></div>
-      <p class="demo-note" style="font-size:12px;color:#8392a3;text-align:center;margin-top:16px">MedQuest conectado ao seu projeto Supabase.</p>
-    </div>
+<div id="loginScreen" class="login-screen landing"><button id="loginThemeToggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar tema" aria-label="Alternar tema" style="position:absolute;top:22px;right:24px;z-index:3">🌙</button>
+  <div class="lp-wrap">
+    <header class="lp-nav"><img src="medquest-mark.png" alt=""><span class="wm">Med<b>Quest</b></span></header>
+
+    <section class="lp-hero">
+      <div class="lp-copy">
+        <span class="lp-kicker">Banco de questões de Medicina</span>
+        <h1>Cada erro de hoje é um <em>diagnóstico certo</em> amanhã.</h1>
+        <p>Questões organizadas por período, disciplina e assunto, com caderno de erros automático e desempenho por matéria. Você sabe o que revisar antes de a prova chegar.</p>
+        <ul class="lp-checks">
+          <li>Treine exatamente o conteúdo do seu período</li>
+          <li>Seus erros viram material de revisão, sem anotar nada</li>
+          <li>Descubra em qual matéria seu aproveitamento está mais baixo</li>
+        </ul>
+        <div class="lp-pills"><span>📚 Por período e assunto</span><span>🧠 Caderno de erros</span><span>📈 Desempenho</span></div>
+      </div>
+
+      <div class="login-card" id="loginCard">
+        <h2>Entrar</h2>
+        <p>Acesse sua área de estudos.</p>
+        <label class="field"><span>✉</span><input id="email" type="email" placeholder="Seu e-mail" autocomplete="email"></label>
+        <label class="field"><span>⌾</span><input id="password" type="password" placeholder="Sua senha" autocomplete="current-password"><button onclick="togglePassword()">◉</button></label>
+        <button class="primary login-btn" onclick="signIn()">Entrar →</button>
+        <button class="login-alt" onclick="signUp()">Criar conta</button>
+        <button class="login-alt" onclick="resetPassword()">Esqueci minha senha</button>
+        <div id="loginStatus" class="status"></div>
+      </div>
+    </section>
+
+    <section class="lp-section" id="jornada">
+      <div class="lp-title"><span class="lp-kicker">Escolha sua etapa</span><h2>Cada etapa é uma fase. Cada dúvida, uma missão.</h2><p>Da primeira prova de anatomia à preparação para o ENAMED, o MedQuest organiza as questões para a fase que você está vivendo agora.</p></div>
+      <div class="jr">
+        <div class="jr-node live" onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(function(){document.getElementById('email').focus()},450)">
+          <div class="jr-ico">🧬</div>
+          <div class="jr-card"><div class="jr-tag">P1–P4</div><h3>Ciclo básico</h3><p>Construa a base: anatomia, fisiologia, histologia e patologia em questões para fixar o que a prova cobra.</p></div>
+        </div>
+        <div class="jr-node live" onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(function(){document.getElementById('email').focus()},450)">
+          <div class="jr-ico">🩺</div>
+          <div class="jr-card"><div class="jr-tag">P5–P8</div><h3>Ciclo clínico</h3><p>Clínica por assunto e por caso: revise o que importa antes de cada avaliação do período.</p></div>
+        </div>
+        <div class="jr-node soon">
+          <div class="jr-ico">🏥</div>
+          <div class="jr-card"><div class="jr-tag">P9–P12</div><h3>Internato <span class="lp-soon">Em breve</span></h3><p>Raciocínio de plantão e conduta, com revisão rápida entre um estágio e outro.</p></div>
+        </div>
+        <div class="jr-node soon">
+          <div class="jr-ico">🎓</div>
+          <div class="jr-card"><div class="jr-tag">Reta final</div><h3>ENAMED <span class="lp-soon">Em breve</span></h3><p>Questões no estilo da prova: caso clínico e cinco alternativas, para treinar com ritmo.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-intent">
+      <div class="lp-intent-grid">
+        <div>
+          <span class="lp-kicker">Estudo com intenção</span>
+          <h2>Cada questão com um <em>porquê</em>.</h2>
+          <p class="lp-copy-p">Estudar com intenção é abrir o MedQuest sabendo o que revisar, por que revisar e quando voltar. Menos material solto, menos abas abertas, mais direção antes da prova.</p>
+          <div class="lp-pills"><span>🔁 Revisão ativa</span><span>🎯 Foco por período</span><span>🔥 Ritmo diário</span></div>
+        </div>
+        <div class="mock-wrap" aria-hidden="true">
+          <div class="mock">
+            <div class="mock-top"><span class="badge blue">Fisiologia</span><span class="badge">Cardiovascular</span><span class="badge">P3</span><span class="ex">Exemplo</span></div>
+            <p class="mock-q">O aumento do retorno venoso eleva o volume sistólico por qual mecanismo?</p>
+            <div class="mock-opt"><i>A</i>Reflexo de Bezold-Jarisch</div>
+            <div class="mock-opt"><i>B</i>Efeito Anrep</div>
+            <div class="mock-opt ok"><i>C</i>Lei de Frank-Starling ✓</div>
+            <div class="mock-opt"><i>D</i>Reflexo de Cushing</div>
+            <div class="mock-opt"><i>E</i>Efeito Bohr</div>
+            <div class="mock-foot"><span>✅ Mandou bem! +10 XP</span><span>🔥 4 dias seguidos</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="lp-tiles">
+        <div class="lp-tile"><strong>Período</strong><span>Questões organizadas do jeito que a grade da faculdade cobra.</span></div>
+        <div class="lp-tile"><strong>Assunto</strong><span>Escolha a disciplina e o tema e vá direto ao que precisa revisar.</span></div>
+        <div class="lp-tile"><strong>Revisão</strong><span>Seus erros voltam como missão até você acertar, sem anotar nada.</span></div>
+      </div>
+    </section>
+
+    <section class="lp-section">
+      <div class="lp-title"><h2>Tudo o que você precisa para estudar com direção</h2><p>Menos tempo procurando material, mais tempo resolvendo questões que importam.</p></div>
+      <div class="lp-grid">
+        <div class="lp-feat"><div class="lp-ico">📚</div><h3>Questões por período e assunto</h3><p>Filtre por período, disciplina e dificuldade e vá direto ao conteúdo da sua prova.</p></div>
+        <div class="lp-feat"><div class="lp-ico">🧠</div><h3>Caderno de erros</h3><p>As questões que você errou ficam guardadas para você revisar até dominar.</p></div>
+        <div class="lp-feat"><div class="lp-ico">📈</div><h3>Desempenho por matéria</h3><p>Veja sua taxa de acerto e descubra onde revisar primeiro.</p></div>
+        <div class="lp-feat"><div class="lp-ico">💡</div><h3>Explicação em cada questão</h3><p>Entenda por que a alternativa está correta, em vez de apenas decorar a resposta.</p></div>
+        <div class="lp-feat"><div class="lp-ico">🎯</div><h3>Simulados <span class="lp-soon">Em breve</span></h3><p>Monte provas para testar seu ritmo e sua preparação.</p></div>
+        <div class="lp-feat"><div class="lp-ico">📱</div><h3>No celular ou no computador</h3><p>Estude no intervalo da aula ou em casa, com modo claro e escuro.</p></div>
+      </div>
+    </section>
+
+    <section class="lp-section" style="padding-top:10px">
+      <div class="lp-title"><h2>Como funciona</h2><p>Em três passos você já está estudando.</p></div>
+      <div class="lp-steps">
+        <div class="lp-step"><h3>Crie sua conta</h3><p>Use seu e-mail e comece em segundos.</p></div>
+        <div class="lp-step"><h3>Escolha o que estudar</h3><p>Selecione o período, a disciplina e o assunto da sua prova.</p></div>
+        <div class="lp-step"><h3>Resolva, erre e revise</h3><p>Seus erros e seu desempenho aparecem automaticamente para guiar a revisão.</p></div>
+      </div>
+    </section>
+
+    <section class="lp-cta">
+      <h2>Pronto para o primeiro caso?</h2>
+      <p>Crie sua conta e comece a transformar cada questão em aprendizado.</p>
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(function(){document.getElementById('email').focus()},450)">Começar agora →</button>
+    </section>
+    <div class="lp-foot">MedQuest — estudos em Medicina</div>
   </div>
 </div>
 
@@ -264,18 +575,46 @@ window.MEDQUEST_CONFIG={
     <div class="topbar"><div class="top-title"><h1 id="pageTitle">Olá! 👋</h1><p id="pageSub">Continue de onde parou.</p></div><div class="top-actions"><button id="themeToggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar tema" aria-label="Alternar tema">🌙</button><button class="icon-btn" onclick="alert('Nenhuma notificação nova.')">🔔</button><div class="avatar large" id="topAvatar">E</div></div></div>
 
     <section id="home" class="page active">
+      <div class="card hero-card">
+        <div class="hero-main">
+          <div class="hero-hi" id="heroHi">Olá! 👋</div>
+          <div class="hero-sub" id="heroSub">Vamos estudar um pouco hoje?</div>
+          <div class="level-row"><span class="level-badge" id="lvlBadge">🩺 Calouro</span><span class="muted" id="lvlXp">0 XP</span></div>
+          <div class="xp-bar"><span id="xpFill" style="width:0%"></span></div>
+          <div class="muted" id="xpNext" style="font-size:12px;margin-top:6px"></div>
+          <button class="primary hero-cta" id="heroCta" onclick="continueStudying()">Começar a estudar →</button>
+          <div class="hero-next" id="heroNext"></div>
+          <button class="link-btn" style="margin-top:6px;padding:0" onclick="showOnboarding()">Como funciona?</button>
+        </div>
+        <div class="hero-right">
+          <div class="hero-side">
+            <div class="ring-wrap">
+              <svg width="112" height="112" viewBox="0 0 112 112"><defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#20b5a2"/><stop offset="1" stop-color="#0b6e8e"/></linearGradient></defs>
+                <circle class="ring-bg" cx="56" cy="56" r="46" fill="none" stroke="#dfeaf0" stroke-width="11"/>
+                <circle class="ring-fg" id="ringFg" cx="56" cy="56" r="46" fill="none" stroke="url(#ringGrad)" stroke-width="11" stroke-linecap="round" stroke-dasharray="289.03" stroke-dashoffset="289.03"/></svg>
+              <div class="ring-text"><b id="goalDone">0</b><span>de <span id="goalTotal">10</span></span></div>
+            </div>
+            <b>Meta de hoje</b><br><button class="link-btn" style="padding:2px 0;font-size:12px" onclick="editGoal()">Alterar meta</button>
+          </div>
+          <div class="hero-side">
+            <div class="flame">🔥</div>
+            <div class="streak-number" id="streakNum">0</div>
+            <b>dias seguidos</b>
+            <div class="week" id="weekRow"></div>
+          </div>
+        </div>
+      </div>
       <div class="cards stats">
         <div class="card stat-card"><div><div class="stat-title">Questões resolvidas</div><div class="stat-value" id="statSolved">0</div></div><div class="stat-icon">▦</div></div>
         <div class="card stat-card"><div><div class="stat-title">Taxa de acerto</div><div class="stat-value" id="statRate">0%</div></div><div class="stat-icon">✓</div></div>
         <div class="card stat-card"><div><div class="stat-title">No caderno de erros</div><div class="stat-value" id="statErrors">0</div></div><div class="stat-icon">↻</div></div>
-        <div class="card stat-card"><div><div class="stat-title">Sequência atual</div><div class="stat-value">—</div></div><div class="stat-icon">★</div></div>
+        <div class="card stat-card"><div><div class="stat-title">Sequência atual</div><div class="stat-value" id="statStreak">0 dias</div></div><div class="stat-icon">★</div></div>
       </div>
       <div class="content-grid">
-        <div class="card"><div class="card-head"><h2>Continue estudando</h2><button class="link-btn" onclick="go('questions')">Ver questões</button></div>
-          <div class="continue-box"><div style="flex:1;min-width:250px"><div class="continue-title">Banco de questões</div><div class="muted">Escolha período, disciplina e assunto quando o banco estiver cadastrado.</div><div style="margin-top:17px"><div class="muted" style="font-size:12px;margin-bottom:7px">Progresso</div><div class="progress"><span style="width:0%"></span></div></div></div><button class="primary" onclick="go('questions')">Explorar →</button></div>
-        </div>
-        <div class="card"><div class="card-head"><h2>Seu ritmo</h2><span class="chip">Em preparação</span></div><div class="streak-number">0</div><b>dias seguidos</b><p class="muted">Seu histórico aparecerá aqui quando começar a responder.</p><div class="week"><div class="day">S</div><div class="day">T</div><div class="day">Q</div><div class="day">Q</div><div class="day">S</div><div class="day">S</div><div class="day">D</div></div></div>
+        <div class="card" id="missionCard"></div>
+        <div class="card" id="bankCard"></div>
       </div>
+      <div class="card" style="margin-top:18px"><div class="card-head"><h2>🏅 Conquistas</h2><span class="chip" id="achCount">0 de 0</span></div><div class="ach-grid" id="achGrid"></div></div>
       <div id="weaknessCard" class="card weakness-card" style="margin-top:18px">
         <div class="card-head"><h2>🔎 Seu menor desempenho</h2><span class="chip">Baseado nas suas respostas</span></div>
         <div id="weaknessContent" class="weakness-layout">
@@ -290,13 +629,14 @@ window.MEDQUEST_CONFIG={
     </section>
 
     <section id="questions" class="page">
-      <div class="toolbar"><div><h2 style="margin:0">📚 Questões</h2><p class="muted" style="margin:5px 0 0">Questões carregadas diretamente do Supabase.</p></div><div class="filters"><select id="filterPeriod" onchange="loadQuestions()"><option value="">Todos os períodos</option></select><select id="filterDiscipline" onchange="loadQuestions()"><option value="">Todas as disciplinas</option></select></div></div>
+      <div id="questionsToolbar" class="toolbar"><div><h2 style="margin:0">📚 Questões</h2><p class="muted" style="margin:5px 0 0">Filtre por período, disciplina e dificuldade. <span id="qCount" class="q-count"></span></p></div><div class="filters"><input id="filterSearch" type="search" placeholder="Buscar no enunciado..." oninput="renderQuestions()"><select id="filterDifficulty" onchange="renderQuestions()"><option value="">Toda dificuldade</option><option value="facil">Fácil</option><option value="medio">Média</option><option value="dificil">Difícil</option></select><select id="filterPeriod" onchange="loadQuestions()"><option value="">Todos os períodos</option></select><select id="filterDiscipline" onchange="loadQuestions()"><option value="">Todas as disciplinas</option></select></div></div>
       <div id="questionsState" class="empty"><strong>Carregando banco de questões...</strong><span>Aguarde.</span></div>
       <div id="questionList" class="question-list hidden"></div>
+      <div id="solverView" class="hidden"></div>
     </section>
 
     <section id="simulados" class="page"><div class="card"><h2>🎯 Simulados</h2><p class="muted">A estrutura está pronta. Vamos conectar o gerador de simulados depois que o banco de questões estiver populado.</p></div></section>
-    <section id="errors" class="page"><div class="card"><h2>🧠 Caderno de erros</h2><p class="muted">Os erros passarão a aparecer aqui automaticamente depois que o aluno responder questões.</p><div id="errorList" class="empty" style="margin-top:15px">Ainda não há tentativas registradas.</div></div></section>
+    <section id="errors" class="page"><div class="card"><h2>🧠 Caderno de erros</h2><p class="muted">Questões em que a sua última resposta foi errada. Acerte-as de novo para saírem do caderno.</p><div id="missionBanner"></div><div id="errorList" class="empty" style="margin-top:15px">Ainda não há tentativas registradas.</div></div></section>
     <section id="performance" class="page"><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="stat-title">Aproveitamento</div><div id="perfRate" class="kpi">0%</div><div class="subkpi">respostas registradas</div></div><div class="card"><div class="stat-title">Acertos</div><div id="perfCorrect" class="kpi">0</div><div class="subkpi">questões</div></div><div class="card"><div class="stat-title">Respondidas</div><div id="perfTotal" class="kpi">0</div><div class="subkpi">questões</div></div></div><div class="card" style="margin-top:18px"><h2>📈 Por disciplina</h2><div id="disciplinePerf" class="empty" style="margin-top:14px">Ainda não há dados suficientes.</div></div></section>
 
     <section id="admin" class="page">
@@ -320,7 +660,7 @@ window.MEDQUEST_CONFIG={
       <div id="adminNewPane" class="admin-pane">
         <div class="admin-grid">
           <div class="card">
-            <div class="card-head"><h2>➕ Cadastrar questão</h2></div>
+            <div class="card-head"><h2 id="aFormTitle">➕ Cadastrar questão</h2></div>
             <form class="admin-form" onsubmit="createQuestion(event)">
               <div class="admin-two"><label>Período<select id="aPeriod" required></select></label><label>Disciplina<select id="aDiscipline" required onchange="loadAdminSubjects()"></select></label></div>
               <div class="admin-two"><label>Assunto<select id="aSubject" required></select></label><label>Prova<select id="aExam"></select></label></div>
@@ -331,7 +671,8 @@ window.MEDQUEST_CONFIG={
               <div class="admin-two"><label>Resposta correta<select id="aCorrect" required><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label><label>Dificuldade<select id="aDifficulty"><option value="facil">Fácil</option><option value="medio" selected>Média</option><option value="dificil">Difícil</option></select></label></div>
               <label>Explicação<textarea id="aExplanation" placeholder="Explique por que a alternativa está correta..."></textarea></label>
               <label class="check-row"><input id="aPublished" type="checkbox"> <span>Publicar imediatamente para os alunos</span></label>
-              <button class="primary" type="submit">💾 Salvar questão</button>
+              <button class="primary" id="aSubmitBtn" type="submit">💾 Salvar questão</button>
+              <button class="small-btn hidden" id="aCancelBtn" type="button" onclick="cancelEditQuestion()">✖ Cancelar edição</button>
               <div id="adminQuestionStatus"></div>
             </form>
           </div>
@@ -384,7 +725,248 @@ async function signOut(){if(sb)await sb.auth.signOut();currentUser=null;isAdmin=
 async function bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(!session)return;currentUser=session.user;document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');await loadProfile();await loadFilters();await loadQuestions();await loadAttempts();go('home')}
 async function loadProfile(){if(!currentUser)return;const {data,error}=await sb.from('profiles').select('full_name,role').eq('id',currentUser.id).maybeSingle();const name=(data?.full_name||currentUser.email?.split('@')[0]||'Aluno');isAdmin=!error&&data?.role==='admin';document.getElementById('accountName').textContent=name;document.getElementById('profileName').value=name;document.getElementById('profileEmail').value=currentUser.email||'';const letter=name.trim().charAt(0).toUpperCase()||'A';document.getElementById('avatar').textContent=letter;document.getElementById('topAvatar').textContent=letter;document.getElementById('adminNav').style.display=isAdmin?'flex':'none';if(isAdmin)await loadAdminAll()}
 async function loadFilters(){if(!sb)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const ps=document.getElementById('filterPeriod'),ds=document.getElementById('filterDiscipline');ps.innerHTML='<option value="">Todos os períodos</option>'+(p.data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');ds.innerHTML='<option value="">Todas as disciplinas</option>'+(d.data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');}
-async function loadQuestions(){if(!sb)return;const state=document.getElementById('questionsState'),list=document.getElementById('questionList');state.classList.remove('hidden');list.classList.add('hidden');let q=sb.from('questions').select('id,statement,difficulty,discipline_id,subject_id,period_id,disciplines(name),subjects(name),periods(name)').eq('is_published',true).order('id',{ascending:true});const period=document.getElementById('filterPeriod').value,discipline=document.getElementById('filterDiscipline').value;if(period)q=q.eq('period_id',Number(period));if(discipline)q=q.eq('discipline_id',Number(discipline));const {data,error}=await q;if(error){state.innerHTML='<strong>Não foi possível carregar as questões.</strong><span>'+escapeHtml(error.message)+'</span>';return}if(!data?.length){state.innerHTML='<strong>Nenhuma questão publicada ainda.</strong><span>O banco está conectado, mas não há questões publicadas.</span>';return}list.innerHTML=data.map(x=>`<div class="card question-row"><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'Disciplina')}</span><span class="badge">${escapeHtml(x.periods?.name||'Período')}</span></div><h3>Questão #${x.id}</h3><p>${escapeHtml(x.statement).slice(0,180)}${x.statement.length>180?'...':''}</p></div><button class="primary" onclick="alert('A resolução completa da questão #${x.id} será conectada no próximo módulo.')">Responder →</button></div>`).join('');state.classList.add('hidden');list.classList.remove('hidden')}
+async function loadQuestions(){if(!sb)return;const state=document.getElementById('questionsState'),list=document.getElementById('questionList');state.classList.remove('hidden');list.classList.add('hidden');let q=sb.from('questions').select('id,statement,difficulty,discipline_id,subject_id,period_id,disciplines(name),subjects(name),periods(name)').eq('is_published',true).order('id',{ascending:true});const period=document.getElementById('filterPeriod').value,discipline=document.getElementById('filterDiscipline').value;if(period)q=q.eq('period_id',Number(period));if(discipline)q=q.eq('discipline_id',Number(discipline));const {data,error}=await q;if(error){state.innerHTML='<strong>Não foi possível carregar as questões.</strong><span>'+escapeHtml(error.message)+'</span>';return}if(!data?.length){state.innerHTML='<strong>Nenhuma questão publicada ainda.</strong><span>O banco está conectado, mas não há questões publicadas.</span>';return}window._qData=data;renderQuestions()}
+
+function renderQuestions(){
+  const state=document.getElementById('questionsState'),list=document.getElementById('questionList');
+  const term=(document.getElementById('filterSearch')?.value||'').toLowerCase().trim();
+  const diff=document.getElementById('filterDifficulty')?.value||'';
+  const data=(window._qData||[]).filter(x=>(!diff||x.difficulty===diff)&&(!term||(x.statement||'').toLowerCase().includes(term)||String(x.id)===term));
+  const c=document.getElementById('qCount');if(c)c.textContent='· '+data.length+(data.length===1?' questão':' questões');
+  if(!data.length){state.innerHTML='<strong>Nenhuma questão encontrada.</strong><span>Tente mudar os filtros.</span>';state.classList.remove('hidden');list.classList.add('hidden');return}
+  const dl={facil:['Fácil','green'],medio:['Média','amber'],dificil:['Difícil','red']};
+  window._qShown=data.map(x=>x.id);
+  list.innerHTML=data.map(x=>{const d=dl[x.difficulty];const lt=window._latest?window._latest[x.id]:undefined;const st=x.statement||'';return `<div class="card question-row qcard"><div class="q-num">#${x.id}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'Disciplina')}</span>${x.subjects?.name?`<span class="badge">${escapeHtml(x.subjects.name)}</span>`:''}<span class="badge">${escapeHtml(x.periods?.name||'Período')}</span>${d?`<span class="badge ${d[1]}">${d[0]}</span>`:''}${lt===true?'<span class="badge green">✓ Acertou</span>':lt===false?'<span class="badge red">✗ Errou</span>':''}</div><p>${escapeHtml(st.slice(0,220))}${st.length>220?'...':''}</p></div><button class="primary" onclick="openQuestion(${x.id})">${lt===undefined?'Responder':'Refazer'} →</button></div>`}).join('');
+  state.classList.add('hidden');list.classList.remove('hidden');
+}
+
+/* ===== Resolução de questões ===== */
+let solverIds=[],solverIdx=0,solverQ=null,solverPicked=null,solverDone=false,solverFrom='questions';
+function reviewError(id){go('questions');openQuestion(id,window._wrongIds||[id],'errors')}
+async function openQuestion(id,ids,from){
+  if(!sb)return;
+  solverFrom=from||'questions';
+  solverIds=(ids&&ids.length)?ids.slice():(window._qShown||[]).slice();
+  if(!solverIds.includes(id))solverIds=[id];
+  solverIdx=solverIds.indexOf(id);
+  await showSolver(id);
+}
+async function showSolver(id){
+  const view=document.getElementById('solverView');
+  ['questionsToolbar','questionsState','questionList'].forEach(x=>document.getElementById(x).classList.add('hidden'));
+  view.classList.remove('hidden');
+  view.innerHTML='<div class="empty"><strong>Carregando questão...</strong></div>';
+  window.scrollTo({top:0,behavior:'smooth'});
+  const {data,error}=await sb.from('questions').select('id,statement,option_a,option_b,option_c,option_d,option_e,correct_option,explanation,difficulty,disciplines(name),subjects(name),periods(name)').eq('id',id).maybeSingle();
+  if(error||!data){view.innerHTML='<div class="empty"><strong>Não foi possível abrir a questão.</strong><span>'+escapeHtml(error?error.message:'Questão não encontrada.')+'</span><br><br><button class="primary" onclick="closeSolver()">← Voltar</button></div>';return}
+  solverQ=data;solverPicked=null;solverDone=false;renderSolver();
+}
+function renderSolver(){
+  const q=solverQ,view=document.getElementById('solverView');
+  const opts=['A','B','C','D','E'].map(L=>({L,t:q['option_'+L.toLowerCase()]})).filter(o=>o.t);
+  const dl={facil:['Fácil','green'],medio:['Média','amber'],dificil:['Difícil','red']}[q.difficulty];
+  const pos=solverIds.length>1?`Questão ${solverIdx+1} de ${solverIds.length}`:'';
+  const back=solverFrom==='errors'?'← Voltar ao caderno de erros':'← Voltar às questões';
+  view.innerHTML=`<div class="solver-top"><button class="small-btn" onclick="closeSolver()">${back}</button><span class="muted">${pos}</span></div>
+  <div class="card solver-card">
+    <div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Disciplina')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge">${escapeHtml(q.periods?.name||'Período')}</span>${dl?`<span class="badge ${dl[1]}">${dl[0]}</span>`:''}</div>
+    <h2 class="solver-title">Questão #${q.id}</h2>
+    <div class="solver-statement">${escapeHtml(q.statement)}</div>
+    <div class="opt-list" id="optList">${opts.map(o=>`<button type="button" class="opt" id="opt${o.L}" onclick="pickOption('${o.L}')"><span class="opt-letter">${o.L}</span><span class="opt-text">${escapeHtml(o.t)}</span></button>`).join('')}</div>
+    <div id="solverFeedback"></div>
+    <div class="solver-actions">
+      <button type="button" class="small-btn" onclick="stepQuestion(-1)" ${solverIdx<=0?'disabled':''}>← Anterior</button>
+      <button type="button" id="confirmBtn" class="primary" onclick="confirmAnswer()" disabled>Confirmar resposta</button>
+      <button type="button" id="nextBtn" class="small-btn" onclick="stepQuestion(1)" ${solverIdx>=solverIds.length-1?'disabled':''}>Próxima →</button>
+    </div></div>`;
+}
+function pickOption(L){
+  if(solverDone)return;
+  solverPicked=L;
+  document.querySelectorAll('#optList .opt').forEach(b=>b.classList.toggle('selected',b.id==='opt'+L));
+  document.getElementById('confirmBtn').disabled=false;
+}
+async function saveAttempt(qid,picked,ok){
+  if(!sb||!currentUser)return {ok:false,msg:'Sessão expirada. Entre novamente.'};
+  let r=await sb.from('attempts').insert({user_id:currentUser.id,question_id:qid,is_correct:ok,selected_option:picked});
+  if(r.error)r=await sb.from('attempts').insert({user_id:currentUser.id,question_id:qid,is_correct:ok});
+  return r.error?{ok:false,msg:r.error.message}:{ok:true};
+}
+async function confirmAnswer(){
+  if(!solverPicked||solverDone)return;
+  solverDone=true;
+  const q=solverQ,correct=String(q.correct_option||'').trim().toUpperCase(),ok=solverPicked===correct;
+  const btn=document.getElementById('confirmBtn');btn.disabled=true;btn.textContent='Salvando...';
+  document.getElementById('optList').classList.add('locked');
+  document.querySelectorAll('#optList .opt').forEach(b=>{const L=b.id.slice(3);b.classList.remove('selected');if(L===correct)b.classList.add('correct');else if(L===solverPicked)b.classList.add('wrong')});
+  const exp=(q.explanation||'').trim();
+  document.getElementById('solverFeedback').innerHTML=`<div class="feedback ${ok?'ok':'bad'}">${feedbackText(ok,correct)}<span class="xp-chip">+${ok?10:3} XP</span></div><div class="explain"><b>💡 Explicação</b>${exp?escapeHtml(exp):'Esta questão ainda não tem explicação cadastrada.'}</div>`;
+  gameFx(ok);
+  const nb=document.getElementById('nextBtn');if(nb&&!nb.disabled){nb.className='primary'}
+  const res=await saveAttempt(q.id,solverPicked,ok);
+  btn.textContent=res.ok?'Resposta registrada ✓':'Confirmar resposta';
+  if(!res.ok)document.getElementById('solverFeedback').insertAdjacentHTML('beforeend','<div class="save-warn">Não foi possível salvar seu resultado: '+escapeHtml(res.msg)+'</div>');
+  else loadAttempts();
+}
+function stepQuestion(d){
+  const n=solverIdx+d;if(n<0||n>=solverIds.length)return;
+  solverIdx=n;showSolver(solverIds[n]);
+}
+function closeSolver(noNav){
+  const v=document.getElementById('solverView');
+  if(!v||v.classList.contains('hidden'))return;
+  v.classList.add('hidden');v.innerHTML='';
+  document.getElementById('questionsToolbar').classList.remove('hidden');
+  document.getElementById('questionList').classList.remove('hidden');
+  if(window._qData)renderQuestions();
+  if(!noNav&&solverFrom==='errors')go('errors');
+}
+
+/* ===== Gamificação, missão, conquistas e tutorial ===== */
+const mqLS={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const LEVELS=[{n:'Calouro',i:'🩺',xp:0},{n:'Interno',i:'🧑‍⚕️',xp:200},{n:'Residente',i:'🏥',xp:600},{n:'Especialista',i:'🎓',xp:1500}];
+const GOAL_PRESETS=[5,10,15,20,30,50];
+const PRAISE=['Mandou bem!','Isso aí!','Acertou em cheio!','Diagnóstico certeiro!','Boa! Continue assim!','Raciocínio clínico afiado!'];
+const CONSOLE=['Faz parte! Essa vai pro seu caderno de erros.','Quase! Leia a explicação e fixe.','Errar aqui é aprender antes da prova.','Sem estresse: agora você não esquece mais.'];
+let sessionRun=0;
+function pickOne(a){return a[Math.floor(Math.random()*a.length)]}
+function dayKey(d){const x=new Date(d);return x.getFullYear()+'-'+(x.getMonth()+1)+'-'+x.getDate()}
+function levelInfo(xp){let idx=0;LEVELS.forEach((l,i)=>{if(xp>=l.xp)idx=i});const cur=LEVELS[idx],next=LEVELS[idx+1];return {idx,cur,next,pct:next?Math.round((xp-cur.xp)/(next.xp-cur.xp)*100):100}}
+function goalKey(){return 'mq_goal_'+(currentUser?currentUser.id:'')}
+function getGoal(){const v=parseInt(mqLS.get(goalKey()),10);return v>0?v:10}
+function editGoal(){const g=getGoal();const n=GOAL_PRESETS.find(x=>x>g)||GOAL_PRESETS[0];mqLS.set(goalKey(),String(n));computeGame(window._rows||[],window._wrongRows||[],window._discList||[],true);updateHome();toast('🎯 Nova meta diária: '+n+' questões')}
+function discIcon(name){
+  const n=String(name||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const map=[['anatom','🦴'],['fisiolog','⚡'],['patolog','🔬'],['farmac','💊'],['histolog','🧫'],['bioquim','🧪'],['microbio','🦠'],['imunolog','🛡️'],['embriolog','👶'],['semiolog','🩺'],['cirurg','🔪'],['pediatr','🧸'],['cardio','🫀'],['neuro','🧠'],['psiqui','💭'],['ginec','🌸'],['obstet','🤰'],['parasit','🪱'],['genet','🧬'],['saude','🏥'],['epidem','📊'],['etica','⚖️']];
+  const f=map.find(x=>n.includes(x[0]));return f?f[1]:'📘';
+}
+const ACH=[
+  {ico:'🌱',n:'Primeiro passo',d:'Responda sua primeira questão',ok:g=>g.total>=1},
+  {ico:'📚',n:'50 questões',d:'Resolva 50 questões',ok:g=>g.total>=50},
+  {ico:'🏆',n:'100 questões',d:'Resolva 100 questões',ok:g=>g.total>=100},
+  {ico:'🎯',n:'Mira certeira',d:'10 acertos seguidos',ok:g=>g.bestRun>=10},
+  {ico:'🔥',n:'Pegando fogo',d:'3 dias seguidos estudando',ok:g=>g.bestDays>=3},
+  {ico:'⚡',n:'Semana de fogo',d:'7 dias seguidos estudando',ok:g=>g.bestDays>=7},
+  {ico:'🧠',n:'Disciplina dominada',d:'80%+ de acerto numa matéria (mín. 10 questões)',ok:g=>!!g.master},
+  {ico:'✨',n:'Caderno limpo',d:'Zere os erros pendentes (mín. 10 questões)',ok:g=>g.total>=10&&g.wrongCount===0},
+  {ico:'✅',n:'Meta batida',d:'Cumpra sua meta diária',ok:g=>g.maxDay>=g.goal}
+];
+function computeGame(rows,wrongRows,discList,silent){
+  window._rows=rows;window._wrongRows=wrongRows;window._discList=discList;
+  const sorted=rows.slice().sort((x,y)=>new Date(x.answered_at||0)-new Date(y.answered_at||0)||x.id-y.id);
+  let xp=0,run=0,bestRun=0;
+  sorted.forEach(r=>{if(r.is_correct){xp+=10;run++;if(run>bestRun)bestRun=run}else{xp+=3;run=0}});
+  const perDay={};rows.forEach(r=>{if(r.answered_at){const k=dayKey(r.answered_at);perDay[k]=(perDay[k]||0)+1}});
+  const keys=Object.keys(perDay);
+  let streak=0;const d=new Date();if(!perDay[dayKey(d)])d.setDate(d.getDate()-1);
+  while(perDay[dayKey(d)]){streak++;d.setDate(d.getDate()-1)}
+  const dates=keys.map(k=>{const p=k.split('-');return new Date(+p[0],+p[1]-1,+p[2])}).sort((a,b)=>a-b);
+  let bestDays=dates.length?1:0,cur=1;
+  for(let i=1;i<dates.length;i++){if(Math.round((dates[i]-dates[i-1])/864e5)===1){cur++}else cur=1;if(cur>bestDays)bestDays=cur}
+  const goal=getGoal(),today=perDay[dayKey(new Date())]||0;
+  const maxDay=keys.reduce((m,k)=>Math.max(m,perDay[k]),0);
+  const now=new Date(),dow=(now.getDay()+6)%7,week=[];
+  for(let i=0;i<7;i++){const dt=new Date(now);dt.setDate(now.getDate()-dow+i);week.push({on:!!perDay[dayKey(dt)],today:i===dow})}
+  const master=(discList||[]).find(x=>x.total>=10&&x.rate>=80);
+  const g={xp,lv:levelInfo(xp),streak,bestRun,bestDays,goal,today,maxDay,week,total:rows.length,wrongCount:wrongRows.length,master};
+  g.ach=ACH.map(a=>({ico:a.ico,n:a.n,d:a.d,on:!!a.ok(g)}));
+  const prev=window._gm;
+  if(prev&&!silent){
+    if(g.lv.idx>prev.lv.idx)toast('🎉 Subiu de nível! Agora você é '+g.lv.cur.i+' '+g.lv.cur.n);
+    g.ach.forEach((a,i)=>{if(a.on&&prev.ach[i]&&!prev.ach[i].on)toast('🏅 Conquista: '+a.n)});
+    if(prev.today<goal&&today>=goal)toast('✅ Meta de hoje batida! Parabéns!');
+  }
+  window._gm=g;
+}
+async function ensureAllQ(){
+  if(!sb)return;
+  const {data,error}=await sb.from('questions').select('id,disciplines(name),subjects(name)').eq('is_published',true).order('id',{ascending:true}).limit(5000);
+  if(!error)window._allQ=data||[];
+}
+function updateHome(){
+  const g=window._gm;if(!g||!document.getElementById('heroHi'))return;
+  const $=id=>document.getElementById(id);
+  const nm=(($('accountName')||{}).textContent||'').trim().split(' ')[0]||'';
+  const hr=new Date().getHours(),greet=hr<12?'Bom dia':hr<18?'Boa tarde':'Boa noite';
+  $('heroHi').textContent=greet+(nm?', '+nm:'')+'! 👋';
+  $('heroSub').textContent=g.today>=g.goal?'Meta de hoje batida! Cada questão extra é bônus. 🎉':g.today>0?'Faltam '+(g.goal-g.today)+' questão(ões) para bater a meta de hoje.':'Vamos começar? Responda a primeira questão do dia.';
+  $('lvlBadge').textContent=g.lv.cur.i+' '+g.lv.cur.n;
+  $('lvlXp').textContent=g.xp+' XP';
+  $('xpFill').style.width=g.lv.pct+'%';
+  $('xpNext').textContent=g.lv.next?'Faltam '+(g.lv.next.xp-g.xp)+' XP para '+g.lv.next.i+' '+g.lv.next.n:'Nível máximo alcançado! 🏅';
+  $('ringFg').style.strokeDashoffset=String(289.03*(1-Math.min(1,g.today/g.goal)));
+  $('goalDone').textContent=g.today;$('goalTotal').textContent=g.goal;
+  $('streakNum').textContent=g.streak;
+  $('statStreak').textContent=g.streak+(g.streak===1?' dia':' dias');
+  const L=['S','T','Q','Q','S','S','D'];
+  $('weekRow').innerHTML=g.week.map((w,i)=>`<div class="day${w.on?' done':''}${w.today?' today':''}">${L[i]}</div>`).join('');
+  const all=window._allQ||[],lat=window._latest||{},wrong=window._wrongIds||[];
+  const un=all.filter(q=>lat[q.id]===undefined);
+  let label=g.total?'Continuar estudando →':'Começar a estudar →',next='';
+  if(!all.length){label='Ver questões →';next='Ainda não há questões publicadas.'}
+  else if(un.length){const q=un[0];next='Próxima: '+(q.disciplines&&q.disciplines.name||'Disciplina')+(q.subjects&&q.subjects.name?' · '+q.subjects.name:'')+' · '+un.length+' restante(s)'}
+  else if(wrong.length){label='Revisar meus erros →';next='Você respondeu todas! Hora de derrotar os erros.'}
+  else{label='Refazer questões →';next='Você respondeu todo o banco sem erros pendentes. 👏'}
+  $('heroCta').textContent=label;$('heroNext').textContent=next;
+  const done=all.filter(q=>lat[q.id]!==undefined).length,pct=all.length?Math.round(done/all.length*100):0;
+  $('bankCard').innerHTML=`<div class="card-head"><h2>📖 Progresso no banco</h2><button class="link-btn" onclick="go('questions')">Ver questões</button></div><div class="continue-title">${done} de ${all.length}</div><div class="muted">questões respondidas pelo menos uma vez</div><div style="margin-top:16px"><div class="progress"><span style="width:${pct}%"></span></div><div class="muted" style="font-size:12px;margin-top:7px">${pct}% concluído</div></div>`;
+  const mission=wrong.length
+    ?`<div class="mission"><div class="mission-ico">⚔️</div><div class="mission-body"><b>Missão de revisão</b><span class="muted">Você tem ${wrong.length} erro${wrong.length>1?'s':''} para derrotar. Acerte de novo e eles saem do caderno.</span></div><button class="primary" onclick="startMission()">Começar missão →</button></div>`
+    :`<div class="mission"><div class="mission-ico">🛡️</div><div class="mission-body"><b>Nenhum erro pendente</b><span class="muted">${g.total?'Missão cumprida! Continue respondendo para manter o caderno limpo.':'Quando você errar uma questão, ela vira uma missão de revisão aqui.'}</span></div></div>`;
+  $('missionCard').innerHTML=mission;
+  const mb=$('missionBanner');
+  if(mb)mb.innerHTML=wrong.length?`<div class="mission" style="margin:14px 0 4px;padding:14px 16px;border-radius:14px;background:rgba(32,181,162,.1)"><div class="mission-ico" style="font-size:30px">⚔️</div><div class="mission-body"><b style="font-size:16px">Missão de revisão</b><span class="muted">${wrong.length} erro${wrong.length>1?'s':''} para derrotar</span></div><button class="primary" onclick="startMission()">Começar →</button></div>`:'';
+  const unlocked=g.ach.filter(a=>a.on).length;
+  $('achCount').textContent=unlocked+' de '+g.ach.length;
+  $('achGrid').innerHTML=g.ach.map(a=>`<div class="ach${a.on?' on':''}"><span class="ico">${a.ico}</span><b>${a.n}</b><small>${a.d}</small></div>`).join('');
+  if(!window._onbChecked){window._onbChecked=true;if(g.total===0&&!mqLS.get('mq_onb_'+(currentUser?currentUser.id:'')))showOnboarding()}
+}
+function continueStudying(){
+  const all=window._allQ||[],lat=window._latest||{},wrong=window._wrongIds||[];
+  go('questions');
+  if(!all.length)return;
+  const un=all.map(q=>q.id).filter(id=>lat[id]===undefined);
+  if(un.length)openQuestion(un[0],un,'questions');
+  else if(wrong.length)openQuestion(wrong[0],wrong.slice(),'errors');
+  else{const ids=all.map(q=>q.id);openQuestion(ids[0],ids,'questions')}
+}
+function startMission(){const w=window._wrongIds||[];if(!w.length)return;go('questions');openQuestion(w[0],w.slice(),'errors')}
+function toast(msg){
+  let box=document.getElementById('toastBox');
+  if(!box){box=document.createElement('div');box.id='toastBox';document.body.appendChild(box)}
+  const t=document.createElement('div');t.className='mq-toast';t.textContent=msg;box.appendChild(t);
+  setTimeout(()=>{t.remove()},3800);
+}
+function confetti(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const c=document.createElement('div');c.className='confetti';
+  const em=['🎉','✨','⭐','💙','🩺'];
+  for(let i=0;i<16;i++){const p=document.createElement('i');p.textContent=em[i%em.length];const a=Math.random()*Math.PI*2,r=90+Math.random()*130;p.style.setProperty('--x',Math.round(Math.cos(a)*r)+'px');p.style.setProperty('--y',Math.round(Math.sin(a)*r-40)+'px');p.style.setProperty('--r',Math.round(Math.random()*360-180)+'deg');c.appendChild(p)}
+  document.body.appendChild(c);setTimeout(()=>c.remove(),1300);
+}
+function feedbackText(ok,correct){
+  if(ok){sessionRun++;return '✅ '+pickOne(PRAISE)+(sessionRun>=3?'<br><small>🔥 '+sessionRun+' acertos seguidos nesta sessão!</small>':'')}
+  sessionRun=0;return '❌ '+pickOne(CONSOLE)+'<br><small>A alternativa correta é a <b>'+escapeHtml(correct)+'</b>.</small>';
+}
+function gameFx(ok){
+  if(ok)confetti();
+  else{const w=document.querySelector('#optList .opt.wrong');if(w)w.classList.add('mq-shake')}
+}
+const ONB=[
+  {i:'📚',t:'Escolha o que estudar',p:'Filtre por período, disciplina e dificuldade na aba Questões, ou toque em "Continuar estudando" e o MedQuest escolhe a próxima para você.'},
+  {i:'💡',t:'Responda e entenda',p:'Marque a alternativa, confirme e veja a explicação na hora. Cada resposta rende XP e ajuda você a subir de nível.'},
+  {i:'⚔️',t:'Revise e mantenha a chama',p:'Seus erros viram uma missão de revisão. Bata a meta diária e estude todo dia para manter a sequência 🔥 acesa.'}
+];
+let onbStep=0;
+function showOnboarding(){onbStep=0;renderOnb()}
+function renderOnb(){
+  let o=document.getElementById('onbOverlay');
+  if(!o){o=document.createElement('div');o.id='onbOverlay';o.className='onb';document.body.appendChild(o)}
+  const s=ONB[onbStep],last=onbStep===ONB.length-1;
+  o.innerHTML=`<div class="onb-card"><div class="onb-ico">${s.i}</div><h3>${s.t}</h3><p>${s.p}</p><div class="onb-dots">${ONB.map((x,i)=>`<i class="${i===onbStep?'on':''}"></i>`).join('')}</div><div class="onb-actions"><button class="small-btn" onclick="closeOnboarding()">${last?'Fechar':'Pular'}</button><button class="primary" onclick="${last?'closeOnboarding()':'nextOnb()'}">${last?'Começar!':'Próximo →'}</button></div></div>`;
+}
+function nextOnb(){onbStep++;renderOnb()}
+function closeOnboarding(){const o=document.getElementById('onbOverlay');if(o)o.remove();mqLS.set('mq_onb_'+(currentUser?currentUser.id:''),'1')}
 
 let weakestDisciplineId=null;
 function reviewWeakest(){
@@ -398,7 +980,7 @@ function reviewWeakest(){
 async function loadAttempts(){
   if(!sb||!currentUser)return;
   const {data,error}=await sb.from('attempts')
-    .select('id,question_id,is_correct,answered_at,questions(discipline_id,disciplines(name))')
+    .select('id,question_id,is_correct,answered_at,questions(discipline_id,statement,disciplines(name),subjects(name))')
     .eq('user_id',currentUser.id);
 
   if(error)return;
@@ -416,8 +998,22 @@ async function loadAttempts(){
   document.getElementById('perfCorrect').textContent=correct;
   document.getElementById('perfTotal').textContent=total;
 
-  if(wrong){
-    document.getElementById('errorList').innerHTML=`<strong>${wrong} questão(ões) errada(s).</strong><span>O detalhamento do caderno de erros será finalizado junto com a tela de resolução.</span>`;
+  // Última tentativa de cada questão define se ela está no caderno de erros
+  const sorted=rows.slice().sort((x,y)=>new Date(x.answered_at||0)-new Date(y.answered_at||0)||x.id-y.id);
+  const latest={};
+  sorted.forEach(r=>{latest[r.question_id]=r});
+  window._latest={};
+  Object.values(latest).forEach(r=>{window._latest[r.question_id]=!!r.is_correct});
+  const wrongRows=Object.values(latest).filter(r=>!r.is_correct).sort((x,y)=>new Date(y.answered_at||0)-new Date(x.answered_at||0));
+  window._wrongIds=wrongRows.map(r=>r.question_id);
+  document.getElementById('statErrors').textContent=wrongRows.length;
+  const eb=document.getElementById('errorList');
+  if(wrongRows.length){
+    eb.className='question-list';eb.style.marginTop='15px';
+    eb.innerHTML=wrongRows.map(r=>{const q=r.questions||{};const st=q.statement||'';return `<div class="card question-row qcard"><div class="q-num">#${r.question_id}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Disciplina')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge red">✗ Errou</span></div><p>${escapeHtml(st.slice(0,200))}${st.length>200?'...':''}</p></div><button class="primary" onclick="reviewError(${r.question_id})">Refazer →</button></div>`}).join('');
+  }else{
+    eb.className='empty';eb.style.marginTop='15px';
+    eb.innerHTML=total?'<strong>🎉 Nenhum erro pendente.</strong><span>Quando você errar uma questão, ela aparece aqui para revisão.</span>':'Ainda não há tentativas registradas.';
   }
 
   const byDiscipline={};
@@ -460,29 +1056,86 @@ async function loadAttempts(){
 
   const perfBox=document.getElementById('disciplinePerf');
   if(list.length){
-    perfBox.innerHTML=list.slice().sort((a,b)=>b.rate-a.rate).map(x=>`<div class="progress-row">
-      <p><span>${escapeHtml(x.name)}</span><b>${x.rate}%</b></p>
-      <div class="progress"><span style="width:${x.rate}%"></span></div>
-    </div>`).join('');
+    perfBox.innerHTML=list.slice().sort((a,b)=>b.rate-a.rate).map(x=>{const col=x.rate>=70?'#1a9c62':x.rate>=50?'#e3a008':'#d9534f';return `<div class="perf-row"><p><span class="perf-ico">${discIcon(x.name)}</span><span>${escapeHtml(x.name)}<small>${x.correct} de ${x.total} certas</small></span><b style="color:${col}">${x.rate}%</b></p><div class="perf-bar"><span style="width:${x.rate}%;background:${col}"></span></div></div>`}).join('');
   }else{
     perfBox.innerHTML='<div class="empty">Ainda não há dados suficientes.</div>';
   }
+  computeGame(rows,wrongRows,list);
+  await ensureAllQ();
+  updateHome();
+  if(window._qData&&document.getElementById('questionList')&&!document.getElementById('questionList').classList.contains('hidden'))renderQuestions();
 }
 
 async function saveProfile(){if(!sb||!currentUser)return;const name=document.getElementById('profileName').value.trim()||'Aluno';const {error}=await sb.from('profiles').update({full_name:name}).eq('id',currentUser.id);if(error){status('profileStatus',error.message);return}await loadProfile();status('profileStatus','Perfil atualizado.','ok')}
-function go(id){if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?`Olá, ${document.getElementById('accountName').textContent}! 👋`:l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();window.scrollTo({top:0,behavior:'smooth'})}
+function go(id){if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?`Olá, ${document.getElementById('accountName').textContent}! 👋`:l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();window.scrollTo({top:0,behavior:'smooth'})}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
-function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane')loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions()}
+function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane'&&!editingQuestionId)loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions()}
 async function loadAdminAll(){if(!isAdmin)return;await loadAdminStats();await loadAdminCatalogOptions();await loadAdminFormOptions();await loadAdminQuestions()}
 async function loadAdminStats(){try{const [q,p,d,s]=await Promise.all([sb.from('questions').select('id,is_published',{count:'exact',head:true}),sb.from('questions').select('id',{count:'exact',head:true}).eq('is_published',true),sb.from('disciplines').select('id',{count:'exact',head:true}),sb.from('profiles').select('id',{count:'exact',head:true}).eq('role','student')]);document.getElementById('adminQuestionCount').textContent=q.count||0;document.getElementById('adminPublishedCount').textContent=p.count||0;document.getElementById('adminDisciplineCount').textContent=d.count||0;document.getElementById('adminStudentCount').textContent=s.count||0}catch(e){}}
 async function loadAdminCatalogOptions(){if(!isAdmin)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const periods=p.data||[],disc=d.data||[];document.getElementById('cSubjectDiscipline').innerHTML=disc.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');document.getElementById('cExamPeriod').innerHTML='<option value="">Sem período</option>'+periods.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');}
 async function loadAdminFormOptions(){if(!isAdmin)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const periods=p.data||[],disc=d.data||[];document.getElementById('aPeriod').innerHTML='<option value="">Selecione</option>'+periods.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');document.getElementById('aDiscipline').innerHTML='<option value="">Selecione</option>'+disc.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');await loadAdminSubjects();await loadAdminExams();}
 async function loadAdminSubjects(){const d=document.getElementById('aDiscipline').value;const select=document.getElementById('aSubject');if(!d){select.innerHTML='<option value="">Selecione a disciplina primeiro</option>';return}const {data}=await sb.from('subjects').select('id,name').eq('discipline_id',Number(d)).order('name');select.innerHTML='<option value="">Selecione</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('')}
 async function loadAdminExams(){const p=document.getElementById('aPeriod').value;let q=sb.from('exams').select('id,name').order('name');if(p)q=q.or(`period_id.eq.${Number(p)},period_id.is.null`);const {data}=await q;document.getElementById('aExam').innerHTML='<option value="">Sem prova</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('')}
-async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};if(!payload.period_id||!payload.discipline_id||!payload.subject_id){status('adminQuestionStatus','Preencha período, disciplina e assunto.');return}const {error}=await sb.from('questions').insert(payload);if(error){status('adminQuestionStatus','Erro ao salvar: '+escapeHtml(error.message));return}status('adminQuestionStatus','✅ Questão salva com sucesso.','ok');e.target.reset();await loadAdminAll();}
-async function loadAdminQuestions(){if(!isAdmin)return;const box=document.getElementById('adminQuestionList');const {data,error}=await sb.from('questions').select('id,statement,difficulty,is_published,created_at,disciplines(name),subjects(name),periods(name),exams(name)').order('id',{ascending:false}).limit(100);if(error){box.innerHTML='<div class="error-box">'+escapeHtml(error.message)+'</div>';return}if(!data?.length){box.innerHTML='<div class="empty"><strong>Nenhuma questão cadastrada.</strong><span>Crie a primeira na aba “Nova questão”.</span></div>';return}box.innerHTML=data.map(x=>`<div class="admin-q"><div><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'')}</span><span class="badge">${escapeHtml(x.periods?.name||'')}</span><span class="badge ${x.is_published?'green':'yellow'}">${x.is_published?'Publicada':'Rascunho'}</span></div><h4>#${x.id} — ${escapeHtml(x.subjects?.name||'Sem assunto')}</h4><p>${escapeHtml(x.statement).slice(0,220)}${x.statement.length>220?'...':''}</p></div><div class="admin-actions"><button class="small-btn ${x.is_published?'unpublish':'publish'}" onclick="toggleQuestion(${x.id},${!x.is_published})">${x.is_published?'Despublicar':'Publicar'}</button></div></div>`).join('')}
-async function toggleQuestion(id,published){if(!isAdmin)return;const {error}=await sb.from('questions').update({is_published:published}).eq('id',id);if(error){alert(error.message);return}await loadAdminAll()}
+async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};if(!payload.period_id||!payload.discipline_id||!payload.subject_id){status('adminQuestionStatus','Preencha período, disciplina e assunto.');return}let error;const editing=editingQuestionId;
+  if(editing){const r=await sb.from('questions').update(payload).eq('id',editing).select('id');error=r.error;if(!error&&!(r.data&&r.data.length))error={message:'Nenhuma linha foi alterada. Confirme que sua conta é administradora.'}}
+  else{const r=await sb.from('questions').insert(payload);error=r.error}
+  if(error){status('adminQuestionStatus','Erro ao salvar: '+escapeHtml(error.message));return}
+  status('adminQuestionStatus',editing?'✅ Questão #'+editing+' atualizada.':'✅ Questão salva com sucesso.','ok');
+  e.target.reset();resetEditState();await loadAdminAll();if(typeof loadQuestions==='function')loadQuestions();}
+async function loadAdminQuestions(){if(!isAdmin)return;const box=document.getElementById('adminQuestionList');const {data,error}=await sb.from('questions').select('id,statement,difficulty,is_published,created_at,disciplines(name),subjects(name),periods(name),exams(name)').order('id',{ascending:false}).limit(100);if(error){box.innerHTML='<div class="error-box">'+escapeHtml(error.message)+'</div>';return}if(!data?.length){box.innerHTML='<div class="empty"><strong>Nenhuma questão cadastrada.</strong><span>Crie a primeira na aba “Nova questão”.</span></div>';return}box.innerHTML=data.map(x=>`<div class="admin-q"><div><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'')}</span><span class="badge">${escapeHtml(x.periods?.name||'')}</span><span class="badge ${x.is_published?'green':'amber'}">${x.is_published?'Publicada':'Rascunho'}</span></div><h4>#${x.id} — ${escapeHtml(x.subjects?.name||'Sem assunto')}</h4><p>${escapeHtml(x.statement).slice(0,220)}${x.statement.length>220?'...':''}</p></div><div class="admin-actions"><button class="small-btn" onclick="editQuestion(${x.id})">✏️ Editar</button><button class="small-btn ${x.is_published?'unpublish':'publish'}" onclick="toggleQuestion(${x.id},${!x.is_published})">${x.is_published?'Despublicar':'Publicar'}</button><button class="small-btn" style="color:#b42318;border-color:#f3c9c9" onclick="deleteQuestion(${x.id})">🗑 Excluir</button></div></div>`).join('')}
+async function toggleQuestion(id,published){
+  if(!isAdmin)return;
+  const {data,error}=await sb.from('questions').update({is_published:published}).eq('id',id).select('id');
+  if(error){alert('Erro: '+error.message);return}
+  if(!data||!data.length){alert('Nada foi alterado. Confirme que sua conta está como administrador e que a migração SQL (admin_migration.sql) foi executada no Supabase.');return}
+  await loadAdminAll();if(typeof loadQuestions==='function')loadQuestions();
+}
+async function deleteQuestion(id){
+  if(!isAdmin)return;
+  if(!confirm('Excluir a questão #'+id+'?\n\nEssa ação não pode ser desfeita.'))return;
+  const {data,error}=await sb.from('questions').delete().eq('id',id).select('id');
+  if(error){
+    if(error.code==='23503'||/foreign key|violates/i.test(error.message||'')){alert('Esta questão já foi respondida por alunos e por isso não pode ser excluída.\n\nUse "Despublicar" para escondê-la dos alunos, ou "Editar" para corrigi-la.');}
+    else alert('Erro ao excluir: '+error.message);
+    return;
+  }
+  if(!data||!data.length){alert('Nada foi excluído. Confirme que sua conta está como administrador e que a migração SQL (admin_migration.sql) foi executada no Supabase.');return}
+  await loadAdminAll();if(typeof loadQuestions==='function')loadQuestions();
+}
+let editingQuestionId=null;
+function resetEditState(){
+  editingQuestionId=null;
+  const t=document.getElementById('aFormTitle'),b=document.getElementById('aSubmitBtn'),c=document.getElementById('aCancelBtn');
+  if(t)t.textContent='➕ Cadastrar questão';if(b)b.textContent='💾 Salvar questão';if(c)c.classList.add('hidden');
+}
+function cancelEditQuestion(){
+  document.querySelector('#adminNewPane form').reset();resetEditState();
+  document.getElementById('adminQuestionStatus').innerHTML='';
+  adminTab('adminQuestionsPane',document.querySelector('[data-pane="adminQuestionsPane"]'));
+}
+async function editQuestion(id){
+  if(!isAdmin)return;
+  const {data:q,error}=await sb.from('questions').select('*').eq('id',id).maybeSingle();
+  if(error||!q){alert('Não foi possível carregar a questão: '+(error?error.message:'não encontrada.'));return}
+  document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));
+  document.getElementById('adminNewPane').classList.add('active');
+  document.querySelectorAll('.admin-tab').forEach(x=>x.classList.toggle('active',x.dataset.pane==='adminNewPane'));
+  await loadAdminFormOptions();
+  const set=(i,v)=>{document.getElementById(i).value=(v==null?'':String(v))};
+  set('aPeriod',q.period_id);set('aDiscipline',q.discipline_id);
+  await loadAdminSubjects();set('aSubject',q.subject_id);
+  await loadAdminExams();set('aExam',q.exam_id);
+  set('aStatement',q.statement);set('aA',q.option_a);set('aB',q.option_b);set('aC',q.option_c);set('aD',q.option_d);set('aE',q.option_e);
+  set('aCorrect',q.correct_option);set('aDifficulty',q.difficulty||'medio');set('aExplanation',q.explanation);
+  document.getElementById('aPublished').checked=!!q.is_published;
+  editingQuestionId=id;
+  document.getElementById('aFormTitle').textContent='✏️ Editando questão #'+id;
+  document.getElementById('aSubmitBtn').textContent='💾 Atualizar questão';
+  document.getElementById('aCancelBtn').classList.remove('hidden');
+  document.getElementById('adminQuestionStatus').innerHTML='';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 async function createPeriod(e){e.preventDefault();const {error}=await sb.from('periods').insert({name:document.getElementById('cPeriodName').value.trim(),sort_order:Number(document.getElementById('cPeriodOrder').value||0)});if(error){status('periodStatus',error.message);return}status('periodStatus','✅ Período adicionado.','ok');e.target.reset();document.getElementById('cPeriodOrder').value=2;await loadAdminAll()}
 async function createDiscipline(e){e.preventDefault();const {error}=await sb.from('disciplines').insert({name:document.getElementById('cDisciplineName').value.trim()});if(error){status('disciplineStatus',error.message);return}status('disciplineStatus','✅ Disciplina adicionada.','ok');e.target.reset();await loadAdminAll()}
 async function createSubject(e){e.preventDefault();const {error}=await sb.from('subjects').insert({discipline_id:Number(document.getElementById('cSubjectDiscipline').value),name:document.getElementById('cSubjectName').value.trim()});if(error){status('subjectStatus',error.message);return}status('subjectStatus','✅ Assunto adicionado.','ok');e.target.reset();await loadAdminAll()}
