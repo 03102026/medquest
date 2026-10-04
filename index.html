@@ -908,6 +908,36 @@ body.dark .cal-pop{box-shadow:0 24px 60px rgba(0,0,0,.55)}
 .avatar.large.has-img{background-size:cover}
 .avatar-edit{display:flex;gap:20px;align-items:center;margin-bottom:20px;flex-wrap:wrap}
 .usr-av.has-img{background-size:cover;background-position:center;color:transparent}
+
+/* v34 — páginas centralizadas e seleção múltipla */
+#gradeView,#questionsToolbar,#questionList,#questionsState{max-width:980px;margin-left:auto;margin-right:auto}
+#gradeView .mg-hero{flex-direction:column;justify-content:center;text-align:center;gap:10px}
+#gradeView .mg-hero-text p{margin-left:auto;margin-right:auto}
+#gradeView .mg-hero .mg-ico{margin:0 auto}
+#gradeView>.seg,#simView>.seg{display:flex;width:fit-content;margin-left:auto;margin-right:auto}
+.qf-crumbs{justify-content:center}
+.qf-panel-h{justify-content:center;text-align:center}
+.qf-panel-h .skip{margin-left:0}
+.qf-cards{justify-content:center}
+.qf-card{position:relative;text-align:center;align-items:center;justify-content:center}
+.qf-card.sel{border-color:#20b5a2;background:linear-gradient(135deg,rgba(32,181,162,.18),var(--surface));box-shadow:0 12px 26px rgba(32,181,162,.22)}
+.qf-check{position:absolute;top:9px;right:9px;color:#1a9c62;display:inline-flex}
+.qf-check .ic{width:20px;height:20px}
+.qf-foot{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:18px;flex-wrap:wrap}
+.qf-foot .primary{padding:12px 26px}
+.qf-status{justify-content:center}
+.qf-more{text-align:center}
+.qf-more-grid{text-align:left}
+.qf-more-grid .yr{grid-column:1/-1;text-align:center}
+.qf-bar{justify-content:center}
+.mg-stats{max-width:100%}
+.solver-top,.solver-card{margin-left:auto!important;margin-right:auto!important}
+.sim-bar,.sim-nav,.sim-q{max-width:860px;margin-left:auto;margin-right:auto}
+.sim-nav{justify-content:center}
+#simView .sim-bar{margin-bottom:0}
+@media(max-width:900px){#gradeView .mg-hero{padding:22px}}
+
+.qf-status .mg-label{text-align:center}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1805,11 +1835,12 @@ function renderOnb(){
 function nextOnb(){onbStep++;renderOnb()}
 function closeOnboarding(){const o=document.getElementById('onbOverlay');if(o)o.remove();mqLS.set('mq_onb_'+(currentUser?currentUser.id:''),'1')}
 
-/* ===== Questões: etapas que vão aparecendo (instituição → período → módulo → matéria) ===== */
+/* ===== Questões: etapas com seleção múltipla (instituição → período → módulo → matéria) ===== */
 window._gradeFilter=null;
-window._qf={inst:null,period:'',module:'',discipline:'',status:'all',year:'',type:'all',diff:'',section:'all',sel:{},open:{},more:false,step:1};
+window._qf={insts:[],periods:[],modules:[],disciplines:[],years:[],status:'all',type:'all',diff:'',section:'all',sel:{},open:{},more:false,step:1};
 let _qfInit=false;
 function qfUid(){return currentUser?currentUser.id:''}
+function qfHas(arr,v){return (arr||[]).some(x=>String(x)===String(v))}
 function gradeHide(){['questionsToolbar','questionsState','questionList','gradeCrumb','solverView'].forEach(x=>{const e=document.getElementById(x);if(e)e.classList.add('hidden')})}
 function updateCrumb(){const c=document.getElementById('gradeCrumb');if(c){c.classList.add('hidden');c.innerHTML=''}}
 function showGrade(){
@@ -1836,80 +1867,112 @@ function qfInstOptions(){
 }
 function qfPeriodsFor(inst){
   const per=window._periods||[];
-  if(!window._instLinkOk||!inst||inst==='any')return per;
-  if(inst==='none')return per.filter(p=>p.institution_id==null);
-  return per.filter(p=>String(p.institution_id)===String(inst));
+  const list=Array.isArray(inst)?inst:(inst?[inst]:[]);
+  if(!window._instLinkOk||!list.length||list.includes('any'))return per;
+  return per.filter(p=>list.some(i=>i==='none'?p.institution_id==null:String(p.institution_id)===String(i)));
 }
-function qfSave(){const F=window._qf;if(F.inst&&F.inst!=='any')mqLS.set('mq_qf_'+qfUid(),JSON.stringify({inst:F.inst,period:F.period||''}))}
+function qfSave(){const F=window._qf;if(F.insts.length&&!F.insts.includes('any'))mqLS.set('mq_qf_'+qfUid(),JSON.stringify({insts:F.insts,periods:F.periods}))}
 function qfHasModules(){
-  const F=window._qf;if(!window._modulesOk||!F.period)return false;
-  return (window._modules||[]).some(m=>String(m.period_id)===String(F.period))||qfApply(['module','discipline']).some(q=>q.module_id==null);
+  const F=window._qf;if(!window._modulesOk||!F.periods.length)return false;
+  return (window._modules||[]).some(m=>qfHas(F.periods,m.period_id))||qfApply(['module','discipline']).some(q=>q.module_id==null);
 }
 function qfNextStep(from){
   const F=window._qf;let n=from+1;
-  if(n===2&&!qfPeriodsFor(F.inst).length)n=3;
+  if(n===2&&!qfPeriodsFor(F.insts).length)n=3;
   if(n===3&&!qfHasModules())n=4;
-  return n;
+  return Math.min(n,5);
 }
 function qfInit(){
   const F=window._qf;
   if(!qfNeedsInst()){
-    if(F.inst===null){F.inst='any';F.step=Math.max(F.step,2);if(F.step===2&&!qfPeriodsFor('any').length)F.step=4}
+    if(!F.insts.length){F.insts=['any'];F.step=Math.max(F.step,2);if(F.step===2&&!qfPeriodsFor(['any']).length)F.step=4}
     return;
   }
   const opts=qfInstOptions();
   if(!_qfInit){
-    _qfInit=true;let sv=(window._myPref&&window._myPref.inst)?window._myPref:null;if(!sv){try{sv=JSON.parse(mqLS.get('mq_qf_'+qfUid())||'null')}catch(e){}}
-    if(sv&&F.inst===null&&opts.some(o=>o.id===String(sv.inst))){
-      F.inst=String(sv.inst);F.step=qfNextStep(1);
-      if(sv.period&&qfPeriodsFor(F.inst).some(p=>String(p.id)===String(sv.period))){F.period=String(sv.period);F.step=qfHasModules()?3:4}
+    _qfInit=true;let sv=null;
+    if(window._myPref&&window._myPref.inst)sv={insts:[String(window._myPref.inst)],periods:window._myPref.period?[String(window._myPref.period)]:[]};
+    if(!sv){try{const r=JSON.parse(mqLS.get('mq_qf_'+qfUid())||'null');if(r)sv=r.insts?r:{insts:r.inst?[String(r.inst)]:[],periods:r.period?[String(r.period)]:[]}}catch(e){}}
+    if(sv&&!F.insts.length){
+      const okI=(sv.insts||[]).map(String).filter(i=>opts.some(o=>o.id===i));
+      if(okI.length){
+        F.insts=okI;F.step=qfNextStep(1);
+        const okP=(sv.periods||[]).map(String).filter(p=>qfPeriodsFor(F.insts).some(x=>String(x.id)===p));
+        if(okP.length){F.periods=okP;F.step=qfHasModules()?3:4}
+      }
     }
   }
-  if(F.inst&&F.inst!=='any'&&!opts.some(o=>o.id===F.inst)){F.inst=null;F.step=1}
-  if(F.inst===null&&opts.length===1){F.inst=opts[0].id;F.step=qfNextStep(1)}
-  if(F.inst===null)F.step=1;else if(F.step<2)F.step=qfNextStep(1);
+  F.insts=F.insts.filter(i=>i==='any'||opts.some(o=>o.id===String(i)));
+  if(!F.insts.length&&opts.length===1){F.insts=[opts[0].id];F.step=qfNextStep(1)}
+  if(!F.insts.length)F.step=1;
 }
 function qfApply(skip){
   skip=skip||[];const F=window._qf,lat=window._latest||{};
+  const years=F.years.map(String);
   return (window._allQ||[]).filter(q=>{
-    if(!skip.includes('inst')&&F.inst&&F.inst!=='any'){const qi=qInst(q);if(F.inst==='none'){if(qi!=null)return false}else if(String(qi)!==String(F.inst))return false}
-    if(!skip.includes('period')&&F.period&&String(q.period_id)!==String(F.period))return false;
-    if(!skip.includes('module')&&F.module){if(F.module==='none'){if(q.module_id!=null)return false}else if(String(q.module_id)!==String(F.module))return false}
-    if(!skip.includes('discipline')&&F.discipline&&String(q.discipline_id)!==String(F.discipline))return false;
+    if(!skip.includes('inst')&&F.insts.length&&!F.insts.includes('any')){const qi=qInst(q);if(!F.insts.some(i=>i==='none'?qi==null:String(qi)===String(i)))return false}
+    if(!skip.includes('period')&&F.periods.length&&!qfHas(F.periods,q.period_id))return false;
+    if(!skip.includes('module')&&F.modules.length&&!F.modules.some(m=>m==='none'?q.module_id==null:String(q.module_id)===String(m)))return false;
+    if(!skip.includes('discipline')&&F.disciplines.length&&!qfHas(F.disciplines,q.discipline_id))return false;
     if(!skip.includes('status')){const l=lat[q.id];if(F.status==='unanswered'&&l!==undefined)return false;if(F.status==='answered'&&l===undefined)return false;if(F.status==='correct'&&l!==true)return false;if(F.status==='wrong'&&l!==false)return false}
-    if(!skip.includes('year')&&F.year&&String(q.year)!==String(F.year))return false;
+    if(!skip.includes('year')&&years.length&&!years.includes(String(q.year)))return false;
     if(!skip.includes('type')&&F.type!=='all'&&((q.qtype||'objetiva')!==F.type))return false;
     if(!skip.includes('diff')&&F.diff&&q.difficulty!==F.diff)return false;
     return true;
   });
 }
 function qfCount(list,fn){const m={};list.forEach(q=>{const k=fn(q);m[k]=(m[k]||0)+1});return m}
+/* tira das etapas seguintes o que deixou de existir depois de uma mudança */
+function qfPrune(){
+  const F=window._qf;
+  const pv=qfPeriodsFor(F.insts).map(p=>String(p.id));
+  F.periods=F.periods.filter(p=>pv.includes(String(p)));
+  const mv=(window._modules||[]).filter(m=>qfHas(F.periods,m.period_id)).map(m=>String(m.id));
+  F.modules=F.modules.filter(m=>m==='none'||mv.includes(String(m)));
+  if(!F.periods.length)F.modules=[];
+  const avail=new Set(qfApply(['discipline','year','status','type','diff']).map(q=>String(q.discipline_id)));
+  F.disciplines=F.disciplines.filter(d=>avail.has(String(d)));
+  F.sel={};F.section='all';F.open={};
+}
+const QF_KEYS={inst:'insts',period:'periods',module:'modules',discipline:'disciplines',year:'years'};
+/* marca/desmarca uma opção (dá para escolher várias) */
+function qfPick(k,v){
+  const F=window._qf,key=QF_KEYS[k];v=String(v);
+  const i=F[key].findIndex(x=>String(x)===v);
+  if(i>=0)F[key].splice(i,1);else F[key].push(v);
+  if(key==='insts')F.insts=F.insts.filter(x=>x!=='any');
+  qfPrune();qfSave();renderGrade();
+}
+/* escolhe só uma opção e já avança (atalho) */
 function qfSet(k,v){
   const F=window._qf;v=(v==null?'':String(v));
-  if(k==='inst'){F.inst=v;F.period='';F.module='';F.discipline='';F.sel={};F.section='all';F.step=qfNextStep(1)}
-  else if(k==='period'){F.period=v;F.module='';F.discipline='';F.sel={};F.section='all';F.open={};F.step=qfNextStep(2)}
-  else if(k==='module'){F.module=v;F.discipline='';F.sel={};F.section='all';F.open={};F.step=4}
-  else if(k==='discipline'){F.discipline=(F.discipline===v?'':v);F.sel={};F.section='all';F.step=F.discipline?5:4}
+  const steps={inst:1,period:2,module:3,discipline:4};
+  if(steps[k]){F[QF_KEYS[k]]=v?[v]:[];qfPrune();F.step=k==='discipline'?(F.disciplines.length?5:4):qfNextStep(steps[k])}
+  else if(k==='year'){F.years=v?[v]:[];F.sel={}}
   else if(k==='status'){F.status=v||'all';F.sel={}}
   else if(k==='type'){F.type=v||'all';F.sel={}}
+  else if(k==='diff'){F.diff=v;F.sel={}}
   else{F[k]=v;F.sel={}}
   qfSave();renderGrade();
 }
+function qfNext(){
+  const F=window._qf;
+  if(F.step===1&&qfNeedsInst()&&!F.insts.length){toast('Escolha ao menos uma instituição.');return}
+  F.step=qfNextStep(F.step);F.sel={};F.section='all';qfSave();renderGrade();
+}
 function qfSkip(){
   const F=window._qf;
-  if(F.step===2){F.period='';F.module='';F.discipline=''}
-  else if(F.step===3){F.module=''}
-  else if(F.step===4){F.discipline=''}
+  if(F.step===2){F.periods=[];F.modules=[];F.disciplines=[]}
+  else if(F.step===3){F.modules=[]}
+  else if(F.step===4){F.disciplines=[]}
   F.step=qfNextStep(F.step);F.sel={};F.section='all';qfSave();renderGrade();
 }
 function qfGoStep(n){
   const F=window._qf;
-  if(n<=1)F.inst=null;
-  if(n<=2){F.period='';F.module=''}
-  if(n<=3)F.module='';
-  F.discipline='';F.sel={};F.section='all';F.step=n;
-  if(n<=1)F.step=1;
-  qfSave();renderGrade();
+  if(n<2){F.periods=[]}
+  if(n<3){F.modules=[]}
+  if(n<4){F.disciplines=[]}
+  F.sel={};F.section='all';F.step=n;qfPrune();qfSave();renderGrade();
 }
 function qfSection(sec){window._qf.section=sec;renderGrade()}
 function qfToggle(id){const F=window._qf;if(F.sel[id])delete F.sel[id];else F.sel[id]=1;renderGrade()}
@@ -1919,13 +1982,14 @@ function plQ(n){return n+(n===1?' questão':' questões')}
 function qfItems(){
   const F=window._qf,subs=window._subjects||[],scoped=qfApply([]);
   const items=[],seen={};
-  if(F.module&&F.module!=='none'){
-    subs.filter(x=>String(x.module_id)===String(F.module)).forEach(x=>{seen[x.id]=1;items.push({...x,qs:scoped.filter(q=>String(q.subject_id)===String(x.id))})});
+  const modIds=F.modules.filter(m=>m!=='none');
+  if(modIds.length){
+    subs.filter(x=>modIds.some(m=>String(m)===String(x.module_id))).forEach(x=>{seen[x.id]=1;items.push({...x,qs:scoped.filter(q=>String(q.subject_id)===String(x.id))})});
   }
   scoped.forEach(q=>{
     if(q.subject_id==null||seen[q.subject_id])return;seen[q.subject_id]=1;
     const sj=subs.find(x=>String(x.id)===String(q.subject_id));
-    const sec=(sj&&sj.section)?sj.section:((F.module&&F.module!=='none')?'Outros assuntos':((q.disciplines&&q.disciplines.name)||'Assuntos'));
+    const sec=(sj&&sj.section)?sj.section:(modIds.length?'Outros assuntos':((q.disciplines&&q.disciplines.name)||'Assuntos'));
     items.push({id:q.subject_id,name:sj?sj.name:((q.subjects&&q.subjects.name)||'Assunto'),section:sec,sort_order:sj?(sj.sort_order||0):0,objectives:sj?sj.objectives:null,qs:scoped.filter(x=>String(x.subject_id)===String(q.subject_id))});
   });
   return items;
@@ -1938,48 +2002,52 @@ function gradeStudyQs(qs){
 }
 function qfStart(){
   const F=window._qf;
-  if(F.inst===null&&qfNeedsInst()){toast('Escolha a instituição para começar.');return}
+  if(!F.insts.length&&qfNeedsInst()){toast('Escolha a instituição para começar.');return}
   gradeStudyQs(qfApply([]));
 }
 function qfStudy(subjectId){const it=qfItems().find(x=>String(x.id)===String(subjectId));gradeStudyQs(it?it.qs:[])}
 function qfRunSelected(){const F=window._qf;let qs=[];qfItems().forEach(it=>{if(F.sel[it.id])qs=qs.concat(it.qs)});gradeStudyQs(qs)}
+function qfNames(arr,fn){const n=arr.map(fn).filter(Boolean);return n.length<=2?n.join(', '):n.slice(0,2).join(', ')+' +'+(n.length-2)}
 function renderGrade(){
   const gv=document.getElementById('gradeView');if(!gv||gv.classList.contains('hidden'))return;
   qfInit();
   const F=window._qf,per=window._periods||[],lat=window._latest||{};
-  const needInst=qfNeedsInst(),gateOk=!needInst||F.inst!==null;
-  const insName=(id)=>{const o=qfInstOptions().find(x=>x.id===String(id));return o?o.name:''};
+  const needInst=qfNeedsInst(),gateOk=!needInst||F.insts.length>0;
   const found=qfApply([]);
   const st={n:found.length,done:found.filter(q=>lat[q.id]!==undefined).length,ok:found.filter(q=>lat[q.id]===true).length,bad:found.filter(q=>lat[q.id]===false).length};
-  let h=simTabs('q')+`<div class="mg-hero"><div class="mg-ico">📚</div><div class="mg-hero-text"><span class="mg-kicker">Área acadêmica</span><h2>Questões</h2><p>${gateOk?'Siga as etapas ou comece agora: só a instituição é obrigatória.':'Escolha a instituição para começar. As próximas etapas aparecem em seguida.'}</p></div></div>`;
+  const instOpts=qfInstOptions();
+  const insName=id=>{const o=instOpts.find(x=>x.id===String(id));return o?o.name:''};
+  let h=simTabs('q')+`<div class="mg-hero"><div class="mg-ico">📚</div><div class="mg-hero-text"><span class="mg-kicker">Área acadêmica</span><h2>Questões</h2><p>${gateOk?'Siga as etapas ou comece agora: só a instituição é obrigatória. Em cada etapa você pode escolher mais de uma opção.':'Escolha a instituição (pode ser mais de uma) para começar. As próximas etapas aparecem em seguida.'}</p></div></div>`;
   // trilha das escolhas (clicar volta àquela etapa)
   const crumbs=[];
-  if(needInst&&F.inst!==null)crumbs.push([1,'🏛️',insName(F.inst)||'Instituição']);
-  if(F.step>2&&gateOk){const p=per.find(x=>String(x.id)===String(F.period));crumbs.push([2,'📅',F.period?(p?p.name:'Período'):'Todos os períodos'])}
-  if(gateOk&&(F.module||(F.step>3&&F.period&&qfHasModules()))){const m=(window._modules||[]).find(x=>String(x.id)===String(F.module));crumbs.push([3,'🧩',F.module?(F.module==='none'?'Questões gerais':(m?m.name:'Módulo')):'Todos os módulos'])}
-  if(gateOk&&F.step>4){const q=(window._allQ||[]).find(x=>String(x.discipline_id)===String(F.discipline));crumbs.push([4,'📘',F.discipline?((q&&q.disciplines&&q.disciplines.name)||'Matéria'):'Todas as matérias'])}
+  if(needInst&&F.insts.length)crumbs.push([1,'🏛️',qfNames(F.insts,insName)||'Instituição']);
+  if(F.step>2&&gateOk)crumbs.push([2,'📅',F.periods.length?qfNames(F.periods,id=>{const p=per.find(x=>String(x.id)===String(id));return p?p.name:''}):'Todos os períodos']);
+  if(gateOk&&(F.modules.length||(F.step>3&&F.periods.length&&qfHasModules())))crumbs.push([3,'🧩',F.modules.length?qfNames(F.modules,id=>{if(id==='none')return 'Questões gerais';const m=(window._modules||[]).find(x=>String(x.id)===String(id));return m?m.name:''}):'Todos os módulos']);
+  if(gateOk&&F.step>4)crumbs.push([4,'📘',F.disciplines.length?qfNames(F.disciplines,id=>{const q=(window._allQ||[]).find(x=>String(x.discipline_id)===String(id));return q&&q.disciplines?q.disciplines.name:''}):'Todas as matérias']);
   if(crumbs.length)h+=`<div class="qf-crumbs">${crumbs.map((c,i)=>`${i?'<span class="qf-sep">›</span>':''}<button type="button" class="qf-crumb" onclick="qfGoStep(${c[0]})" title="Voltar a esta etapa">${c[1]} ${escapeHtml(c[2])} <em>✎</em></button>`).join('')}</div>`;
-  // painel da etapa atual
+  // painel da etapa atual (cada opção pode ser marcada; "Continuar" confirma)
   const skipBtn=`<button class="small-btn skip" type="button" onclick="qfSkip()">Pular etapa →</button>`;
-  if(!gateOk){
-    const opts=qfInstOptions();
-    h+=`<div class="qf-panel"><div class="qf-panel-h"><span class="qf-num">1</span><h3>Escolha a instituição</h3><span class="qf-tag req">Obrigatória</span></div>${opts.length?`<div class="qf-cards">${opts.map(o=>`<button type="button" class="qf-card${o.hidden?' off':''}" onclick="qfSet('inst','${o.id}')"><span class="ic">🏛️</span><b>${escapeHtml(o.name)}${o.hidden?' (oculta)':''}</b><small>${o.n?plQ(o.n):'Em breve'}</small></button>`).join('')}</div>`:'<div class="qf-hint">Nenhuma instituição disponível.</div>'}</div>`;
-    gv.innerHTML=h;return;
+  const pickCard=(kind,id,icon,name,small,off,sel)=>`<button type="button" class="qf-card${sel?' sel':''}${off?' off':''}" aria-pressed="${sel?'true':'false'}" onclick="qfPick('${kind}','${id}')"><span class="ic">${icon}</span><b>${escapeHtml(name)}${off?' (oculto)':''}</b><small>${small}</small>${sel?'<span class="qf-check"><span class="ic" data-i="check-circle"></span></span>':''}</button>`;
+  const foot=(n,min)=>`<div class="qf-foot"><span class="muted">${n?n+' selecionada'+(n===1?'':'s'):(min?'Escolha ao menos uma opção':'Nenhuma escolha = todas')}</span><button class="primary" type="button" onclick="qfNext()"${(min&&!n)?' disabled':''}>Continuar →</button></div>`;
+  const fmtN=n=>n?plQ(n):'Em breve';
+  if(!gateOk||F.step===1){
+    h+=`<div class="qf-panel"><div class="qf-panel-h"><span class="qf-num">1</span><h3>Escolha a instituição</h3><span class="qf-tag req">Obrigatória</span></div>${instOpts.length?`<div class="qf-cards">${instOpts.map(o=>pickCard('inst',o.id,'🏛️',o.name,o.n?plQ(o.n):'Em breve',o.hidden,qfHas(F.insts,o.id))).join('')}</div>${foot(F.insts.length,true)}`:'<div class="qf-hint">Nenhuma instituição disponível.</div>'}</div>`;
+    if(!gateOk){gv.innerHTML=h;return}
   }
   if(F.step===2){
-    const list=qfPeriodsFor(F.inst);
+    const list=qfPeriodsFor(F.insts),multiInst=F.insts.length>1&&!F.insts.includes('any');
     const baseP=qfCount(qfApply(['period','module','discipline']),q=>String(q.period_id));
-    h+=`<div class="qf-panel"><div class="qf-panel-h"><span class="qf-num">2</span><h3>Escolha o período</h3><span class="qf-tag">Opcional</span>${skipBtn}</div><div class="qf-cards">${list.map(p=>{const n=baseP[String(p.id)]||0;return `<button type="button" class="qf-card${p.is_hidden?' off':''}" onclick="qfSet('period','${p.id}')"><span class="ic">📅</span><b>${escapeHtml(p.name)}${p.is_hidden?' (oculto)':''}</b><small>${n?plQ(n):'Em breve'}</small></button>`}).join('')}<button type="button" class="qf-card all" onclick="qfSkip()"><span class="ic">🗓️</span><b>Todos os períodos</b><small>sem filtrar por período</small></button></div></div>`;
+    h+=`<div class="qf-panel"><div class="qf-panel-h"><span class="qf-num">2</span><h3>Escolha o período</h3><span class="qf-tag">Opcional</span>${skipBtn}</div><div class="qf-cards">${list.map(p=>pickCard('period',p.id,'📅',(multiInst&&window._instLinkOk&&p.institution_id!=null?insName(p.institution_id)+' · ':'')+p.name,fmtN(baseP[String(p.id)]||0),p.is_hidden,qfHas(F.periods,p.id))).join('')}<button type="button" class="qf-card all" onclick="qfSkip()"><span class="ic">🗓️</span><b>Todos os períodos</b><small>sem filtrar por período</small></button></div>${foot(F.periods.length,false)}</div>`;
   }else if(F.step===3){
-    const mods=(window._modules||[]).filter(m=>String(m.period_id)===String(F.period)).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0)||a.id-b.id);
+    const mods=(window._modules||[]).filter(m=>qfHas(F.periods,m.period_id)).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0)||a.id-b.id);
     const baseM=qfCount(qfApply(['module','discipline']),q=>q.module_id==null?'none':String(q.module_id));
-    const card=(id,ic,name,off)=>{const n=baseM[String(id)]||0;return `<button type="button" class="qf-card${off?' off':''}" onclick="qfSet('module','${id}')"><span class="ic">${ic}</span><b>${escapeHtml(name)}${off?' (oculto)':''}</b><small>${n?plQ(n):'Em breve'}</small></button>`};
-    h+=`<div class="qf-panel"><div class="qf-panel-h"><span class="qf-num">3</span><h3>Escolha o módulo</h3><span class="qf-tag">Opcional</span>${skipBtn}</div><div class="qf-cards">${mods.map(m=>card(m.id,'🧩',m.name,m.is_hidden)).join('')}${baseM.none?card('none','★','Questões gerais',false):''}<button type="button" class="qf-card all" onclick="qfSkip()"><span class="ic">🧩</span><b>Todos os módulos</b><small>sem filtrar por módulo</small></button></div></div>`;
+    const multiP=F.periods.length>1;
+    h+=`<div class="qf-panel"><div class="qf-panel-h"><span class="qf-num">3</span><h3>Escolha o módulo</h3><span class="qf-tag">Opcional</span>${skipBtn}</div><div class="qf-cards">${mods.map(m=>{const p=per.find(x=>String(x.id)===String(m.period_id));return pickCard('module',m.id,'🧩',(multiP&&p?p.name+' · ':'')+m.name,fmtN(baseM[String(m.id)]||0),m.is_hidden,qfHas(F.modules,m.id))}).join('')}${baseM.none?pickCard('module','none','★','Questões gerais',fmtN(baseM.none),false,qfHas(F.modules,'none')):''}<button type="button" class="qf-card all" onclick="qfSkip()"><span class="ic">🧩</span><b>Todos os módulos</b><small>sem filtrar por módulo</small></button></div>${foot(F.modules.length,false)}</div>`;
   }else if(F.step===4){
     const scopeD=qfApply(['discipline']);
     const dMap={};scopeD.forEach(q=>{if(q.discipline_id==null)return;const k=String(q.discipline_id);if(!dMap[k])dMap[k]={name:(q.disciplines&&q.disciplines.name)||'Matéria',n:0};dMap[k].n++});
     const dKeys=Object.keys(dMap).sort((a,b)=>dMap[a].name.localeCompare(dMap[b].name));
-    h+=`<div class="qf-panel"><div class="qf-panel-h"><span class="qf-num">4</span><h3>Escolha a matéria</h3><span class="qf-tag">Opcional</span>${skipBtn}</div>${dKeys.length?`<div class="qf-cards">${dKeys.map(k=>`<button type="button" class="qf-card" onclick="qfSet('discipline','${k}')"><span class="ic">${discIcon(dMap[k].name)}</span><b>${escapeHtml(dMap[k].name)}</b><small>${plQ(dMap[k].n)}</small></button>`).join('')}<button type="button" class="qf-card all" onclick="qfSkip()"><span class="ic">📚</span><b>Todas as matérias</b><small>sem filtrar por matéria</small></button></div>`:'<div class="qf-hint">Nenhuma matéria disponível com as escolhas anteriores.</div>'}</div>`;
+    h+=`<div class="qf-panel"><div class="qf-panel-h"><span class="qf-num">4</span><h3>Escolha a matéria</h3><span class="qf-tag">Opcional</span>${skipBtn}</div>${dKeys.length?`<div class="qf-cards">${dKeys.map(k=>pickCard('discipline',k,discIcon(dMap[k].name),dMap[k].name,plQ(dMap[k].n),false,qfHas(F.disciplines,k))).join('')}<button type="button" class="qf-card all" onclick="qfSkip()"><span class="ic">📚</span><b>Todas as matérias</b><small>sem filtrar por matéria</small></button></div>${foot(F.disciplines.length,false)}`:'<div class="qf-hint">Nenhuma matéria disponível com as escolhas anteriores.</div>'}</div>`;
   }
   // números
   h+=`<div class="mg-stats" style="margin-top:14px"><div class="mg-stat first"><i>🎯</i><div><small>Questões encontradas</small><b>${st.n}</b></div></div><div class="mg-stat"><i>📝</i><div><small>Respondidas</small><b>${st.done}</b></div></div><div class="mg-stat"><i>✅</i><div><small>Corretas (última)</small><b>${st.ok}</b></div></div><div class="mg-stat"><i>❌</i><div><small>Erros (última)</small><b>${st.bad}</b></div></div></div>`;
@@ -1990,13 +2058,14 @@ function renderGrade(){
   h+=`<div class="qf-status"><div class="mg-label">Status das respostas</div>${S.map(x=>`<button type="button" class="qf-chip${F.status===x[0]?' on':''}" onclick="qfSet('status','${x[0]}')">${x[1]} <small>${sc[x[0]]}</small></button>`).join('')}</div>`;
   // mais filtros
   const yearsMap=qfCount(qfApply(['year']).filter(q=>q.year!=null),q=>String(q.year));
+  F.years.forEach(y=>{if(!(y in yearsMap))yearsMap[y]=0});
   const years=Object.keys(yearsMap).sort((a,b)=>b-a);
   const tBase=qfApply(['type']);const tc={all:tBase.length,objetiva:tBase.filter(q=>(q.qtype||'objetiva')==='objetiva').length,discursiva:tBase.filter(q=>q.qtype==='discursiva').length};
-  h+=`<details class="qf-more"${F.more?' open':''} ontoggle="window._qf.more=this.open"><summary>Mais filtros (ano, tipo, dificuldade)</summary><div class="qf-more-grid"><label>Ano<select onchange="qfSet('year',this.value)"><option value="">Todos os anos</option>${years.map(y=>`<option value="${y}"${String(F.year)===y?' selected':''}>${y} (${yearsMap[y]})</option>`).join('')}</select></label><label>Tipo<select onchange="qfSet('type',this.value)"><option value="all"${F.type==='all'?' selected':''}>Ambas (${tc.all})</option><option value="objetiva"${F.type==='objetiva'?' selected':''}>Somente objetivas (${tc.objetiva})</option><option value="discursiva"${F.type==='discursiva'?' selected':''}>Somente discursivas (${tc.discursiva})</option></select></label><label>Dificuldade<select onchange="qfSet('diff',this.value)"><option value="">Todas</option><option value="facil"${F.diff==='facil'?' selected':''}>Fácil</option><option value="medio"${F.diff==='medio'?' selected':''}>Média</option><option value="dificil"${F.diff==='dificil'?' selected':''}>Difícil</option></select></label></div></details>`;
+  h+=`<details class="qf-more"${F.more?' open':''} ontoggle="window._qf.more=this.open"><summary>Mais filtros (ano, tipo, dificuldade)${F.years.length?' · '+F.years.slice().sort((a,b)=>b-a).join(', '):''}</summary><div class="qf-more-grid"><div class="yr"><div class="mg-label" style="margin-bottom:8px">Ano <span style="text-transform:none;letter-spacing:0;font-weight:600">(pode escolher mais de um)</span></div>${years.length?`<div class="qf-chips" style="justify-content:center">${years.map(y=>`<button type="button" class="qf-chip${qfHas(F.years,y)?' on':''}" onclick="qfPick('year','${y}')">${y} <small>${yearsMap[y]}</small></button>`).join('')}</div>`:'<div class="qf-hint">Nenhum ano cadastrado nas questões.</div>'}</div><label>Tipo<select onchange="qfSet('type',this.value)"><option value="all"${F.type==='all'?' selected':''}>Ambas (${tc.all})</option><option value="objetiva"${F.type==='objetiva'?' selected':''}>Somente objetivas (${tc.objetiva})</option><option value="discursiva"${F.type==='discursiva'?' selected':''}>Somente discursivas (${tc.discursiva})</option></select></label><label>Dificuldade<select onchange="qfSet('diff',this.value)"><option value="">Todas</option><option value="facil"${F.diff==='facil'?' selected':''}>Fácil</option><option value="medio"${F.diff==='medio'?' selected':''}>Média</option><option value="dificil"${F.diff==='dificil'?' selected':''}>Difícil</option></select></label></div></details>`;
   // assuntos
   const nSel=Object.keys(F.sel).length;
   let selQ=0;
-  if(F.period||F.module||F.discipline){
+  if(F.periods.length||F.modules.length||F.disciplines.length){
     const items=qfItems();
     selQ=items.filter(it=>F.sel[it.id]).reduce((a,it)=>a+it.qs.length,0);
     if(items.length){
@@ -2038,7 +2107,7 @@ async function saveStudyPrefs(){
     const r=await sb.from('profiles').update({institution_id:i?Number(i):null,period_id:p?Number(p):null}).eq('id',currentUser.id);
     if(r.error)msg='✅ Salvas neste aparelho. Para salvar na conta, peça à administração para executar o modules_migration.sql.';
   }
-  const F=window._qf;F.inst=null;F.period='';F.module='';F.discipline='';F.sel={};F.step=1;_qfInit=false;
+  const F=window._qf;F.insts=[];F.periods=[];F.modules=[];F.disciplines=[];F.sel={};F.step=1;_qfInit=false;
   status('studyPrefStatus',msg,'ok');
 }
 
@@ -2139,7 +2208,7 @@ function dismissSubBanner(){mqLS.set('mq_subban_'+qfUid(),dayKey(new Date()));re
 let weakestDisciplineId=null;
 function reviewWeakest(){
   const F=window._qf;
-  if(weakestDisciplineId){F.inst=F.inst||'any';F.discipline=String(weakestDisciplineId);F.period='';F.module='';F.status='all';F.sel={};F.step=5}
+  if(weakestDisciplineId){F.insts=F.insts.length?F.insts:['any'];F.disciplines=[String(weakestDisciplineId)];F.periods=[];F.modules=[];F.status='all';F.sel={};F.step=5}
   go('questions');
   if(weakestDisciplineId)qfStart();
 }
@@ -2810,7 +2879,7 @@ function simScopeInit(){
   const S=window._simSetup;if(S.touched)return;
   const F=window._qf;
   if(qfNeedsInst()){
-    if(F.inst&&F.inst!=='any')S.inst=F.inst;else if(window._myPref&&window._myPref.inst)S.inst=String(window._myPref.inst);
+    if(F.insts&&F.insts.length&&F.insts[0]!=='any')S.inst=String(F.insts[0]);else if(window._myPref&&window._myPref.inst)S.inst=String(window._myPref.inst);
     const opts=qfInstOptions();
     if(S.inst&&!opts.some(o=>o.id===String(S.inst)))S.inst=null;
     if(!S.inst&&opts.length===1)S.inst=opts[0].id;
