@@ -411,6 +411,130 @@ body.dark .jr:before{background:repeating-linear-gradient(90deg,#33444f 0 10px,t
   .lp-tiles{grid-template-columns:1fr;margin-top:30px}
 }
 @media(prefers-reduced-motion:reduce){.jr-ico{transition:none}}
+
+/* ===== MedQuest v25 — Minha grade: períodos e módulos ===== */
+.grade-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.grade-head h2{margin:0;font-size:24px;letter-spacing:-.03em}
+.gp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.gp-card{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:22px;padding:22px 20px 20px;background:var(--surface);box-shadow:var(--shadow);cursor:pointer;transition:.18s}
+.gp-card:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,var(--c1,#20b5a2),var(--c2,#0b6e8e))}
+.gp-card:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(11,110,142,.18)}
+.gp-card:nth-child(4n+2){--c1:#3aa0ff;--c2:#4f46e5}
+.gp-card:nth-child(4n+3){--c1:#34d399;--c2:#0b8f6a}
+.gp-card:nth-child(4n+4){--c1:#22d3ee;--c2:#0b6e8e}
+.gp-badge{min-width:54px;height:54px;padding:0 12px;border-radius:16px;display:inline-grid;place-items:center;color:#fff;font-weight:900;font-size:18px;background:linear-gradient(135deg,var(--c1,#20b5a2),var(--c2,#0b6e8e));margin-bottom:14px;box-shadow:0 8px 20px rgba(11,110,142,.25)}
+.gp-card h3{margin:0 0 4px;font-size:19px;letter-spacing:-.03em;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.gp-meta{color:var(--muted);font-size:13.5px;line-height:1.5}
+.gp-prog{margin-top:16px}
+.gp-prog small{display:block;color:var(--muted);font-size:12px;margin-top:6px}
+.gp-card.soon{cursor:default;opacity:.72}
+.gp-card.soon:hover{transform:none;box-shadow:var(--shadow)}
+.grade-back{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.grade-back .ttl{font-weight:850;font-size:20px;letter-spacing:-.03em}
+.mod-list{display:grid;gap:14px}
+.mod-card{display:flex;align-items:center;gap:16px;padding:18px;cursor:pointer;transition:.16s;border-left:4px solid #20b5a2}
+.mod-card:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(11,110,142,.14)}
+.mod-card.soon{cursor:default;opacity:.7;border-left-color:#b8c8d2}
+.mod-card.soon:hover{transform:none}
+.mod-num{flex:none;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:900;font-size:16px;background:linear-gradient(135deg,#0b6e8e,#20b5a2)}
+.mod-body{flex:1;min-width:0}
+.mod-body h3{margin:0 0 8px;font-size:17px;letter-spacing:-.02em}
+.mod-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.mod-meta{color:var(--muted);font-size:12px;margin-top:6px}
+.crumb{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.crumb-text{font-weight:800}
+body.dark .mod-card.soon{border-left-color:#33444f}
+@media(max-width:650px){.mod-card{flex-wrap:wrap}.mod-card .primary{width:100%}.mod-num{width:46px;height:46px}.gp-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.gp-card,.mod-card{transition:none}}
+
+/* ===== MedQuest v26 — Minha Grade (painel acadêmico) ===== */
+.mg-hero{position:relative;overflow:hidden;display:flex;align-items:center;gap:22px;padding:28px;border-radius:26px;border:1px solid #cfe6e8;background:linear-gradient(135deg,#f3fbfa,#eef6ff);flex-wrap:wrap}
+.mg-hero:after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(32,181,162,.22),transparent 70%)}
+.mg-hero>*{position:relative;z-index:1}
+.mg-ico{width:68px;height:68px;border-radius:20px;display:grid;place-items:center;font-size:32px;background:#fff;border:1px solid #cfe6e8;box-shadow:0 8px 22px rgba(11,110,142,.12);flex:none}
+.mg-hero-text{flex:1;min-width:240px}
+.mg-kicker{display:inline-block;font-size:11px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);background:rgba(32,181,162,.14);padding:5px 11px;border-radius:999px}
+.mg-hero h2{margin:8px 0 6px;font-size:clamp(28px,4vw,40px);letter-spacing:-.045em}
+.mg-hero p{margin:0 0 12px;color:var(--muted);line-height:1.55;max-width:560px}
+.mg-chips{display:flex;gap:8px;flex-wrap:wrap}
+.mg-chip2{font-size:12px;font-weight:800;padding:7px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+.mg-hero .primary{padding:14px 20px}
+.mg-info{display:flex;gap:10px;align-items:center;margin:14px 0;padding:11px 16px;border-radius:14px;border:1px solid #cfe6e8;background:rgba(32,181,162,.07);font-size:14px;color:var(--text)}
+.mg-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mg-stat{display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:18px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow)}
+.mg-stat.first{border-color:#9fd6d0;background:linear-gradient(135deg,rgba(32,181,162,.1),var(--surface))}
+.mg-stat i{font-style:normal;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(32,181,162,.14);font-size:19px;flex:none}
+.mg-stat small{display:block;font-size:11px;font-weight:750;color:var(--muted)}
+.mg-stat b{font-size:19px;letter-spacing:-.02em}
+.mg-label{font-size:11px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.mg-row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.mg-row h3{margin:3px 0 0;font-size:19px;letter-spacing:-.03em}
+.mg-row span.r{font-size:12px;color:var(--muted);font-weight:700}
+.mg-pills{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 18px}
+.mg-pill{border:1px solid var(--border);background:var(--surface);color:var(--text);padding:11px 18px;border-radius:14px;font-weight:800;transition:.15s}
+.mg-pill:hover{border-color:#9fd6d0}
+.mg-pill.on{color:#fff;border-color:transparent;background:linear-gradient(120deg,#0b6e8e,#20b5a2);box-shadow:0 10px 24px rgba(11,110,142,.28)}
+.mg-pill.soon{opacity:.55;cursor:default}
+.mg-panel{border:1px solid var(--border);border-radius:26px;background:var(--surface);padding:24px;box-shadow:var(--shadow)}
+.mg-panel>.mg-row h2{margin:3px 0 0;font-size:30px;letter-spacing:-.045em}
+.mg-crumb{font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.mg-sep{border:0;border-top:1px solid var(--border);margin:18px 0}
+.mg-mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:14px}
+.mg-mod{display:flex;align-items:center;gap:12px;text-align:left;padding:14px;border-radius:16px;border:1px solid var(--border);background:var(--surface);color:var(--text);transition:.15s}
+.mg-mod:hover{border-color:#9fd6d0;transform:translateY(-2px)}
+.mg-mod.on{border:1.5px solid #20b5a2;background:linear-gradient(135deg,rgba(32,181,162,.12),var(--surface));box-shadow:0 10px 26px rgba(32,181,162,.18)}
+.mg-mod.empty{opacity:.7}
+.mg-mod .n{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-weight:900;font-size:13px;background:rgba(32,181,162,.14);color:var(--primary);flex:none}
+.mg-mod.on .n{background:linear-gradient(135deg,#0b6e8e,#20b5a2);color:#fff}
+.mg-mod b{display:block;font-size:15px}
+.mg-mod small{color:var(--muted);font-size:12px;font-weight:650}
+.mg-mod .go{margin-left:auto;color:var(--primary);font-weight:900}
+.mg-focus{margin-top:18px;border:1px solid var(--border);border-radius:22px;padding:22px;background:linear-gradient(180deg,rgba(32,181,162,.05),transparent)}
+.mg-focus-head{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.mg-focus-head h3{margin:4px 0 6px;font-size:28px;letter-spacing:-.04em}
+.mg-focus-head p{margin:0;color:var(--muted);max-width:440px;line-height:1.5;font-size:14px}
+.mg-acts{display:grid;gap:8px;min-width:270px}
+.mg-act{text-align:left;padding:12px 15px;border-radius:14px;border:1px solid var(--border);background:var(--surface);color:var(--text);transition:.15s}
+.mg-act b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--primary)}
+.mg-act span{font-size:12px;color:var(--muted);font-weight:650}
+.mg-act.hl{border-color:#20b5a2;background:linear-gradient(120deg,#0b6e8e,#20b5a2)}
+.mg-act.hl b,.mg-act.hl span{color:#fff}
+.mg-act:disabled{opacity:.5;cursor:not-allowed}
+.mg-act:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(11,110,142,.2)}
+.mg-prog{margin:16px 0 4px}
+.mg-secs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;align-items:center}
+.mg-sec{border:1px solid var(--border);background:var(--surface);color:var(--muted);font-weight:800;font-size:13px;padding:7px 14px;border-radius:999px}
+.mg-sec.on{background:rgba(32,181,162,.14);border-color:#9fd6d0;color:var(--primary)}
+.mg-secbox{border:1px solid var(--border);border-radius:20px;padding:18px;background:var(--surface);margin-top:14px}
+.mg-secbox>h4{margin:0 0 12px;font-size:19px;letter-spacing:-.03em;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.mg-subs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mg-sub{position:relative;border:1px solid var(--border);border-radius:14px;padding:12px 56px 12px 14px;background:rgba(32,181,162,.04);transition:.15s}
+.mg-sub.sel{border-color:#20b5a2;background:rgba(32,181,162,.13)}
+.mg-sub.nq{opacity:.6}
+.mg-sub-t{font-weight:800;font-size:14px;line-height:1.35;cursor:pointer}
+.mg-sub.nq .mg-sub-t{cursor:default}
+.mg-sub-m{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.mg-obj-btn{border:0;font-size:11px;font-weight:850;padding:4px 10px;border-radius:999px;background:rgba(11,110,142,.12);color:var(--primary)}
+.mg-cnt{font-size:11.5px;color:var(--muted);font-weight:700}
+.mg-plus{position:absolute;right:12px;top:12px;width:34px;height:34px;border-radius:11px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-weight:900;font-size:17px;line-height:1}
+.mg-plus.on{background:linear-gradient(135deg,#0b6e8e,#20b5a2);color:#fff;border-color:transparent}
+.mg-plus:disabled{opacity:.4;cursor:not-allowed}
+.mg-objs{margin:10px 0 0;padding:10px 12px 10px 28px;border-radius:12px;background:var(--surface);border:1px dashed #9fd6d0;font-size:13px;line-height:1.55;color:var(--text)}
+.mg-objs li{margin-bottom:3px}
+body.dark .mg-hero{background:linear-gradient(135deg,#10242a,#111c2a);border-color:#244a4c}
+body.dark .mg-ico{background:#16262e;border-color:#244a4c}
+body.dark .mg-info{border-color:#244a4c}
+body.dark .mg-sub{background:rgba(32,181,162,.06)}
+body.dark .mg-sub.sel{background:rgba(32,181,162,.2)}
+@media(max-width:900px){.mg-stats{grid-template-columns:1fr 1fr}.mg-subs{grid-template-columns:1fr}.mg-acts{min-width:0;width:100%}}
+@media(max-width:560px){.mg-stats{grid-template-columns:1fr}.mg-panel{padding:16px}.mg-hero{padding:20px}.mg-hero .primary{width:100%}.mg-focus{padding:16px}}
+@media(prefers-reduced-motion:reduce){.mg-mod,.mg-pill,.mg-act,.mg-sub{transition:none}}
+
+.mg-focus-head>div:first-child{flex:1;min-width:240px}
+.mg-acts{flex:0 0 290px;justify-items:stretch}
+.mg-act{width:100%}
+.mg-subs{align-items:start}
+@media(max-width:900px){.mg-acts{flex:1 1 100%}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -629,13 +753,15 @@ window.MEDQUEST_CONFIG={
     </section>
 
     <section id="questions" class="page">
-      <div id="questionsToolbar" class="toolbar"><div><h2 style="margin:0">📚 Questões</h2><p class="muted" style="margin:5px 0 0">Filtre por período, disciplina e dificuldade. <span id="qCount" class="q-count"></span></p></div><div class="filters"><input id="filterSearch" type="search" placeholder="Buscar no enunciado..." oninput="renderQuestions()"><select id="filterDifficulty" onchange="renderQuestions()"><option value="">Toda dificuldade</option><option value="facil">Fácil</option><option value="medio">Média</option><option value="dificil">Difícil</option></select><select id="filterPeriod" onchange="loadQuestions()"><option value="">Todos os períodos</option></select><select id="filterDiscipline" onchange="loadQuestions()"><option value="">Todas as disciplinas</option></select></div></div>
+      <div id="gradeView" class="hidden"></div>
+      <div id="gradeCrumb" class="crumb hidden"></div>
+      <div id="questionsToolbar" class="toolbar"><div><h2 style="margin:0">📚 Questões</h2><p class="muted" style="margin:5px 0 0">Filtre por período, disciplina e dificuldade. <span id="qCount" class="q-count"></span></p></div><div class="filters"><input id="filterSearch" type="search" placeholder="Buscar no enunciado..." oninput="renderQuestions()"><select id="filterDifficulty" onchange="renderQuestions()"><option value="">Toda dificuldade</option><option value="facil">Fácil</option><option value="medio">Média</option><option value="dificil">Difícil</option></select><select id="filterPeriod" onchange="window._gradeFilter=null;updateCrumb();loadQuestions()"><option value="">Todos os períodos</option></select><select id="filterDiscipline" onchange="loadQuestions()"><option value="">Todas as disciplinas</option></select></div></div>
       <div id="questionsState" class="empty"><strong>Carregando banco de questões...</strong><span>Aguarde.</span></div>
       <div id="questionList" class="question-list hidden"></div>
       <div id="solverView" class="hidden"></div>
     </section>
 
-    <section id="simulados" class="page"><div class="card"><h2>🎯 Simulados</h2><p class="muted">A estrutura está pronta. Vamos conectar o gerador de simulados depois que o banco de questões estiver populado.</p></div></section>
+    <section id="simulados" class="page"><div class="card"><h2>🎯 Simulados</h2><p class="muted">Por enquanto, monte seu próprio treino em <b>Questões → Minha Grade</b>: marque os assuntos que quiser com o botão + e clique em "Resolver selecionados".</p><button class="primary" style="margin-top:12px" onclick="go('questions')">Ir para Minha Grade →</button></div></section>
     <section id="errors" class="page"><div class="card"><h2>🧠 Caderno de erros</h2><p class="muted">Questões em que a sua última resposta foi errada. Acerte-as de novo para saírem do caderno.</p><div id="missionBanner"></div><div id="errorList" class="empty" style="margin-top:15px">Ainda não há tentativas registradas.</div></div></section>
     <section id="performance" class="page"><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="stat-title">Aproveitamento</div><div id="perfRate" class="kpi">0%</div><div class="subkpi">respostas registradas</div></div><div class="card"><div class="stat-title">Acertos</div><div id="perfCorrect" class="kpi">0</div><div class="subkpi">questões</div></div><div class="card"><div class="stat-title">Respondidas</div><div id="perfTotal" class="kpi">0</div><div class="subkpi">questões</div></div></div><div class="card" style="margin-top:18px"><h2>📈 Por disciplina</h2><div id="disciplinePerf" class="empty" style="margin-top:14px">Ainda não há dados suficientes.</div></div></section>
 
@@ -662,8 +788,9 @@ window.MEDQUEST_CONFIG={
           <div class="card">
             <div class="card-head"><h2 id="aFormTitle">➕ Cadastrar questão</h2></div>
             <form class="admin-form" onsubmit="createQuestion(event)">
-              <div class="admin-two"><label>Período<select id="aPeriod" required></select></label><label>Disciplina<select id="aDiscipline" required onchange="loadAdminSubjects()"></select></label></div>
-              <div class="admin-two"><label>Assunto<select id="aSubject" required></select></label><label>Prova<select id="aExam"></select></label></div>
+              <div class="admin-two"><label>Período<select id="aPeriod" required onchange="loadAdminExams();loadAdminModuleSelect().then(loadAdminSubjects)"></select></label><label>Disciplina<select id="aDiscipline" required onchange="loadAdminSubjects()"></select></label></div>
+              <label id="aModuleWrap">Módulo <small style="font-weight:500;color:var(--muted)">(opcional — escolha para ver os assuntos dele)</small><select id="aModule" onchange="loadAdminSubjects()"><option value="">Sem módulo</option></select></label>
+              <div class="admin-two"><label>Assunto<select id="aSubject" required onchange="syncDisciplineFromSubject()"></select></label><label>Prova<select id="aExam"></select></label></div>
               <label>Enunciado<textarea id="aStatement" placeholder="Digite o enunciado da questão..." required></textarea></label>
               <div class="admin-two"><label>A<input id="aA" required></label><label>B<input id="aB" required></label></div>
               <div class="admin-two"><label>C<input id="aC" required></label><label>D<input id="aD" required></label></div>
@@ -682,9 +809,18 @@ window.MEDQUEST_CONFIG={
 
       <div id="adminCatalogPane" class="admin-pane">
         <div class="catalog-grid">
-          <div class="card"><h3>📅 Novo período</h3><form class="admin-form" onsubmit="createPeriod(event)"><label>Nome<input id="cPeriodName" placeholder="Ex.: P2" required></label><label>Ordem<input id="cPeriodOrder" type="number" value="2" min="0"></label><button class="primary">Adicionar período</button><div id="periodStatus"></div></form></div>
+          <div class="card"><h3>📅 Novo período</h3><form class="admin-form" onsubmit="createPeriod(event)"><label>Nome<input id="cPeriodName" placeholder="Ex.: P2" required></label><label>Ordem<input id="cPeriodOrder" type="number" value="2" min="0"></label><label>Módulos deste período <small style="font-weight:500;color:var(--muted)">(opcional — um por linha)</small><textarea id="cPeriodModules" placeholder="Módulo 1 — Nome do módulo&#10;Módulo 2 — Nome do módulo"></textarea></label><button class="primary">Adicionar período</button><div id="periodStatus"></div></form></div>
           <div class="card"><h3>📚 Nova disciplina</h3><form class="admin-form" onsubmit="createDiscipline(event)"><label>Nome<input id="cDisciplineName" placeholder="Ex.: Fisiologia" required></label><button class="primary">Adicionar disciplina</button><div id="disciplineStatus"></div></form></div>
-          <div class="card"><h3>🧠 Novo assunto</h3><form class="admin-form" onsubmit="createSubject(event)"><label>Disciplina<select id="cSubjectDiscipline" required></select></label><label>Nome<input id="cSubjectName" placeholder="Ex.: Cardiovascular" required></label><button class="primary">Adicionar assunto</button><div id="subjectStatus"></div></form></div>
+          <div class="card"><h3>🧠 Novo assunto</h3><form class="admin-form" onsubmit="createSubject(event)">
+            <label>Módulo <small style="font-weight:500;color:var(--muted)">(opcional)</small><select id="cSubjectModule"><option value="">Sem módulo</option></select></label>
+            <label>Disciplina<select id="cSubjectDiscipline" required></select></label>
+            <label>Seção <small style="font-weight:500;color:var(--muted)">(opcional — ex.: APG)</small><input id="cSubjectSection" list="sectionList" placeholder="Ex.: APG"></label><datalist id="sectionList"></datalist>
+            <label>Assunto<input id="cSubjectName" placeholder="Ex.: 01 - Fisiologia Cardiovascular"></label>
+            <label>Objetivos de aprendizagem <small style="font-weight:500;color:var(--muted)">(opcional — um por linha)</small><textarea id="cSubjectObjectives"></textarea></label>
+            <details><summary style="cursor:pointer;font-weight:800">➕ Adicionar vários de uma vez</summary><label style="margin-top:10px">Lista de assuntos<textarea id="cSubjectBulk" placeholder="01 - Título do assunto | objetivo 1; objetivo 2&#10;02 - Outro assunto"></textarea></label><small class="muted">Um por linha. O número do começo vira a ordem. Tudo depois de | vira os objetivos. Usa o módulo, a disciplina e a seção escolhidos acima.</small></details>
+            <button class="primary">Adicionar assunto(s)</button><div id="subjectStatus"></div></form></div>
+          <div class="card"><h3>🧩 Novo módulo</h3><form class="admin-form" onsubmit="createModule(event)"><label>Período<select id="cModulePeriod" required></select></label><label>Nome<input id="cModuleName" placeholder="Ex.: Módulo 1 — Introdução" required></label><label>Ordem <small style="font-weight:500;color:var(--muted)">(vazio = depois dos outros)</small><input id="cModuleOrder" type="number" min="0"></label><button class="primary">Adicionar módulo</button><div id="moduleStatus"></div></form></div>
+          <div class="card" style="grid-column:1/-1"><h3>🗂️ Módulos cadastrados</h3><div id="adminModuleList" class="admin-list"><div class="empty">Carregando...</div></div></div>
           <div class="card"><h3>🧪 Nova prova</h3><form class="admin-form" onsubmit="createExam(event)"><label>Período<select id="cExamPeriod"></select></label><label>Nome<input id="cExamName" placeholder="Ex.: Integradora 1"></label><button class="primary">Adicionar prova</button><div id="examStatus"></div></form></div>
         </div>
       </div>
@@ -698,7 +834,7 @@ window.MEDQUEST_CONFIG={
 const cfg=window.MEDQUEST_CONFIG||{};
 const supabaseReady=cfg.SUPABASE_URL&&cfg.SUPABASE_URL.startsWith('https://')&&cfg.SUPABASE_PUBLISHABLE_KEY&&cfg.SUPABASE_PUBLISHABLE_KEY.startsWith('sb_publishable_');
 const sb=supabaseReady?window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
-const labels={home:['Olá! 👋','Continue de onde parou.'],questions:['Questões','Questões carregadas diretamente do banco.'],simulados:['Simulados','Conjuntos de questões para testar seu desempenho.'],errors:['Caderno de erros','Revise as questões que você errou.'],performance:['Desempenho','Acompanhe sua evolução nos estudos.'],admin:['Administração','Gerencie o conteúdo do MedQuest.'],profile:['Perfil','Gerencie seus dados.']};
+const labels={home:['Olá! 👋','Continue de onde parou.'],questions:['Questões','Escolha o período e o que vai estudar.'],simulados:['Simulados','Conjuntos de questões para testar seu desempenho.'],errors:['Caderno de erros','Revise as questões que você errou.'],performance:['Desempenho','Acompanhe sua evolução nos estudos.'],admin:['Administração','Gerencie o conteúdo do MedQuest.'],profile:['Perfil','Gerencie seus dados.']};
 let currentUser=null,isAdmin=false;
 function status(id,msg,type='error'){const e=document.getElementById(id);if(!e)return;e.innerHTML=msg;e.className=(type==='ok'?'success-box':'error-box')}
 function togglePassword(){const p=document.getElementById('password');p.type=p.type==='password'?'text':'password'}
@@ -725,13 +861,14 @@ async function signOut(){if(sb)await sb.auth.signOut();currentUser=null;isAdmin=
 async function bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(!session)return;currentUser=session.user;document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');await loadProfile();await loadFilters();await loadQuestions();await loadAttempts();go('home')}
 async function loadProfile(){if(!currentUser)return;const {data,error}=await sb.from('profiles').select('full_name,role').eq('id',currentUser.id).maybeSingle();const name=(data?.full_name||currentUser.email?.split('@')[0]||'Aluno');isAdmin=!error&&data?.role==='admin';document.getElementById('accountName').textContent=name;document.getElementById('profileName').value=name;document.getElementById('profileEmail').value=currentUser.email||'';const letter=name.trim().charAt(0).toUpperCase()||'A';document.getElementById('avatar').textContent=letter;document.getElementById('topAvatar').textContent=letter;document.getElementById('adminNav').style.display=isAdmin?'flex':'none';if(isAdmin)await loadAdminAll()}
 async function loadFilters(){if(!sb)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const ps=document.getElementById('filterPeriod'),ds=document.getElementById('filterDiscipline');ps.innerHTML='<option value="">Todos os períodos</option>'+(p.data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');ds.innerHTML='<option value="">Todas as disciplinas</option>'+(d.data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');}
-async function loadQuestions(){if(!sb)return;const state=document.getElementById('questionsState'),list=document.getElementById('questionList');state.classList.remove('hidden');list.classList.add('hidden');let q=sb.from('questions').select('id,statement,difficulty,discipline_id,subject_id,period_id,disciplines(name),subjects(name),periods(name)').eq('is_published',true).order('id',{ascending:true});const period=document.getElementById('filterPeriod').value,discipline=document.getElementById('filterDiscipline').value;if(period)q=q.eq('period_id',Number(period));if(discipline)q=q.eq('discipline_id',Number(discipline));const {data,error}=await q;if(error){state.innerHTML='<strong>Não foi possível carregar as questões.</strong><span>'+escapeHtml(error.message)+'</span>';return}if(!data?.length){state.innerHTML='<strong>Nenhuma questão publicada ainda.</strong><span>O banco está conectado, mas não há questões publicadas.</span>';return}window._qData=data;renderQuestions()}
+async function loadQuestions(){if(!sb)return;const state=document.getElementById('questionsState'),list=document.getElementById('questionList');state.classList.remove('hidden');list.classList.add('hidden');let q=sb.from('questions').select('id,statement,difficulty,discipline_id,subject_id,period_id'+(window._modulesOk?',module_id':'')+',disciplines(name),subjects(name),periods(name)').eq('is_published',true).order('id',{ascending:true});const period=document.getElementById('filterPeriod').value,discipline=document.getElementById('filterDiscipline').value;if(period)q=q.eq('period_id',Number(period));if(discipline)q=q.eq('discipline_id',Number(discipline));const {data,error}=await q;if(error){state.innerHTML='<strong>Não foi possível carregar as questões.</strong><span>'+escapeHtml(error.message)+'</span>';return}if(!data?.length){window._qData=[];window._qShown=[];state.innerHTML='<strong>Nenhuma questão publicada aqui ainda.</strong><span>Quando novas questões forem publicadas, elas aparecem nesta lista.</span>';return}window._qData=data;renderQuestions()}
 
 function renderQuestions(){
   const state=document.getElementById('questionsState'),list=document.getElementById('questionList');
   const term=(document.getElementById('filterSearch')?.value||'').toLowerCase().trim();
   const diff=document.getElementById('filterDifficulty')?.value||'';
-  const data=(window._qData||[]).filter(x=>(!diff||x.difficulty===diff)&&(!term||(x.statement||'').toLowerCase().includes(term)||String(x.id)===term));
+  const gf=window._gradeFilter;
+  const data=(window._qData||[]).filter(x=>(!diff||x.difficulty===diff)&&(!term||(x.statement||'').toLowerCase().includes(term)||String(x.id)===term)&&(!gf||(String(x.period_id)===String(gf.periodId)&&(gf.moduleId==null||(gf.moduleId==='none'?x.module_id==null:String(x.module_id)===String(gf.moduleId))))));
   const c=document.getElementById('qCount');if(c)c.textContent='· '+data.length+(data.length===1?' questão':' questões');
   if(!data.length){state.innerHTML='<strong>Nenhuma questão encontrada.</strong><span>Tente mudar os filtros.</span>';state.classList.remove('hidden');list.classList.add('hidden');return}
   const dl={facil:['Fácil','green'],medio:['Média','amber'],dificil:['Difícil','red']};
@@ -753,7 +890,7 @@ async function openQuestion(id,ids,from){
 }
 async function showSolver(id){
   const view=document.getElementById('solverView');
-  ['questionsToolbar','questionsState','questionList'].forEach(x=>document.getElementById(x).classList.add('hidden'));
+  ['questionsToolbar','questionsState','questionList','gradeView','gradeCrumb'].forEach(x=>document.getElementById(x).classList.add('hidden'));
   view.classList.remove('hidden');
   view.innerHTML='<div class="empty"><strong>Carregando questão...</strong></div>';
   window.scrollTo({top:0,behavior:'smooth'});
@@ -766,7 +903,7 @@ function renderSolver(){
   const opts=['A','B','C','D','E'].map(L=>({L,t:q['option_'+L.toLowerCase()]})).filter(o=>o.t);
   const dl={facil:['Fácil','green'],medio:['Média','amber'],dificil:['Difícil','red']}[q.difficulty];
   const pos=solverIds.length>1?`Questão ${solverIdx+1} de ${solverIds.length}`:'';
-  const back=solverFrom==='errors'?'← Voltar ao caderno de erros':'← Voltar às questões';
+  const back=solverFrom==='errors'?'← Voltar ao caderno de erros':solverFrom==='grade'?'← Voltar à grade':'← Voltar às questões';
   view.innerHTML=`<div class="solver-top"><button class="small-btn" onclick="closeSolver()">${back}</button><span class="muted">${pos}</span></div>
   <div class="card solver-card">
     <div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Disciplina')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge">${escapeHtml(q.periods?.name||'Período')}</span>${dl?`<span class="badge ${dl[1]}">${dl[0]}</span>`:''}</div>
@@ -818,8 +955,10 @@ function closeSolver(noNav){
   v.classList.add('hidden');v.innerHTML='';
   document.getElementById('questionsToolbar').classList.remove('hidden');
   document.getElementById('questionList').classList.remove('hidden');
+  updateCrumb();
   if(window._qData)renderQuestions();
   if(!noNav&&solverFrom==='errors')go('errors');
+  if(!noNav&&solverFrom==='grade')go('questions');
 }
 
 /* ===== Gamificação, missão, conquistas e tutorial ===== */
@@ -878,9 +1017,23 @@ function computeGame(rows,wrongRows,discList,silent){
   }
   window._gm=g;
 }
+async function ensureGrade(){
+  if(!sb)return;
+  const [p,m,sj]=await Promise.all([
+    sb.from('periods').select('id,name,sort_order').order('sort_order',{ascending:true}),
+    sb.from('modules').select('id,period_id,name,sort_order').order('sort_order',{ascending:true}),
+    sb.from('subjects').select('id,name,discipline_id,module_id,section,sort_order,objectives').order('sort_order',{ascending:true})
+  ]);
+  window._periods=p.data||[];
+  window._modulesOk=!m.error;
+  window._modules=m.error?[]:(m.data||[]);
+  window._assuntosOk=!m.error&&!sj.error;
+  window._subjects=window._assuntosOk?(sj.data||[]):[];
+}
 async function ensureAllQ(){
   if(!sb)return;
-  const {data,error}=await sb.from('questions').select('id,disciplines(name),subjects(name)').eq('is_published',true).order('id',{ascending:true}).limit(5000);
+  await ensureGrade();
+  const {data,error}=await sb.from('questions').select('id,period_id,subject_id,discipline_id'+(window._modulesOk?',module_id':'')+',disciplines(name),subjects(name)').eq('is_published',true).order('id',{ascending:true}).limit(5000);
   if(!error)window._allQ=data||[];
 }
 function updateHome(){
@@ -968,12 +1121,159 @@ function renderOnb(){
 function nextOnb(){onbStep++;renderOnb()}
 function closeOnboarding(){const o=document.getElementById('onbOverlay');if(o)o.remove();mqLS.set('mq_onb_'+(currentUser?currentUser.id:''),'1')}
 
+/* ===== Minha Grade (painel acadêmico) ===== */
+window._gradeFilter=null;
+window._grade={periodId:null,moduleId:null,section:'all',sel:{},open:{}};
+let _gradeLoaded=false;
+function gradeHide(){['questionsToolbar','questionsState','questionList','gradeCrumb','solverView'].forEach(x=>{const e=document.getElementById(x);if(e)e.classList.add('hidden')})}
+function gradeReady(){return !!((window._periods||[]).length)}
+function showGrade(){
+  if(!gradeReady()){
+    const gv=document.getElementById('gradeView');if(gv)gv.classList.add('hidden');
+    window._gradeFilter=null;updateCrumb();
+    document.getElementById('questionsToolbar').classList.remove('hidden');
+    return;
+  }
+  if(!_gradeLoaded){_gradeLoaded=true;try{const sv=JSON.parse(mqLS.get('mq_grade')||'null');if(sv){window._grade.periodId=sv.p;window._grade.moduleId=sv.m}}catch(e){}}
+  gradeHide();
+  document.getElementById('gradeView').classList.remove('hidden');
+  renderGrade();
+}
+function showList(){
+  const gv=document.getElementById('gradeView');if(gv)gv.classList.add('hidden');
+  document.getElementById('questionsToolbar').classList.remove('hidden');
+  updateCrumb();
+}
+function showAllQuestions(){
+  window._gradeFilter=null;
+  const G=window._grade;const fp=document.getElementById('filterPeriod');
+  if(fp)fp.value=G.periodId!=null?String(G.periodId):'';
+  const fd=document.getElementById('filterDiscipline');if(fd)fd.value='';
+  showList();loadQuestions();
+}
+function updateCrumb(){
+  const c=document.getElementById('gradeCrumb');if(!c)return;
+  if(!gradeReady()){c.classList.add('hidden');c.innerHTML='';return}
+  const gv=document.getElementById('gradeView');
+  if(gv&&!gv.classList.contains('hidden')){c.classList.add('hidden');return}
+  c.innerHTML='<button class="small-btn" onclick="showGrade()">← Minha grade</button>';
+  c.classList.remove('hidden');
+}
+function qsDone(list){const lat=window._latest||{};const done=list.filter(q=>lat[q.id]!==undefined).length;return {n:list.length,done,pct:list.length?Math.round(done/list.length*100):0}}
+function pad2(n){return String(n).padStart(2,'0')}
+function deriveSubs(questions,secOf){
+  const seen={},out=[];
+  questions.forEach(q=>{if(q.subject_id==null||seen[q.subject_id])return;seen[q.subject_id]=1;const sj=(window._subjects||[]).find(x=>String(x.id)===String(q.subject_id));out.push({id:q.subject_id,name:sj?sj.name:((q.subjects&&q.subjects.name)||'Assunto'),section:secOf(q),sort_order:0,objectives:sj?sj.objectives:null})});
+  return out;
+}
+function gradeModules(pid){
+  if(!window._modulesOk){
+    const allq0=(window._allQ||[]).filter(q=>String(q.period_id)===String(pid));
+    const byD={},order=[];
+    allq0.forEach(q=>{const k=q.discipline_id!=null?String(q.discipline_id):'x';if(!byD[k]){byD[k]={name:(q.disciplines&&q.disciplines.name)||'Geral',qs:[]};order.push(k)}byD[k].qs.push(q)});
+    return order.sort((a,b)=>String(byD[a].name).localeCompare(String(byD[b].name))).map((k,i)=>{
+      const qs=byD[k].qs;
+      const items=deriveSubs(qs,()=>'Assuntos').map(x=>({...x,qs:qs.filter(q=>String(q.subject_id)===String(x.id))}));
+      return {id:'d'+k,num:pad2(i+1),name:byD[k].name,questions:qs,items,real:true};
+    });
+  }
+  const mods=(window._modules||[]).filter(m=>String(m.period_id)===String(pid)).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0)||a.id-b.id);
+  const allq=(window._allQ||[]).filter(q=>String(q.period_id)===String(pid));
+  const subs=window._subjects||[];
+  const out=mods.map((m,i)=>{
+    const questions=allq.filter(q=>String(q.module_id)===String(m.id));
+    const own=subs.filter(x=>String(x.module_id)===String(m.id));
+    const have=new Set(own.map(x=>String(x.id)));
+    const extra=deriveSubs(questions.filter(q=>q.subject_id!=null&&!have.has(String(q.subject_id))),()=>'Outros assuntos');
+    const items=own.concat(extra).map(x=>({...x,qs:allq.filter(q=>String(q.subject_id)===String(x.id))}));
+    return {id:String(m.id),num:pad2(i+1),name:m.name,questions,items,real:true};
+  });
+  const loose=allq.filter(q=>q.module_id==null);
+  if(loose.length){
+    const items=deriveSubs(loose,q=>(q.disciplines&&q.disciplines.name)||'Assuntos').map(x=>({...x,qs:loose.filter(q=>String(q.subject_id)===String(x.id))}));
+    out.push({id:'none',num:'★',name:'Questões gerais',questions:loose,items,real:false});
+  }
+  return out;
+}
+function gradeHasContent(p){return (window._modules||[]).some(m=>String(m.period_id)===String(p.id))||(window._allQ||[]).some(q=>String(q.period_id)===String(p.id))}
+function gradeNormalize(){
+  const G=window._grade,per=window._periods||[];
+  if(!per.find(p=>String(p.id)===String(G.periodId)&&gradeHasContent(p))){const f=per.find(gradeHasContent)||per[0];G.periodId=f?f.id:null;G.moduleId=null;G.sel={};G.section='all'}
+  const mods=gradeModules(G.periodId);
+  if(!mods.find(m=>m.id===String(G.moduleId))){const f=mods.find(m=>m.questions.length)||mods[0];G.moduleId=f?f.id:null;G.sel={};G.section='all'}
+  mqLS.set('mq_grade',JSON.stringify({p:G.periodId,m:G.moduleId}));
+}
+function gradeSelectPeriod(id){const G=window._grade;G.periodId=id;G.moduleId=null;G.sel={};G.section='all';G.open={};renderGrade()}
+function gradeSelectModule(id){const G=window._grade;G.moduleId=id;G.sel={};G.section='all';G.open={};renderGrade()}
+function gradeSection(sec){window._grade.section=sec;renderGrade()}
+function gradeToggle(id){const G=window._grade;if(G.sel[id])delete G.sel[id];else G.sel[id]=1;renderGrade()}
+function gradeObj(id){const G=window._grade;G.open[id]=!G.open[id];renderGrade()}
+function gradeCurrent(){const G=window._grade;return gradeModules(G.periodId).find(m=>m.id===String(G.moduleId))}
+function gradeStudyQs(qs){
+  if(!qs.length){toast('Ainda não há questões publicadas aqui.');return}
+  const lat=window._latest||{};
+  const ids=qs.map(q=>q.id).sort((a,b)=>((lat[a]===undefined?0:1)-(lat[b]===undefined?0:1))||a-b);
+  openQuestion(ids[0],ids,'grade');
+}
+function gradeStudy(subjectId){const cur=gradeCurrent();if(!cur)return;const it=cur.items.find(x=>String(x.id)===String(subjectId));gradeStudyQs(it?it.qs:[])}
+function gradeRunSelected(){const cur=gradeCurrent(),G=window._grade;if(!cur)return;let qs=[];cur.items.forEach(it=>{if(G.sel[it.id])qs=qs.concat(it.qs)});gradeStudyQs(qs)}
+function gradeRunModule(){const cur=gradeCurrent();if(!cur)return;gradeStudyQs(cur.questions)}
+function renderGrade(){
+  const gv=document.getElementById('gradeView');if(!gv||gv.classList.contains('hidden'))return;
+  gradeNormalize();
+  const G=window._grade,per=window._periods||[],p=per.find(x=>String(x.id)===String(G.periodId));
+  const mods=gradeModules(G.periodId),cur=mods.find(m=>m.id===String(G.moduleId));
+  const realMods=mods.filter(m=>m.real).length;
+  const MODO=window._modulesOk;const U1=MODO?'Módulos':'Disciplinas';
+  const nSel=cur?cur.items.filter(it=>G.sel[it.id]).length:0;
+  const selQ=cur?cur.items.filter(it=>G.sel[it.id]).reduce((a,it)=>a+it.qs.length,0):0;
+  const withContent=per.filter(gradeHasContent).length;
+  let h=`<div class="mg-hero"><div class="mg-ico">📚</div><div class="mg-hero-text"><span class="mg-kicker">Área acadêmica</span><h2>Minha Grade</h2><p>Navegue pelos módulos do seu período, consulte os objetivos de aprendizagem e resolva questões por assunto.</p><div class="mg-chips"><span class="mg-chip2">🩺 MEDQUEST</span><span class="mg-chip2">🎓 ${escapeHtml(p?p.name:'—')}</span></div></div><button class="primary" onclick="showAllQuestions()">Ver todas as questões →</button></div>`;
+  h+=`<div class="mg-info">ⓘ <span>Você está visualizando <b>${escapeHtml(p?p.name:'')}</b>. Para ver outro período, escolha uma das opções abaixo.</span></div>`;
+  if(isAdmin&&!window._modulesOk)h+=`<div class="mg-info" style="border-color:#f3dfb1;background:#fff7e7">⚠️ <span><b>Administrador:</b> os módulos ainda não foram ativados no banco. Por enquanto cada disciplina aparece no lugar do módulo. Execute o <b>modules_migration.sql</b> no Supabase para ativar módulos, seções e objetivos.</span></div>`;
+  h+=`<div class="mg-stats"><div class="mg-stat first"><i>📅</i><div><small>Período selecionado</small><b>${escapeHtml(p?p.name:'—')}</b></div></div><div class="mg-stat"><i>🧩</i><div><small>${U1} liberad${MODO?'os':'as'}</small><b>${realMods}</b></div></div><div class="mg-stat"><i>📋</i><div><small>Assuntos ${MODO?'neste módulo':'nesta disciplina'}</small><b>${cur?cur.items.length:0}</b></div></div><div class="mg-stat"><i>🎯</i><div><small>Questões disponíveis</small><b>${cur?cur.questions.length:0}</b></div></div></div>`;
+  h+=`<div class="mg-row" style="margin-top:22px"><div><div class="mg-label">Períodos disponíveis</div><h3>Escolha o período que deseja explorar</h3></div><span class="r">${withContent} período(s) com conteúdo</span></div>`;
+  h+=`<div class="mg-pills">${per.map(x=>{const has=gradeHasContent(x),on=String(x.id)===String(G.periodId);return `<button class="mg-pill${on?' on':''}${has?'':' soon'}"${has?` onclick="gradeSelectPeriod(${x.id})"`:' disabled title="Conteúdo em breve"'}>📅 ${escapeHtml(x.name)}</button>`}).join('')}</div>`;
+  h+=`<div class="mg-panel"><div class="mg-row"><div><div class="mg-label">Período selecionado</div><h2>${escapeHtml(p?p.name:'')}</h2></div><span class="mg-crumb">MedQuest → ${escapeHtml(p?p.name:'')}${cur?' → '+escapeHtml(cur.name):''}</span></div><hr class="mg-sep">`;
+  h+=`<div class="mg-row"><div><div class="mg-label">${U1}</div><h3>Conteúdo do período</h3></div><span class="r">Selecione ${MODO?'um módulo':'uma disciplina'} para abrir</span></div>`;
+  if(!mods.length){
+    h+=`<div class="empty" style="margin-top:14px"><strong>${MODO?'Os módulos deste período ainda não foram cadastrados.':'Este período ainda não tem questões publicadas.'}</strong><span>Enquanto isso, você pode resolver todas as questões do período.</span><br><br><button class="primary" onclick="showAllQuestions()">Ver questões do período →</button></div></div>`;
+    gv.innerHTML=h;return;
+  }
+  h+=`<div class="mg-mods">${mods.map(m=>{const st=qsDone(m.questions),on=m.id===String(G.moduleId);return `<button class="mg-mod${on?' on':''}${m.items.length||m.questions.length?'':' empty'}" onclick="gradeSelectModule('${m.id}')"><span class="n">${m.num}</span><span><b>${escapeHtml(m.name)}</b><small>${m.items.length?m.items.length+' assunto(s) · ':''}${m.questions.length?m.questions.length+' questão(ões)':'Em breve'}</small></span><span class="go">${on?'✓':'›'}</span></button>`}).join('')}</div>`;
+  if(cur){
+    const st=qsDone(cur.questions);
+    h+=`<div class="mg-focus"><div class="mg-focus-head"><div><div class="mg-label">${MODO?'Módulo':'Disciplina'} em foco</div><h3>${escapeHtml(cur.name)}</h3><p>${cur.items.length?'Marque os assuntos com <b>+</b> para resolver só o que escolher, ou toque no título de um assunto para estudá-lo.':'As questões deste módulo ainda não estão separadas por assunto.'}</p></div><div class="mg-acts"><button class="mg-act hl" onclick="gradeRunModule()"${cur.questions.length?'':' disabled'}><b>${MODO?'Resolver o módulo todo':'Resolver a disciplina toda'}</b><span>${cur.questions.length} questão(ões) · ${st.done} respondida(s)</span></button><button class="mg-act" onclick="gradeRunSelected()"${selQ?'':' disabled'}><b>Resolver selecionados${nSel?' ('+nSel+')':''}</b><span>${nSel?selQ+' questão(ões) dos assuntos marcados':'Marque assuntos com o botão +'}</span></button></div></div>`;
+    h+=`<div class="mg-prog"><div class="progress"><span style="width:${st.pct}%"></span></div><div class="muted" style="font-size:12px;margin-top:6px">${st.pct}% respondido</div></div>`;
+    if(cur.items.length){
+      const bySec={};cur.items.forEach(it=>{const k=it.section||'Assuntos';(bySec[k]=bySec[k]||[]).push(it)});
+      const secs=Object.keys(bySec).sort((a,b)=>Math.min(...bySec[a].map(x=>x.sort_order||999))-Math.min(...bySec[b].map(x=>x.sort_order||999)));
+      h+=`<div class="mg-label" style="margin-top:16px">Seções</div><div class="mg-secs">${secs.length>1?`<button class="mg-sec${G.section==='all'?' on':''}" onclick="gradeSection('all')">Todas</button>`:''}${secs.map(k=>`<button class="mg-sec${(G.section===k||(secs.length===1))?' on':''}" onclick="gradeSection(${JSON.stringify(k).replace(/"/g,'&quot;')})">${escapeHtml(k)}</button>`).join('')}</div>`;
+      secs.filter(k=>G.section==='all'||G.section===k||secs.length===1).forEach(k=>{
+        const list=bySec[k].slice().sort((a,b)=>(a.sort_order||0)-(b.sort_order||0)||String(a.name).localeCompare(String(b.name)));
+        h+=`<div class="mg-secbox"><h4>${escapeHtml(k)}</h4><div class="mg-subs">${list.map(it=>{
+          const st2=qsDone(it.qs),on=!!G.sel[it.id],nq=!it.qs.length;
+          const title=(it.sort_order>0?pad2(it.sort_order)+' - ':'')+it.name;
+          const objs=String(it.objectives||'').split(/\n|;/).map(x=>x.trim()).filter(Boolean);
+          return `<div class="mg-sub${on?' sel':''}${nq?' nq':''}"><div class="mg-sub-t"${nq?'':` onclick="gradeStudy(${it.id})" title="Estudar este assunto"`}>${escapeHtml(title)}</div><div class="mg-sub-m">${objs.length?`<button class="mg-obj-btn" onclick="gradeObj(${it.id})">${G.open[it.id]?'Ocultar objetivos':'Ver objetivos'}</button>`:''}<span class="mg-cnt">${nq?'sem questões ainda':it.qs.length+' questão(ões) · '+st2.done+' respondida(s)'}</span></div>${objs.length&&G.open[it.id]?`<ul class="mg-objs">${objs.map(o=>`<li>${escapeHtml(o)}</li>`).join('')}</ul>`:''}<button class="mg-plus${on?' on':''}" onclick="gradeToggle(${it.id})"${nq?' disabled':''} title="${on?'Remover da seleção':'Adicionar à seleção'}">${on?'✓':'+'}</button></div>`}).join('')}</div></div>`;
+      });
+    }else if(!cur.questions.length){
+      h+=`<div class="empty" style="margin-top:16px"><strong>Conteúdo em preparação.</strong><span>Assim que os assuntos e as questões deste módulo forem publicados, eles aparecem aqui.</span></div>`;
+    }
+    h+=`</div>`;
+  }
+  h+=`</div>`;
+  gv.innerHTML=h;
+}
+function refreshGrade(){renderGrade()}
+
 let weakestDisciplineId=null;
 function reviewWeakest(){
   if(!weakestDisciplineId){go('questions');return}
   const sel=document.getElementById('filterDiscipline');
   if(sel)sel.value=String(weakestDisciplineId);
   go('questions');
+  showList();
   loadQuestions();
 }
 
@@ -1063,27 +1363,45 @@ async function loadAttempts(){
   computeGame(rows,wrongRows,list);
   await ensureAllQ();
   updateHome();
+  if(typeof refreshGrade==='function')refreshGrade();
   if(window._qData&&document.getElementById('questionList')&&!document.getElementById('questionList').classList.contains('hidden'))renderQuestions();
 }
 
 async function saveProfile(){if(!sb||!currentUser)return;const name=document.getElementById('profileName').value.trim()||'Aluno';const {error}=await sb.from('profiles').update({full_name:name}).eq('id',currentUser.id);if(error){status('profileStatus',error.message);return}await loadProfile();status('profileStatus','Perfil atualizado.','ok')}
-function go(id){if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?`Olá, ${document.getElementById('accountName').textContent}! 👋`:l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();window.scrollTo({top:0,behavior:'smooth'})}
+function go(id){if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);if(id==='questions'&&typeof showGrade==='function')showGrade();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?`Olá, ${document.getElementById('accountName').textContent}! 👋`:l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();window.scrollTo({top:0,behavior:'smooth'})}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
 function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane'&&!editingQuestionId)loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions()}
-async function loadAdminAll(){if(!isAdmin)return;await loadAdminStats();await loadAdminCatalogOptions();await loadAdminFormOptions();await loadAdminQuestions()}
+async function loadAdminAll(){if(!isAdmin)return;await ensureGrade();await loadAdminStats();await loadAdminCatalogOptions();await loadAdminFormOptions();await loadAdminQuestions()}
 async function loadAdminStats(){try{const [q,p,d,s]=await Promise.all([sb.from('questions').select('id,is_published',{count:'exact',head:true}),sb.from('questions').select('id',{count:'exact',head:true}).eq('is_published',true),sb.from('disciplines').select('id',{count:'exact',head:true}),sb.from('profiles').select('id',{count:'exact',head:true}).eq('role','student')]);document.getElementById('adminQuestionCount').textContent=q.count||0;document.getElementById('adminPublishedCount').textContent=p.count||0;document.getElementById('adminDisciplineCount').textContent=d.count||0;document.getElementById('adminStudentCount').textContent=s.count||0}catch(e){}}
-async function loadAdminCatalogOptions(){if(!isAdmin)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const periods=p.data||[],disc=d.data||[];document.getElementById('cSubjectDiscipline').innerHTML=disc.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');document.getElementById('cExamPeriod').innerHTML='<option value="">Sem período</option>'+periods.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');}
-async function loadAdminFormOptions(){if(!isAdmin)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const periods=p.data||[],disc=d.data||[];document.getElementById('aPeriod').innerHTML='<option value="">Selecione</option>'+periods.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');document.getElementById('aDiscipline').innerHTML='<option value="">Selecione</option>'+disc.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');await loadAdminSubjects();await loadAdminExams();}
-async function loadAdminSubjects(){const d=document.getElementById('aDiscipline').value;const select=document.getElementById('aSubject');if(!d){select.innerHTML='<option value="">Selecione a disciplina primeiro</option>';return}const {data}=await sb.from('subjects').select('id,name').eq('discipline_id',Number(d)).order('name');select.innerHTML='<option value="">Selecione</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('')}
+async function loadAdminCatalogOptions(){if(!isAdmin)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const periods=p.data||[],disc=d.data||[];document.getElementById('cSubjectDiscipline').innerHTML=disc.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');document.getElementById('cExamPeriod').innerHTML='<option value="">Sem período</option>'+periods.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');document.getElementById('cModulePeriod').innerHTML=periods.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');const modOpts=(window._modules||[]).map(x=>{const pp=periods.find(a=>String(a.id)===String(x.period_id));return `<option value="${x.id}">${escapeHtml((pp?pp.name+' · ':'')+x.name)}</option>`}).join('');const csm=document.getElementById('cSubjectModule');if(csm)csm.innerHTML='<option value="">Sem módulo</option>'+modOpts;const sl=document.getElementById('sectionList');if(sl)sl.innerHTML=[...new Set((window._subjects||[]).map(x=>x.section).filter(Boolean))].map(x=>`<option value="${escapeHtml(x)}">`).join('');await loadAdminModules();}
+async function loadAdminFormOptions(){if(!isAdmin)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const periods=p.data||[],disc=d.data||[];document.getElementById('aPeriod').innerHTML='<option value="">Selecione</option>'+periods.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');document.getElementById('aDiscipline').innerHTML='<option value="">Selecione</option>'+disc.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');await loadAdminModuleSelect();await loadAdminSubjects();await loadAdminExams();}
+async function loadAdminSubjects(){
+  const d=document.getElementById('aDiscipline').value,mEl=document.getElementById('aModule');
+  const m=(window._assuntosOk&&mEl)?mEl.value:'';
+  const select=document.getElementById('aSubject');
+  const fmt=x=>`<option value="${x.id}" data-disc="${x.discipline_id||''}" data-mod="${x.module_id||''}">${x.module_id&&x.sort_order>0?String(x.sort_order).padStart(2,'0')+' - ':''}${escapeHtml(x.name)}</option>`;
+  let rows=null;
+  if(m){const r=await sb.from('subjects').select('id,name,discipline_id,module_id,sort_order').eq('module_id',Number(m)).order('sort_order',{ascending:true});if(!r.error&&r.data&&r.data.length)rows=r.data}
+  if(!rows){
+    if(!d){select.innerHTML='<option value="">Selecione a disciplina primeiro</option>';return}
+    const cols=window._assuntosOk?'id,name,discipline_id,module_id,sort_order':'id,name,discipline_id';
+    const r=await sb.from('subjects').select(cols).eq('discipline_id',Number(d)).order('name');rows=r.data||[];
+  }
+  select.innerHTML='<option value="">Selecione</option>'+rows.map(fmt).join('');
+}
+function syncDisciplineFromSubject(){
+  const sel=document.getElementById('aSubject'),o=sel.options[sel.selectedIndex];
+  if(o&&o.dataset&&o.dataset.disc)document.getElementById('aDiscipline').value=o.dataset.disc;
+}
 async function loadAdminExams(){const p=document.getElementById('aPeriod').value;let q=sb.from('exams').select('id,name').order('name');if(p)q=q.or(`period_id.eq.${Number(p)},period_id.is.null`);const {data}=await q;document.getElementById('aExam').innerHTML='<option value="">Sem prova</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('')}
-async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};if(!payload.period_id||!payload.discipline_id||!payload.subject_id){status('adminQuestionStatus','Preencha período, disciplina e assunto.');return}let error;const editing=editingQuestionId;
+async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};if(!payload.period_id||!payload.discipline_id||!payload.subject_id){status('adminQuestionStatus','Preencha período, disciplina e assunto.');return}if(window._modulesOk){let mv=numOrNull('aModule');if(mv==null){const so=document.getElementById('aSubject'),oo=so.options[so.selectedIndex];if(oo&&oo.dataset&&oo.dataset.mod)mv=Number(oo.dataset.mod)}payload.module_id=mv}let error;const editing=editingQuestionId;
   if(editing){const r=await sb.from('questions').update(payload).eq('id',editing).select('id');error=r.error;if(!error&&!(r.data&&r.data.length))error={message:'Nenhuma linha foi alterada. Confirme que sua conta é administradora.'}}
   else{const r=await sb.from('questions').insert(payload);error=r.error}
   if(error){status('adminQuestionStatus','Erro ao salvar: '+escapeHtml(error.message));return}
   status('adminQuestionStatus',editing?'✅ Questão #'+editing+' atualizada.':'✅ Questão salva com sucesso.','ok');
   e.target.reset();resetEditState();await loadAdminAll();if(typeof loadQuestions==='function')loadQuestions();}
-async function loadAdminQuestions(){if(!isAdmin)return;const box=document.getElementById('adminQuestionList');const {data,error}=await sb.from('questions').select('id,statement,difficulty,is_published,created_at,disciplines(name),subjects(name),periods(name),exams(name)').order('id',{ascending:false}).limit(100);if(error){box.innerHTML='<div class="error-box">'+escapeHtml(error.message)+'</div>';return}if(!data?.length){box.innerHTML='<div class="empty"><strong>Nenhuma questão cadastrada.</strong><span>Crie a primeira na aba “Nova questão”.</span></div>';return}box.innerHTML=data.map(x=>`<div class="admin-q"><div><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'')}</span><span class="badge">${escapeHtml(x.periods?.name||'')}</span><span class="badge ${x.is_published?'green':'amber'}">${x.is_published?'Publicada':'Rascunho'}</span></div><h4>#${x.id} — ${escapeHtml(x.subjects?.name||'Sem assunto')}</h4><p>${escapeHtml(x.statement).slice(0,220)}${x.statement.length>220?'...':''}</p></div><div class="admin-actions"><button class="small-btn" onclick="editQuestion(${x.id})">✏️ Editar</button><button class="small-btn ${x.is_published?'unpublish':'publish'}" onclick="toggleQuestion(${x.id},${!x.is_published})">${x.is_published?'Despublicar':'Publicar'}</button><button class="small-btn" style="color:#b42318;border-color:#f3c9c9" onclick="deleteQuestion(${x.id})">🗑 Excluir</button></div></div>`).join('')}
+async function loadAdminQuestions(){if(!isAdmin)return;const box=document.getElementById('adminQuestionList');const {data,error}=await sb.from('questions').select('id,statement,difficulty,is_published,created_at,disciplines(name),subjects(name),periods(name),exams(name)'+(window._modulesOk?',modules(name)':'')).order('id',{ascending:false}).limit(100);if(error){box.innerHTML='<div class="error-box">'+escapeHtml(error.message)+'</div>';return}if(!data?.length){box.innerHTML='<div class="empty"><strong>Nenhuma questão cadastrada.</strong><span>Crie a primeira na aba “Nova questão”.</span></div>';return}box.innerHTML=data.map(x=>`<div class="admin-q"><div><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'')}</span><span class="badge">${escapeHtml(x.periods?.name||'')}</span>${x.modules?.name?`<span class="badge">🧩 ${escapeHtml(x.modules.name)}</span>`:''}<span class="badge ${x.is_published?'green':'amber'}">${x.is_published?'Publicada':'Rascunho'}</span></div><h4>#${x.id} — ${escapeHtml(x.subjects?.name||'Sem assunto')}</h4><p>${escapeHtml(x.statement).slice(0,220)}${x.statement.length>220?'...':''}</p></div><div class="admin-actions"><button class="small-btn" onclick="editQuestion(${x.id})">✏️ Editar</button><button class="small-btn ${x.is_published?'unpublish':'publish'}" onclick="toggleQuestion(${x.id},${!x.is_published})">${x.is_published?'Despublicar':'Publicar'}</button><button class="small-btn" style="color:#b42318;border-color:#f3c9c9" onclick="deleteQuestion(${x.id})">🗑 Excluir</button></div></div>`).join('')}
 async function toggleQuestion(id,published){
   if(!isAdmin)return;
   const {data,error}=await sb.from('questions').update({is_published:published}).eq('id',id).select('id');
@@ -1124,6 +1442,7 @@ async function editQuestion(id){
   await loadAdminFormOptions();
   const set=(i,v)=>{document.getElementById(i).value=(v==null?'':String(v))};
   set('aPeriod',q.period_id);set('aDiscipline',q.discipline_id);
+  await loadAdminModuleSelect();set('aModule',q.module_id);
   await loadAdminSubjects();set('aSubject',q.subject_id);
   await loadAdminExams();set('aExam',q.exam_id);
   set('aStatement',q.statement);set('aA',q.option_a);set('aB',q.option_b);set('aC',q.option_c);set('aD',q.option_d);set('aE',q.option_e);
@@ -1136,9 +1455,103 @@ async function editQuestion(id){
   document.getElementById('adminQuestionStatus').innerHTML='';
   window.scrollTo({top:0,behavior:'smooth'});
 }
-async function createPeriod(e){e.preventDefault();const {error}=await sb.from('periods').insert({name:document.getElementById('cPeriodName').value.trim(),sort_order:Number(document.getElementById('cPeriodOrder').value||0)});if(error){status('periodStatus',error.message);return}status('periodStatus','✅ Período adicionado.','ok');e.target.reset();document.getElementById('cPeriodOrder').value=2;await loadAdminAll()}
+async function createPeriod(e){
+  e.preventDefault();
+  const name=document.getElementById('cPeriodName').value.trim(),order=Number(document.getElementById('cPeriodOrder').value||0);
+  const lines=(document.getElementById('cPeriodModules').value||'').split('\n').map(x=>x.trim()).filter(Boolean);
+  const r=await sb.from('periods').insert({name,sort_order:order}).select('id');
+  if(r.error){status('periodStatus',r.error.message);return}
+  let msg='✅ Período adicionado.',ok=true;
+  if(lines.length){
+    const pid=r.data&&r.data[0]?r.data[0].id:null;
+    if(!window._modulesOk){msg+=' Porém os módulos NÃO foram salvos: execute o arquivo modules_migration.sql no Supabase.';ok=false}
+    else if(pid==null){msg+=' Não consegui identificar o período para criar os módulos.';ok=false}
+    else{const m=await sb.from('modules').insert(lines.map((n,i)=>({period_id:pid,name:n,sort_order:i+1})));if(m.error){msg+=' Erro nos módulos: '+escapeHtml(m.error.message);ok=false}else msg='✅ Período e '+lines.length+(lines.length===1?' módulo adicionados.':' módulos adicionados.')}
+  }
+  status('periodStatus',msg,ok?'ok':'error');
+  e.target.reset();document.getElementById('cPeriodOrder').value=2;await loadAdminAll();
+}
+async function createModule(e){
+  e.preventDefault();
+  const p=document.getElementById('cModulePeriod').value,name=document.getElementById('cModuleName').value.trim();
+  if(!p||!name){status('moduleStatus','Escolha o período e digite o nome.');return}
+  let order=document.getElementById('cModuleOrder').value;
+  if(order===''){const {data}=await sb.from('modules').select('sort_order').eq('period_id',Number(p));order=(data||[]).reduce((m,x)=>Math.max(m,x.sort_order||0),0)+1}
+  const {error}=await sb.from('modules').insert({period_id:Number(p),name,sort_order:Number(order)});
+  if(error){status('moduleStatus',escapeHtml(error.message));return}
+  status('moduleStatus','✅ Módulo adicionado.','ok');
+  document.getElementById('cModuleName').value='';document.getElementById('cModuleOrder').value='';
+  await loadAdminAll();
+}
+async function deleteModule(id){
+  if(!isAdmin)return;
+  if(!confirm('Excluir este módulo?\n\nAs questões dele não são apagadas: ficam apenas sem módulo.'))return;
+  const {data,error}=await sb.from('modules').delete().eq('id',id).select('id');
+  if(error){alert('Erro ao excluir: '+error.message);return}
+  if(!data||!data.length){alert('Nada foi excluído. Confirme que sua conta é administradora.');return}
+  await loadAdminAll();
+}
+async function loadAdminModules(){
+  const box=document.getElementById('adminModuleList');if(!box)return;
+  if(!window._modulesOk){box.innerHTML='<div class="error-box">Módulos ainda não ativados. Execute o arquivo <b>modules_migration.sql</b> no SQL Editor do Supabase e atualize esta página.</div>';return}
+  const [p,m]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('modules').select('id,period_id,name,sort_order').order('sort_order',{ascending:true})]);
+  const periods=p.data||[],mods=m.data||[],subs=window._subjects||[];
+  if(!mods.length){box.innerHTML='<div class="empty"><strong>Nenhum módulo cadastrado.</strong><span>Crie ao adicionar um período ou no formulário ao lado.</span></div>';return}
+  box.innerHTML=periods.map(pp=>{
+    const list=mods.filter(x=>String(x.period_id)===String(pp.id));if(!list.length)return '';
+    return `<div class="admin-q"><div style="flex:1;min-width:0"><h4>Período ${escapeHtml(pp.name)}</h4>${list.map(x=>{
+      const ss=subs.filter(a=>String(a.module_id)===String(x.id)).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0));
+      return `<details style="margin-top:8px"><summary style="cursor:pointer;font-weight:750">🧩 ${escapeHtml(x.name)} <span class="muted">(${ss.length} assunto${ss.length===1?'':'s'})</span> <button type="button" class="link-btn" style="color:#b42318;padding:0 6px" onclick="event.preventDefault();deleteModule(${x.id})" title="Excluir módulo">🗑</button></summary><div style="padding:8px 0 4px 18px">${ss.length?ss.map(a=>`<div style="display:flex;gap:8px;align-items:center;margin:4px 0"><span style="flex:1">${a.sort_order>0?String(a.sort_order).padStart(2,'0')+' - ':''}${escapeHtml(a.name)}${a.section?` <span class="badge">${escapeHtml(a.section)}</span>`:''}</span><button type="button" class="link-btn" style="color:#b42318;padding:0" onclick="deleteSubject(${a.id})">🗑</button></div>`).join(''):'<span class="muted">Nenhum assunto neste módulo ainda.</span>'}</div></details>`}).join('')}</div></div>`}).join('');
+}
+async function loadAdminModuleSelect(){
+  const wrap=document.getElementById('aModuleWrap'),sel=document.getElementById('aModule');if(!sel||!wrap)return;
+  if(!window._modulesOk){wrap.style.display='none';sel.innerHTML='<option value="">Sem módulo</option>';return}
+  wrap.style.display='';
+  const p=document.getElementById('aPeriod').value;
+  if(!p){sel.innerHTML='<option value="">Selecione o período primeiro</option>';return}
+  const {data}=await sb.from('modules').select('id,name').eq('period_id',Number(p)).order('sort_order',{ascending:true});
+  sel.innerHTML='<option value="">Sem módulo</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');
+}
 async function createDiscipline(e){e.preventDefault();const {error}=await sb.from('disciplines').insert({name:document.getElementById('cDisciplineName').value.trim()});if(error){status('disciplineStatus',error.message);return}status('disciplineStatus','✅ Disciplina adicionada.','ok');e.target.reset();await loadAdminAll()}
-async function createSubject(e){e.preventDefault();const {error}=await sb.from('subjects').insert({discipline_id:Number(document.getElementById('cSubjectDiscipline').value),name:document.getElementById('cSubjectName').value.trim()});if(error){status('subjectStatus',error.message);return}status('subjectStatus','✅ Assunto adicionado.','ok');e.target.reset();await loadAdminAll()}
+async function createSubject(e){
+  e.preventDefault();
+  const g=id=>document.getElementById(id);
+  const disc=g('cSubjectDiscipline').value,mod=g('cSubjectModule').value,sec=g('cSubjectSection').value.trim();
+  const single=g('cSubjectName').value.trim(),obj=g('cSubjectObjectives').value.trim();
+  const bulk=(g('cSubjectBulk').value||'').split('\n').map(x=>x.trim()).filter(Boolean);
+  if(!disc){status('subjectStatus','Escolha a disciplina.');return}
+  const lines=bulk.length?bulk:(single?[single+(obj?' | '+obj.split('\n').map(x=>x.trim()).filter(Boolean).join('; '):'')]:[]);
+  if(!lines.length){status('subjectStatus','Digite o assunto ou cole uma lista.');return}
+  const useNew=!!window._assuntosOk;
+  if(!useNew&&(mod||sec||obj||bulk.some(l=>l.includes('|')))){status('subjectStatus','Para usar módulo, seção e objetivos, execute o arquivo <b>modules_migration.sql</b> no Supabase e atualize a página.');return}
+  const rows=lines.map((ln,i)=>{
+    const parts=ln.split('|');let name=parts[0].trim(),order=i+1;
+    const row={discipline_id:Number(disc)};
+    if(useNew){
+      const mm=name.match(/^(\d+)\s*[-–.)]\s*(.+)$/);if(mm){order=Number(mm[1]);name=mm[2].trim()}
+      if(mod)row.module_id=Number(mod);if(sec)row.section=sec;row.sort_order=order;
+      const o=parts.slice(1).join('|').trim();if(o)row.objectives=o;
+    }
+    row.name=name;return row;
+  });
+  const {error}=await sb.from('subjects').insert(rows);
+  if(error){status('subjectStatus',escapeHtml(error.message));return}
+  status('subjectStatus','✅ '+(rows.length===1?'Assunto adicionado.':rows.length+' assuntos adicionados.'),'ok');
+  g('cSubjectName').value='';g('cSubjectObjectives').value='';g('cSubjectBulk').value='';
+  await loadAdminAll();
+}
+async function deleteSubject(id){
+  if(!isAdmin)return;
+  if(!confirm('Excluir este assunto?'))return;
+  const {data,error}=await sb.from('subjects').delete().eq('id',id).select('id');
+  if(error){
+    if(error.code==='23503'||/foreign key|violates/i.test(error.message||''))alert('Este assunto já tem questões ligadas a ele e não pode ser excluído.\n\nMova ou exclua as questões primeiro.');
+    else alert('Erro ao excluir: '+error.message);
+    return;
+  }
+  if(!data||!data.length){alert('Nada foi excluído. Confirme que sua conta é administradora.');return}
+  await loadAdminAll();
+}
 async function createExam(e){e.preventDefault();const period=document.getElementById('cExamPeriod').value;const name=document.getElementById('cExamName').value.trim();const {error}=await sb.from('exams').insert({period_id:period?Number(period):null,name});if(error){status('examStatus',error.message);return}status('examStatus','✅ Prova adicionada.','ok');e.target.reset();await loadAdminAll()}
 function numOrNull(id){const v=document.getElementById(id).value;return v?Number(v):null}
 if(sb){sb.auth.onAuthStateChange((_event,session)=>{if(session&&!currentUser)bootstrap()});bootstrap()}else{status('loginStatus','O MedQuest não conseguiu inicializar o Supabase.','error')}
