@@ -190,7 +190,7 @@ body.dark .small-btn.unpublish{
 @media(max-width:650px){.admin-two{grid-template-columns:1fr}.admin-q{flex-direction:column}.admin-actions{width:100%}}
 
 @media(max-width:1050px){.stats{grid-template-columns:repeat(2,1fr)}.content-grid{grid-template-columns:1fr}.subjects{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:760px){:root{--sidebar:0px}.sidebar{display:none}.main{margin:0;width:100%;padding:18px}.login-shell{grid-template-columns:1fr;min-height:auto}.login-visual{padding:26px}.logo-hero{width:min(300px,70%)}.login-card{width:min(440px,calc(100% - 35px));padding:26px}.stats{grid-template-columns:1fr 1fr}.subjects{grid-template-columns:1fr}}
+@media(max-width:760px){:root{--sidebar:0px}.main{margin:0;width:100%;padding:18px}.login-shell{grid-template-columns:1fr;min-height:auto}.login-visual{padding:26px}.logo-hero{width:min(300px,70%)}.login-card{width:min(440px,calc(100% - 35px));padding:26px}.stats{grid-template-columns:1fr 1fr}.subjects{grid-template-columns:1fr}}
 @media(max-width:480px){.stats{grid-template-columns:1fr}.profile-row{grid-template-columns:1fr}}
 
 /* ===== MedQuest v20 — página de entrada (landing + login) ===== */
@@ -938,11 +938,30 @@ body.dark .cal-pop{box-shadow:0 24px 60px rgba(0,0,0,.55)}
 @media(max-width:900px){#gradeView .mg-hero{padding:22px}}
 
 .qf-status .mg-label{text-align:center}
+
+/* v36 — menu lateral no celular */
+@media(max-width:760px){
+  .sidebar{display:flex!important;transform:translateX(-105%);transition:transform .22s ease;width:264px;z-index:60;box-shadow:none;overflow-y:auto}
+  body.mobile-sidebar-open .sidebar{transform:translateX(0);box-shadow:0 0 50px rgba(0,0,0,.35)}
+  body.mobile-sidebar-open::after{z-index:50}
+  .main{padding-top:74px!important}
+  .mobile-sidebar-toggle{z-index:40}
+  body.mobile-sidebar-open .mobile-sidebar-toggle{visibility:hidden}
+  .sidebar .brand>div{display:block!important}
+  .sidebar .nav-btn>span:not(.nav-ico){display:inline!important}
+  .sidebar .account-mini>div:not(.avatar){display:block!important}
+  .sidebar .logout{font-size:inherit!important}
+  .sidebar-close{display:grid!important}
+}
+.sidebar-close{display:none;position:absolute;top:14px;right:12px;width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--muted);place-items:center}
+body.dark .sidebar-close{background:#17212b;border-color:#334455}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
+document.addEventListener('click',e=>{if(document.body.classList.contains('mobile-sidebar-open')&&!e.target.closest('.sidebar')&&!e.target.closest('#mobileSidebarToggle'))document.body.classList.remove('mobile-sidebar-open')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.remove('mobile-sidebar-open')});
 function toggleSidebar(){
   if(window.innerWidth<=760){
     document.body.classList.toggle('mobile-sidebar-open');
@@ -1084,7 +1103,7 @@ window.MEDQUEST_CONFIG={
 </div>
 
 <div id="app" class="app hidden">
-  <aside class="sidebar"><button id="sidebarToggle" class="sidebar-toggle" onclick="toggleSidebar()" title="Fechar/abrir menu" aria-label="Recolher menu">‹</button>
+  <aside class="sidebar"><button type="button" class="sidebar-close" onclick="toggleSidebar()" aria-label="Fechar menu"><span class="ic" data-i="x"></span></button><button id="sidebarToggle" class="sidebar-toggle" onclick="toggleSidebar()" title="Fechar/abrir menu" aria-label="Recolher menu">‹</button>
     <div class="brand"><img src="medquest-mark.png" alt="MedQuest"><div><div class="brand-text">MedQuest</div><span class="brand-sub">ESTUDOS EM MEDICINA</span></div></div>
     <nav class="nav">
       <button class="nav-btn active nav-home" data-page="home" onclick="go('home')"><span class="nav-ico"><span class="ic" data-i="home"></span></span><span>Início</span></button>
@@ -2305,7 +2324,7 @@ async function loadAttempts(){
 }
 
 async function saveProfile(){if(!sb||!currentUser)return;const name=document.getElementById('profileName').value.trim()||'Aluno';const {error}=await sb.from('profiles').update({full_name:name}).eq('id',currentUser.id);if(error){status('profileStatus',error.message);return}await loadProfile();status('profileStatus','Perfil atualizado.','ok')}
-function go(id){if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);if(id==='questions'&&typeof showGrade==='function')showGrade();if(typeof simPersist==='function')simPersist();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='simulados'&&typeof renderSim==='function')renderSim();const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?'Olá, Doc! 👋':l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();if(id==='profile'&&typeof fillProfilePrefs==='function')fillProfilePrefs();window.scrollTo({top:0,behavior:'smooth'})}
+function go(id){document.body.classList.remove('mobile-sidebar-open');if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);if(id==='questions'&&typeof showGrade==='function')showGrade();if(typeof simPersist==='function')simPersist();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='simulados'&&typeof renderSim==='function')renderSim();const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?'Olá, Doc! 👋':l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();if(id==='profile'&&typeof fillProfilePrefs==='function')fillProfilePrefs();window.scrollTo({top:0,behavior:'smooth'})}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
 function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane'&&!editingQuestionId)loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions();if(pane==='adminUsersPane')loadAdminUsers()}
