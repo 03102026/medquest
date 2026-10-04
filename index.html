@@ -94,11 +94,13 @@ body.sidebar-collapsed .sidebar{width:76px;padding-left:10px;padding-right:10px}
 body.sidebar-collapsed .brand{justify-content:center;padding-left:0;padding-right:0}
 body.sidebar-collapsed .brand>div{display:none}
 body.sidebar-collapsed .nav-btn{justify-content:center;padding-left:8px;padding-right:8px}
-body.sidebar-collapsed .nav-btn span:not(.nav-ico){display:none}
+body.sidebar-collapsed .nav-btn>span:not(.nav-ico){display:none}
 body.sidebar-collapsed .account-mini>div:not(.avatar){display:none}
 body.sidebar-collapsed .account-mini{justify-content:center;padding-left:0;padding-right:0}
 body.sidebar-collapsed .logout{font-size:0;text-align:center}
-body.sidebar-collapsed .logout::before{content:"↪";font-size:18px}
+body.sidebar-collapsed .logout::before{content:none}
+body.sidebar-collapsed .logout .ic{width:22px;height:22px;display:inline-flex;margin:0 auto}
+body.sidebar-collapsed .nav-btn .nav-ico .ic{width:22px;height:22px}
 .sidebar-toggle{position:absolute;right:-14px;top:24px;width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--primary);box-shadow:0 4px 12px rgba(20,40,60,.12);z-index:20;font-size:21px;line-height:1}
 .sidebar-toggle:hover{transform:scale(1.06)}
 .mobile-sidebar-toggle{display:none;position:fixed;top:18px;left:14px;z-index:30;width:42px;height:42px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--primary);box-shadow:var(--shadow)}
@@ -897,6 +899,15 @@ body.dark .sim-opt.c{background:#12312a}body.dark .sim-opt.w{background:#3a1c20}
 body.dark .cal-pop{box-shadow:0 24px 60px rgba(0,0,0,.55)}
 @media(max-width:700px){.cal-pop{position:fixed;left:12px;right:12px;top:84px;width:auto;max-width:none;max-height:82vh;overflow:auto}}
 @media(prefers-reduced-motion:reduce){.cal-pop{animation:none}}
+
+/* v33 — cartões iguais, foto de perfil */
+.home-row{align-items:stretch!important}
+.home-row>.card{display:flex;flex-direction:column;justify-content:center}
+.avatar.has-img{background-size:cover;background-position:center;background-repeat:no-repeat;color:transparent!important;font-size:0}
+.avatar.xl{width:96px;height:96px;font-size:38px;flex:none}
+.avatar.large.has-img{background-size:cover}
+.avatar-edit{display:flex;gap:20px;align-items:center;margin-bottom:20px;flex-wrap:wrap}
+.usr-av.has-img{background-size:cover;background-position:center;color:transparent}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1101,7 +1112,7 @@ window.MEDQUEST_CONFIG={
         <div class="card stat-card"><div><div class="stat-title">Questões resolvidas</div><div class="stat-value" id="statSolved">0</div></div><div class="stat-icon"><span class="ic" data-i="note"></span></div></div>
         <div class="card stat-card"><div><div class="stat-title">Taxa de acerto</div><div class="stat-value" id="statRate">0%</div></div><div class="stat-icon"><span class="ic" data-i="check-circle"></span></div></div>
         <div class="card stat-card"><div><div class="stat-title">No caderno de erros</div><div class="stat-value" id="statErrors">0</div></div><div class="stat-icon"><span class="ic" data-i="repeat"></span></div></div>
-        <div class="card stat-card"><div><div class="stat-title">Sequência atual</div><div class="stat-value" id="statStreak">0 dias</div></div><div class="stat-icon"><span class="ic" data-i="star"></span></div></div>
+        <div class="card stat-card"><div><div class="stat-title">Recorde de sequência</div><div class="stat-value" id="statStreak">0 dias</div></div><div class="stat-icon"><span class="ic" data-i="medal"></span></div></div>
       </div>
       <div class="home-row">
         <div class="card" id="missionCard"></div>
@@ -1198,7 +1209,9 @@ window.MEDQUEST_CONFIG={
     </section>
 
     <section id="profile" class="page">
-      <div class="card profile"><div class="card-head"><h2>👤 Perfil</h2></div><div class="profile-row"><div><label>Nome</label><input id="profileName"></div><div><label>Curso</label><input value="Medicina" disabled></div></div><div><label>E-mail</label><input id="profileEmail" disabled></div><button class="primary" style="margin-top:17px" onclick="saveProfile()">Salvar alterações</button><div id="profileStatus" class="status"></div></div>
+      <div class="card profile"><div class="card-head"><h2>👤 Perfil</h2></div>
+        <div class="avatar-edit"><div id="profAvatar" class="avatar xl">E</div><div><div style="font-weight:800;margin-bottom:2px">Foto de perfil</div><div class="muted" style="font-size:12.5px;margin-bottom:10px">JPG ou PNG. A foto aparece no menu e no topo do site.</div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="small-btn" type="button" onclick="document.getElementById('avatarFile').click()"><span class="ic" data-i="plus"></span> Escolher foto</button><button class="small-btn" type="button" id="avatarRemove" onclick="removeAvatar()">Remover</button></div><input id="avatarFile" type="file" accept="image/*" hidden onchange="pickAvatar(this)"><div id="avatarStatus" class="status"></div></div></div>
+        <div class="profile-row"><div><label>Nome</label><input id="profileName"></div><div><label>Curso</label><input value="Medicina" disabled></div></div><div><label>E-mail</label><input id="profileEmail" disabled></div><button class="primary" style="margin-top:17px" onclick="saveProfile()">Salvar alterações</button><div id="profileStatus" class="status"></div></div>
       <div class="card profile" style="margin-top:18px"><div class="card-head"><h2>🎓 Faculdade e período</h2></div><p class="muted" style="margin-top:0">A página de Questões já abre na faculdade e no período que você escolher aqui. Fica salvo na sua conta.</p><div class="profile-row"><div><label>Faculdade</label><select id="profInst"></select></div><div><label>Período</label><select id="profPeriod"></select></div></div><button class="primary" style="margin-top:17px" onclick="saveStudyPrefs()">Salvar</button><div id="studyPrefStatus" class="status"></div></div>
       <div class="card profile" style="margin-top:18px"><div class="card-head"><h2>⏱ Meus simulados</h2><button class="link-btn" type="button" onclick="go('simulados')">Fazer um simulado</button></div><div id="profSim"><div class="muted">Carregando...</div></div></div>
       <div class="card profile" style="margin-top:18px"><div class="card-head"><h2>🏅 Minha assinatura</h2><span id="subChip" class="chip"></span></div><div id="subBody"><div class="muted">Carregando...</div></div></div>
@@ -1255,7 +1268,9 @@ async function signOut(){if(sb)await sb.auth.signOut();currentUser=null;isAdmin=
 async function bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(!session)return;currentUser=session.user;document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');await loadProfile();await loadAttempts();go('home')}
 async function loadProfile(){
   if(!currentUser)return;
-  let r=await sb.from('profiles').select('full_name,role,email,institution_id,period_id').eq('id',currentUser.id).maybeSingle();
+  let r=await sb.from('profiles').select('full_name,role,email,institution_id,period_id,avatar_url').eq('id',currentUser.id).maybeSingle();
+  let hasAvatar=!r.error;
+  if(r.error)r=await sb.from('profiles').select('full_name,role,email,institution_id,period_id').eq('id',currentUser.id).maybeSingle();
   let hasPref=!r.error,hasEmail=!r.error;
   if(r.error){r=await sb.from('profiles').select('full_name,role,email').eq('id',currentUser.id).maybeSingle();hasEmail=!r.error}
   if(r.error)r=await sb.from('profiles').select('full_name,role').eq('id',currentUser.id).maybeSingle();
@@ -1271,14 +1286,58 @@ async function loadProfile(){
   if(hasPref&&data)pref={inst:data.institution_id!=null?String(data.institution_id):null,period:data.period_id!=null?String(data.period_id):''};
   if(!pref||!pref.inst){let ls=null;try{ls=JSON.parse(mqLS.get('mq_pref_'+currentUser.id)||'null')}catch(e){}if(ls&&ls.inst)pref=ls}
   window._myPref=pref;
+  window._avatarCol=hasAvatar;
+  window._myName=name;
+  window._myAvatar=(hasAvatar&&data&&data.avatar_url)?data.avatar_url:(mqLS.get('mq_avatar_'+currentUser.id)||'');
   document.getElementById('accountName').textContent=name;document.getElementById('profileName').value=name;document.getElementById('profileEmail').value=currentUser.email||'';
-  const letter=name.trim().charAt(0).toUpperCase()||'A';
-  document.getElementById('avatar').textContent=letter;document.getElementById('topAvatar').textContent=letter;
+  applyAvatar();
   document.getElementById('adminNav').style.display=isAdmin?'flex':'none';
   await loadSubscription();
   if(typeof simLoadHist==='function')await simLoadHist();
   if(isAdmin)await loadAdminAll();
 }
+/* ===== Foto de perfil ===== */
+function applyAvatar(){
+  const name=window._myName||'Aluno',url=window._myAvatar||'';
+  const letter=name.trim().charAt(0).toUpperCase()||'A';
+  ['avatar','topAvatar','profAvatar'].forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    if(url){el.classList.add('has-img');el.style.backgroundImage='url("'+url+'")';el.textContent=''}
+    else{el.classList.remove('has-img');el.style.backgroundImage='';el.textContent=letter}
+  });
+  const rm=document.getElementById('avatarRemove');if(rm)rm.style.display=url?'':'none';
+}
+function avatarToDataUrl(img){
+  const size=256,c=document.createElement('canvas');c.width=size;c.height=size;
+  const ctx=c.getContext('2d'),m=Math.min(img.width,img.height);
+  ctx.drawImage(img,(img.width-m)/2,(img.height-m)/2,m,m,0,0,size,size);
+  return c.toDataURL('image/jpeg',0.86);
+}
+function pickAvatar(input){
+  const f=input.files&&input.files[0];if(!f)return;
+  if(!/^image\//.test(f.type)){status('avatarStatus','Escolha um arquivo de imagem (JPG ou PNG).');input.value='';return}
+  if(f.size>8*1024*1024){status('avatarStatus','A imagem é muito grande. Use uma de até 8 MB.');input.value='';return}
+  const rd=new FileReader();
+  rd.onerror=()=>status('avatarStatus','Não foi possível ler a imagem.');
+  rd.onload=()=>{
+    const img=new Image();
+    img.onerror=()=>status('avatarStatus','Não foi possível abrir essa imagem.');
+    img.onload=async()=>{try{await saveAvatar(avatarToDataUrl(img))}catch(e){status('avatarStatus','Não foi possível processar a imagem.')}input.value=''};
+    img.src=rd.result;
+  };
+  rd.readAsDataURL(f);
+}
+async function saveAvatar(url){
+  window._myAvatar=url||'';applyAvatar();
+  if(currentUser){if(url)mqLS.set('mq_avatar_'+currentUser.id,url);else{try{localStorage.removeItem('mq_avatar_'+currentUser.id)}catch(e){}}}
+  let msg=url?'✅ Foto atualizada.':'Foto removida.',ok=true;
+  if(sb&&currentUser&&window._avatarCol){
+    const r=await sb.from('profiles').update({avatar_url:url||null}).eq('id',currentUser.id);
+    if(r.error){msg='✅ Foto salva neste aparelho. Para salvar na conta, peça à administração para executar o modules_migration.sql.'}
+  }else if(url){msg='✅ Foto salva neste aparelho. Para salvar na conta, peça à administração para executar o modules_migration.sql.'}
+  status('avatarStatus',msg,ok?'ok':'error');
+}
+function removeAvatar(){if(!window._myAvatar)return;saveAvatar('')}
 async function loadFilters(){}
 async function loadQuestions(){
   await ensureAllQ();
@@ -1301,7 +1360,7 @@ function renderQuestions(){
   window._qShown=data.map(x=>x.id);
   list.innerHTML=data.map(x=>{
     const d=dl[x.difficulty],lt=lat[x.id],st=x.statement||'',p=per.find(a=>String(a.id)===String(x.period_id));
-    return `<div class="card question-row qcard"><div class="q-num">#${x.id}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'Disciplina')}</span>${x.subjects?.name?`<span class="badge">${escapeHtml(x.subjects.name)}</span>`:''}${p?`<span class="badge">${escapeHtml(p.name)}</span>`:''}${x.year?`<span class="badge">${x.year}</span>`:''}${x.qtype==='discursiva'?'<span class="badge">Discursiva</span>':''}${d?`<span class="badge ${d[1]}">${d[0]}</span>`:''}${lt===true?'<span class="badge green">✓ Acertou</span>':lt===false?'<span class="badge red">✗ Errou</span>':''}</div><p>${escapeHtml(st.slice(0,220))}${st.length>220?'...':''}</p></div><button class="primary" onclick="openQuestion(${x.id},null,'list')">${lt===undefined?'Responder':'Refazer'} →</button></div>`;
+    return `<div class="card question-row qcard"><div class="q-num">${x.id}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'Disciplina')}</span>${x.subjects?.name?`<span class="badge">${escapeHtml(x.subjects.name)}</span>`:''}${p?`<span class="badge">${escapeHtml(p.name)}</span>`:''}${x.year?`<span class="badge">${x.year}</span>`:''}${x.qtype==='discursiva'?'<span class="badge">Discursiva</span>':''}${d?`<span class="badge ${d[1]}">${d[0]}</span>`:''}${lt===true?'<span class="badge green">✓ Acertou</span>':lt===false?'<span class="badge red">✗ Errou</span>':''}</div><p>${escapeHtml(st.slice(0,220))}${st.length>220?'...':''}</p></div><button class="primary" onclick="openQuestion(${x.id},null,'list')">${lt===undefined?'Responder':'Refazer'} →</button></div>`;
   }).join('');
   state.classList.add('hidden');list.classList.remove('hidden');
 }
@@ -1323,11 +1382,18 @@ async function showSolver(id){
   view.classList.remove('hidden');
   view.innerHTML='<div class="empty"><strong>Carregando questão...</strong></div>';
   window.scrollTo({top:0,behavior:'smooth'});
-  const {data,error}=await sb.from('questions').select('id,statement,option_a,option_b,option_c,option_d,option_e,correct_option,explanation,difficulty,disciplines(name),subjects(name),periods(name)'+(window._v3ok?',qtype,expected_answer':'')).eq('id',id).maybeSingle();
+  const {data,error}=await sb.from('questions').select('id,statement,option_a,option_b,option_c,option_d,option_e,correct_option,explanation,difficulty,disciplines(name),subjects(name),periods(name)'+(window._v3ok?',qtype,expected_answer,institution_id,period_id':'')).eq('id',id).maybeSingle();
   if(error||!data){view.innerHTML='<div class="empty"><strong>Não foi possível abrir a questão.</strong><span>'+escapeHtml(error?error.message:'Questão não encontrada.')+'</span><br><br><button class="primary" onclick="closeSolver()">← Voltar</button></div>';return}
   solverQ=data;solverPicked=null;solverDone=false;renderSolver();
 }
 let solverCuts={};
+function solverInstName(q){
+  const pi=(window._pInst||{})[String(q.period_id)];
+  const id=pi!=null?pi:(q.institution_id!=null?q.institution_id:null);
+  if(id==null)return '';
+  const all=(window._institutions||[]);const it=all.find(x=>String(x.id)===String(id));
+  return it?it.name:'';
+}
 function isDisc(q){return !!q&&q.qtype==='discursiva'}
 function renderSolver(){
   const q=solverQ,view=document.getElementById('solverView');
@@ -1342,8 +1408,8 @@ function renderSolver(){
     :`<div class="opt-list" id="optList">${opts.map(o=>`<div class="opt-row"><button type="button" class="opt${cuts[o.L]?' cut':''}" id="opt${o.L}" onclick="pickOption('${o.L}')"><span class="opt-letter">${o.L}</span><span class="opt-text">${escapeHtml(o.t)}</span></button><button type="button" class="scissor${cuts[o.L]?' on':''}" id="cut${o.L}" onclick="toggleCut('${o.L}')" title="Cortar esta alternativa" aria-label="Cortar alternativa ${o.L}">✂️</button></div>`).join('')}</div><div id="solverFeedback"></div><div class="solver-actions"><button type="button" class="small-btn" onclick="stepQuestion(-1)" ${solverIdx<=0?'disabled':''}>← Anterior</button><button type="button" id="confirmBtn" class="primary" onclick="confirmAnswer()" disabled>Confirmar resposta</button><button type="button" id="nextBtn" class="small-btn" onclick="stepQuestion(1)" ${solverIdx>=solverIds.length-1?'disabled':''}>Próxima →</button></div>`;
   view.innerHTML=`<div class="solver-top"><button class="small-btn" onclick="closeSolver()">${back}</button><span class="muted">${pos}</span></div>
   <div class="card solver-card">
-    <div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Disciplina')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge">${escapeHtml(q.periods?.name||'Período')}</span>${disc?'<span class="badge">Discursiva</span>':''}${dl?`<span class="badge ${dl[1]}">${dl[0]}</span>`:''}</div>
-    <h2 class="solver-title">Questão #${q.id}</h2>
+    <div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Disciplina')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}${solverInstName(q)?`<span class="badge"><span class="ic" data-i="building"></span> ${escapeHtml(solverInstName(q))}</span>`:''}<span class="badge">${escapeHtml(q.periods?.name||'Período')}</span>${disc?'<span class="badge">Discursiva</span>':''}${dl?`<span class="badge ${dl[1]}">${dl[0]}</span>`:''}</div>
+    <h2 class="solver-title">Questão ${q.id}</h2>
     <div class="solver-statement">${escapeHtml(q.statement)}</div>
     ${body}
     <div class="hist-wrap"><button type="button" class="small-btn" onclick="toggleHistory()">🕘 Histórico</button><div id="solverHistory" class="hidden"></div></div>
@@ -1669,7 +1735,7 @@ function updateHome(){
   $('ringFg').style.strokeDashoffset=String(289.03*(1-Math.min(1,g.today/g.goal)));
   $('goalDone').textContent=g.today;$('goalTotal').textContent=g.goal;
   $('streakNum').textContent=g.streak;
-  $('statStreak').textContent=g.streak+(g.streak===1?' dia':' dias');
+  const rec=Math.max(g.bestDays||0,g.streak||0);$('statStreak').textContent=rec+(rec===1?' dia':' dias');
   renderCal();
   const all=window._allQ||[],lat=window._latest||{},wrong=window._wrongIds||[];
   const un=all.filter(q=>lat[q.id]===undefined);
@@ -2111,7 +2177,7 @@ async function loadAttempts(){
   const eb=document.getElementById('errorList');
   if(wrongRows.length){
     eb.className='question-list';eb.style.marginTop='15px';
-    eb.innerHTML=wrongRows.map(r=>{const q=r.questions||{};const st=q.statement||'';return `<div class="card question-row qcard"><div class="q-num">#${r.question_id}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Disciplina')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge red">✗ Errou</span></div><p>${escapeHtml(st.slice(0,200))}${st.length>200?'...':''}</p></div><button class="primary" onclick="reviewError(${r.question_id})">Refazer →</button></div>`}).join('');
+    eb.innerHTML=wrongRows.map(r=>{const q=r.questions||{};const st=q.statement||'';return `<div class="card question-row qcard"><div class="q-num">${r.question_id}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Disciplina')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge red">✗ Errou</span></div><p>${escapeHtml(st.slice(0,200))}${st.length>200?'...':''}</p></div><button class="primary" onclick="reviewError(${r.question_id})">Refazer →</button></div>`}).join('');
   }else{
     eb.className='empty';eb.style.marginTop='15px';
     eb.innerHTML=total?'<strong>🎉 Nenhum erro pendente.</strong><span>Quando você errar uma questão, ela aparece aqui para revisão.</span>':'Ainda não há tentativas registradas.';
@@ -2536,9 +2602,9 @@ window._users=[];window._userStats={};window._userSubs={};let _uShown=50;
 async function loadAdminUsers(){
   if(!isAdmin)return;
   const box=document.getElementById('adminUserList');if(!box)return;
-  const r=await selLayers('profiles',[['id,full_name,email,role,created_at,institution_id,period_id','created_at'],['id,full_name,email,role,created_at','created_at'],['id,full_name,email,role','full_name'],['id,full_name,role,created_at','created_at'],['id,full_name,role','full_name']]);
+  const r=await selLayers('profiles',[['id,full_name,email,role,created_at,institution_id,period_id,avatar_url','created_at'],['id,full_name,email,role,created_at,institution_id,period_id','created_at'],['id,full_name,email,role,created_at','created_at'],['id,full_name,email,role','full_name'],['id,full_name,role,created_at','created_at'],['id,full_name,role','full_name']]);
   if(r.level<0){box.innerHTML='<div class="error-box">Não foi possível carregar os usuários. Confirme que o <b>modules_migration.sql</b> foi executado e que sua conta é administradora.</div>';return}
-  window._users=r.data;window._usersHasEmail=r.level<=2;
+  window._users=r.data;window._usersHasEmail=r.level<=3;
   const st=await sb.rpc('admin_user_stats');
   window._userStats={};window._statsOk=!st.error;
   if(!st.error)(st.data||[]).forEach(x=>{window._userStats[String(x.user_id)]=x});
@@ -2572,9 +2638,10 @@ function renderAdminUsers(){
     const name=u.full_name||'(sem nome)',st=(window._userStats||{})[String(u.id)];
     const dt=u.created_at?new Date(u.created_at).toLocaleDateString('pt-BR'):'';
     const isAd=u.role==='admin',me=currentUser&&u.id===currentUser.id;
+    const av=u.avatar_url?` style="background-image:url('${escapeHtml(u.avatar_url)}')"`:'';
     const stats=window._statsOk?(st?`${st.total} resposta${Number(st.total)===1?'':'s'} · ${Math.round(Number(st.correct)/Number(st.total)*100)}% acertos`:'Nenhuma resposta ainda'):'';
     const fac=[u.institution_id!=null?insMap[String(u.institution_id)]:'',u.period_id!=null?perMap[String(u.period_id)]:''].filter(Boolean).join(' · ');
-    return `<div class="usr-row"><div class="usr-av">${escapeHtml(name.trim().charAt(0).toUpperCase()||'?')}</div><div><b>${escapeHtml(name)}${me?' (você)':''}</b><small>${escapeHtml(u.email||'e-mail não disponível')}</small>${fac?`<small>🎓 ${escapeHtml(fac)}</small>`:''}</div><div><span class="badge ${isAd?'blue':''}">${isAd?'Administrador':'Aluno'}</span> ${window._subAdminOk?subChipHtml(infOf(u)):''}<br><small>${dt?'Cadastro em '+dt:''}${dt&&stats?' · ':''}${stats}</small></div><div class="usr-actions"><button type="button" onclick="admUserRename('${u.id}')">✏️ Renomear</button>${window._subAdminOk?`<button type="button" onclick="admSubOpen('${u.id}')">🏅 Assinatura</button>`:''}<button type="button" class="${isAd?'':'adm'}" onclick="admUserRole('${u.id}','${isAd?'student':'admin'}')">${isAd?'Tornar aluno':'Tornar administrador'}</button></div></div>`;
+    return `<div class="usr-row"><div class="usr-av${u.avatar_url?' has-img':''}"${av}>${u.avatar_url?'':escapeHtml(name.trim().charAt(0).toUpperCase()||'?')}</div><div><b>${escapeHtml(name)}${me?' (você)':''}</b><small>${escapeHtml(u.email||'e-mail não disponível')}</small>${fac?`<small>🎓 ${escapeHtml(fac)}</small>`:''}</div><div><span class="badge ${isAd?'blue':''}">${isAd?'Administrador':'Aluno'}</span> ${window._subAdminOk?subChipHtml(infOf(u)):''}<br><small>${dt?'Cadastro em '+dt:''}${dt&&stats?' · ':''}${stats}</small></div><div class="usr-actions"><button type="button" onclick="admUserRename('${u.id}')">✏️ Renomear</button>${window._subAdminOk?`<button type="button" onclick="admSubOpen('${u.id}')">🏅 Assinatura</button>`:''}<button type="button" class="${isAd?'':'adm'}" onclick="admUserRole('${u.id}','${isAd?'student':'admin'}')">${isAd?'Tornar aluno':'Tornar administrador'}</button></div></div>`;
   }).join('')+(list.length>_uShown?`<div style="text-align:center;margin-top:10px"><button class="small-btn" type="button" onclick="_uShown+=50;renderAdminUsers()">Mostrar mais</button></div>`:'');
 }
 function admUserRename(id){
