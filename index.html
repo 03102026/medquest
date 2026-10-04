@@ -1024,6 +1024,17 @@ body.dark .sidebar-close{background:#17212b;border-color:#334455}
 .dash-wrow.alert{border-color:#f3c9c9;background:#fff8f8}
 body.dark .dash-wrow.alert{background:#2d1a1d;border-color:#5b2a2e}
 @media(max-width:900px){.dash-kpis{grid-template-columns:1fr 1fr}.dash-grid{grid-template-columns:1fr}.dash-subs{grid-template-columns:repeat(3,1fr)}.dash-wrow{grid-template-columns:1fr}.adm-img{grid-template-columns:72px 1fr}.adm-img img{width:72px;height:72px}.adm-img-a{grid-column:1/-1;grid-template-columns:repeat(3,1fr)}}
+
+/* v42 — menor desempenho ao lado da missão de revisão */
+.weakness-layout{display:grid!important;gap:16px;align-items:stretch}
+.weakness-top{display:flex;gap:14px;align-items:center}
+.weakness-copy{min-width:0!important}
+.weakness-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.home-row .weakness-card .card-head{margin-bottom:12px}
+.home-row .weakness-card .card-head .chip{display:none}
+.home-row .mission{flex-wrap:wrap}
+.home-row .weakness-card .weakness-copy h3{font-size:17px;margin:0 0 4px}
+.home-row .weakness-card .weakness-copy p{margin:0;font-size:13.5px}
 </style>
 <script src="supabase.js"></script>
 <script>window.supabase||document.write('<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"><\/script>')</script>
@@ -1249,9 +1260,7 @@ window.MEDQUEST_CONFIG={
       </div>
       <div class="home-row">
         <div class="card" id="missionCard"></div>
-        <div class="card" id="bankCard"></div>
-      </div>
-      <div id="weaknessCard" class="card weakness-card" style="margin-top:18px">
+        <div id="weaknessCard" class="card weakness-card">
         <div class="card-head"><h2>🔎 Seu menor desempenho</h2><span class="chip">Baseado nas suas respostas</span></div>
         <div id="weaknessContent" class="weakness-layout">
           <div class="weakness-icon">📚</div>
@@ -1261,6 +1270,7 @@ window.MEDQUEST_CONFIG={
           </div>
           <button class="primary weakness-action" onclick="go('questions')">Começar questões →</button>
         </div>
+      </div>
       </div>
       <div class="card" style="margin-top:18px"><div class="card-head"><h2>🏅 Conquistas</h2><span class="chip" id="achCount">0 de 0</span></div><div class="ach-grid" id="achGrid"></div></div>
     </section>
@@ -1850,19 +1860,20 @@ function renderWeakness(){
   const weak=list[0];
   const allDone=all.length>0&&all.every(q=>lat[q.id]===true);
   const noneWrong=list.length>0&&list.every(x=>x.rate===100);
+  const H=(icon,title,text,score,btn)=>`<div class="weakness-top"><div class="weakness-icon">${icon}</div><div class="weakness-copy"><h3>${title}</h3><p>${text}</p></div></div><div class="weakness-bottom">${score||'<span></span>'}${btn}</div>`;
   if(!weak){
     weakestDisciplineId=null;
-    box.innerHTML=`<div class="weakness-icon">🌱</div><div class="weakness-copy"><h3>Vamos descobrir seu ponto de atenção</h3><p>Responda algumas questões para o MedQuest identificar automaticamente a matéria em que seu desempenho está mais baixo.</p></div><button class="primary weakness-action" onclick="go('questions')">Começar questões →</button>`;
+    box.innerHTML=H('🌱','Vamos descobrir seu ponto de atenção','Responda algumas questões para identificar automaticamente a matéria em que seu desempenho está mais baixo.','',`<button class="primary weakness-action" onclick="go('questions')">Começar questões →</button>`);
   }else if(allDone){
     weakestDisciplineId=null;
-    box.innerHTML=`<div class="weakness-icon">🏆</div><div class="weakness-copy"><h3>Parabéns por todos os acertos!</h3><p>Você respondeu as ${all.length} questões publicadas e acertou todas. Quando novas questões forem publicadas, seu menor desempenho volta a aparecer aqui.</p></div><button class="primary weakness-action" onclick="go('questions')">Revisar questões →</button>`;
+    box.innerHTML=H('🏆','Parabéns por todos os acertos!',`Você respondeu as ${all.length} questões publicadas e acertou todas. Quando novas questões forem publicadas, seu menor desempenho volta a aparecer aqui.`,'',`<button class="primary weakness-action" onclick="go('questions')">Revisar questões →</button>`);
   }else if(noneWrong){
     weakestDisciplineId=null;
     const faltam=all.filter(q=>lat[q.id]===undefined).length;
-    box.innerHTML=`<div class="weakness-icon">🌟</div><div class="weakness-copy"><h3>Parabéns! Todas as suas respostas estão certas</h3><p>Nenhum ponto fraco até agora.${faltam?' Ainda faltam '+plQ(faltam)+' para você responder.':''}</p></div><button class="primary weakness-action" onclick="continueStudying()">Continuar estudando →</button>`;
+    box.innerHTML=H('🌟','Parabéns! Todas as suas respostas estão certas','Nenhum ponto fraco até agora.'+(faltam?' Ainda faltam '+plQ(faltam)+' para você responder.':''),'',`<button class="primary weakness-action" onclick="continueStudying()">Continuar estudando →</button>`);
   }else{
     weakestDisciplineId=weak.id;
-    box.innerHTML=`<div class="weakness-icon">🧠</div><div class="weakness-copy"><h3>${escapeHtml(weak.name)} merece uma revisão</h3><p>É a matéria com menor desempenho até agora: ${weak.total} questão(ões) respondida(s).</p></div><div class="weakness-score ${weak.rate>=75?'good':''}">${weak.rate}%</div><button class="primary weakness-action" onclick="reviewWeakest()">Revisar agora →</button>`;
+    box.innerHTML=H('🧠',escapeHtml(weak.name)+' merece uma revisão','É a matéria com menor desempenho até agora: '+weak.total+' questão(ões) respondida(s).',`<div class="weakness-score ${weak.rate>=75?'good':''}">${weak.rate}%</div>`,`<button class="primary weakness-action" onclick="reviewWeakest()">Revisar agora →</button>`);
   }
 }
 async function selLayers(table,layers){
@@ -2036,7 +2047,6 @@ function updateHome(){
   else{label='Refazer questões →';next='Você respondeu todo o banco sem erros pendentes. 👏'}
   $('heroCta').textContent=g.total?'Escolher o que estudar →':'Começar a estudar →';$('heroNext').textContent=next;{const rs=$('heroResume');if(rs)rs.classList.toggle('hidden',!(un.length&&g.total))}
   const done=all.filter(q=>lat[q.id]!==undefined).length,pct=all.length?Math.round(done/all.length*100):0;
-  $('bankCard').innerHTML=`<div class="card-head"><h2>📖 Progresso no banco</h2><button class="link-btn" onclick="go('questions')">Ver questões</button></div><div class="continue-title">${done} de ${all.length}</div><div class="muted">questões respondidas pelo menos uma vez</div><div style="margin-top:16px"><div class="progress"><span style="width:${pct}%"></span></div><div class="muted" style="font-size:12px;margin-top:7px">${pct}% concluído</div></div>`;
   const mission=wrong.length
     ?`<div class="mission"><div class="mission-ico">⚔️</div><div class="mission-body"><b>Missão de revisão</b><span class="muted">Você tem ${wrong.length} erro${wrong.length>1?'s':''} para derrotar. Acerte de novo e eles saem do caderno.</span></div><button class="primary" onclick="startMission()">Começar missão →</button></div>`
     :`<div class="mission"><div class="mission-ico">🛡️</div><div class="mission-body"><b>Nenhum erro pendente</b><span class="muted">${g.total?'Missão cumprida! Continue respondendo para manter o caderno limpo.':'Quando você errar uma questão, ela vira uma missão de revisão aqui.'}</span></div></div>`;
