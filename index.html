@@ -877,6 +877,26 @@ body.dark .sim-opt.c{background:#12312a}body.dark .sim-opt.w{background:#3a1c20}
 
 .sim-spark div{max-width:56px}
 .sim-spark{justify-content:flex-start}
+
+/* calendário em popover (abre ao clicar na sequência) */
+.hero-card{overflow:visible!important}
+.streak-wrap{position:relative}
+.streak-btn{background:transparent;border:0;color:inherit;font:inherit;text-align:center;cursor:pointer;padding:12px 18px;border-radius:20px;transition:background .15s;display:grid;justify-items:center;gap:2px}
+.streak-btn:hover{background:rgba(32,181,162,.1)}
+.streak-btn[aria-expanded="true"]{background:rgba(32,181,162,.16)}
+.streak-cal{color:var(--muted);margin-top:4px;display:inline-flex;opacity:.75}
+.streak-cal .ic{width:16px;height:16px}
+.cal-pop{position:absolute;right:0;top:calc(100% + 8px);z-index:40;width:372px;max-width:calc(100vw - 24px);padding:18px;border-radius:22px;background:var(--surface);border:1px solid var(--border);box-shadow:0 24px 60px rgba(11,110,142,.28);animation:calpop .18s ease-out}
+@keyframes calpop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.cal-pop .cal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.cal-pop .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal-pop .cal-c{font-size:12.5px;border-radius:10px}
+.cal-pop .cal-sum{margin-top:12px;font-size:13px}
+.cal-legend.mini{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:11.5px}
+.cal-x{border:1px solid var(--border);background:var(--surface);color:var(--muted);border-radius:10px;width:32px;height:32px;display:grid;place-items:center}
+body.dark .cal-pop{box-shadow:0 24px 60px rgba(0,0,0,.55)}
+@media(max-width:700px){.cal-pop{position:fixed;left:12px;right:12px;top:84px;width:auto;max-width:none;max-height:82vh;overflow:auto}}
+@media(prefers-reduced-motion:reduce){.cal-pop{animation:none}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1066,11 +1086,14 @@ window.MEDQUEST_CONFIG={
             </div>
             <b>Meta de hoje</b><br><button class="link-btn" style="padding:2px 0;font-size:12px" onclick="editGoal()">Alterar meta</button>
           </div>
-          <div class="hero-side">
-            <div class="flame">🔥</div>
-            <div class="streak-number" id="streakNum">0</div>
-            <b>dias seguidos</b>
-            
+          <div class="hero-side streak-wrap">
+            <button type="button" class="streak-btn" id="streakBtn" onclick="calToggle(event)" aria-haspopup="true" aria-expanded="false" title="Ver o calendário de ofensiva">
+              <div class="flame">🔥</div>
+              <div class="streak-number" id="streakNum">0</div>
+              <b>dias seguidos</b>
+              <span class="streak-cal"><span class="ic" data-i="calendar"></span></span>
+            </button>
+            <div id="calPop" class="cal-pop hidden" onclick="event.stopPropagation()"></div>
           </div>
         </div>
       </div>
@@ -1080,7 +1103,6 @@ window.MEDQUEST_CONFIG={
         <div class="card stat-card"><div><div class="stat-title">No caderno de erros</div><div class="stat-value" id="statErrors">0</div></div><div class="stat-icon"><span class="ic" data-i="repeat"></span></div></div>
         <div class="card stat-card"><div><div class="stat-title">Sequência atual</div><div class="stat-value" id="statStreak">0 dias</div></div><div class="stat-icon"><span class="ic" data-i="star"></span></div></div>
       </div>
-      <div class="card cal-card-wide" id="calCard"></div>
       <div class="home-row">
         <div class="card" id="missionCard"></div>
         <div class="card" id="bankCard"></div>
@@ -1509,14 +1531,18 @@ function showLevels(){
   o.innerHTML=`<div class="onb-card" style="max-width:480px"><h3 style="margin-top:0">🏅 Níveis do MedQuest</h3><p style="margin:0 0 4px">Você tem <b>${g.xp.toLocaleString('pt-BR')} XP</b>.</p><div class="lvl-list">${LEVELS.map((l,i)=>{const reached=g.xp>=l.xp,now=i===g.lv.idx;return `<div class="lvl-row${reached?' on':' lock'}${now?' now':''}"><span style="font-size:22px">${l.i}</span><span><b>${l.n}</b>${now&&g.lv.next?`<br><small>faltam ${(g.lv.next.xp-g.xp).toLocaleString('pt-BR')} XP para o próximo</small>`:''}</span><small>${l.xp.toLocaleString('pt-BR')} XP</small><span>${now?'📍':reached?'✓':'🔒'}</span></div>`}).join('')}</div><ul class="lvl-rules"><li>Primeiro acerto de uma questão: <b>+10 XP</b>.</li><li>Acertar uma questão que você tinha errado: <b>+3 XP</b>.</li><li>Errar: <b>0 XP</b> no Calouro e <b>−2 XP</b> a partir do Acadêmico (você nunca cai abaixo do XP do nível que já conquistou).</li><li>Bater a meta do dia: <b>+5 XP</b>.</li><li>Cada dia que mantém a sequência: <b>+5 XP</b>.</li></ul><button class="primary" type="button" onclick="document.getElementById('lvlModal').remove()" style="width:100%">Fechar</button></div>`;
   document.body.appendChild(o);
 }
-/* ----- calendário de ofensiva (recolhido; abre ao passar o mouse) ----- */
+/* ----- calendário de ofensiva (abre ao clicar na sequência) ----- */
 window._cal={y:null,m:null,sel:null,open:false};
 const MESES=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
-let _calTimer=null;
 function calInit(){const n=new Date();if(window._cal.y===null){window._cal.y=n.getFullYear();window._cal.m=n.getMonth()}}
-function calSetOpen(v){window._cal.open=v;const b=document.querySelector('#calCard .cal-box');if(b)b.classList.toggle('open',v)}
-function calHover(v){clearTimeout(_calTimer);if(v)calSetOpen(true);else _calTimer=setTimeout(()=>calSetOpen(false),260)}
-function calToggle(){clearTimeout(_calTimer);calSetOpen(!window._cal.open)}
+function calSetOpen(v){
+  window._cal.open=v;
+  const p=document.getElementById('calPop'),b=document.getElementById('streakBtn');
+  if(p)p.classList.toggle('hidden',!v);
+  if(b)b.setAttribute('aria-expanded',v?'true':'false');
+  if(v)renderCal();
+}
+function calToggle(ev){if(ev&&ev.stopPropagation)ev.stopPropagation();calSetOpen(!window._cal.open)}
 function calNav(d){
   calInit();const C=window._cal;let m=C.m+d,y=C.y;
   if(m<0){m=11;y--}if(m>11){m=0;y++}
@@ -1526,15 +1552,11 @@ function calNav(d){
 function calToday(){const n=new Date();Object.assign(window._cal,{y:n.getFullYear(),m:n.getMonth(),sel:dayKey(n)});renderCal()}
 function calSel(k){window._cal.sel=(window._cal.sel===k?null:k);renderCal()}
 function renderCal(){
-  const el=document.getElementById('calCard');if(!el)return;
+  const el=document.getElementById('calPop');if(!el)return;
   calInit();const C=window._cal,g=window._gm,perDay=g?g.perDay:{},goal=g?g.goal:10;
   const now=new Date(),todayK=dayKey(now);
   const cap=t=>t.charAt(0).toUpperCase()+t.slice(1);
-  // faixa da semana atual
-  const dow=now.getDay(),DL=['D','S','T','Q','Q','S','S'];let wk='';
-  for(let i=0;i<7;i++){const dt=new Date(now);dt.setDate(now.getDate()-dow+i);const k=dayKey(dt),pd=perDay[k],on=!!pd,strong=on&&pd.n>=goal;
-    wk+=`<div class="cal-wd"><small>${DL[i]}</small><div class="cal-c${on?' on':''}${strong?' strong':''}${k===todayK?' today':''}${dt>now?' fut':''}" title="${on?pd.n+' questão(ões)':'Sem respostas'}"><span>${dt.getDate()}</span>${on?'<i>🔥</i>':''}</div></div>`}
-  // mês completo
+  const DL=['D','S','T','Q','Q','S','S'];
   const dim=new Date(C.y,C.m+1,0).getDate(),lead=new Date(C.y,C.m,1).getDay();
   const atMax=C.y===now.getFullYear()&&C.m===now.getMonth();
   let cells=DL.map(x=>`<div class="cal-dow">${x}</div>`).join('');
@@ -1545,13 +1567,15 @@ function renderCal(){
     if(on)daysOn++;
     cells+=`<button type="button" class="cal-c${on?' on':''}${strong?' strong':''}${k===todayK?' today':''}${C.sel===k?' sel':''}${fut?' fut':''}" onclick="calSel('${k}')" title="${on?pd.n+' questão(ões)':'Sem respostas'}"><span>${d}</span>${on?'<i>🔥</i>':''}</button>`;
   }
-  let sum=`🔥 <b>${daysOn}</b> dia${daysOn===1?'':'s'} de ofensiva em ${MESES[C.m]}. Dias em azul-escuro bateram a meta de ${goal} questões.`;
+  let sum=`🔥 <b>${daysOn}</b> dia${daysOn===1?'':'s'} de ofensiva em ${MESES[C.m]}.`;
   if(C.sel){
     const pd=perDay[C.sel],p=C.sel.split('-'),dt=pad2(p[2])+'/'+pad2(p[1])+'/'+p[0];
     sum=pd?`<b>${dt}</b>: ${pd.n} questão${pd.n===1?'':'ões'} · ${pd.ok} acerto${pd.ok===1?'':'s'} (${Math.round(pd.ok/pd.n*100)}%)${pd.n>=goal?' · meta batida ✅':''}`:`<b>${dt}</b>: nenhuma questão respondida.`;
   }
-  el.innerHTML=`<div class="cal-box${C.open?' open':''}" onmouseenter="calHover(true)" onmouseleave="calHover(false)"><div class="cal-top" onclick="calToggle()" role="button" tabindex="0" aria-label="Ver o mês inteiro"><div class="cal-title"><span class="ic" data-i="calendar"></span><b>${cap(MESES[now.getMonth()])} de ${now.getFullYear()}</b><span class="cal-hint"><span class="h">passe o mouse para ver o mês</span><span class="t">toque para ver o mês</span></span></div><div class="cal-week">${wk}</div></div><div class="cal-full"><div class="cal-inner"><div class="cal-main"><div class="cal-head"><h2 style="margin:0;font-size:17px">${cap(MESES[C.m])} de ${C.y}</h2><div class="cal-nav"><button type="button" onclick="calNav(-1)" aria-label="Mês anterior">‹</button><button type="button" onclick="calToday()">Hoje</button><button type="button" onclick="calNav(1)"${atMax?' disabled':''} aria-label="Próximo mês">›</button></div></div><div class="cal-grid">${cells}</div></div><div class="cal-side"><div class="cal-sum">${sum}</div><div class="cal-legend"><span><i class="on"></i>Dia com ofensiva</span><span><i class="strong"></i>Dia que bateu a meta de ${goal} questões</span><span><i></i>Dia sem respostas</span></div></div></div></div></div>`;
+  el.innerHTML=`<div class="cal-head"><h2 style="margin:0;font-size:17px">${cap(MESES[C.m])} de ${C.y}</h2><div class="cal-nav"><button type="button" onclick="calNav(-1)" aria-label="Mês anterior">‹</button><button type="button" onclick="calToday()">Hoje</button><button type="button" onclick="calNav(1)"${atMax?' disabled':''} aria-label="Próximo mês">›</button><button type="button" class="cal-x" onclick="calSetOpen(false)" aria-label="Fechar calendário"><span class="ic" data-i="x"></span></button></div></div><div class="cal-grid">${cells}</div><div class="cal-sum">${sum}</div><div class="cal-legend mini"><span><i class="on"></i>Dia com ofensiva</span><span><i class="strong"></i>Meta de ${goal} batida</span></div>`;
 }
+document.addEventListener('click',e=>{if(window._cal.open&&e.target.isConnected&&!e.target.closest('.streak-wrap'))calSetOpen(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&window._cal.open)calSetOpen(false)});
 function renderWeakness(){
   const box=document.getElementById('weaknessContent');if(!box)return;
   const list=(window._discList||[]).slice().sort((a,b)=>a.rate-b.rate||b.total-a.total);
