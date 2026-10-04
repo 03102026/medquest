@@ -784,6 +784,99 @@ body.dark .chip.ok{background:#12312a;color:#7fe0b0}body.dark .chip.warn{backgro
 
 .usr-row small{display:block}
 .usr-row .chip{white-space:nowrap;display:inline-block;margin:2px 0}
+
+/* ===== MedQuest v31 — Simulado ===== */
+.seg{display:inline-flex;gap:4px;padding:4px;border-radius:14px;background:rgba(11,110,142,.08);border:1px solid var(--border);margin-bottom:14px}
+.seg button{border:0;background:transparent;color:var(--muted);font-weight:800;padding:9px 18px;border-radius:10px;display:inline-flex;gap:8px;align-items:center}
+.seg button.on{background:linear-gradient(120deg,#0b6e8e,#20b5a2);color:#fff;box-shadow:0 8px 18px rgba(11,110,142,.25)}
+body.dark .seg{background:rgba(255,255,255,.05)}
+.sim-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.sim-card{border:1px solid var(--border);border-radius:22px;background:var(--surface);padding:20px;box-shadow:var(--shadow);margin-top:14px}
+.sim-card h3{margin:0 0 4px;font-size:19px;letter-spacing:-.03em}
+.sim-card .sub{color:var(--muted);font-size:13.5px;margin-bottom:14px;line-height:1.5}
+.sim-field{display:grid;gap:6px;font-weight:800;font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.sim-field select,.sim-field input{border:1px solid var(--border);border-radius:12px;padding:11px 13px;background:var(--surface);color:var(--text);font-size:15px;font-weight:600;width:100%}
+.sim-field select:disabled{opacity:.55}
+.sim-switch{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--border);border-radius:14px;margin-bottom:10px;cursor:pointer;background:var(--surface)}
+.sim-switch input{margin-top:3px;width:18px;height:18px;accent-color:#0b6e8e;flex:none}
+.sim-switch b{display:block;font-size:14px}
+.sim-switch small{color:var(--muted);line-height:1.4}
+.sim-switch.dis{opacity:.5;cursor:not-allowed}
+.sim-avail{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.sim-avail b{font-size:42px;letter-spacing:-.05em;background:linear-gradient(120deg,#0b6e8e,#20b5a2);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.sim-avail span{color:var(--muted);font-weight:700}
+.sim-qty{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.sim-goal{display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:end;margin:6px 0 14px}
+.sim-cta{width:100%;padding:16px;font-size:17px;margin-top:6px}
+.sim-bar{position:sticky;top:0;z-index:7;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:12px 16px;box-shadow:0 10px 30px rgba(11,110,142,.14);display:grid;gap:10px}
+.sim-bar-row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.sim-clock{font-size:26px;font-weight:900;letter-spacing:-.03em;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:8px}
+.sim-clock small{font-size:13px;color:var(--muted);font-weight:700}
+.sim-clock.ok{color:#0f8a63}.sim-clock.warn{color:#c58a06}.sim-clock.bad{color:#d33b3b}
+.sim-prog{height:8px;border-radius:99px;background:#e3edf2;overflow:hidden}
+.sim-prog span{display:block;height:100%;border-radius:99px;background:#20b5a2;transition:width .4s,background .3s}
+.sim-prog.warn span{background:#e3a008}.sim-prog.bad span{background:#d9534f}
+body.dark .sim-prog{background:#233440}
+.sim-nav{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:7px;margin-top:14px}
+.sim-nav button{position:relative;height:40px;border-radius:11px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-weight:800;font-size:13px}
+.sim-nav button.ans{background:rgba(32,181,162,.18);border-color:#9fd6d0}
+.sim-nav button.cur{outline:2.5px solid #0b6e8e;outline-offset:1px}
+.sim-nav button.flag::after{content:"";position:absolute;right:3px;top:3px;width:9px;height:9px;border-radius:50%;background:#e3a008}
+.sim-q{margin-top:14px}
+.sim-actions{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:20px}
+.sim-flagbtn.on{background:#fff7e7;border-color:#f3dfb1;color:#8a5a00}
+.sim-hist{display:grid;gap:8px;margin-top:12px}
+.sim-hrow{display:grid;grid-template-columns:130px 1fr auto auto;gap:12px;align-items:center;padding:10px 14px;border:1px solid var(--border);border-radius:13px;font-size:14px}
+.sim-hrow .pct{font-weight:900}
+.sim-spark{display:flex;align-items:flex-end;gap:5px;height:84px;margin-top:10px}
+.sim-spark div{flex:1;min-width:10px;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,#20b5a2,#0b6e8e);position:relative}
+.sim-spark div.mid{background:linear-gradient(180deg,#f0b429,#e3a008)}.sim-spark div.low{background:linear-gradient(180deg,#f08a86,#d9534f)}
+.sim-spark div span{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:800;color:var(--muted)}
+.sim-res-hero{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;padding:24px;border-radius:26px;border:1px solid #cfe6e8;background:linear-gradient(135deg,#f3fbfa,#eef6ff)}
+body.dark .sim-res-hero{background:linear-gradient(135deg,#10242a,#111c2a);border-color:#244a4c}
+.sim-ring{position:relative;width:148px;height:148px}
+.sim-ring svg{transform:rotate(-90deg)}
+.sim-ring .t{position:absolute;inset:0;display:grid;place-items:center;align-content:center;text-align:center}
+.sim-ring .t b{font-size:38px;letter-spacing:-.04em;line-height:1}
+.sim-ring .t span{font-size:12px;color:var(--muted);font-weight:700}
+.sim-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.sim-kpis div{border:1px solid var(--border);background:var(--surface);border-radius:14px;padding:11px 13px}
+.sim-kpis small{display:block;color:var(--muted);font-weight:700;font-size:11.5px}
+.sim-kpis b{font-size:18px}
+.sim-w{display:grid;gap:12px;margin-top:6px}
+.sim-w .row p{display:flex;align-items:center;gap:10px;margin:0 0 6px;flex-wrap:wrap}
+.sim-w .row p b{margin-left:auto}
+.tagx{font-size:10.5px;font-weight:850;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.tagx.f{background:#fff1f1;color:#a02222}.tagx.a{background:#fff7e7;color:#8a5a00}.tagx.s{background:#eaf8f0;color:#0f6b43}
+body.dark .tagx.f{background:#3a1c20;color:#ff9b96}body.dark .tagx.a{background:#3a2f19;color:#f3cf7a}body.dark .tagx.s{background:#12312a;color:#7fe0b0}
+.sim-grp{border:1px solid var(--border);border-radius:16px;margin-top:10px;background:var(--surface);overflow:hidden}
+.sim-grp>summary{cursor:pointer;display:flex;align-items:center;gap:10px;padding:14px 16px;font-weight:800;list-style:none}
+.sim-grp>summary::-webkit-details-marker{display:none}
+.sim-grp>summary::before{content:"▸";font-size:14px;transition:transform .2s;color:var(--primary)}
+.sim-grp[open]>summary::before{transform:rotate(90deg)}
+.sim-grp>summary .meta{margin-left:auto;font-weight:700;color:var(--muted);font-size:13px}
+.sim-grp-body{padding:0 14px 14px}
+.sim-grp.hideok .sim-qr.ok{display:none}
+.sim-qr{border:1px solid var(--border);border-radius:12px;margin-top:8px;background:var(--surface)}
+.sim-qr>summary{cursor:pointer;padding:10px 13px;display:flex;gap:10px;align-items:center;font-size:13.5px;list-style:none}
+.sim-qr>summary::-webkit-details-marker{display:none}
+.sim-qr.bad{border-color:#f3c9c9}.sim-qr.ok{border-color:#cdebd9}
+.sim-qr .st{font-weight:850;white-space:nowrap}
+.sim-qr.bad .st{color:#a02222}.sim-qr.ok .st{color:#0f6b43}
+.sim-qr .sn{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.sim-qb{padding:4px 14px 14px;line-height:1.6}
+.sim-opt{display:flex;gap:10px;padding:8px 11px;border:1px solid var(--border);border-radius:10px;margin-top:6px;font-size:14px}
+.sim-opt i{font-style:normal;font-weight:850;width:20px;flex:none}
+.sim-opt.c{border-color:#1a9c62;background:#eaf8f0}.sim-opt.w{border-color:#d33b3b;background:#fff1f1}
+.sim-opt em{margin-left:auto;font-style:normal;font-size:11.5px;font-weight:850;white-space:nowrap}
+body.dark .sim-opt.c{background:#12312a}body.dark .sim-opt.w{background:#3a1c20}
+.sim-ban{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:13px 18px;border-radius:16px;margin-bottom:14px;border:1px solid #9fd6d0;background:rgba(32,181,162,.1);font-weight:700}
+.sim-ban .grow{flex:1;min-width:200px}
+@media(max-width:900px){.sim-grid2{grid-template-columns:1fr}.sim-res-hero{grid-template-columns:1fr;justify-items:center;text-align:center}.sim-kpis{grid-template-columns:1fr 1fr;width:100%}.sim-hrow{grid-template-columns:1fr auto}.sim-hrow>:nth-child(2){grid-column:1/-1;order:3}}
+@media(max-width:560px){.sim-clock{font-size:22px}.sim-goal{grid-template-columns:1fr}.seg button{padding:9px 13px}}
+
+.sim-spark div{max-width:56px}
+.sim-spark{justify-content:flex-start}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -951,6 +1044,7 @@ window.MEDQUEST_CONFIG={
 
     <section id="home" class="page active">
       <div id="subBanner"></div>
+      <div id="simBanner"></div>
       <div class="card hero-card">
         <div class="hero-main">
           <div class="hero-hi" id="heroHi">Olá! 👋</div>
@@ -1014,7 +1108,8 @@ window.MEDQUEST_CONFIG={
       <div id="solverView" class="hidden"></div>
     </section>
 
-    <section id="simulados" class="page"><div class="card"><h2>🎯 Simulados</h2><p class="muted">Por enquanto, monte seu próprio treino na página <b>Questões</b>: escolha a instituição, afunile por período, módulo e matéria, marque os assuntos que quiser com o botão + e clique em "Resolver selecionados".</p><button class="primary" style="margin-top:12px" onclick="go('questions')">Ir para Questões →</button></div></section>
+    <section id="simulados" class="page"><div id="simView"></div>
+    </section>
     <section id="errors" class="page"><div class="card"><h2>🧠 Caderno de erros</h2><p class="muted">Questões em que a sua última resposta foi errada. Acerte-as de novo para saírem do caderno.</p><div id="missionBanner"></div><div id="errorList" class="empty" style="margin-top:15px">Ainda não há tentativas registradas.</div></div></section>
     <section id="performance" class="page"><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="stat-title">Aproveitamento</div><div id="perfRate" class="kpi">0%</div><div class="subkpi">respostas registradas</div></div><div class="card"><div class="stat-title">Acertos</div><div id="perfCorrect" class="kpi">0</div><div class="subkpi">questões</div></div><div class="card"><div class="stat-title">Respondidas</div><div id="perfTotal" class="kpi">0</div><div class="subkpi">questões</div></div></div><div class="card" style="margin-top:18px"><h2>📈 Por disciplina</h2><div id="disciplinePerf" class="empty" style="margin-top:14px">Ainda não há dados suficientes.</div></div></section>
 
@@ -1083,6 +1178,7 @@ window.MEDQUEST_CONFIG={
     <section id="profile" class="page">
       <div class="card profile"><div class="card-head"><h2>👤 Perfil</h2></div><div class="profile-row"><div><label>Nome</label><input id="profileName"></div><div><label>Curso</label><input value="Medicina" disabled></div></div><div><label>E-mail</label><input id="profileEmail" disabled></div><button class="primary" style="margin-top:17px" onclick="saveProfile()">Salvar alterações</button><div id="profileStatus" class="status"></div></div>
       <div class="card profile" style="margin-top:18px"><div class="card-head"><h2>🎓 Faculdade e período</h2></div><p class="muted" style="margin-top:0">A página de Questões já abre na faculdade e no período que você escolher aqui. Fica salvo na sua conta.</p><div class="profile-row"><div><label>Faculdade</label><select id="profInst"></select></div><div><label>Período</label><select id="profPeriod"></select></div></div><button class="primary" style="margin-top:17px" onclick="saveStudyPrefs()">Salvar</button><div id="studyPrefStatus" class="status"></div></div>
+      <div class="card profile" style="margin-top:18px"><div class="card-head"><h2>⏱ Meus simulados</h2><button class="link-btn" type="button" onclick="go('simulados')">Fazer um simulado</button></div><div id="profSim"><div class="muted">Carregando...</div></div></div>
       <div class="card profile" style="margin-top:18px"><div class="card-head"><h2>🏅 Minha assinatura</h2><span id="subChip" class="chip"></span></div><div id="subBody"><div class="muted">Carregando...</div></div></div>
       <div class="card profile" style="margin-top:18px"><div class="card-head"><h2>🔒 Segurança</h2></div><p class="muted" style="margin-top:0">Para trocar a senha, confirme a atual. Use pelo menos 8 caracteres, com letras e números.</p><div><label>Senha atual</label><input id="pwCur" type="password" autocomplete="current-password"></div><div class="profile-row" style="margin-top:12px"><div><label>Nova senha</label><input id="pwNew" type="password" autocomplete="new-password" oninput="pwStrength()"></div><div><label>Confirmar nova senha</label><input id="pwNew2" type="password" autocomplete="new-password"></div></div><div id="pwMeter" class="pw-meter"><span></span></div><div id="pwHint" class="muted" style="font-size:12px;margin-top:6px"></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:15px"><button class="primary" onclick="changePassword()">Alterar senha</button><button class="small-btn" type="button" onclick="sendResetLink()">Enviar link por e-mail</button></div><div id="pwStatus" class="status"></div></div>
     </section>
@@ -1095,7 +1191,7 @@ const supabaseReady=!!(cfg.SUPABASE_URL&&String(cfg.SUPABASE_URL).startsWith('ht
 const libOk=!!(window.supabase&&window.supabase.createClient);
 const sb=(supabaseReady&&libOk)?window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
 function sbProblem(){return !libOk?'Não foi possível carregar a biblioteca do Supabase. Verifique sua internet ou desative bloqueadores de anúncios para este site.':'A configuração do Supabase está incompleta. Confira o endereço e a chave no começo do index.html.'}
-const labels={home:['Olá! 👋','Continue de onde parou.'],questions:['Questões','Escolha a instituição e afunile o que vai estudar.'],simulados:['Simulados','Conjuntos de questões para testar seu desempenho.'],errors:['Caderno de erros','Revise as questões que você errou.'],performance:['Desempenho','Acompanhe sua evolução nos estudos.'],admin:['Administração','Gerencie o conteúdo do MedQuest.'],profile:['Perfil','Gerencie seus dados.']};
+const labels={home:['Olá! 👋','Continue de onde parou.'],questions:['Questões','Escolha a instituição e afunile o que vai estudar.'],simulados:['Simulados','Treine com tempo e veja o resultado só no final.'],errors:['Caderno de erros','Revise as questões que você errou.'],performance:['Desempenho','Acompanhe sua evolução nos estudos.'],admin:['Administração','Gerencie o conteúdo do MedQuest.'],profile:['Perfil','Gerencie seus dados.']};
 let currentUser=null,isAdmin=false;
 function status(id,msg,type='error'){const e=document.getElementById(id);if(!e)return;e.innerHTML=msg;e.className=(type==='ok'?'success-box':'error-box')}
 function togglePassword(){const p=document.getElementById('password');p.type=p.type==='password'?'text':'password'}
@@ -1158,6 +1254,7 @@ async function loadProfile(){
   document.getElementById('avatar').textContent=letter;document.getElementById('topAvatar').textContent=letter;
   document.getElementById('adminNav').style.display=isAdmin?'flex':'none';
   await loadSubscription();
+  if(typeof simLoadHist==='function')await simLoadHist();
   if(isAdmin)await loadAdminAll();
 }
 async function loadFilters(){}
@@ -1764,7 +1861,7 @@ function renderGrade(){
   const insName=(id)=>{const o=qfInstOptions().find(x=>x.id===String(id));return o?o.name:''};
   const found=qfApply([]);
   const st={n:found.length,done:found.filter(q=>lat[q.id]!==undefined).length,ok:found.filter(q=>lat[q.id]===true).length,bad:found.filter(q=>lat[q.id]===false).length};
-  let h=`<div class="mg-hero"><div class="mg-ico">📚</div><div class="mg-hero-text"><span class="mg-kicker">Área acadêmica</span><h2>Questões</h2><p>${gateOk?'Siga as etapas ou comece agora: só a instituição é obrigatória.':'Escolha a instituição para começar. As próximas etapas aparecem em seguida.'}</p></div></div>`;
+  let h=simTabs('q')+`<div class="mg-hero"><div class="mg-ico">📚</div><div class="mg-hero-text"><span class="mg-kicker">Área acadêmica</span><h2>Questões</h2><p>${gateOk?'Siga as etapas ou comece agora: só a instituição é obrigatória.':'Escolha a instituição para começar. As próximas etapas aparecem em seguida.'}</p></div></div>`;
   // trilha das escolhas (clicar volta àquela etapa)
   const crumbs=[];
   if(needInst&&F.inst!==null)crumbs.push([1,'🏛️',insName(F.inst)||'Instituição']);
@@ -2044,11 +2141,12 @@ async function loadAttempts(){
   await ensureAllQ();
   updateHome();
   if(typeof refreshGrade==='function')refreshGrade();
+  if(typeof simRefresh==='function')simRefresh();
   if(document.getElementById('questionList')&&!document.getElementById('questionList').classList.contains('hidden'))renderQuestions();
 }
 
 async function saveProfile(){if(!sb||!currentUser)return;const name=document.getElementById('profileName').value.trim()||'Aluno';const {error}=await sb.from('profiles').update({full_name:name}).eq('id',currentUser.id);if(error){status('profileStatus',error.message);return}await loadProfile();status('profileStatus','Perfil atualizado.','ok')}
-function go(id){if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);if(id==='questions'&&typeof showGrade==='function')showGrade();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?'Olá, Doc! 👋':l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();if(id==='profile'&&typeof fillProfilePrefs==='function')fillProfilePrefs();window.scrollTo({top:0,behavior:'smooth'})}
+function go(id){if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);if(id==='questions'&&typeof showGrade==='function')showGrade();if(typeof simPersist==='function')simPersist();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='simulados'&&typeof renderSim==='function')renderSim();const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?'Olá, Doc! 👋':l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();if(id==='profile'&&typeof fillProfilePrefs==='function')fillProfilePrefs();window.scrollTo({top:0,behavior:'smooth'})}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
 function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane'&&!editingQuestionId)loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions();if(pane==='adminUsersPane')loadAdminUsers()}
@@ -2602,6 +2700,325 @@ async function deleteSubject(id){
 async function createExam(e){e.preventDefault();const period=document.getElementById('cExamPeriod').value;const name=document.getElementById('cExamName').value.trim();const {error}=await sb.from('exams').insert({period_id:period?Number(period):null,name});if(error){status('examStatus',error.message);return}status('examStatus','✅ Prova adicionada.','ok');e.target.reset();await loadAdminAll()}
 function numOrNull(id){const v=document.getElementById(id).value;return v?Number(v):null}
 
+/* ===== Simulado ===== */
+window._sim=null;window._simView='setup';window._simRes=null;
+window._simSetup={inst:null,period:'',module:'',discipline:'',unanswered:false,weak:false,n:10,goalMin:0,hard:false,touched:false};
+window._simHist=[];window._simOk=false;
+function simKey(){return 'mq_sim_run_'+qfUid()}
+function fmtT(sec){sec=Math.max(0,Math.round(sec));return pad2(Math.floor(sec/60))+':'+pad2(sec%60)}
+function dtFmt(iso){const d=new Date(iso);return isNaN(d)?'—':pad2(d.getDate())+'/'+pad2(d.getMonth()+1)+'/'+d.getFullYear()+' '+pad2(d.getHours())+':'+pad2(d.getMinutes())}
+function simTabs(active){return `<div class="seg"><button type="button" class="${active==='q'?'on':''}" onclick="go('questions')"><span class="ic" data-i="doc"></span> Questões</button><button type="button" class="${active==='s'?'on':''}" onclick="go('simulados')"><span class="ic" data-i="clock"></span> Simulado</button></div>`}
+function simShuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function simWeighted(pool,n){
+  const rate={};(window._discList||[]).forEach(d=>{rate[String(d.id)]=d.rate});
+  const keyed=pool.map(q=>{const r=rate[String(q.discipline_id)];const w=r==null?1.5:1+((100-r)/100)*4;return {q,k:Math.pow(Math.random(),1/w)}});
+  keyed.sort((a,b)=>b.k-a.k);return keyed.slice(0,n).map(x=>x.q);
+}
+/* ----- escopo e quantidade ----- */
+function simScopeInit(){
+  const S=window._simSetup;if(S.touched)return;
+  const F=window._qf;
+  if(qfNeedsInst()){
+    if(F.inst&&F.inst!=='any')S.inst=F.inst;else if(window._myPref&&window._myPref.inst)S.inst=String(window._myPref.inst);
+    const opts=qfInstOptions();
+    if(S.inst&&!opts.some(o=>o.id===String(S.inst)))S.inst=null;
+    if(!S.inst&&opts.length===1)S.inst=opts[0].id;
+  }else S.inst='any';
+}
+function simPool(skip){
+  const S=window._simSetup,lat=window._latest||{};
+  return (window._allQ||[]).filter(q=>{
+    if((q.qtype||'objetiva')!=='objetiva')return false;
+    if(S.inst&&S.inst!=='any'){const qi=qInst(q);if(S.inst==='none'){if(qi!=null)return false}else if(String(qi)!==String(S.inst))return false}
+    if(S.period&&String(q.period_id)!==String(S.period))return false;
+    if(S.module){if(S.module==='none'){if(q.module_id!=null)return false}else if(String(q.module_id)!==String(S.module))return false}
+    if(skip!=='discipline'&&S.discipline&&String(q.discipline_id)!==String(S.discipline))return false;
+    if(S.unanswered&&lat[q.id]!==undefined)return false;
+    return true;
+  });
+}
+function simSet(k,v){
+  const S=window._simSetup;S.touched=true;v=(v==null?'':String(v));
+  if(k==='inst'){S.inst=v||null;S.period='';S.module='';S.discipline=''}
+  else if(k==='period'){S.period=v;S.module='';S.discipline=''}
+  else if(k==='module'){S.module=v;S.discipline=''}
+  else S[k]=v;
+  renderSim();
+}
+function simToggle(k){const S=window._simSetup;S[k]=!S[k];renderSim()}
+function simSetN(v){const S=window._simSetup;S.n=Math.max(1,parseInt(v,10)||1);renderSim()}
+function simSetGoal(v){const S=window._simSetup;S.goalMin=Math.max(0,parseInt(v,10)||0);renderSim()}
+function simScopeLabel(){
+  const S=window._simSetup,parts=[];
+  if(S.inst&&S.inst!=='any'){const o=qfInstOptions().find(x=>x.id===String(S.inst));if(o)parts.push(o.name)}
+  if(S.period){const p=(window._periods||[]).find(x=>String(x.id)===String(S.period));if(p)parts.push(p.name)}
+  if(S.module){const m=S.module==='none'?{name:'Questões gerais'}:(window._modules||[]).find(x=>String(x.id)===String(S.module));if(m)parts.push(m.name)}
+  if(S.discipline){const q=(window._allQ||[]).find(x=>String(x.discipline_id)===String(S.discipline));if(q&&q.disciplines)parts.push(q.disciplines.name)}
+  return parts.join(' · ')||'Todas as questões';
+}
+/* ----- renderização geral ----- */
+function renderSim(){
+  const v=document.getElementById('simView');if(!v)return;
+  if(window._simView==='run'&&window._sim)return simRenderRun();
+  if(window._simView==='result'&&window._simRes)return simRenderResult();
+  window._simView='setup';simRenderSetup();
+}
+function simRefresh(){
+  renderSimBanner();
+  const pg=document.getElementById('simulados');
+  if(window._simView==='setup'&&pg&&pg.classList.contains('active'))simRenderSetup();
+}
+function simSavedRun(){try{const raw=localStorage.getItem(simKey());return raw?JSON.parse(raw):null}catch(e){return null}}
+function renderSimBanner(){
+  const el=document.getElementById('simBanner');if(!el)return;
+  const sv=(window._sim&&window._simView==='run')?window._sim:simSavedRun();
+  if(!sv){el.innerHTML='';return}
+  const done=sv.ids.filter(id=>sv.ans&&sv.ans[id]).length;
+  el.innerHTML=`<div class="sim-ban"><span class="grow"><span class="ic" data-i="clock"></span> Você tem um simulado em andamento: ${done} de ${sv.ids.length} respondidas · ${fmtT(sv.elapsed||0)}.</span><button class="primary" type="button" onclick="simResume()">Retomar</button><button class="small-btn" type="button" onclick="simDiscard()">Descartar</button></div>`;
+}
+function simSelect(label,id,opts,cur,fn,dis){
+  return `<label class="sim-field">${label}<select id="${id}" onchange="${fn}(this.value)"${dis?' disabled':''}>${opts.map(o=>`<option value="${o[0]}"${String(o[0])===String(cur==null?'':cur)?' selected':''}>${escapeHtml(o[1])}</option>`).join('')}</select></label>`;
+}
+function simRenderSetup(){
+  const v=document.getElementById('simView');if(!v)return;
+  simScopeInit();
+  const S=window._simSetup,needInst=qfNeedsInst(),lat=window._latest||{};
+  const pool=simPool(),N=pool.length;
+  const instOpts=qfInstOptions();
+  const instSel=needInst?simSelect('Instituição <span style="font-weight:600">(obrigatória)</span>','simInst',[['','Escolha...']].concat(instOpts.map(o=>[o.id,o.name])),S.inst||'','simSetInst'):'';
+  const pers=qfPeriodsFor(S.inst);
+  const mods=(window._modulesOk&&S.period)?(window._modules||[]).filter(m=>String(m.period_id)===String(S.period)):[];
+  const dMap={};simPool('discipline').forEach(q=>{if(q.discipline_id==null)return;const k=String(q.discipline_id);if(!dMap[k])dMap[k]=(q.disciplines&&q.disciplines.name)||'Matéria'});
+  const gateOk=!needInst||!!S.inst;
+  if(N>0&&S.n>N)S.n=N;
+  const n=N?Math.max(1,Math.min(S.n||10,N)):0;
+  const goal=S.goalMin>0?S.goalMin:n*3;
+  const hasWeak=(window._discList||[]).length>0;
+  let h=simTabs('s')+`<div class="mg-hero"><div class="mg-ico"><span class="ic" data-i="clock"></span></div><div class="mg-hero-text"><span class="mg-kicker">Treino com tempo</span><h2>Simulado</h2><p>Monte uma prova, responda com o cronômetro correndo e veja o resultado, com seus pontos fortes e fracos, só no final.</p></div></div>`;
+  h+=`<div id="simResume"></div>`;
+  h+=`<div class="sim-grid2"><div class="sim-card" style="margin-top:0"><h3>1. De onde vêm as questões</h3><div class="sub">Só questões objetivas entram no simulado.</div>${needInst?instSel:''}${simSelect('Período','simPer',[['','Todos os períodos']].concat(pers.map(p=>[p.id,p.name])),S.period,'simSetPeriod',!gateOk)}${window._modulesOk?simSelect('Módulo','simMod',[['','Todos os módulos']].concat(mods.map(m=>[m.id,m.name])),S.module,'simSetModule',!gateOk||!S.period):''}${simSelect('Matéria','simDis',[['','Todas as matérias']].concat(Object.keys(dMap).sort((a,b)=>dMap[a].localeCompare(dMap[b])).map(k=>[k,dMap[k]])),S.discipline,'simSetDis',!gateOk)}
+    <label class="sim-switch"><input type="checkbox" ${S.unanswered?'checked':''} onchange="simToggle('unanswered')"><span><b>Só questões inéditas</b><small>Sorteia apenas questões que você ainda não respondeu.</small></span></label>
+    <label class="sim-switch${hasWeak?'':' dis'}"><input type="checkbox" ${S.weak?'checked':''} ${hasWeak?'':'disabled'} onchange="simToggle('weak')"><span><b>Foco nos meus pontos fracos</b><small>${hasWeak?'Sorteia mais questões das matérias em que você mais erra.':'Disponível depois que você responder algumas questões.'}</small></span></label></div>`;
+  h+=`<div class="sim-card" style="margin-top:0"><h3>2. Gerar o simulado</h3>${!gateOk?'<div class="sub">Escolha a instituição para ver quantas questões estão disponíveis.</div>':`<div class="sim-avail"><b>${N}</b><span>questõe${N===1?'':'s'} disponíve${N===1?'l':'is'}</span></div>`}`;
+  if(gateOk&&N>0){
+    const presets=[10,20,30,50].filter(x=>x<N);
+    h+=`<div class="sim-field" style="margin-bottom:6px">Quantas questões você quer?</div><div class="sim-qty">${presets.map(x=>`<button type="button" class="qf-chip${n===x?' on':''}" onclick="simSetN(${x})">${x}</button>`).join('')}<button type="button" class="qf-chip${n===N?' on':''}" onclick="simSetN(${N})">Todas (${N})</button></div><label class="sim-field"><input id="simN" type="number" min="1" max="${N}" value="${n}" onchange="simSetN(this.value)" style="max-width:140px"></label>${n<N?`<div class="muted" style="font-size:12.5px;margin:-4px 0 12px">As ${n} questões serão <b>sorteadas</b> entre as ${N} disponíveis.</div>`:''}`;
+    h+=`<div class="sim-goal"><label class="sim-field" style="margin:0">Meta de tempo (min)<input id="simGoal" type="number" min="1" value="${goal}" onchange="simSetGoal(this.value)"></label><div class="muted" style="font-size:13px;line-height:1.5">${S.goalMin>0&&S.goalMin!==n*3?`Personalizada. <button class="link-btn" type="button" style="padding:0" onclick="simSetGoal(0)">Voltar para 3 min por questão</button>`:`Média de <b>3 minutos por questão</b>: ${n} questõe${n===1?'':'s'} = ${n*3} minutos.`}</div></div>`;
+    h+=`<label class="sim-switch"><input type="checkbox" ${S.hard?'checked':''} onchange="simToggle('hard')"><span><b>Modo prova (tempo limite)</b><small>Quando o tempo acabar, o simulado é enviado sozinho. Desligado, a meta é só uma referência e o cronômetro continua.</small></span></label>`;
+  }
+  h+=`<button class="primary sim-cta" type="button" onclick="simGenerate()"${(gateOk&&N>0)?'':' disabled'}>Gerar simulado</button>${gateOk&&N===0?'<div class="qf-hint" style="margin-top:10px">Nenhuma questão objetiva disponível com esses filtros.</div>':''}</div></div>`;
+  // histórico
+  const H=window._simHist||[];
+  h+=`<div class="sim-card"><h3>Meu histórico de simulados</h3>`;
+  if(!window._simOk)h+=`<div class="sub" style="margin:0">O histórico ainda não está disponível. Peça à administração para executar o modules_migration.sql no Supabase.</div>`;
+  else if(!H.length)h+=`<div class="sub" style="margin:0">Você ainda não fez nenhum simulado. O primeiro aparece aqui.</div>`;
+  else h+=`<div class="sub">Evolução dos seus últimos simulados (porcentagem de acertos).</div>${simSpark(H)}<div class="sim-hist">${H.slice(0,10).map(simHistRow).join('')}</div>`;
+  h+=`</div>`;
+  v.innerHTML=h;
+  renderSimResumeBox();
+}
+function simSetInst(v){simSet('inst',v)}
+function simSetPeriod(v){simSet('period',v)}
+function simSetModule(v){simSet('module',v)}
+function simSetDis(v){simSet('discipline',v)}
+function renderSimResumeBox(){
+  const el=document.getElementById('simResume');if(!el)return;
+  const sv=simSavedRun();
+  if(!sv){el.innerHTML='';return}
+  const done=sv.ids.filter(id=>sv.ans&&sv.ans[id]).length;
+  el.innerHTML=`<div class="sim-ban"><span class="grow"><span class="ic" data-i="clock"></span> Simulado em andamento: ${done} de ${sv.ids.length} respondidas · ${fmtT(sv.elapsed||0)} de ${fmtT(sv.goalSec)}.</span><button class="primary" type="button" onclick="simResume()">Retomar</button><button class="small-btn" type="button" onclick="simDiscard()">Descartar</button></div>`;
+}
+function simHistRow(h){
+  const pct=h.total?Math.round(h.correct/h.total*100):0,col=pct>=70?'#1a9c62':(pct>=50?'#c58a06':'#d33b3b');
+  return `<div class="sim-hrow"><span class="muted">${dtFmt(h.created_at)}</span><span>${escapeHtml(h.scope_label||'Simulado')}</span><span><b class="pct" style="color:${col}">${pct}%</b> <span class="muted">${h.correct}/${h.total}</span></span><span style="display:inline-flex;gap:8px;align-items:center"><span class="muted">${fmtT(h.duration_sec)}</span><button class="small-btn" type="button" onclick="simOpenHist(${h.id})">Ver resultado</button></span></div>`;
+}
+function simSpark(H){
+  const last=H.slice(0,12).slice().reverse();
+  return `<div class="sim-spark">${last.map(h=>{const pct=h.total?Math.round(h.correct/h.total*100):0;return `<div class="${pct>=70?'':(pct>=50?'mid':'low')}" style="height:${Math.max(6,pct)}%" title="${dtFmt(h.created_at)}: ${pct}%"><span>${pct}</span></div>`}).join('')}</div>`;
+}
+/* ----- gerar e começar ----- */
+async function simGenerate(){
+  const S=window._simSetup,pool=simPool();
+  if(!pool.length){toast('Nenhuma questão disponível com esses filtros.');return}
+  const n=Math.max(1,Math.min(S.n||10,pool.length));
+  const picked=(S.weak&&(window._discList||[]).length)?simWeighted(pool,n):simShuffle(pool).slice(0,n);
+  await simBegin(picked.map(q=>q.id),{scope:simScopeLabel(),goalMin:S.goalMin>0?S.goalMin:n*3,hard:S.hard});
+}
+async function simFetchQuestions(ids){
+  const out={};
+  for(let i=0;i<ids.length;i+=100){
+    const r=await sb.from('questions').select('id,statement,option_a,option_b,option_c,option_d,option_e,correct_option,explanation,difficulty,discipline_id,disciplines(name),subjects(name),periods(name)').in('id',ids.slice(i,i+100));
+    if(!r.error)(r.data||[]).forEach(q=>{out[q.id]=q});
+  }
+  return out;
+}
+async function simBegin(ids,opt){
+  const v=document.getElementById('simView');if(v)v.innerHTML='<div class="empty"><strong>Gerando seu simulado...</strong></div>';
+  const det=await simFetchQuestions(ids);
+  const list=ids.map(id=>det[id]).filter(Boolean);
+  if(!list.length){toast('Não foi possível carregar as questões.');window._simView='setup';renderSim();return}
+  const S={id:Date.now(),elapsed:0,goalSec:Math.round((opt.goalMin||list.length*3)*60),hard:!!opt.hard,scope:opt.scope||'',ids:list.map(q=>q.id),q:{},ans:{},flags:{},cuts:{},tq:{},idx:0,last:Date.now()};
+  list.forEach(q=>{S.q[q.id]=q});
+  window._sim=S;window._simView='run';window._simRes=null;simPersist();
+  go('simulados');renderSim();window.scrollTo({top:0,behavior:'smooth'});
+}
+function simPersist(){
+  const S=window._sim;if(!S||window._simView!=='run')return;
+  try{localStorage.setItem(simKey(),JSON.stringify(S))}catch(e){}
+}
+function simResume(){
+  const sv=simSavedRun();if(!sv)return;
+  sv.last=Date.now();window._sim=sv;window._simView='run';window._simRes=null;
+  go('simulados');renderSim();
+}
+function simDiscard(){
+  if(!confirm('Descartar o simulado em andamento? As respostas serão perdidas.'))return;
+  try{localStorage.removeItem(simKey())}catch(e){}
+  window._sim=null;window._simView='setup';renderSimBanner();renderSim();
+}
+function simQuit(){
+  if(!confirm('Sair do simulado? Seu progresso fica salvo e você pode retomar depois.'))return;
+  simPersist();window._simView='setup';window._sim=null;renderSimBanner();renderSim();
+}
+/* ----- durante o simulado ----- */
+function simTick(){
+  const S=window._sim;if(!S||window._simView!=='run')return;
+  const pg=document.getElementById('simulados');
+  const now=Date.now();
+  if(!pg||!pg.classList.contains('active')||document.hidden){S.last=now;return}
+  const d=Math.min(3,Math.max(0,(now-S.last)/1000));S.last=now;
+  S.elapsed+=d;const qid=S.ids[S.idx];S.tq[qid]=(S.tq[qid]||0)+d;
+  S._p=(S._p||0)+d;if(S._p>=5){S._p=0;simPersist()}
+  simPaintClock();
+  if(S.hard&&S.elapsed>=S.goalSec){toast('⏱ Tempo esgotado! Enviando seu simulado.');simFinish(true)}
+}
+function simPaintClock(){
+  const S=window._sim,c=document.getElementById('simClock'),b=document.getElementById('simBarFill'),pb=document.getElementById('simProg');if(!S||!c)return;
+  const ratio=S.goalSec?S.elapsed/S.goalSec:0,cls=ratio>=1?'bad':(ratio>=.8?'warn':'ok');
+  c.className='sim-clock '+cls;
+  c.innerHTML=S.hard?`<span class="ic" data-i="clock"></span>${fmtT(Math.max(0,S.goalSec-S.elapsed))} <small>restantes</small>`:`<span class="ic" data-i="clock"></span>${fmtT(S.elapsed)} <small>/ meta ${fmtT(S.goalSec)}</small>`;
+  if(b)b.style.width=Math.min(100,Math.round(ratio*100))+'%';
+  if(pb)pb.className='sim-prog '+(cls==='ok'?'':cls);
+}
+function simRenderRun(){
+  const S=window._sim,v=document.getElementById('simView');if(!S||!v)return;
+  const id=S.ids[S.idx],q=S.q[id],n=S.ids.length,i=S.idx;
+  const cuts=S.cuts[id]||{},sel=S.ans[id];
+  const answered=S.ids.filter(x=>S.ans[x]).length;
+  const opts=['A','B','C','D','E'].map(L=>({L,t:q['option_'+L.toLowerCase()]})).filter(o=>o.t);
+  v.innerHTML=`<div class="sim-bar"><div class="sim-bar-row"><div class="sim-clock ok" id="simClock"></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="small-btn" type="button" onclick="simQuit()">Sair</button><button class="primary" type="button" onclick="simFinish(false)">Enviar simulado</button></div></div><div class="sim-prog" id="simProg"><span id="simBarFill" style="width:0%"></span></div><div class="muted" style="font-size:12.5px;font-weight:700">${answered} de ${n} respondidas${S.hard?' · modo prova: o simulado é enviado sozinho quando o tempo acabar':''}</div></div>
+  <div class="sim-nav">${S.ids.map((x,k)=>`<button type="button" class="${S.ans[x]?'ans':''}${k===i?' cur':''}${S.flags[x]?' flag':''}" onclick="simGo(${k})" title="Questão ${k+1}${S.flags[x]?' (marcada para revisar)':''}">${k+1}</button>`).join('')}</div>
+  <div class="card solver-card sim-q"><div class="q-meta"><span class="badge blue">Questão ${i+1} de ${n}</span>${S.flags[id]?'<span class="badge amber">Marcada para revisar</span>':''}</div><div class="solver-statement" style="margin-top:12px">${escapeHtml(q.statement)}</div>
+  <div class="opt-list">${opts.map(o=>`<div class="opt-row"><button type="button" class="opt${cuts[o.L]?' cut':''}${sel===o.L?' selected':''}" onclick="simPick('${o.L}')"><span class="opt-letter">${o.L}</span><span class="opt-text">${escapeHtml(o.t)}</span></button><button type="button" class="scissor${cuts[o.L]?' on':''}" onclick="simCut('${o.L}')" title="Cortar esta alternativa" aria-label="Cortar alternativa ${o.L}"><span class="ic" data-i="scissors"></span></button></div>`).join('')}</div>
+  <div class="sim-actions"><button type="button" class="small-btn" onclick="simGo(${i-1})"${i<=0?' disabled':''}>← Anterior</button><span style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="small-btn sim-flagbtn${S.flags[id]?' on':''}" onclick="simFlag()"><span class="ic" data-i="flag"></span> ${S.flags[id]?'Desmarcar revisão':'Marcar para revisar'}</button>${sel?`<button type="button" class="small-btn" onclick="simPick('${sel}')">Limpar resposta</button>`:''}</span><button type="button" class="${i>=n-1?'small-btn':'primary'}" onclick="simGo(${i+1})"${i>=n-1?' disabled':''}>Próxima →</button></div></div>`;
+  simPaintClock();
+}
+function simGo(k){const S=window._sim;if(!S||k<0||k>=S.ids.length)return;S.idx=k;simPersist();simRenderRun();window.scrollTo({top:0,behavior:'smooth'})}
+function simPick(L){
+  const S=window._sim,id=S.ids[S.idx];if((S.cuts[id]||{})[L])return;
+  if(S.ans[id]===L)delete S.ans[id];else S.ans[id]=L;
+  simPersist();simRenderRun();
+}
+function simCut(L){
+  const S=window._sim,id=S.ids[S.idx],c=S.cuts[id]=S.cuts[id]||{};
+  if(c[L])delete c[L];else{c[L]=1;if(S.ans[id]===L)delete S.ans[id]}
+  simPersist();simRenderRun();
+}
+function simFlag(){const S=window._sim,id=S.ids[S.idx];if(S.flags[id])delete S.flags[id];else S.flags[id]=1;simPersist();simRenderRun()}
+/* ----- enviar e resultado ----- */
+async function simFinish(auto){
+  const S=window._sim;if(!S)return;
+  const n=S.ids.length,answered=S.ids.filter(id=>S.ans[id]).length,blank=n-answered;
+  if(!auto&&blank>0&&!confirm('Você deixou '+plQ(blank)+' em branco. Enviar mesmo assim?'))return;
+  const items=S.ids.map((id,pos)=>{const q=S.q[id],sel=S.ans[id]||null;return {pos,id,q,sel,ok:!!sel&&sel===String(q.correct_option||'').trim().toUpperCase(),time:Math.round(S.tq[id]||0),did:q.discipline_id,dname:(q.disciplines&&q.disciplines.name)||'Sem matéria'}});
+  let xp=0;items.forEach(it=>{if(it.sel)xp+=Math.max(0,xpFor(it.id,it.ok))});
+  const R={at:new Date().toISOString(),n,answered,correct:items.filter(x=>x.ok).length,duration:Math.round(S.elapsed),goal:S.goalSec,hard:S.hard,scope:S.scope,items,xp,saved:false,fromHistory:false};
+  window._simRes=R;window._simView='result';window._sim=null;
+  try{localStorage.removeItem(simKey())}catch(e){}
+  renderSimBanner();renderSim();window.scrollTo({top:0,behavior:'smooth'});
+  await simSave(R);
+}
+async function simSave(R){
+  if(!sb||!currentUser)return;
+  const rows=R.items.filter(i=>i.sel).map(i=>({user_id:currentUser.id,question_id:i.id,is_correct:i.ok,selected_option:i.sel}));
+  if(rows.length){let r=await sb.from('attempts').insert(rows);if(r.error)await sb.from('attempts').insert(rows.map(x=>({user_id:x.user_id,question_id:x.question_id,is_correct:x.is_correct})))}
+  const s=await sb.from('simulados').insert({user_id:currentUser.id,total:R.n,answered:R.answered,correct:R.correct,duration_sec:R.duration,goal_sec:R.goal,hard_limit:R.hard,scope_label:R.scope}).select('id');
+  if(!s.error&&s.data&&s.data[0]){
+    R.id=s.data[0].id;
+    const it=await sb.from('simulado_items').insert(R.items.map(i=>({simulado_id:R.id,question_id:i.id,position:i.pos,selected_option:i.sel,is_correct:i.ok,time_sec:i.time,discipline_id:i.did||null,discipline_name:i.dname})));
+    R.saved=!it.error;
+  }
+  await loadAttempts();await simLoadHist();
+  if(window._simView==='result'&&window._simRes===R)simRenderResult();
+}
+async function simLoadHist(){
+  if(!sb||!currentUser)return;
+  const r=await sb.from('simulados').select('id,created_at,total,answered,correct,duration_sec,goal_sec,hard_limit,scope_label').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(60);
+  window._simOk=!r.error;window._simHist=r.error?[]:(r.data||[]);
+  renderSimProfile();
+  const pg=document.getElementById('simulados');
+  if(window._simView==='setup'&&pg&&pg.classList.contains('active'))simRenderSetup();
+}
+async function simOpenHist(id){
+  const h=(window._simHist||[]).find(x=>String(x.id)===String(id));if(!h)return;
+  const v=document.getElementById('simView');if(v)v.innerHTML='<div class="empty"><strong>Abrindo o resultado...</strong></div>';
+  const r=await sb.from('simulado_items').select('question_id,position,selected_option,is_correct,time_sec,discipline_id,discipline_name').eq('simulado_id',id).order('position',{ascending:true});
+  const rows=(r.data||[]);
+  const det=await simFetchQuestions(rows.map(x=>x.question_id).filter(x=>x!=null));
+  const items=rows.map(x=>({pos:x.position,id:x.question_id,q:det[x.question_id]||null,sel:x.selected_option,ok:!!x.is_correct,time:x.time_sec||0,did:x.discipline_id,dname:x.discipline_name||'Sem matéria'}));
+  window._simRes={at:h.created_at,n:h.total,answered:h.answered,correct:h.correct,duration:h.duration_sec,goal:h.goal_sec,hard:h.hard_limit,scope:h.scope_label||'',items,xp:0,saved:true,fromHistory:true,id};
+  window._simView='result';go('simulados');renderSim();window.scrollTo({top:0});
+}
+function simBackToSetup(){window._simView='setup';window._simRes=null;renderSim();window.scrollTo({top:0,behavior:'smooth'})}
+function simRedo(){
+  const R=window._simRes;if(!R)return;
+  const ids=R.items.filter(x=>!x.ok&&x.q).map(x=>x.id);
+  if(!ids.length){toast('Não há questões erradas para refazer.');return}
+  simBegin(ids,{scope:'Refazer erros',goalMin:ids.length*3,hard:false});
+}
+function simToggleOk(btn){const g=btn.closest('.sim-grp');if(!g)return;g.classList.toggle('hideok');btn.textContent=g.classList.contains('hideok')?'Mostrar também as acertadas':'Esconder as acertadas'}
+function simQReview(it){
+  const q=it.q;
+  const st=it.sel?(it.ok?'<span class="st">✓ Acertou</span>':'<span class="st">✗ Errou</span>'):'<span class="st" style="color:var(--muted)">— Em branco</span>';
+  if(!q)return `<div class="sim-qr ${it.ok?'ok':'bad'}"><div style="padding:10px 13px">${st} · questão ${it.pos+1} (não está mais disponível)</div></div>`;
+  const corr=String(q.correct_option||'').trim().toUpperCase();
+  const opts=['A','B','C','D','E'].map(L=>({L,t:q['option_'+L.toLowerCase()]})).filter(o=>o.t);
+  return `<details class="sim-qr ${it.ok?'ok':'bad'}"><summary>${st}<span class="sn">Questão ${it.pos+1} · ${escapeHtml((q.statement||'').slice(0,90))}</span><span class="muted" style="white-space:nowrap">${fmtT(it.time)}</span></summary><div class="sim-qb"><div style="white-space:pre-wrap">${escapeHtml(q.statement||'')}</div>${opts.map(o=>`<div class="sim-opt${o.L===corr?' c':(o.L===it.sel?' w':'')}"><i>${o.L}</i><span>${escapeHtml(o.t)}</span>${o.L===corr?'<em style="color:#0f6b43">Correta</em>':(o.L===it.sel?'<em style="color:#a02222">Sua resposta</em>':'')}</div>`).join('')}${q.explanation?`<div class="explain" style="margin-top:10px"><b>💡 Explicação</b>${escapeHtml(q.explanation)}</div>`:''}</div></details>`;
+}
+function simRenderResult(){
+  const R=window._simRes,v=document.getElementById('simView');if(!R||!v)return;
+  const pct=R.n?Math.round(R.correct/R.n*100):0,nota=(R.n?R.correct/R.n*10:0).toFixed(1).replace('.',',');
+  const col=pct>=70?'#1a9c62':(pct>=50?'#e3a008':'#d9534f');
+  const diff=R.duration-R.goal,inGoal=diff<=0;
+  // por matéria
+  const g={};R.items.forEach(it=>{const k=String(it.did==null?'x':it.did);const o=g[k]=g[k]||{id:k,name:it.dname,total:0,correct:0,items:[]};o.total++;if(it.ok)o.correct++;o.items.push(it)});
+  const groups=Object.values(g).map(o=>({...o,wrong:o.total-o.correct,pct:Math.round(o.correct/o.total*100)}));
+  groups.sort((a,b)=>b.wrong-a.wrong||a.pct-b.pct||a.name.localeCompare(b.name));
+  const fracos=groups.filter(x=>x.wrong>0&&x.pct<50),atencao=groups.filter(x=>x.wrong>0&&x.pct>=50&&x.pct<70),strong=groups.filter(x=>x.pct>=70).sort((a,b)=>b.pct-a.pct);
+  const cls=p=>p>=70?['s','Ponto forte']:(p>=50?['a','Atenção']:['f','Ponto fraco']);
+  const slow=R.items.filter(x=>x.time>0).slice().sort((a,b)=>b.time-a.time).slice(0,3);
+  let h=simTabs('s')+`<div class="sim-res-hero"><div class="sim-ring"><svg width="148" height="148" viewBox="0 0 148 148"><circle cx="74" cy="74" r="62" fill="none" stroke="#dfeaf0" stroke-width="13"/><circle cx="74" cy="74" r="62" fill="none" stroke="${col}" stroke-width="13" stroke-linecap="round" stroke-dasharray="389.56" stroke-dashoffset="${389.56*(1-pct/100)}"/></svg><div class="t"><div><b>${pct}%</b><br><span>${R.correct} de ${R.n}</span></div></div></div><div style="width:100%"><span class="mg-kicker">Resultado do simulado</span><h2 style="margin:8px 0 4px;font-size:28px;letter-spacing:-.04em">Nota ${nota} de 10</h2><div class="muted">${escapeHtml(R.scope||'Simulado')} · ${dtFmt(R.at)}${R.fromHistory?'':(R.saved?' · salvo no seu histórico':'')}</div><div class="sim-kpis"><div><small>Acertos</small><b>${R.correct}</b></div><div><small>Erros</small><b>${R.answered-R.correct}</b></div><div><small>Em branco</small><b>${R.n-R.answered}</b></div><div><small>Tempo</small><b>${fmtT(R.duration)}</b><small>${inGoal?'dentro da meta de '+fmtT(R.goal):fmtT(diff)+' acima da meta de '+fmtT(R.goal)}</small></div></div>${R.xp>0?`<div class="muted" style="margin-top:10px;font-weight:700">+${R.xp} XP pelas respostas deste simulado</div>`:''}</div></div>`;
+  // pontos fortes e fracos
+  h+=`<div class="sim-card"><h3>Pontos fortes e fracos</h3><div class="sub">${fracos.length?'<b>Pontos fracos:</b> '+fracos.slice(0,3).map(x=>escapeHtml(x.name)+' ('+x.wrong+' erro'+(x.wrong===1?'':'s')+')').join(', ')+'.':''}${atencao.length?(fracos.length?'<br>':'')+'<b>Para ficar de olho:</b> '+atencao.slice(0,3).map(x=>escapeHtml(x.name)+' ('+x.wrong+' erro'+(x.wrong===1?'':'s')+')').join(', ')+'.':''}${!fracos.length&&!atencao.length?'Nenhum ponto fraco neste simulado: todas as matérias ficaram em 70% ou mais. 🎉':''}${strong.length?'<br><b>Pontos fortes:</b> '+strong.slice(0,3).map(x=>escapeHtml(x.name)+' ('+x.pct+'%)').join(', ')+'.':''}</div><div class="sim-w">${groups.map(x=>{const c=cls(x.pct),bc=x.pct>=70?'#1a9c62':(x.pct>=50?'#e3a008':'#d9534f');return `<div class="row"><p><span class="perf-ico">${discIcon(x.name)}</span><b style="margin:0;font-size:15px">${escapeHtml(x.name)}</b><span class="tagx ${c[0]}">${c[1]}</span><b>${x.wrong} erro${x.wrong===1?'':'s'} de ${x.total} · ${x.pct}%</b></p><div class="perf-bar"><span style="width:${x.pct}%;background:${bc}"></span></div></div>`}).join('')}</div></div>`;
+  // questões por matéria
+  h+=`<div class="sim-card"><h3>Ver as questões por matéria</h3><div class="sub">Da matéria em que você mais errou para a que menos errou. Abra para revisar as questões e as explicações.</div>${groups.map((x,k)=>{const its=x.items.slice().sort((a,b)=>(a.ok-b.ok)||(a.pos-b.pos));return `<details class="sim-grp hideok"${k===0&&x.wrong>0?' open':''}><summary><span class="perf-ico" style="width:30px;height:30px">${discIcon(x.name)}</span>${escapeHtml(x.name)}<span class="meta">${x.wrong} erro${x.wrong===1?'':'s'} de ${x.total} · ${x.pct}%</span></summary><div class="sim-grp-body">${x.correct>0?`<div style="text-align:right;margin-top:-2px"><button type="button" class="link-btn" onclick="simToggleOk(this)">Mostrar também as acertadas</button></div>`:''}${its.map(simQReview).join('')}</div></details>`}).join('')}</div>`;
+  if(slow.length)h+=`<div class="sim-card"><h3>Onde você demorou mais</h3><div class="sub">Questões que consumiram mais tempo (meta: 3 minutos por questão).</div><div class="sim-w">${slow.map(it=>`<div class="row"><p><b style="margin:0">Questão ${it.pos+1}</b><span class="muted">${escapeHtml(it.dname)}</span><b>${fmtT(it.time)}</b></p></div>`).join('')}</div></div>`;
+  const wrongN=R.items.filter(x=>!x.ok&&x.q).length;
+  h+=`<div class="sim-actions" style="margin-top:18px"><button class="small-btn" type="button" onclick="simBackToSetup()">← Voltar aos simulados</button><span style="display:flex;gap:10px;flex-wrap:wrap">${wrongN?`<button class="primary" type="button" onclick="simRedo()">Refazer só os ${wrongN} erro${wrongN===1?'':'s'}</button>`:''}<button class="small-btn" type="button" onclick="simBackToSetup()">Novo simulado</button></span></div>`;
+  v.innerHTML=h;
+}
+/* ----- Perfil: meus simulados ----- */
+function renderSimProfile(){
+  const el=document.getElementById('profSim');if(!el)return;
+  if(!window._simOk){el.innerHTML='<div class="muted">O histórico de simulados ainda não está disponível.</div>';return}
+  const H=window._simHist||[];
+  if(!H.length){el.innerHTML='<div class="muted">Você ainda não fez nenhum simulado.</div>';return}
+  const pcts=H.map(h=>h.total?Math.round(h.correct/h.total*100):0);
+  const avg=Math.round(pcts.reduce((a,b)=>a+b,0)/pcts.length),best=Math.max(...pcts);
+  el.innerHTML=`<div class="sub-grid"><div><small>Simulados feitos</small><b>${H.length}</b></div><div><small>Média de acertos</small><b>${avg}%</b></div><div><small>Melhor resultado</small><b>${best}%</b></div><div><small>Último</small><b>${pcts[0]}%</b></div></div>${simSpark(H)}<div class="sim-hist">${H.slice(0,5).map(h=>{const p=h.total?Math.round(h.correct/h.total*100):0;return `<div class="sim-hrow"><span class="muted">${dtFmt(h.created_at)}</span><span>${escapeHtml(h.scope_label||'Simulado')}</span><span><b class="pct">${p}%</b> <span class="muted">${h.correct}/${h.total}</span></span><button class="small-btn" type="button" onclick="simOpenHist(${h.id})">Ver</button></div>`}).join('')}</div>`;
+}
+setInterval(simTick,1000);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)simPersist();else if(window._sim)window._sim.last=Date.now()});
 /* ===== Ícones de linha (substituem os emojis da interface) ===== */
 const IC={
 'home':'<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/>',
@@ -2646,9 +3063,10 @@ const IC={
 'x':'<path d="M6 6l12 12M18 6 6 18"/>',
 'copy':'<rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 8.5V5A1.5 1.5 0 0 0 14 3.5H5A1.5 1.5 0 0 0 3.5 5v9A1.5 1.5 0 0 0 5 15.5h3.5"/>',
 'globe':'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3Z"/>',
+'flag':'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
 'cap':'<path d="M2.5 9 12 4.5 21.5 9 12 13.5 2.5 9Z"/><path d="M6.5 11.5V16c0 1.5 2.5 3 5.5 3s5.5-1.5 5.5-3v-4.5"/>'
 };
-const EMO={'🏠':'home','🧠':'alert-circle','📈':'chart','📊':'chart','⚙':'gear','👤':'user','🌙':'moon','☀':'sun','🔔':'bell','📅':'calendar','🗓':'calendar','🧩':'box','🏛':'building','📘':'book','📝':'note','✅':'check-circle','❌':'x-circle','🗂':'folder','📂':'folder','👥':'users','➕':'plus','🕘':'clock','✂':'scissors','🔎':'search','📖':'books','🛡':'shield','🏅':'medal','💡':'bulb','📱':'phone','📚':'books','🎯':'target','💾':'save','✏':'pencil','🗑':'trash','👁':'eye','🙈':'eye-off','✖':'x','⧉':'copy','↻':'repeat','↪':'logout','🌐':'globe','🎓':'cap','🔒':'lock'};
+const EMO={'🏠':'home','🧠':'alert-circle','📈':'chart','📊':'chart','⚙':'gear','👤':'user','🌙':'moon','☀':'sun','🔔':'bell','📅':'calendar','🗓':'calendar','🧩':'box','🏛':'building','📘':'book','📝':'note','✅':'check-circle','❌':'x-circle','🗂':'folder','📂':'folder','👥':'users','➕':'plus','🕘':'clock','✂':'scissors','🔎':'search','📖':'books','🛡':'shield','🏅':'medal','💡':'bulb','📱':'phone','📚':'books','🎯':'target','💾':'save','✏':'pencil','🗑':'trash','👁':'eye','🙈':'eye-off','✖':'x','⧉':'copy','↻':'repeat','↪':'logout','🌐':'globe','🎓':'cap','🔒':'lock','🚩':'flag','⏱':'clock'};
 const EMO_RE=new RegExp('('+Object.keys(EMO).join('|')+')\uFE0F?','g');
 const IC_SKIP='script,style,textarea,input,option,select,svg,.ach,.lvl-row,.level-badge,.flame,.feedback,.perf-ico,.jr-ico,.mock,.weakness-icon,.mission-ico,.confetti,.cal-c,.hero-hi';
 function icSvg(n){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+(IC[n]||'')+'</svg>'}
