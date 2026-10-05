@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.supabase.co; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; object-src blob:; frame-src blob:; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>MedQuest — Banco de Questões</title>
+<title>MedgO — Banco de Questões</title>
 <style>
 :root{--bg:#f6f8fb;--surface:#fff;--text:#14253d;--muted:#6b7b90;--border:#e3e8ef;--primary:#0b6e8e;--primary2:#075a73;--accent:#20b5a2;--sidebar:246px;--shadow:0 12px 35px rgba(22,39,64,.08)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
@@ -37,7 +37,7 @@ button,input,select{font:inherit}button{cursor:pointer}.hidden{display:none!impo
 
 .admin-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:18px;margin-top:18px}.admin-form{display:grid;gap:12px}.admin-form label{font-size:12px;font-weight:800;color:#5d6d80;display:grid;gap:6px}.admin-form input,.admin-form textarea,.admin-form select{width:100%;border:1px solid var(--border);border-radius:11px;padding:11px 12px;background:#fff;color:var(--text);outline:0}.admin-form textarea{min-height:110px;resize:vertical;line-height:1.45}.admin-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.check-row{display:flex!important;align-items:center;grid-template-columns:auto 1fr!important;gap:8px!important}.check-row input{width:auto}.mini-card{background:#f8fafc;border:1px solid var(--border);border-radius:13px;padding:13px}.admin-list{display:grid;gap:10px}.admin-q{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;border:1px solid var(--border);padding:14px;border-radius:13px;background:#fff}.admin-q h4{margin:7px 0 4px;font-size:14px}.admin-q p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}.admin-actions{display:flex;gap:7px;flex-wrap:wrap}.small-btn{border:1px solid var(--border);background:#fff;border-radius:9px;padding:8px 10px;font-weight:750;color:#485a6e}.small-btn:hover{background:#f6fafb}.small-btn.publish{background:#eaf8f0;color:#107548;border-color:#cdebd9}.small-btn.unpublish{background:#fff7e7;color:#936117;border-color:#f3dfb1}.role-pill{font-size:11px;padding:5px 8px;border-radius:999px;font-weight:800;background:#eaf6ff;color:#1d5c93}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.admin-tab{border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 13px;font-weight:800;color:#5e6f82}.admin-tab.active{background:#eaf7f5;color:#0a6d69;border-color:#c8e8e2}.admin-pane{display:none}.admin-pane.active{display:block}.catalog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.success-box{padding:11px 12px;border-radius:10px;background:#edf8f4;color:#15704f;font-size:12px;font-weight:700}.error-box{padding:11px 12px;border-radius:10px;background:#fff1f1;color:#a92929;font-size:12px;font-weight:700}.admin-note{font-size:12px;color:#7b8999;line-height:1.5}
 
-/* Tema claro/escuro do MedQuest */
+/* Tema claro/escuro do MedgO */
 body{transition:background .2s ease,color .2s ease}
 body.dark{
   --bg:#0f1720; --surface:#17212b; --surface2:#111a22; --text:#e8eef5;
@@ -198,6 +198,13 @@ html:has(body.dark){background:#0f1720}
 .adm-row h4,.adm-det>summary>span:first-child,.adm-sub>span:first-child{min-width:0;overflow-wrap:anywhere}
 .admin-form select{max-width:100%}
 @media(max-width:1050px){.admin-grid,.catalog-grid{grid-template-columns:minmax(0,1fr)}}
+/* reportar erro */
+.rep-opts{display:grid;gap:6px}
+.rep-text{width:100%;min-height:90px;margin-top:10px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);font:inherit;resize:vertical}
+.rep-btns{display:flex;gap:8px;margin-top:12px}.rep-btns .primary{flex:1}
+.rep-row{border:1px solid var(--border);border-radius:14px;padding:12px 14px;background:var(--surface);display:grid;gap:8px}
+.rep-row p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.rep-count{display:inline-block;min-width:20px;padding:1px 6px;margin-left:4px;border-radius:999px;background:#d9534f;color:#fff;font-size:11.5px;line-height:18px;text-align:center}
 @media(max-width:760px){
   .main{overflow-x:clip}
   .adm-actions{flex-wrap:wrap}
@@ -212,7 +219,7 @@ html:has(body.dark){background:#0f1720}
 @media(max-width:760px){:root{--sidebar:0px}.main{margin:0;width:100%;padding:18px}.login-shell{grid-template-columns:1fr;min-height:auto}.login-visual{padding:26px}.logo-hero{width:min(300px,70%)}.login-card{width:min(440px,calc(100% - 35px));padding:26px}.stats{grid-template-columns:1fr 1fr}.subjects{grid-template-columns:1fr}}
 @media(max-width:480px){.stats{grid-template-columns:1fr}.profile-row{grid-template-columns:1fr}}
 
-/* ===== MedQuest v20 — página de entrada (landing + login) ===== */
+/* ===== MedgO v20 — página de entrada (landing + login) ===== */
 .login-screen.landing{display:block;padding:0;overflow-x:hidden;--grad:linear-gradient(120deg,#0b6e8e,#20b5a2)}
 .lp-wrap{width:min(1120px,100% - 40px);margin:0 auto;position:relative;z-index:1}
 .lp-nav{display:flex;align-items:center;gap:10px;padding:22px 0}
@@ -305,7 +312,7 @@ body.dark .explain{background:#111a22}
 body.dark .save-warn{background:#3a2f19;color:#f3cf7a;border-color:#5b4821}
 @media(max-width:650px){.solver-card{padding:18px}.solver-actions .primary{order:-1;width:100%}}
 
-/* ===== MedQuest v23 — lúdico e intuitivo ===== */
+/* ===== MedgO v23 — lúdico e intuitivo ===== */
 .hero-card{display:grid;grid-template-columns:1.25fr .95fr;gap:24px;align-items:center;background:linear-gradient(135deg,#f0fbf9,#f5f9ff);position:relative;overflow:hidden;margin-bottom:18px}
 .hero-hi{font-size:27px;font-weight:850;letter-spacing:-.035em}
 .hero-sub{color:var(--muted);margin:5px 0 15px;line-height:1.5}
@@ -379,7 +386,7 @@ body.dark .onb-dots i{background:#33444f}
 @media(max-width:560px){.hero-hi{font-size:22px}.hero-cta{width:100%}.hero-right{gap:8px}.ring-wrap{width:96px;height:96px}.ring-wrap svg{width:96px;height:96px}.ring-text b{font-size:25px}}
 @media(prefers-reduced-motion:reduce){.flame,.confetti i,.mq-shake,.xp-chip,.mq-toast{animation:none}.xp-bar span,.ring-fg,.perf-bar span{transition:none}}
 
-/* ===== MedQuest v24 — jornada por etapa + estudo com intenção ===== */
+/* ===== MedgO v24 — jornada por etapa + estudo com intenção ===== */
 .lp-title .lp-kicker{margin-bottom:14px}
 .jr{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-top:6px}
 .jr:before{content:"";position:absolute;left:12.5%;width:75%;top:38px;height:6px;border-radius:99px;background:repeating-linear-gradient(90deg,#c9d9e1 0 10px,transparent 10px 18px)}
@@ -433,7 +440,7 @@ body.dark .jr:before{background:repeating-linear-gradient(90deg,#33444f 0 10px,t
 }
 @media(prefers-reduced-motion:reduce){.jr-ico{transition:none}}
 
-/* ===== MedQuest v25 — Minha grade: períodos e módulos ===== */
+/* ===== MedgO v25 — Minha grade: períodos e módulos ===== */
 .grade-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:18px}
 .grade-head h2{margin:0;font-size:24px;letter-spacing:-.03em}
 .gp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
@@ -468,7 +475,7 @@ body.dark .mod-card.soon{border-left-color:#33444f}
 @media(max-width:650px){.mod-card{flex-wrap:wrap}.mod-card .primary{width:100%}.mod-num{width:46px;height:46px}.gp-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.gp-card,.mod-card{transition:none}}
 
-/* ===== MedQuest v26 — Minha Grade (painel acadêmico) ===== */
+/* ===== MedgO v26 — Minha Grade (painel acadêmico) ===== */
 .mg-hero{position:relative;overflow:hidden;display:flex;align-items:center;gap:22px;padding:28px;border-radius:26px;border:1px solid #cfe6e8;background:linear-gradient(135deg,#f3fbfa,#eef6ff);flex-wrap:wrap}
 .mg-hero:after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(32,181,162,.22),transparent 70%)}
 .mg-hero>*{position:relative;z-index:1}
@@ -557,7 +564,7 @@ body.dark .mg-sub.sel{background:rgba(32,181,162,.2)}
 .mg-subs{align-items:start}
 @media(max-width:900px){.mg-acts{flex:1 1 100%}}
 
-/* ===== MedQuest v28 — Questões em etapas, tesoura, histórico, admin ===== */
+/* ===== MedgO v28 — Questões em etapas, tesoura, histórico, admin ===== */
 .qf-steps{display:grid;gap:12px;margin-top:14px}
 .qf-step{border:1px solid var(--border);border-radius:20px;background:var(--surface);padding:16px 18px;box-shadow:var(--shadow)}
 .qf-step.dis{opacity:.6}
@@ -624,7 +631,7 @@ body.dark .adm-actions button.off{background:#3a2f19;border-color:#5b4821}
 @media(max-width:900px){.qf-more-grid{grid-template-columns:1fr}}
 @media(max-width:650px){.hist-row{grid-template-columns:1fr;gap:3px}.scissor{width:42px}.qf-bar{bottom:6px}.qf-bar .primary{width:100%}}
 
-/* ===== MedQuest v29 — Início: calendário, níveis, parabéns ===== */
+/* ===== MedgO v29 — Início: calendário, níveis, parabéns ===== */
 .home-row{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px;align-items:start}
 .home-col{display:grid;gap:18px;align-content:start}
 .cal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;flex-wrap:wrap}
@@ -657,7 +664,7 @@ body.dark .lvl-row.on{background:rgba(32,181,162,.18)}
 @media(max-width:900px){.home-row{grid-template-columns:1fr}}
 @media(max-width:560px){.cal-grid{gap:4px}.cal-c{font-size:12px;border-radius:9px}.lvl-row{grid-template-columns:30px 1fr auto 20px;gap:8px}}
 
-/* ===== MedQuest v29 — etapas progressivas ===== */
+/* ===== MedgO v29 — etapas progressivas ===== */
 .qf-crumbs{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px}
 .qf-crumb{border:1px solid #9fd6d0;background:rgba(32,181,162,.12);color:var(--text);padding:8px 13px;border-radius:999px;font-weight:800;font-size:13.5px;display:inline-flex;gap:6px;align-items:center}
 .qf-crumb:hover{background:rgba(32,181,162,.22)}
@@ -677,7 +684,7 @@ body.dark .lvl-row.on{background:rgba(32,181,162,.18)}
 .qf-card.all{background:rgba(32,181,162,.08);border-style:dashed}
 @media(max-width:650px){.qf-cards{grid-template-columns:1fr 1fr}.qf-card{padding:14px;min-height:84px}.qf-panel{padding:14px}}
 
-/* ===== MedQuest v29 — admin em árvore e usuários ===== */
+/* ===== MedgO v29 — admin em árvore e usuários ===== */
 .adm-actions-wrap{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap}
 .adm-actions-wrap select{padding:6px 8px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-size:13px}
 .adm-actions-wrap .small-btn{padding:5px 10px;font-size:12.5px}
@@ -692,7 +699,7 @@ body.dark .lvl-row.on{background:rgba(32,181,162,.18)}
 .usr-actions button.adm{border-color:#9fd6d0;background:rgba(32,181,162,.12)}
 @media(max-width:800px){.usr-row{grid-template-columns:44px 1fr}.usr-row>:nth-child(3),.usr-row>:nth-child(4){grid-column:1/-1}.usr-actions{justify-content:flex-start}}
 
-/* ===== MedQuest v30 — logo grande, animação do exemplo, ícones, calendário recolhido ===== */
+/* ===== MedgO v30 — logo grande, animação do exemplo, ícones, calendário recolhido ===== */
 .lp-brand{display:flex;align-items:center;gap:22px;margin:4px 0 28px}
 .lp-brand img{width:128px;height:128px;object-fit:contain;filter:drop-shadow(0 14px 28px rgba(11,110,142,.28))}
 .lp-brand .wm2{font-size:62px;font-weight:900;letter-spacing:-.055em;line-height:.95;color:var(--text)}
@@ -806,7 +813,7 @@ body.dark .chip.ok{background:#12312a;color:#7fe0b0}body.dark .chip.warn{backgro
 .usr-row small{display:block}
 .usr-row .chip{white-space:nowrap;display:inline-block;margin:2px 0}
 
-/* ===== MedQuest v31 — Simulado ===== */
+/* ===== MedgO v31 — Simulado ===== */
 .seg{display:inline-flex;gap:4px;padding:4px;border-radius:14px;background:rgba(11,110,142,.08);border:1px solid var(--border);margin-bottom:14px}
 .seg button{border:0;background:transparent;color:var(--muted);font-weight:800;padding:9px 18px;border-radius:10px;display:inline-flex;gap:8px;align-items:center}
 .seg button.on{background:linear-gradient(120deg,#0b6e8e,#20b5a2);color:#fff;box-shadow:0 8px 18px rgba(11,110,142,.25)}
@@ -1196,7 +1203,7 @@ window.MEDQUEST_CONFIG={
 <body>
 <div id="verifyScreen" class="verify-screen hidden" role="dialog" aria-modal="true" aria-labelledby="verifyTitle">
   <div class="verify-wrap">
-    <div class="verify-brand"><img src="medquest-mark.png" alt=""><span>MedQuest</span></div>
+    <div class="verify-brand"><img src="medquest-mark.png" alt=""><span>MedgO</span></div>
     <div class="verify-card">
       <div id="verifyIco" class="verify-ico"><svg viewBox="0 0 60 60" aria-hidden="true"><circle class="ring" cx="30" cy="30" r="25"/><path class="tick" d="M18 31l8 8 17-18"/></svg></div>
       <h1 id="verifyTitle">E-mail verificado!</h1>
@@ -1214,7 +1221,7 @@ window.MEDQUEST_CONFIG={
 
     <section class="lp-hero">
       <div class="lp-copy">
-        <div class="lp-brand"><img src="medquest-mark.png" alt="MedQuest"><div><div class="wm2">Med<b>Quest</b></div><small>ESTUDOS EM MEDICINA</small></div></div>
+        <div class="lp-brand"><img src="medquest-mark.png" alt="MedgO"><div><div class="wm2">Med<b>gO</b></div><small>ESTUDOS EM MEDICINA</small></div></div>
         <span class="lp-kicker">Banco de questões de Medicina</span>
         <h1>Cada erro de hoje é um <em>diagnóstico certo</em> amanhã.</h1>
         <p>Questões organizadas por período, matéria e assunto, com caderno de erros automático e desempenho por matéria. Você sabe o que revisar antes de a prova chegar.</p>
@@ -1240,7 +1247,7 @@ window.MEDQUEST_CONFIG={
     </section>
 
     <section class="lp-section" id="jornada">
-      <div class="lp-title"><span class="lp-kicker">Escolha sua etapa</span><h2>Cada etapa é uma fase. Cada dúvida, uma missão.</h2><p>Da primeira prova de anatomia à preparação para o ENAMED, o MedQuest organiza as questões para a fase que você está vivendo agora.</p></div>
+      <div class="lp-title"><span class="lp-kicker">Escolha sua etapa</span><h2>Cada etapa é uma fase. Cada dúvida, uma missão.</h2><p>Da primeira prova de anatomia à preparação para o ENAMED, o MedgO organiza as questões para a fase que você está vivendo agora.</p></div>
       <div class="jr">
         <div class="jr-node live" onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(function(){document.getElementById('email').focus()},450)">
           <div class="jr-ico">🧬</div>
@@ -1266,7 +1273,7 @@ window.MEDQUEST_CONFIG={
         <div>
           <span class="lp-kicker">Estudo com intenção</span>
           <h2>Cada questão com um <em>porquê</em>.</h2>
-          <p class="lp-copy-p">Estudar com intenção é abrir o MedQuest sabendo o que revisar, por que revisar e quando voltar. Menos material solto, menos abas abertas, mais direção antes da prova.</p>
+          <p class="lp-copy-p">Estudar com intenção é abrir o MedgO sabendo o que revisar, por que revisar e quando voltar. Menos material solto, menos abas abertas, mais direção antes da prova.</p>
           <div class="lp-pills"><span>🔁 Revisão ativa</span><span>🎯 Foco por período</span><span>🔥 Ritmo diário</span></div>
         </div>
         <div class="mock-wrap" aria-hidden="true">
@@ -1315,13 +1322,13 @@ window.MEDQUEST_CONFIG={
       <p>Crie sua conta e comece a transformar cada questão em aprendizado.</p>
       <button onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(function(){document.getElementById('email').focus()},450)">Começar agora →</button>
     </section>
-    <div class="lp-foot">MedQuest — estudos em Medicina</div>
+    <div class="lp-foot">MedgO — estudos em Medicina</div>
   </div>
 </div>
 
 <div id="app" class="app hidden">
   <aside class="sidebar"><button type="button" class="sidebar-close" onclick="toggleSidebar()" aria-label="Fechar menu"><span class="ic" data-i="x"></span></button><button id="sidebarToggle" class="sidebar-toggle" onclick="toggleSidebar()" title="Fechar/abrir menu" aria-label="Recolher menu">‹</button>
-    <div class="brand"><img src="medquest-mark.png" alt="MedQuest"><div><div class="brand-text">MedQuest</div><span class="brand-sub">ESTUDOS EM MEDICINA</span></div></div>
+    <div class="brand"><img src="medquest-mark.png" alt="MedgO"><div><div class="brand-text">MedgO</div><span class="brand-sub">ESTUDOS EM MEDICINA</span></div></div>
     <nav class="nav">
       <button class="nav-btn active nav-home" data-page="home" onclick="go('home')"><span class="nav-ico"><span class="ic" data-i="home"></span></span><span>Início</span></button>
       <button class="nav-btn nav-questions" data-page="questions" onclick="go('questions')"><span class="nav-ico"><span class="ic" data-i="doc"></span></span><span>Questões</span></button>
@@ -1390,7 +1397,7 @@ window.MEDQUEST_CONFIG={
           <div class="weakness-icon">📚</div>
           <div class="weakness-copy">
             <h3>Vamos descobrir onde revisar</h3>
-            <p>Responda algumas questões para o MedQuest identificar a matéria em que seu aproveitamento está mais baixo.</p>
+            <p>Responda algumas questões para o MedgO identificar a matéria em que seu aproveitamento está mais baixo.</p>
           </div>
           <button class="primary weakness-action" onclick="go('questions')">Começar questões →</button>
         </div>
@@ -1412,10 +1419,10 @@ window.MEDQUEST_CONFIG={
     <section id="simulados" class="page"><div id="simView"></div>
     </section>
     <section id="errors" class="page"><div class="card"><h2>🧠 Caderno de erros</h2><p class="muted">Questões em que a sua última resposta foi errada. Acerte-as de novo para saírem do caderno.</p><div id="missionBanner"></div><div id="errorList" class="empty" style="margin-top:15px">Ainda não há tentativas registradas.</div></div></section>
-    <section id="performance" class="page"><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="stat-title">Aproveitamento</div><div id="perfRate" class="kpi">0%</div><div class="subkpi">respostas registradas</div></div><div class="card"><div class="stat-title">Acertos</div><div id="perfCorrect" class="kpi">0</div><div class="subkpi">questões</div></div><div class="card"><div class="stat-title">Respondidas</div><div id="perfTotal" class="kpi">0</div><div class="subkpi">questões</div></div></div><div class="card" style="margin-top:18px"><h2>📈 Por matéria</h2><div id="disciplinePerf" class="empty" style="margin-top:14px">Ainda não há dados suficientes.</div></div></section>
+    <section id="performance" class="page"><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="stat-title">Aproveitamento</div><div id="perfRate" class="kpi">0%</div><div class="subkpi">respostas registradas</div></div><div class="card"><div class="stat-title">Acertos</div><div id="perfCorrect" class="kpi">0</div><div class="subkpi">questões</div></div><div class="card"><div class="stat-title">Respondidas</div><div id="perfTotal" class="kpi">0</div><div class="subkpi">questões</div></div></div><div class="card" style="margin-top:18px"><h2>📈 Por módulo</h2><div id="disciplinePerf" class="empty" style="margin-top:14px">Ainda não há dados suficientes.</div></div></section>
 
     <section id="admin" class="page">
-      <div class="toolbar"><div><h2 style="margin:0">⚙️ Administração</h2><p class="muted" style="margin:5px 0 0">Gerencie questões e a estrutura acadêmica do MedQuest.</p></div><span class="role-pill">Administrador</span></div>
+      <div class="toolbar"><div><h2 style="margin:0">⚙️ Administração</h2><p class="muted" style="margin:5px 0 0">Gerencie questões e a estrutura acadêmica do MedgO.</p></div><span class="role-pill">Administrador</span></div>
       <div class="cards stats">
         <div class="card stat-card"><div><div class="stat-title">Questões</div><div class="stat-value" id="adminQuestionCount">0</div></div><div class="stat-icon">📝</div></div>
         <div class="card stat-card"><div><div class="stat-title">Publicadas</div><div class="stat-value" id="adminPublishedCount">0</div></div><div class="stat-icon">🌐</div></div>
@@ -1429,6 +1436,7 @@ window.MEDQUEST_CONFIG={
         <button class="admin-tab" data-pane="adminNewPane" onclick="adminTab('adminNewPane',this)">➕ Nova questão</button>
         <button class="admin-tab" data-pane="adminCatalogPane" onclick="adminTab('adminCatalogPane',this)">🗂️ Cadastros</button>
         <button class="admin-tab" data-pane="adminUsersPane" onclick="adminTab('adminUsersPane',this)">👥 Usuários</button>
+        <button class="admin-tab" data-pane="adminReportsPane" onclick="adminTab('adminReportsPane',this)">🚩 Reportes<span id="repCount" class="rep-count" hidden></span></button>
       </div>
 
       <div id="adminDashPane" class="admin-pane active"><div id="adminDash"><div class="muted">Carregando...</div></div></div>
@@ -1456,7 +1464,6 @@ window.MEDQUEST_CONFIG={
               <div class="admin-two"><label id="aCorrectWrap">Resposta correta<select id="aCorrect" required><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label><label>Dificuldade<select id="aDifficulty"><option value="facil">Fácil</option><option value="medio" selected>Média</option><option value="dificil">Difícil</option></select></label></div>
               <label>Explicação<textarea id="aExplanation" placeholder="Explique por que a alternativa está correta..."></textarea></label>
               <div id="aImgBlock" class="adm-images hidden"><label style="margin-bottom:8px">Imagens da questão <small style="font-weight:500;color:var(--muted)">(opcional: ECG, radiografia, lâmina... escolha, arraste ou cole com Ctrl+V)</small></label><input id="aImgFile" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden onchange="admPickImages(this.files);this.value=''"><div class="adm-drop" id="aImgDrop" tabindex="0" role="button" onclick="document.getElementById('aImgFile').click()" ondragover="event.preventDefault()" ondrop="event.preventDefault();admPickImages(event.dataTransfer.files)"><span class="ic" data-i="plus"></span> Clique, arraste ou cole imagens aqui</div><div id="aImgList"></div><div class="muted" style="font-size:12px">As imagens são reduzidas e comprimidas automaticamente antes do envio.</div></div>
-              <label class="check-row hidden" id="aFreeWrap"><input id="aFree" type="checkbox"> <span>Amostra grátis (aparece mesmo para quem não tem assinatura)</span></label>
               <label class="check-row"><input id="aPublished" type="checkbox"> <span>Publicar imediatamente para os alunos</span></label>
               <button class="primary" id="aSubmitBtn" type="submit">💾 Salvar questão</button>
               <button class="small-btn hidden" id="aCancelBtn" type="button" onclick="cancelEditQuestion()">✖ Cancelar edição</button>
@@ -1484,6 +1491,12 @@ window.MEDQUEST_CONFIG={
           <div id="adminUserSummary" class="muted" style="margin-bottom:10px"></div>
           <div id="adminUserList" class="admin-list"><div class="empty">Carregando...</div></div></div>
       </div>
+
+      <div id="adminReportsPane" class="admin-pane">
+        <div class="card"><div class="card-head"><h2>🚩 Reportes de erro</h2><button class="link-btn" onclick="loadAdminReports()">↻ Atualizar</button></div>
+          <p class="admin-note" style="margin-top:0">Erros que os alunos apontaram nas questões. Abra a questão, corrija e marque como resolvido.</p>
+          <div id="adminReportList" class="admin-list"><div class="empty">Carregando...</div></div></div>
+      </div>
     </section>
 
     <section id="profile" class="page">
@@ -1504,7 +1517,7 @@ const supabaseReady=!!(cfg.SUPABASE_URL&&String(cfg.SUPABASE_URL).startsWith('ht
 const libOk=!!(window.supabase&&window.supabase.createClient);
 const sb=(supabaseReady&&libOk)?window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
 function sbProblem(){return !libOk?'Não foi possível carregar a biblioteca do Supabase. Verifique sua internet ou desative bloqueadores de anúncios para este site.':'A configuração do Supabase está incompleta. Confira o endereço e a chave no começo do index.html.'}
-const labels={home:['Olá! 👋','Continue de onde parou.'],questions:['Questões','Escolha a instituição e afunile o que vai estudar.'],materials:['Materiais','Resumos e conteúdos para estudar.'],simulados:['Simulados','Treine com tempo e veja o resultado só no final.'],errors:['Caderno de erros','Revise as questões que você errou.'],performance:['Desempenho','Acompanhe sua evolução nos estudos.'],admin:['Administração','Gerencie o conteúdo do MedQuest.'],profile:['Perfil','Gerencie seus dados.']};
+const labels={home:['Olá! 👋','Continue de onde parou.'],questions:['Questões','Escolha a instituição e afunile o que vai estudar.'],materials:['Materiais','Resumos e conteúdos para estudar.'],simulados:['Simulados','Treine com tempo e veja o resultado só no final.'],errors:['Caderno de erros','Revise as questões que você errou.'],performance:['Desempenho','Acompanhe sua evolução nos estudos.'],admin:['Administração','Gerencie o conteúdo do MedgO.'],profile:['Perfil','Gerencie seus dados.']};
 let currentUser=null,isAdmin=false;
 function status(id,msg,type='error'){const e=document.getElementById(id);if(!e)return;e.innerHTML=msg;e.className=(type==='ok'?'success-box':'error-box')}
 function togglePassword(){const p=document.getElementById('password');p.type=p.type==='password'?'text':'password'}
@@ -1544,7 +1557,8 @@ async function signUp(){
 }
 async function resetPassword(){if(!sb){status('loginStatus',sbProblem());return}const email=document.getElementById('email').value.trim();if(!email){status('loginStatus','Digite seu e-mail antes de recuperar a senha.');return}const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.href.split('#')[0]});if(error){status('loginStatus',error.message);return}status('loginStatus','Enviamos as instruções de recuperação para o seu e-mail.','ok')}
 function clearLocalUserData(uid){try{Object.keys(localStorage).forEach(k=>{if(k.indexOf('mq_')===0&&uid&&k.endsWith(uid))localStorage.removeItem(k)});Object.keys(sessionStorage).forEach(k=>{if(k.indexOf('mq_cat_')===0)sessionStorage.removeItem(k)})}catch(e){}}
-async function signOut(){const uid=currentUser?currentUser.id:'';if(sb)await sb.auth.signOut();clearLocalUserData(uid);window._allQ=null;window._attRows=null;window._catAt=0;window._sim=null;window._stmt={};window._mats=[];window._matOk=null;window._matProg={};window._matBody={};currentUser=null;isAdmin=false;document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden')}
+/* opts.local: sai só deste aparelho (usado quando a conta entrou em outro dispositivo); opts.msg: aviso na tela de login */
+async function signOut(opts){opts=opts||{};stopDeviceWatch();const uid=currentUser?currentUser.id:'';if(sb){try{await sb.auth.signOut(opts.local?{scope:'local'}:undefined)}catch(e){}}clearLocalUserData(uid);if(opts.msg)status('loginStatus',opts.msg,'error');window._allQ=null;window._attRows=null;window._catAt=0;window._sim=null;window._stmt={};window._mats=[];window._matOk=null;window._matProg={};window._matBody={};currentUser=null;isAdmin=false;document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden')}
 let _bootP=null;
 function bootstrap(){if(_bootP)return _bootP;_bootP=_bootstrap().finally(()=>{_bootP=null});return _bootP}
 async function _bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(!session)return;currentUser=session.user;document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');bootFromCache();go('home');const att=fetchAttemptRows();await loadProfile();await loadAttempts(att)}
@@ -1590,9 +1604,23 @@ async function loadProfile(){
   applyAvatar();
   document.getElementById('adminNav').style.display=isAdmin?'flex':'none';
   if(!error){mqLS.set('mq_role_'+currentUser.id,isAdmin?'admin':'student');mqLS.set('mq_name_'+currentUser.id,name)}
+  if(isAdmin)stopDeviceWatch();else startDeviceWatch();
   // assinatura, acesso, materiais e simulados chegam juntos, em segundo plano (o painel admin carrega ao abrir a aba)
   Promise.all([loadSubscription(),loadAccess(),loadMaterialsCatalog(),typeof simLoadHist==='function'?simLoadHist():null]).catch(()=>{});
 }
+/* ===== Um dispositivo por aluno =====
+   O servidor (session_ok) considera válido só o login mais recente da conta. Aqui o aparelho antigo confere
+   a cada minuto e ao voltar para a aba; se outro aparelho entrou depois, ele sai sozinho. Admin não tem limite. */
+let _devTimer=null;
+function stopDeviceWatch(){if(_devTimer){clearInterval(_devTimer);_devTimer=null}}
+function startDeviceWatch(){stopDeviceWatch();_devTimer=setInterval(checkDevice,60000);checkDevice()}
+async function checkDevice(){
+  if(!sb||!currentUser||isAdmin)return;
+  let r;try{r=await sb.rpc('session_ok')}catch(e){return}
+  if(r.error||r.data!==false)return; // função ainda não criada ou erro de rede: não derruba ninguém
+  signOut({local:true,msg:'Sua conta foi acessada em outro dispositivo. Cada aluno pode usar um dispositivo por vez: entre de novo para continuar neste (o outro será desconectado).'});
+}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&_devTimer)checkDevice()});
 /* ===== Foto de perfil ===== */
 function safeAvatar(u){return (typeof u==='string'&&u.length<300000&&/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(u))?u:''}
 function applyAvatar(){
@@ -1692,9 +1720,7 @@ async function showSolver(id){
   window.scrollTo({top:0,behavior:'smooth'});
   const base='id,statement,option_a,option_b,option_c,option_d,option_e,difficulty,subject_id,discipline_id,disciplines(name),subjects(name),periods(name)';
   const ext=window._v3ok?',qtype,institution_id,period_id,year'+(window._modulesOk?',module_id':''):'';
-  let r=await sb.from('questions').select(base+ext+',is_free').eq('id',id).maybeSingle();
-  if(r.error)r=await sb.from('questions').select(base+ext).eq('id',id).maybeSingle();
-  const {data,error}=r;
+  const {data,error}=await sb.from('questions').select(base+ext).eq('id',id).maybeSingle();
   if(error||!data){view.innerHTML='<div class="empty"><strong>Não foi possível abrir a questão.</strong><span>'+escapeHtml(error?rpcErrText(error):'Questão não encontrada.')+'</span><br><br><button class="primary" onclick="closeSolver()">← Voltar</button></div>';return}
   solverQ=data;solverPicked=null;solverDone=false;renderSolver();paintSolverImages();
 }
@@ -1713,8 +1739,7 @@ function qBadges(q){
     q.subjects&&q.subjects.name?`<span class="badge">${esc(q.subjects.name)}</span>`:'',
     q.year?`<span class="badge">${esc(q.year)}</span>`:'',
     q.qtype==='discursiva'?'<span class="badge">Discursiva</span>':'',
-    dl?`<span class="badge ${dl[1]}">${dl[0]}</span>`:'',
-    q.is_free?'<span class="badge green">Amostra grátis</span>':''
+    dl?`<span class="badge ${dl[1]}">${dl[0]}</span>`:''
   ].join('');
 }
 let solverCuts={};
@@ -1744,8 +1769,31 @@ function renderSolver(){
     <div class="solver-statement">${escapeHtml(q.statement)}</div>
     <div id="qImgsStatement" class="q-imgs"></div>
     ${body}
-    <div class="hist-wrap"><button type="button" class="small-btn" onclick="toggleHistory()">🕘 Histórico</button><div id="solverHistory" class="hidden"></div></div>
+    <div class="hist-wrap"><button type="button" class="small-btn" onclick="toggleHistory()">🕘 Histórico</button> <button type="button" class="small-btn" onclick="openReport(${Number(q.id)})" title="Assunto errado, gabarito errado, erro no texto...">🚩 Reportar erro</button><div id="solverHistory" class="hidden"></div></div>
   </div>`;
+}
+/* ===== reportar erro na questão (o aluno envia; a administração vê na aba Reportes) ===== */
+const REPORT_REASONS=[['subtema','Assunto/subtema incorreto'],['gabarito','Gabarito incorreto'],['enunciado','Erro no enunciado'],['alternativas','Erro nas alternativas'],['imagem','Imagem com problema'],['outro','Outro problema']];
+function reportReasonName(k){const r=REPORT_REASONS.find(x=>x[0]===k);return r?r[1]:k}
+function openReport(qid){
+  let o=document.getElementById('repModal');if(o)o.remove();
+  o=document.createElement('div');o.id='repModal';o.className='onb';
+  o.onclick=e=>{if(e.target===o)o.remove()};
+  o.innerHTML=`<div class="onb-card" style="max-width:460px"><h3 style="margin-top:0">🚩 Reportar erro na questão #${qid}</h3><p class="muted" style="margin:0 0 12px">O que está errado? A equipe confere e corrige.</p><div class="rep-opts">${REPORT_REASONS.map((r,i)=>`<label class="check-row"><input type="radio" name="repReason" value="${r[0]}"${i?'':' checked'}> <span>${r[1]}</span></label>`).join('')}</div><textarea id="repDetails" class="rep-text" maxlength="1000" placeholder="Detalhes (opcional). Ex.: o gabarito certo é C porque..."></textarea><div id="repStatus"></div><div class="rep-btns"><button class="small-btn" type="button" onclick="document.getElementById('repModal').remove()">Cancelar</button><button class="primary" type="button" id="repSend" onclick="sendReport(${qid})">Enviar reporte</button></div></div>`;
+  document.body.appendChild(o);
+}
+async function sendReport(qid){
+  const r=document.querySelector('input[name="repReason"]:checked');if(!r||!sb)return;
+  const btn=document.getElementById('repSend');btn.disabled=true;
+  const details=(document.getElementById('repDetails').value||'').trim().slice(0,1000)||null;
+  const {error}=await sb.from('question_reports').insert({question_id:qid,reason:r.value,details});
+  if(error){
+    btn.disabled=false;
+    const msg=error.code==='23505'?'Você já reportou esse problema nesta questão. Obrigado!':(error.code==='42P01'||error.code==='PGRST205')?'Os reportes ainda não foram ativados. Avise a administração.':escapeHtml(error.message);
+    status('repStatus',msg,error.code==='23505'?'ok':'error');return;
+  }
+  document.getElementById('repModal').remove();
+  toast('🚩 Obrigado! Seu reporte foi enviado para a equipe.');
 }
 function pickOption(L){
   if(solverDone)return;
@@ -1950,7 +1998,7 @@ function showLevels(){
   let o=document.getElementById('lvlModal');if(o)o.remove();
   o=document.createElement('div');o.id='lvlModal';o.className='onb';
   o.onclick=e=>{if(e.target===o)o.remove()};
-  o.innerHTML=`<div class="onb-card" style="max-width:480px"><h3 style="margin-top:0">🏅 Níveis do MedQuest</h3><p style="margin:0 0 4px">Você tem <b>${g.xp.toLocaleString('pt-BR')} XP</b>.</p><div class="lvl-list">${LEVELS.map((l,i)=>{const reached=g.xp>=l.xp,now=i===g.lv.idx;return `<div class="lvl-row${reached?' on':' lock'}${now?' now':''}"><span style="font-size:22px">${l.i}</span><span><b>${l.n}</b>${now&&g.lv.next?`<br><small>faltam ${(g.lv.next.xp-g.xp).toLocaleString('pt-BR')} XP para o próximo</small>`:''}</span><small>${l.xp.toLocaleString('pt-BR')} XP</small><span>${now?'📍':reached?'✓':'🔒'}</span></div>`}).join('')}</div><ul class="lvl-rules"><li>Primeiro acerto de uma questão: <b>+10 XP</b>.</li><li>Acertar uma questão que você tinha errado: <b>+3 XP</b>.</li><li>Errar: <b>0 XP</b> no Calouro e <b>−2 XP</b> a partir do Acadêmico (você nunca cai abaixo do XP do nível que já conquistou).</li><li>Bater a meta do dia: <b>+5 XP</b>.</li><li>Cada dia que mantém a sequência: <b>+5 XP</b>.</li></ul><button class="primary" type="button" onclick="document.getElementById('lvlModal').remove()" style="width:100%">Fechar</button></div>`;
+  o.innerHTML=`<div class="onb-card" style="max-width:480px"><h3 style="margin-top:0">🏅 Níveis do MedgO</h3><p style="margin:0 0 4px">Você tem <b>${g.xp.toLocaleString('pt-BR')} XP</b>.</p><div class="lvl-list">${LEVELS.map((l,i)=>{const reached=g.xp>=l.xp,now=i===g.lv.idx;return `<div class="lvl-row${reached?' on':' lock'}${now?' now':''}"><span style="font-size:22px">${l.i}</span><span><b>${l.n}</b>${now&&g.lv.next?`<br><small>faltam ${(g.lv.next.xp-g.xp).toLocaleString('pt-BR')} XP para o próximo</small>`:''}</span><small>${l.xp.toLocaleString('pt-BR')} XP</small><span>${now?'📍':reached?'✓':'🔒'}</span></div>`}).join('')}</div><ul class="lvl-rules"><li>Primeiro acerto de uma questão: <b>+10 XP</b>.</li><li>Acertar uma questão que você tinha errado: <b>+3 XP</b>.</li><li>Errar: <b>0 XP</b> no Calouro e <b>−2 XP</b> a partir do Acadêmico (você nunca cai abaixo do XP do nível que já conquistou).</li><li>Bater a meta do dia: <b>+5 XP</b>.</li><li>Cada dia que mantém a sequência: <b>+5 XP</b>.</li></ul><button class="primary" type="button" onclick="document.getElementById('lvlModal').remove()" style="width:100%">Fechar</button></div>`;
   document.body.appendChild(o);
 }
 /* ----- calendário de ofensiva (abre ao clicar na sequência) ----- */
@@ -2239,7 +2287,7 @@ function gameFx(ok){
   if(!ok){const w=document.querySelector('#optList .opt.wrong');if(w)w.classList.add('mq-shake')}
 }
 const ONB=[
-  {i:'📚',t:'Escolha o que estudar',p:'Filtre por período, matéria e dificuldade na aba Questões, ou toque em "Continuar estudando" e o MedQuest escolhe a próxima para você.'},
+  {i:'📚',t:'Escolha o que estudar',p:'Filtre por período, matéria e dificuldade na aba Questões, ou toque em "Continuar estudando" e o MedgO escolhe a próxima para você.'},
   {i:'💡',t:'Responda e entenda',p:'Marque a alternativa, confirme e veja a explicação na hora. Cada resposta rende XP e ajuda você a subir de nível.'},
   {i:'⚔️',t:'Revise e mantenha a chama',p:'Seus erros viram uma missão de revisão. Bata a meta diária e estude todo dia para manter a sequência 🔥 acesa.'}
 ];
@@ -2616,7 +2664,7 @@ function renderSubscription(){
   const inf=subInfo(window._subRows);
   const map={none:['Sem assinatura','off'],active:['Ativa','ok'],expiring:[inf.days===0?'Vence hoje':'Vence em '+inf.days+(inf.days===1?' dia':' dias'),'warn'],expired:['Vencida','bad'],cancelled:['Cancelada','off']};
   chip.textContent=map[inf.st][0];chip.className='chip '+map[inf.st][1];
-  if(inf.st==='none'&&window._access&&window._access.paywall&&window._access.reason==='trial'){const a=window._access;chip.textContent='Teste grátis';chip.className='chip warn';body.innerHTML=`<div class="muted" style="margin-bottom:12px">Você está no <b>teste grátis</b> até <b>${dfmt(a.trial_ends)}</b> (${accessDays(a.trial_ends)} dia(s) restantes). Depois, só as questões de amostra grátis ficam liberadas.</div>${renewBtn('primary')}`;return}
+  if(inf.st==='none'&&window._access&&window._access.paywall&&window._access.reason==='trial'){const a=window._access;chip.textContent='Teste grátis';chip.className='chip warn';body.innerHTML=`<div class="muted" style="margin-bottom:12px">Você está no <b>teste grátis</b> até <b>${dfmt(a.trial_ends)}</b> (${accessDays(a.trial_ends)} dia(s) restantes). Depois, é preciso ter uma assinatura para continuar estudando.</div>${renewBtn('primary')}`;return}
   if(inf.st==='none'){body.innerHTML=`<div class="muted" style="margin-bottom:12px">Você ainda não tem uma assinatura cadastrada. Fale com a administração para ativar o seu acesso.</div>${renewBtn('primary')}`;return}
   const c=inf.cur,s0=dparse(c.starts_at),e0=dparse(c.expires_at),today=new Date();today.setHours(0,0,0,0);
   const total=Math.max(1,Math.round((e0-s0)/864e5)),used=Math.min(total,Math.max(0,Math.round((today-s0)/864e5))),pct=Math.round(used/total*100);
@@ -2631,7 +2679,7 @@ function renderSubBanner(){
   const key='mq_subban_'+qfUid(),td=dayKey(new Date());
   let kind='',txt='',dismiss=true;
   if(a.paywall){
-    if(a.allowed===false){kind='bad';dismiss=false;txt=(a.reason==='expired'?'Sua assinatura venceu em <b>'+dfmt(a.expires_at)+'</b>.':'Seu teste grátis terminou.')+' Você só vê as questões de amostra grátis. Renove para liberar todas.'}
+    if(a.allowed===false){kind='bad';dismiss=false;txt=(a.reason==='expired'?'Sua assinatura venceu em <b>'+dfmt(a.expires_at)+'</b>.':'Seu teste grátis terminou.')+' O acesso às questões e materiais está bloqueado. Renove para voltar a estudar.'}
     else if(a.reason==='trial'){const d=accessDays(a.trial_ends);kind='warn';txt='Teste grátis: termina em <b>'+d+(d===1?' dia':' dias')+'</b> ('+dfmt(a.trial_ends)+'). Assine para continuar estudando depois.'}
     else if(a.reason==='grace'){kind='bad';txt='Sua assinatura venceu em <b>'+dfmt(a.expires_at)+'</b>. Você está na carência até <b>'+dfmt(a.grace_until)+'</b>. Renove para não perder o acesso.'}
     else if(a.reason==='subscription'&&window._subOk&&inf.st==='expiring'){kind='warn';txt='Sua assinatura '+(inf.days===0?'vence <b>hoje</b>':'vence em <b>'+inf.days+(inf.days===1?' dia':' dias')+'</b> ('+dfmt(inf.cur.expires_at)+')')+'. Renove para não perder o acesso.'}
@@ -2739,7 +2787,7 @@ function renderAttempts(){
     box.innerHTML=`<div class="weakness-icon">🌱</div>
       <div class="weakness-copy">
         <h3>Vamos descobrir seu ponto de atenção</h3>
-        <p>Responda algumas questões para o MedQuest identificar automaticamente a matéria em que seu desempenho está mais baixo.</p>
+        <p>Responda algumas questões para o MedgO identificar automaticamente a matéria em que seu desempenho está mais baixo.</p>
       </div>
       <button class="primary weakness-action" onclick="go('questions')">Começar questões →</button>`;
   }else{
@@ -2754,9 +2802,26 @@ function renderAttempts(){
       <button class="primary weakness-action" onclick="reviewWeakest()">Revisar agora →</button>`;
   }
 
+  // desempenho por módulo, na ordem da grade (instituição › período › módulo)
+  const byModule={};
+  rows.forEach(r=>{
+    const q=r.questions;if(!q)return;
+    const k=q.module_id!=null?'m'+q.module_id:'p'+(q.period_id!=null?q.period_id:'');
+    if(!byModule[k])byModule[k]={k,module_id:q.module_id,period_id:q.period_id,total:0,correct:0};
+    byModule[k].total++;
+    if(r.is_correct)byModule[k].correct++;
+  });
+  const mods=window._modules||[],pers=window._periods||[],insts=window._institutions||[];
+  const ordOf=(arr,id)=>{const i=arr.findIndex(x=>String(x.id)===String(id));return i<0?1e9:i};
+  const modList=Object.values(byModule).map(x=>{
+    const m=x.module_id!=null?mods.find(y=>String(y.id)===String(x.module_id)):null;
+    const pid=m?m.period_id:x.period_id,p=pers.find(y=>String(y.id)===String(pid));
+    const it=p&&p.institution_id!=null?insts.find(y=>String(y.id)===String(p.institution_id)):null;
+    return {...x,rate:Math.round(x.correct/x.total*100),name:m?m.name:'Questões gerais',where:[it&&insts.length>1?it.name:'',p?p.name:''].filter(Boolean).join(' · '),o:[ordOf(insts,it&&it.id),ordOf(pers,pid),m?ordOf(mods,m.id):1e9]};
+  }).sort((a,b)=>a.o[0]-b.o[0]||a.o[1]-b.o[1]||a.o[2]-b.o[2]);
   const perfBox=document.getElementById('disciplinePerf');
-  if(list.length){
-    perfBox.innerHTML=list.slice().sort((a,b)=>b.rate-a.rate).map(x=>{const col=x.rate>=70?'#1a9c62':x.rate>=50?'#e3a008':'#d9534f';return `<div class="perf-row"><p><span class="perf-ico">${discIcon(x.name)}</span><span>${escapeHtml(x.name)}<small>${x.correct} de ${x.total} certas</small></span><b style="color:${col}">${x.rate}%</b></p><div class="perf-bar"><span style="width:${x.rate}%;background:${col}"></span></div></div>`}).join('');
+  if(modList.length){
+    perfBox.innerHTML=modList.map(x=>{const col=x.rate>=70?'#1a9c62':x.rate>=50?'#e3a008':'#d9534f';return `<div class="perf-row"><p><span class="perf-ico">🧩</span><span>${escapeHtml(x.name)}<small>${x.where?escapeHtml(x.where)+' · ':''}${x.correct} de ${x.total} certas</small></span><b style="color:${col}">${x.rate}%</b></p><div class="perf-bar"><span style="width:${x.rate}%;background:${col}"></span></div></div>`}).join('');
   }else{
     perfBox.innerHTML='<div class="empty">Ainda não há dados suficientes.</div>';
   }
@@ -2771,9 +2836,42 @@ async function saveProfile(){if(!sb||!currentUser)return;const name=document.get
 function go(id){document.body.classList.remove('mobile-sidebar-open');if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);if(id==='questions'&&typeof showGrade==='function')showGrade();if(typeof simPersist==='function')simPersist();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='simulados'&&typeof renderSim==='function')renderSim();if(id==='materials'&&typeof renderMaterials==='function'){if(typeof closeMatPanel==='function')closeMatPanel(true);renderMaterials()}if(id==='admin'&&isAdmin){const dp=document.getElementById('adminDashPane');if(dp&&dp.classList.contains('active'))loadAdminDash()}const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?'Olá, Doc! 👋':l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();if(id==='profile'&&typeof fillProfilePrefs==='function')fillProfilePrefs();window.scrollTo({top:0,behavior:'smooth'})}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
-function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminDashPane')loadAdminDash();if(pane==='adminMatPane')loadAdminMaterials();if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane'&&!editingQuestionId)loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions();if(pane==='adminUsersPane')loadAdminUsers()}
-async function loadAdminAll(){if(!isAdmin)return;invalidateCatalog();await ensureAllQ(true);await loadAdminStats();await loadAdminCatalogOptions();await loadAdminFormOptions();await loadAdminQuestions()}
+function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminDashPane')loadAdminDash();if(pane==='adminMatPane')loadAdminMaterials();if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane'&&!editingQuestionId)loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions();if(pane==='adminUsersPane')loadAdminUsers();if(pane==='adminReportsPane')loadAdminReports()}
+async function loadAdminAll(){if(!isAdmin)return;invalidateCatalog();admReportCount();await ensureAllQ(true);await loadAdminStats();await loadAdminCatalogOptions();await loadAdminFormOptions();await loadAdminQuestions()}
 async function loadAdminStats(){try{const [q,p,d,s]=await Promise.all([sb.from('questions').select('id,is_published',{count:'exact',head:true}),sb.from('questions').select('id',{count:'exact',head:true}).eq('is_published',true),sb.from('disciplines').select('id',{count:'exact',head:true}),sb.from('profiles').select('id',{count:'exact',head:true}).eq('role','student')]);document.getElementById('adminQuestionCount').textContent=q.count||0;document.getElementById('adminPublishedCount').textContent=p.count||0;document.getElementById('adminDisciplineCount').textContent=d.count||0;document.getElementById('adminStudentCount').textContent=s.count||0}catch(e){}}
+/* ===== Reportes de erro (aba admin) ===== */
+window._repFilter='aberto';
+async function admReportCount(){
+  if(!isAdmin||!sb)return;
+  const r=await sb.from('question_reports').select('id',{count:'exact',head:true}).eq('status','aberto');
+  const el=document.getElementById('repCount');if(!el)return;
+  const n=r.error?0:(r.count||0);el.textContent=n;el.hidden=!n;
+}
+function admReportFilter(v){window._repFilter=v;loadAdminReports()}
+async function loadAdminReports(){
+  const box=document.getElementById('adminReportList');if(!box||!isAdmin)return;
+  const F=window._repFilter;
+  let q=sb.from('question_reports').select('id,question_id,user_id,reason,details,status,created_at').order('created_at',{ascending:false}).limit(200);
+  if(F!=='all')q=q.eq('status',F);
+  const {data,error}=await q;
+  if(error){box.innerHTML='<div class="error-box">'+((error.code==='42P01'||error.code==='PGRST205')?'Os reportes ainda não foram ativados. Execute o arquivo <b>reports_devices_migration.sql</b> no SQL Editor do Supabase.':escapeHtml(error.message))+'</div>';return}
+  admReportCount();
+  const ids=[...new Set((data||[]).map(x=>x.user_id))];
+  const names={};
+  if(ids.length){const p=await sb.from('profiles').select('id,full_name').in('id',ids);(p.data||[]).forEach(x=>{names[x.id]=x.full_name||'Aluno'})}
+  const tabs=[['aberto','Abertos'],['resolvido','Resolvidos'],['descartado','Descartados'],['all','Todos']];
+  const stBadge={aberto:'<span class="badge red">Aberto</span>',resolvido:'<span class="badge green">Resolvido</span>',descartado:'<span class="badge">Descartado</span>'};
+  let h=`<div class="qf-chips" style="justify-content:flex-start;margin-bottom:6px">${tabs.map(t=>`<button type="button" class="qf-chip${F===t[0]?' on':''}" onclick="admReportFilter('${t[0]}')">${t[1]}</button>`).join('')}</div>`;
+  if(!(data||[]).length){box.innerHTML=h+'<div class="empty">Nenhum reporte aqui. 🎉</div>';return}
+  h+=data.map(x=>`<div class="rep-row"><div class="q-meta"><span class="badge blue">Questão #${Number(x.question_id)}</span><span class="badge amber">${escapeHtml(reportReasonName(x.reason))}</span>${stBadge[x.status]||''}<span class="muted" style="font-size:12.5px">${escapeHtml(names[x.user_id]||'Aluno')} · ${new Date(x.created_at).toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'})}</span></div>${x.details?`<p>${escapeHtml(x.details)}</p>`:''}<div style="display:flex;gap:6px;flex-wrap:wrap"><button class="small-btn" type="button" onclick="editQuestion(${Number(x.question_id)})">✏️ Abrir questão</button>${x.status==='aberto'?`<button class="small-btn publish" type="button" onclick="admReportSet(${Number(x.id)},'resolvido')">✓ Resolvido</button><button class="small-btn" type="button" onclick="admReportSet(${Number(x.id)},'descartado')">Descartar</button>`:`<button class="small-btn" type="button" onclick="admReportSet(${Number(x.id)},'aberto')">Reabrir</button>`}</div></div>`).join('');
+  box.innerHTML=h;
+}
+async function admReportSet(id,st){
+  if(!isAdmin)return;
+  const {error}=await sb.from('question_reports').update({status:st,resolved_at:st==='aberto'?null:new Date().toISOString()}).eq('id',id);
+  if(error){alert('Erro: '+error.message);return}
+  loadAdminReports();
+}
 async function loadAdminCatalogOptions(){
   if(!isAdmin)return;
   const insMap={};(window._institutions||[]).forEach(i=>insMap[String(i.id)]=i.name);
@@ -2782,12 +2880,12 @@ async function loadAdminCatalogOptions(){
   if(ce)ce.innerHTML='<option value="">Sem período</option>'+per.map(x=>`<option value="${x.id}">${(window._instLinkOk&&x.institution_id!=null?escapeHtml(insMap[String(x.institution_id)]||'')+' · ':'')}${escapeHtml(x.name)}</option>`).join('');
   await loadAdminModules();
 }
-function admShowNewBlocks(){const a=document.getElementById('aImgBlock'),f=document.getElementById('aFreeWrap');if(a)a.classList.toggle('hidden',!window._imgUiOk);if(f)f.classList.toggle('hidden',!window._keysOk)}
+function admShowNewBlocks(){const a=document.getElementById('aImgBlock');if(a)a.classList.toggle('hidden',!window._imgUiOk)}
 async function loadAdminFormOptions(){admShowNewBlocks();if(!isAdmin)return;clsRefresh('a','init');await loadAdminExams();adminTypeChange();}
 async function loadAdminSubjects(){clsRefresh('a','mod')}
 function syncDisciplineFromSubject(){clsRefresh('a','sub')}
 async function loadAdminExams(){const p=document.getElementById('aPeriod').value;let q=sb.from('exams').select('id,name').order('name');if(p)q=q.or(`period_id.eq.${Number(p)},period_id.is.null`);const {data}=await q;document.getElementById('aExam').innerHTML='<option value="">Sem prova</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('')}
-async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};if(window._keysOk)payload.is_free=!!(document.getElementById('aFree')||{}).checked;{const cv=clsGet('a');clsNormalize(cv,'init');const bad=clsCheck(cv,true);if(bad){status('adminQuestionStatus',bad);return}payload.period_id=Number(cv.per);payload.discipline_id=cv.dis?Number(cv.dis):(admFind('subject',cv.sub)||{}).discipline_id;payload.subject_id=cv.sub?Number(cv.sub):null;if(window._modulesOk)payload.module_id=cv.mod?Number(cv.mod):null}
+async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};{const cv=clsGet('a');clsNormalize(cv,'init');const bad=clsCheck(cv,true);if(bad){status('adminQuestionStatus',bad);return}payload.period_id=Number(cv.per);payload.discipline_id=cv.dis?Number(cv.dis):(admFind('subject',cv.sub)||{}).discipline_id;payload.subject_id=cv.sub?Number(cv.sub):null;if(window._modulesOk)payload.module_id=cv.mod?Number(cv.mod):null}
   if(window._v3ok){
     {const pp=admFind('period',payload.period_id);payload.institution_id=(pp&&pp.institution_id!=null)?pp.institution_id:numOrNull('aInst')}payload.year=yearOrNull();if(!yearValid(payload.year)){status('adminQuestionStatus','Ano inválido. Use 2025 ou, com semestre, 2025/1.');return}payload.qtype=document.getElementById('aType').value;
     if(payload.qtype==='discursiva'){
@@ -2809,7 +2907,7 @@ async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const pay
   if(editing)clsPopulate('a',{});else{const sb_=document.getElementById('aSubject');if(sb_)sb_.value=''}
   if(!editing)status('adminQuestionStatus','✅ Questão salva com sucesso. Instituição, período, módulo e matéria foram mantidos para a próxima.','ok');
   await loadAdminAll();if(typeof loadQuestions==='function')loadQuestions();}
-async function loadAdminQuestions(){if(!isAdmin)return;const box=document.getElementById('adminQuestionList');const {data,error}=await sb.from('questions').select('id,statement,difficulty,is_published,created_at,disciplines(name),subjects(name),periods(name),exams(name)'+(window._modulesOk?',modules(name)':'')+(window._v3ok?',institutions(name),year,qtype':'')+(window._keysOk?',is_free':'')).order('id',{ascending:false}).limit(100);if(error){box.innerHTML='<div class="error-box">'+escapeHtml(error.message)+'</div>';return}if(!data?.length){box.innerHTML='<div class="empty"><strong>Nenhuma questão cadastrada.</strong><span>Crie a primeira na aba “Nova questão”.</span></div>';return}box.innerHTML=data.map(x=>`<div class="admin-q"><div><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'')}</span><span class="badge">${escapeHtml(x.periods?.name||'')}</span>${x.modules?.name?`<span class="badge">🧩 ${escapeHtml(x.modules.name)}</span>`:''}${x.institutions?.name?`<span class="badge">🏛️ ${escapeHtml(x.institutions.name)}</span>`:''}${x.year?`<span class="badge">${x.year}</span>`:''}${x.qtype==='discursiva'?'<span class="badge">Discursiva</span>':''}${x.is_free?'<span class="badge green">Amostra grátis</span>':''}<span class="badge ${x.is_published?'green':'amber'}">${x.is_published?'Publicada':'Rascunho'}</span></div><h4>#${x.id} — ${escapeHtml(x.subjects?.name||'Sem assunto')}</h4><p>${escapeHtml(x.statement).slice(0,220)}${x.statement.length>220?'...':''}</p></div><div class="admin-actions"><button class="small-btn" onclick="editQuestion(${x.id})">✏️ Editar</button><button class="small-btn ${x.is_published?'unpublish':'publish'}" onclick="toggleQuestion(${x.id},${!x.is_published})">${x.is_published?'Despublicar':'Publicar'}</button>${window._keysOk?`<button class="small-btn" onclick="toggleFree(${x.id},${!x.is_free})">${x.is_free?'Tirar da amostra':'Amostra grátis'}</button>`:''}<button class="small-btn" style="color:#b42318;border-color:#f3c9c9" onclick="deleteQuestion(${x.id})">🗑 Excluir</button></div></div>`).join('')}
+async function loadAdminQuestions(){if(!isAdmin)return;const box=document.getElementById('adminQuestionList');const {data,error}=await sb.from('questions').select('id,statement,difficulty,is_published,created_at,disciplines(name),subjects(name),periods(name),exams(name)'+(window._modulesOk?',modules(name)':'')+(window._v3ok?',institutions(name),year,qtype':'')).order('id',{ascending:false}).limit(100);if(error){box.innerHTML='<div class="error-box">'+escapeHtml(error.message)+'</div>';return}if(!data?.length){box.innerHTML='<div class="empty"><strong>Nenhuma questão cadastrada.</strong><span>Crie a primeira na aba “Nova questão”.</span></div>';return}box.innerHTML=data.map(x=>`<div class="admin-q"><div><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'')}</span><span class="badge">${escapeHtml(x.periods?.name||'')}</span>${x.modules?.name?`<span class="badge">🧩 ${escapeHtml(x.modules.name)}</span>`:''}${x.institutions?.name?`<span class="badge">🏛️ ${escapeHtml(x.institutions.name)}</span>`:''}${x.year?`<span class="badge">${x.year}</span>`:''}${x.qtype==='discursiva'?'<span class="badge">Discursiva</span>':''}<span class="badge ${x.is_published?'green':'amber'}">${x.is_published?'Publicada':'Rascunho'}</span></div><h4>#${x.id} — ${escapeHtml(x.subjects?.name||'Sem assunto')}</h4><p>${escapeHtml(x.statement).slice(0,220)}${x.statement.length>220?'...':''}</p></div><div class="admin-actions"><button class="small-btn" onclick="editQuestion(${x.id})">✏️ Editar</button><button class="small-btn ${x.is_published?'unpublish':'publish'}" onclick="toggleQuestion(${x.id},${!x.is_published})">${x.is_published?'Despublicar':'Publicar'}</button><button class="small-btn" style="color:#b42318;border-color:#f3c9c9" onclick="deleteQuestion(${x.id})">🗑 Excluir</button></div></div>`).join('')}
 async function toggleQuestion(id,published){
   if(!isAdmin)return;
   const {data,error}=await sb.from('questions').update({is_published:published}).eq('id',id).select('id');
@@ -2901,14 +2999,8 @@ async function admSaveImages(qid){
   delete window._qImgs[qid];
   return err;
 }
-async function toggleFree(id,v){
-  if(!isAdmin)return;
-  const r=await sb.from('questions').update({is_free:v}).eq('id',id).select('id');
-  if(r.error){alert('Erro: '+r.error.message);return}
-  await loadAdminAll();if(typeof loadQuestions==='function')loadQuestions();loadAdminQuestions();
-}
 function resetEditState(){
-  editingQuestionId=null;admImgReset();{const f=document.getElementById('aFree');if(f)f.checked=false}
+  editingQuestionId=null;admImgReset();
   const t=document.getElementById('aFormTitle'),b=document.getElementById('aSubmitBtn'),c=document.getElementById('aCancelBtn');
   if(t)t.textContent='➕ Cadastrar questão';if(b)b.textContent='💾 Salvar questão';if(c)c.classList.add('hidden');if(typeof adminTypeChange==='function')adminTypeChange();
 }
@@ -2922,7 +3014,7 @@ async function editQuestion(id){
   const cols=['id','period_id','discipline_id','subject_id','exam_id','statement','option_a','option_b','option_c','option_d','option_e','difficulty','is_published'];
   if(window._modulesOk)cols.push('module_id');
   if(window._v3ok)cols.push('institution_id','year','qtype');
-  if(window._keysOk)cols.push('is_free');else{cols.push('correct_option','explanation');if(window._v3ok)cols.push('expected_answer')}
+  if(!window._keysOk){cols.push('correct_option','explanation');if(window._v3ok)cols.push('expected_answer')}
   let {data:q,error}=await sb.from('questions').select(cols.join(',')).eq('id',id).maybeSingle();
   if(!error&&q&&window._keysOk){const kr=await sb.from('question_keys').select('correct_option,explanation,expected_answer').eq('question_id',id).maybeSingle();if(kr.data)Object.assign(q,kr.data)}
   if(error||!q){alert('Não foi possível carregar a questão: '+(error?error.message:'não encontrada.'));return}
@@ -2936,7 +3028,6 @@ async function editQuestion(id){
   set('aStatement',q.statement);set('aA',q.option_a);set('aB',q.option_b);set('aC',q.option_c);set('aD',q.option_d);set('aE',q.option_e);
   set('aCorrect',q.correct_option);set('aDifficulty',q.difficulty||'medio');set('aExplanation',q.explanation);
   document.getElementById('aPublished').checked=!!q.is_published;
-  {const fr=document.getElementById('aFree');if(fr)fr.checked=!!q.is_free}
   await admLoadImages(id);
   editingQuestionId=id;
   document.getElementById('aFormTitle').textContent='✏️ Editando questão #'+id;
@@ -3368,12 +3459,12 @@ async function renderAccessRules(){
   if(r.error||!(r.data||[]).length){el.innerHTML='<div class="adm-block" style="margin-bottom:12px"><b>Regras de acesso</b><div class="muted" style="font-size:12.5px;margin-top:4px">Disponível depois de executar o server_migration.sql no Supabase.</div></div>';return}
   const m={};(r.data||[]).forEach(x=>{m[x.key]=x.value});
   const on=m.paywall_enabled==='1';
-  el.innerHTML=`<div class="adm-block" style="margin-bottom:12px"><div class="adm-row"><div style="flex:1;min-width:240px"><b>Regras de acesso</b><div class="muted" style="font-size:12.5px">${on?'<b style="color:#a02222">LIGADA:</b> só entra quem tem assinatura, teste grátis ou carência. As demais pessoas veem apenas as questões marcadas como amostra grátis.':'<b>Desligada:</b> todos os alunos têm acesso (a assinatura só avisa). Cadastre as assinaturas antes de ligar.'}</div></div><label class="sim-switch" style="margin:0"><input id="ruPaywall" type="checkbox" ${on?'checked':''}><span><b>Exigir assinatura</b></span></label></div><div class="adm-row" style="margin-top:10px;gap:16px"><label class="sim-field" style="margin:0;min-width:150px">Dias de teste grátis<input id="ruTrial" type="number" min="0" max="365" value="${escapeHtml(m.trial_days||'7')}"></label><label class="sim-field" style="margin:0;min-width:150px">Dias de carência<input id="ruGrace" type="number" min="0" max="60" value="${escapeHtml(m.grace_days||'3')}"></label><button class="small-btn" type="button" onclick="admSaveRules()">Salvar regras</button></div><div id="rulesStatus"></div></div>`;
+  el.innerHTML=`<div class="adm-block" style="margin-bottom:12px"><div class="adm-row"><div style="flex:1;min-width:240px"><b>Regras de acesso</b><div class="muted" style="font-size:12.5px">${on?'<b style="color:#a02222">LIGADA:</b> só entra quem tem assinatura, teste grátis ou carência. As demais pessoas ficam sem acesso às questões e materiais.':'<b>Desligada:</b> todos os alunos têm acesso (a assinatura só avisa). Cadastre as assinaturas antes de ligar.'}</div></div><label class="sim-switch" style="margin:0"><input id="ruPaywall" type="checkbox" ${on?'checked':''}><span><b>Exigir assinatura</b></span></label></div><div class="adm-row" style="margin-top:10px;gap:16px"><label class="sim-field" style="margin:0;min-width:150px">Dias de teste grátis<input id="ruTrial" type="number" min="0" max="365" value="${escapeHtml(m.trial_days||'7')}"></label><label class="sim-field" style="margin:0;min-width:150px">Dias de carência<input id="ruGrace" type="number" min="0" max="60" value="${escapeHtml(m.grace_days||'3')}"></label><button class="small-btn" type="button" onclick="admSaveRules()">Salvar regras</button></div><div id="rulesStatus"></div></div>`;
 }
 async function admSaveRules(){
   const on=document.getElementById('ruPaywall').checked;
   const trial=Math.max(0,Math.min(365,parseInt(document.getElementById('ruTrial').value,10)||0)),grace=Math.max(0,Math.min(60,parseInt(document.getElementById('ruGrace').value,10)||0));
-  if(on&&!confirm('Ligar a exigência de assinatura?\n\nAlunos sem assinatura vigente, sem teste grátis e fora da carência passam a ver só as questões de amostra grátis.'))return;
+  if(on&&!confirm('Ligar a exigência de assinatura?\n\nAlunos sem assinatura vigente, sem teste grátis e fora da carência perdem o acesso às questões e materiais.'))return;
   const now=new Date().toISOString();
   const {error}=await sb.from('app_settings').upsert([{key:'paywall_enabled',value:on?'1':'0',updated_at:now},{key:'trial_days',value:String(trial),updated_at:now},{key:'grace_days',value:String(grace),updated_at:now}]);
   if(error){status('rulesStatus','Não foi possível salvar: '+escapeHtml(error.message));return}
@@ -3543,7 +3634,7 @@ async function loadAccess(){
 function paywallNote(){
   const a=window._access||{};if(a.allowed!==false)return '';
   const why=a.reason==='expired'?('Sua assinatura venceu em <b>'+dfmt(a.expires_at)+'</b>.'):'Seu teste grátis terminou.';
-  return `<div class="sub-ban bad"><span class="grow"><span class="ic" data-i="lock"></span> ${why} Você está vendo só as questões de <b>amostra grátis</b>. Renove para liberar todas.</span>${renewBtn('primary')}</div>`;
+  return `<div class="sub-ban bad"><span class="grow"><span class="ic" data-i="lock"></span> ${why} O acesso às questões e materiais está <b>bloqueado</b>. Renove para voltar a estudar.</span>${renewBtn('primary')}</div>`;
 }
 /* corrige uma questão objetiva: o servidor confere, grava a resposta e só então devolve o gabarito */
 async function answerRemote(qid,picked){
@@ -4060,7 +4151,8 @@ async function resendConfirmation(email,statusId){
 
 /* ===== Materiais (resumos, mapas e quadros) ===== */
 window._mats=[];window._matOk=null;window._matAt=0;window._matProg={};window._matBody={};
-window._mf={insts:[],periods:[],modules:[],disciplines:[],q:'',kind:'',fav:false,unread:false,tab:'all'};
+window._mf={insts:[],periods:[],modules:[],disciplines:[],q:'',kind:'',fav:false,unread:false,tab:'all',step:1};
+let _mfInit=false;
 window._matView='list';window._matCur=null;window._matPanel=null;
 const MAT_COLS='id,title,kind,institution_id,period_id,module_id,discipline_id,subject_id,read_minutes,sort_order,is_published,is_free,updated_at';
 const MAT_KIND={resumo:['Resumo','note'],mapa:['Mapa mental','box'],quadro:['Quadro comparativo','chart'],pdf:['PDF','doc']};
@@ -4171,13 +4263,113 @@ function matsForSubject(sid){
   if(sid==null||!window._matOk)return [];
   return matVisible().filter(m=>String(m.subject_id)===String(sid)&&(isAdmin||m.is_published!==false));
 }
+/* filtros em etapas, no mesmo jeito da página de Questões (skip = etapas ignoradas, para contar as opções) */
+function matApply(skip){
+  skip=skip||[];const F=window._mf;
+  return matVisible().filter(m=>{
+    if(!skip.includes('inst')&&F.insts.length&&!F.insts.includes('any')){const mi=matInstId(m);if(!F.insts.some(i=>i==='none'?mi==null:String(mi)===String(i)))return false}
+    if(!skip.includes('period')&&F.periods.length&&!qfHas(F.periods,m.period_id))return false;
+    if(!skip.includes('module')&&F.modules.length&&!F.modules.some(x=>x==='none'?m.module_id==null:String(m.module_id)===String(x)))return false;
+    if(!skip.includes('discipline')&&F.disciplines.length&&!qfHas(F.disciplines,m.discipline_id))return false;
+    return true;
+  });
+}
+function matInstOptions(){
+  const all=matApply(['inst','period','module','discipline']);
+  const out=(window._institutions||[]).map(i=>({id:String(i.id),name:i.name,hidden:!!i.is_hidden,n:all.filter(m=>String(matInstId(m))===String(i.id)).length}));
+  const none=all.filter(m=>matInstId(m)==null).length;
+  if(none&&out.length)out.push({id:'none',name:'Sem instituição',n:none});
+  return out;
+}
+function matNeedsInst(){return matInstOptions().length>1}
+function matHasModules(){
+  const F=window._mf;if(!window._modulesOk||!F.periods.length)return false;
+  return (window._modules||[]).some(m=>qfHas(F.periods,m.period_id))||matApply(['module','discipline']).some(m=>m.module_id==null);
+}
+function matHasDisciplines(){return matApply(['discipline']).some(m=>m.discipline_id!=null)}
+function matNextStep(from){
+  const F=window._mf;let n=from+1;
+  if(n===2&&!qfPeriodsFor(F.insts).length)n=3;
+  if(n===3&&!matHasModules())n=4;
+  if(n===4&&!matHasDisciplines())n=5;
+  return Math.min(n,5);
+}
+function matSave(){const F=window._mf;if(F.insts.length&&!F.insts.includes('any'))mqLS.set('mq_mf_'+qfUid(),JSON.stringify({insts:F.insts,periods:F.periods}))}
+function matInit(){
+  const F=window._mf,opts=matInstOptions();
+  if(opts.length<=1){
+    if(!F.insts.length){F.insts=opts.length?[opts[0].id]:['any'];F.step=Math.max(F.step,matNextStep(1))}
+    return;
+  }
+  if(!_mfInit){
+    _mfInit=true;let sv=null;
+    try{sv=JSON.parse(mqLS.get('mq_mf_'+qfUid())||'null')}catch(e){}
+    if(!sv&&window._myPref&&window._myPref.inst)sv={insts:[String(window._myPref.inst)],periods:window._myPref.period?[String(window._myPref.period)]:[]};
+    if(sv&&!F.insts.length){
+      const okI=(sv.insts||[]).map(String).filter(i=>opts.some(o=>o.id===i));
+      if(okI.length){
+        F.insts=okI;F.step=matNextStep(1);
+        const okP=(sv.periods||[]).map(String).filter(p=>qfPeriodsFor(F.insts).some(x=>String(x.id)===p));
+        if(okP.length){F.periods=okP;F.step=matNextStep(2)}
+      }
+    }
+  }
+  F.insts=F.insts.filter(i=>i==='any'||opts.some(o=>o.id===String(i)));
+  if(!F.insts.length)F.step=1;
+}
+function matNext(){
+  const F=window._mf;
+  if(F.step===1&&matNeedsInst()&&!F.insts.length){toast('Escolha ao menos uma instituição.');return}
+  F.step=matNextStep(F.step);matSave();renderMaterials();
+}
+function matSkip(){
+  const F=window._mf;
+  if(F.step===2){F.periods=[];F.modules=[];F.disciplines=[]}
+  else if(F.step===3){F.modules=[]}
+  else if(F.step===4){F.disciplines=[]}
+  F.step=matNextStep(F.step);matSave();renderMaterials();
+}
+function matGoStep(n){
+  const F=window._mf;
+  if(n<2)F.periods=[];
+  if(n<3)F.modules=[];
+  if(n<4)F.disciplines=[];
+  F.step=n;matPrune();matSave();renderMaterials();
+}
+function matStepsHtml(){
+  const F=window._mf,per=window._periods||[],instOpts=matInstOptions(),needInst=instOpts.length>1;
+  const insName=id=>{const o=instOpts.find(x=>x.id===String(id));return o?o.name:''};
+  const plM=n=>n?n+(n===1?' material':' materiais'):'Em breve';
+  let h='';
+  const crumbs=[];
+  if(needInst&&F.insts.length)crumbs.push([1,'🏛️',qfNames(F.insts,insName)||'Instituição']);
+  if(F.step>2&&F.insts.length)crumbs.push([2,'📅',F.periods.length?qfNames(F.periods,id=>matName(per,id)):'Todos os períodos']);
+  if(F.insts.length&&(F.modules.length||(F.step>3&&matHasModules())))crumbs.push([3,'🧩',F.modules.length?qfNames(F.modules,id=>id==='none'?'Materiais gerais':matName(window._modules,id)):'Todos os módulos']);
+  if(F.insts.length&&F.step>4)crumbs.push([4,'📘',F.disciplines.length?qfNames(F.disciplines,id=>matName(window._disciplines,id)):'Todas as matérias']);
+  if(crumbs.length)h+=`<div class="qf-crumbs">${crumbs.map((c,i)=>`${i?'<span class="qf-sep">›</span>':''}<button type="button" class="qf-crumb" onclick="matGoStep(${c[0]})" title="Voltar a esta etapa">${c[1]} ${escapeHtml(c[2])} <em>✎</em></button>`).join('')}</div>`;
+  const skipBtn=`<button class="small-btn skip" type="button" onclick="matSkip()">Pular etapa →</button>`;
+  const card=(kind,id,icon,name,small,off,sel)=>`<button type="button" class="qf-card${sel?' sel':''}${off?' off':''}" aria-pressed="${sel?'true':'false'}" onclick="matPick('${kind}','${id}')"><span class="ic">${icon}</span><b>${escapeHtml(name)}${off?' (oculto)':''}</b><small>${small}</small>${sel?'<span class="qf-check"><span class="ic" data-i="check-circle"></span></span>':''}</button>`;
+  const foot=(n,min)=>`<div class="qf-foot"><span class="muted">${n?n+' selecionada'+(n===1?'':'s'):(min?'Escolha ao menos uma opção':'Nenhuma escolha = todas')}</span><button class="primary" type="button" onclick="matNext()"${(min&&!n)?' disabled':''}>Continuar →</button></div>`;
+  const head=(n,t,req)=>`<div class="qf-panel-h"><span class="qf-num">${n}</span><h3>${t}</h3><span class="qf-tag${req?' req':''}">${req?'Obrigatória':'Opcional'}</span>${req?'':skipBtn}</div>`;
+  if(F.step===1||!F.insts.length){
+    h+=`<div class="qf-panel">${head(1,'Escolha a instituição',true)}<div class="qf-cards">${instOpts.map(o=>card('inst',o.id,'🏛️',o.name,plM(o.n),o.hidden,qfHas(F.insts,o.id))).join('')}</div>${foot(F.insts.length,true)}</div>`;
+  }else if(F.step===2){
+    const cnt=qfCount(matApply(['period','module','discipline']),m=>String(m.period_id)),multi=F.insts.length>1&&!F.insts.includes('any');
+    h+=`<div class="qf-panel">${head(2,'Escolha o período')}<div class="qf-cards">${qfPeriodsFor(F.insts).map(p=>card('period',p.id,'📅',(multi&&p.institution_id!=null?insName(p.institution_id)+' · ':'')+p.name,plM(cnt[String(p.id)]||0),p.is_hidden,qfHas(F.periods,p.id))).join('')}<button type="button" class="qf-card all" onclick="matSkip()"><span class="ic">🗓️</span><b>Todos os períodos</b><small>sem filtrar por período</small></button></div>${foot(F.periods.length,false)}</div>`;
+  }else if(F.step===3){
+    const mods=(window._modules||[]).filter(m=>qfHas(F.periods,m.period_id)).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0)||a.id-b.id);
+    const cnt=qfCount(matApply(['module','discipline']),m=>m.module_id==null?'none':String(m.module_id)),multiP=F.periods.length>1;
+    h+=`<div class="qf-panel">${head(3,'Escolha o módulo')}<div class="qf-cards">${mods.map(m=>card('module',m.id,'🧩',(multiP?matName(per,m.period_id)+' · ':'')+m.name,plM(cnt[String(m.id)]||0),m.is_hidden,qfHas(F.modules,m.id))).join('')}${cnt.none?card('module','none','★','Materiais gerais',plM(cnt.none),false,qfHas(F.modules,'none')):''}<button type="button" class="qf-card all" onclick="matSkip()"><span class="ic">🧩</span><b>Todos os módulos</b><small>sem filtrar por módulo</small></button></div>${foot(F.modules.length,false)}</div>`;
+  }else if(F.step===4){
+    const cnt=qfCount(matApply(['discipline']).filter(m=>m.discipline_id!=null),m=>String(m.discipline_id));
+    const ids=Object.keys(cnt).map(id=>({id,name:matName(window._disciplines,id)||'Matéria'})).sort((a,b)=>a.name.localeCompare(b.name));
+    h+=`<div class="qf-panel">${head(4,'Escolha a matéria')}<div class="qf-cards">${ids.map(d=>card('discipline',d.id,discIcon(d.name),d.name,plM(cnt[d.id]),false,qfHas(F.disciplines,d.id))).join('')}<button type="button" class="qf-card all" onclick="matSkip()"><span class="ic">📚</span><b>Todas as matérias</b><small>sem filtrar por matéria</small></button></div>${foot(F.disciplines.length,false)}</div>`;
+  }
+  return h;
+}
 function matFiltered(){
   const F=window._mf,q=F.q.trim().toLowerCase();
-  return matVisible().filter(m=>{
-    if(F.insts.length&&!qfHas(F.insts,matInstId(m)))return false;
-    if(F.periods.length&&!qfHas(F.periods,m.period_id))return false;
-    if(F.modules.length&&!F.modules.some(x=>x==='none'?m.module_id==null:String(m.module_id)===String(x)))return false;
-    if(F.disciplines.length&&!qfHas(F.disciplines,m.discipline_id))return false;
+  return matApply([]).filter(m=>{
     if(F.tab==='text'&&m.kind==='pdf')return false;
     if(F.tab==='pdf'&&m.kind!=='pdf')return false;
     if(F.kind&&m.kind!==F.kind)return false;
@@ -4194,26 +4386,26 @@ function matPrune(){
   const pv=new Set(qfPeriodsFor(F.insts).map(p=>String(p.id)));F.periods=F.periods.filter(p=>pv.has(String(p)));
   const mv=new Set((window._modules||[]).filter(m=>qfHas(F.periods,m.period_id)).map(m=>String(m.id)));F.modules=F.modules.filter(m=>m==='none'||mv.has(String(m)));
   if(!F.periods.length)F.modules=[];
-  const dv=new Set(all.map(m=>String(m.discipline_id)));F.disciplines=F.disciplines.filter(d=>dv.has(String(d)));
+  const dv=new Set(matApply(['discipline']).map(m=>String(m.discipline_id)));F.disciplines=F.disciplines.filter(d=>dv.has(String(d)));
 }
 function matPick(k,v){
   const F=window._mf,key=MF_KEYS[k];v=String(v);
   const i=F[key].findIndex(x=>String(x)===v);if(i>=0)F[key].splice(i,1);else F[key].push(v);
-  matPrune();renderMaterials();
+  if(key==='insts')F.insts=F.insts.filter(x=>x!=='any');
+  matPrune();matSave();renderMaterials();
 }
 function matToggleFilter(k){window._mf[k]=!window._mf[k];renderMaterials()}
 function matSetTab(t){window._mf.tab=t;if(t==='pdf')window._mf.kind='';renderMaterials()}
 function matTabsHtml(){
   if(!window._pdfOk||!textOn())return '';
-  const F=window._mf,all=matVisible(),n={all:all.length,text:all.filter(m=>m.kind!=='pdf').length,pdf:all.filter(m=>m.kind==='pdf').length};
+  const F=window._mf,all=matApply([]),n={all:all.length,text:all.filter(m=>m.kind!=='pdf').length,pdf:all.filter(m=>m.kind==='pdf').length};
   return `<div class="seg mat-tabs-seg" role="tablist">${[['all','Todos'],['text','Resumos'],['pdf','PDFs']].map(t=>`<button type="button" role="tab" aria-selected="${F.tab===t[0]?'true':'false'}" class="${F.tab===t[0]?'on':''}" onclick="matSetTab('${t[0]}')">${t[1]} <small>${n[t[0]]}</small></button>`).join('')}</div>`;
 }
 function matSetKind(v){window._mf.kind=window._mf.kind===v?'':v;renderMaterials()}
 function matSetQ(v){window._mf.q=v||'';matRefreshList()}
-function matChips(kind,items,sel){return `<div class="qf-chips" style="justify-content:flex-start">${items.map(it=>`<button type="button" class="qf-chip${qfHas(sel,it.id)?' on':''}" aria-pressed="${qfHas(sel,it.id)?'true':'false'}" onclick="matPick('${kind}','${it.id}')">${escapeHtml(it.name)}</button>`).join('')}</div>`}
 function matCardHtml(m){
   const pr=window._matProg[m.id]||{},kd=MAT_KIND[m.kind]||MAT_KIND.resumo;
-  return `<div class="mat-card" role="button" tabindex="0" onclick="openMaterial(${m.id},'list')" onkeydown="if(event.key==='Enter')openMaterial(${m.id},'list')"><div class="mat-ico"><span class="ic" data-i="${kd[1]}"></span></div><div class="mat-info">${matTrail(m).slice(3).length?`<div class="mat-trail">${matTrail(m).slice(3).map(escapeHtml).join(' › ')}</div>`:''}<h3>${escapeHtml(m.title)}</h3><div class="mat-meta"><span class="badge blue">${kd[0]}</span>${m.kind==='pdf'?`<span class="badge">${m.file_size?fmtBytes(m.file_size):'PDF'}</span>`:`<span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min</span>`}${pr.read?'<span class="badge green">✓ Lido</span>':''}${pr.fav?'<span class="badge amber">★ Favorito</span>':''}${m.is_free?'<span class="badge green">Amostra grátis</span>':''}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div></div><span class="primary mat-go">${m.kind==='pdf'?'Abrir →':'Ler →'}</span></div>`;
+  return `<div class="mat-card" role="button" tabindex="0" onclick="openMaterial(${m.id},'list')" onkeydown="if(event.key==='Enter')openMaterial(${m.id},'list')"><div class="mat-ico"><span class="ic" data-i="${kd[1]}"></span></div><div class="mat-info">${matTrail(m).slice(3).length?`<div class="mat-trail">${matTrail(m).slice(3).map(escapeHtml).join(' › ')}</div>`:''}<h3>${escapeHtml(m.title)}</h3><div class="mat-meta"><span class="badge blue">${kd[0]}</span>${m.kind==='pdf'?`<span class="badge">${m.file_size?fmtBytes(m.file_size):'PDF'}</span>`:`<span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min</span>`}${pr.read?'<span class="badge green">✓ Lido</span>':''}${pr.fav?'<span class="badge amber">★ Favorito</span>':''}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div></div><span class="primary mat-go">${m.kind==='pdf'?'Abrir →':'Ler →'}</span></div>`;
 }
 function matListHtml(){
   const list=matFiltered();
@@ -4228,16 +4420,8 @@ function matListHtml(){
 }
 function matRefreshList(){const el=document.getElementById('matList');if(el)el.innerHTML=matListHtml();const c=document.getElementById('matCount');if(c)c.textContent=matFiltered().length+' material(is)'}
 function matFilterHtml(){
-  const F=window._mf,all=matVisible();
-  const instIds=new Set(all.map(m=>String(matInstId(m))));
-  const insts=(window._institutions||[]).filter(i=>instIds.has(String(i.id))).map(i=>({id:String(i.id),name:i.name}));
-  const perIds=new Set(all.map(m=>String(m.period_id)));
-  const pers=qfPeriodsFor(F.insts).filter(p=>perIds.has(String(p.id))).map(p=>({id:String(p.id),name:(F.insts.length>1?matName(window._institutions,p.institution_id)+' · ':'')+p.name}));
-  const modIds=new Set(all.map(m=>String(m.module_id)));
-  const mods=F.periods.length?(window._modules||[]).filter(m=>qfHas(F.periods,m.period_id)&&modIds.has(String(m.id))).map(m=>({id:String(m.id),name:m.name})):[];
-  const dis=[...new Set(all.map(m=>m.discipline_id).filter(x=>x!=null))].map(id=>({id:String(id),name:matName(window._disciplines,id)})).filter(x=>x.name).sort((a,b)=>a.name.localeCompare(b.name));
-  const blk=(label,inner)=>inner?`<div class="sim-field" style="gap:8px"><span>${label}</span>${inner}</div>`:'';
-  return `<div class="mat-filters"><div class="mat-search"><span class="ic" data-i="search"></span><input id="matQ" type="search" placeholder="Buscar por título ou assunto..." value="${escapeHtml(F.q)}" oninput="matSetQ(this.value)"></div><div class="qf-chips" style="justify-content:flex-start">${(F.tab==='pdf'||!textOn())?'':MAT_TEXT_KINDS.map(k=>`<button type="button" class="qf-chip${F.kind===k?' on':''}" onclick="matSetKind('${k}')">${MAT_KIND[k][0]}</button>`).join('')}<button type="button" class="qf-chip${F.fav?' on':''}" onclick="matToggleFilter('fav')">★ Favoritos</button><button type="button" class="qf-chip${F.unread?' on':''}" onclick="matToggleFilter('unread')">Não lidos</button></div>${blk('Instituição',insts.length>1?matChips('inst',insts,F.insts):'')}${blk('Período',pers.length>1?matChips('period',pers,F.periods):'')}${blk('Módulo',mods.length?matChips('module',mods,F.modules):'')}${blk('Matéria',dis.length>1?matChips('discipline',dis,F.disciplines):'')}</div>`;
+  const F=window._mf;
+  return `<div class="mat-filters"><div class="mat-search"><span class="ic" data-i="search"></span><input id="matQ" type="search" placeholder="Buscar por título ou assunto..." value="${escapeHtml(F.q)}" oninput="matSetQ(this.value)"></div><div class="qf-chips" style="justify-content:flex-start">${(F.tab==='pdf'||!textOn())?'':MAT_TEXT_KINDS.map(k=>`<button type="button" class="qf-chip${F.kind===k?' on':''}" onclick="matSetKind('${k}')">${MAT_KIND[k][0]}</button>`).join('')}<button type="button" class="qf-chip${F.fav?' on':''}" onclick="matToggleFilter('fav')">★ Favoritos</button><button type="button" class="qf-chip${F.unread?' on':''}" onclick="matToggleFilter('unread')">Não lidos</button></div></div>`;
 }
 function renderMaterials(){
   const v=document.getElementById('matView');if(!v)return;
@@ -4250,7 +4434,11 @@ function renderMaterials(){
   if(window._matOk===null){v.innerHTML='<div class="empty"><strong>Carregando materiais...</strong></div>';loadMaterialsCatalog().then(()=>{if(window._matView==='list')renderMaterials()});return}
   if(window._matOk===false){v.innerHTML=hero+'<div class="card" style="margin-top:14px"><b>Os materiais ainda não estão disponíveis.</b><div class="muted" style="margin-top:6px">Peça à administração para executar o materials_migration.sql no Supabase.</div></div>';return}
   const note=(window._access&&window._access.allowed===false)?paywallNote():'';
-  v.innerHTML=hero+note+matTabsHtml()+matFilterHtml()+`<div class="muted" id="matCount" style="margin:6px 4px 10px;font-weight:700">${matFiltered().length} material(is)</div><div id="matList">${matListHtml()}</div>`;
+  matInit();
+  const steps=matStepsHtml();
+  // como em Questões: sem instituição escolhida, mostra só a primeira etapa
+  if(!window._mf.insts.length){v.innerHTML=hero+note+steps;return}
+  v.innerHTML=hero+note+steps+`<div style="margin-top:16px">${matTabsHtml()}</div>`+matFilterHtml()+`<div class="muted" id="matCount" style="margin:6px 4px 10px;font-weight:700">${matFiltered().length} material(is)</div><div id="matList">${matListHtml()}</div>`;
 }
 /* --- progresso, leitura e registro --- */
 async function matSetProgress(id,patch){
@@ -4360,7 +4548,7 @@ function matRenderReader(m){
   const lat=window._latest||{},done=qs.filter(q=>lat[q.id]!==undefined),okc=done.filter(q=>lat[q.id]===true).length;
   const study=qs.length?`<section class="mat-study"><div><b>Fixe com questões</b><div class="muted">${plQ(qs.length)} ${m.subject_id!=null?'deste assunto':'desta matéria neste módulo'}${done.length?' · você acertou '+Math.round(okc/done.length*100)+'% de '+done.length+' respondida(s)':''}</div></div><button class="primary" type="button" onclick="matStudyM(${m.id})">${m.subject_id!=null?'Fazer questões deste assunto →':'Fazer questões desta matéria →'}</button></section>`:'';
   v.innerHTML=`<div class="mat-reader"><div class="mat-bar"><button class="small-btn" type="button" onclick="matBack()">← Voltar aos materiais</button><div class="mat-actions"><button type="button" class="small-btn mat-tg${pr.fav?' on':''}" data-mat-fav="${m.id}" onclick="matToggleFav(${m.id})">${pr.fav?'★ Favorito':'☆ Favoritar'}</button><button type="button" class="small-btn mat-tg${pr.read?' on':''}" data-mat-read="${m.id}" onclick="matToggleRead(${m.id})"><span class="ic" data-i="check-circle"></span> ${pr.read?'Lido':'Marcar como lido'}</button>${m.kind==='pdf'?'':'<button type="button" class="small-btn" onclick="window.print()">Imprimir</button>'}</div></div>
-  <article class="mat-article"><div class="mat-trail">${matTrail(m).map(escapeHtml).join(' › ')}</div><h1>${escapeHtml(m.title)}</h1><div class="mat-meta"><span class="badge blue">${kd[0]}</span>${m.kind==='pdf'?`<span class="badge">${fmtBytes(m.file_size)}</span>`:`<span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min de leitura</span>`}${m.is_free?'<span class="badge green">Amostra grátis</span>':''}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div>${m.kind==='pdf'?matPdfHtml(m,'r',false):matArticleHtml(m,'r')}${study}<section class="mat-note"><label for="matNote"><b>Minhas anotações</b> <span class="muted">(só você vê)</span></label><textarea id="matNote" rows="4" placeholder="Escreva aqui o que quiser lembrar..." onblur="matSaveNote(${m.id})">${escapeHtml(m.note||'')}</textarea></section><div class="mat-nav">${prev?`<button class="small-btn" type="button" onclick="openMaterial(${prev.id},'list')">← ${escapeHtml(prev.title.slice(0,40))}</button>`:'<span></span>'}${next?`<button class="primary" type="button" onclick="openMaterial(${next.id},'list')">${escapeHtml(next.title.slice(0,40))} →</button>`:'<span></span>'}</div></article></div>`;
+  <article class="mat-article"><div class="mat-trail">${matTrail(m).map(escapeHtml).join(' › ')}</div><h1>${escapeHtml(m.title)}</h1><div class="mat-meta"><span class="badge blue">${kd[0]}</span>${m.kind==='pdf'?`<span class="badge">${fmtBytes(m.file_size)}</span>`:`<span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min de leitura</span>`}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div>${m.kind==='pdf'?matPdfHtml(m,'r',false):matArticleHtml(m,'r')}${study}<section class="mat-note"><label for="matNote"><b>Minhas anotações</b> <span class="muted">(só você vê)</span></label><textarea id="matNote" rows="4" placeholder="Escreva aqui o que quiser lembrar..." onblur="matSaveNote(${m.id})">${escapeHtml(m.note||'')}</textarea></section><div class="mat-nav">${prev?`<button class="small-btn" type="button" onclick="openMaterial(${prev.id},'list')">← ${escapeHtml(prev.title.slice(0,40))}</button>`:'<span></span>'}${next?`<button class="primary" type="button" onclick="openMaterial(${next.id},'list')">${escapeHtml(next.title.slice(0,40))} →</button>`:'<span></span>'}</div></article></div>`;
 }
 function matStudyM(id){
   const m=(window._mats||[]).find(x=>x.id===id);if(!m)return;
@@ -4483,7 +4671,7 @@ async function loadAdminMaterials(){
   const all=window._mats||[],tab=(window._pdfOk&&textOn())?window._admMatTab:(window._pdfOk?'pdf':'text');
   const list=all.filter(m=>tab==='pdf'?m.kind==='pdf':m.kind!=='pdf');
   const nT=all.filter(m=>m.kind!=='pdf').length,nP=all.filter(m=>m.kind==='pdf').length;
-  box.innerHTML=`<div class="dash-head"><div><h2 style="margin:0">Materiais</h2><div class="muted">${all.length} no total · ${all.filter(m=>m.is_published).length} publicados</div></div><div style="display:flex;gap:8px;flex-wrap:wrap">${window._pdfOk?`<button class="${textOn()?'small-btn':'primary'}" type="button" onclick="admPdfNew()"><span class="ic" data-i="plus"></span> Enviar PDF</button>`:''}${textOn()?'<button class="primary" type="button" onclick="admMatNew()">+ Novo resumo</button>':''}</div></div>${window._pdfOk?`<div class="mat-switch"><div><b>Resumos escritos no site</b><div class="muted" style="font-size:12.5px">${textOn()?'Ligado: os alunos veem as abas Resumos e PDFs.':'Desligado: a aba Materiais mostra só PDFs. Os resumos que você já escreveu ficam guardados.'}</div></div><button type="button" class="small-btn" onclick="admMatTextToggle(${textOn()?'false':'true'})">${textOn()?'Desligar':'Ligar'}</button></div>`:''}${(window._pdfOk&&textOn())?`<div class="seg" role="tablist" style="margin:0 0 12px"><button type="button" class="${tab==='text'?'on':''}" onclick="admMatSetTab('text')">Resumos <small>${nT}</small></button><button type="button" class="${tab==='pdf'?'on':''}" onclick="admMatSetTab('pdf')">PDFs <small>${nP}</small></button></div>`:(window._pdfOk?'':'<div class="muted" style="margin-bottom:10px">Para enviar PDFs, execute o <b>materials_pdf_migration.sql</b> no Supabase.</div>')}${list.length?`<div class="dash-wrong">${list.map(m=>{const kd=MAT_KIND[m.kind]||MAT_KIND.resumo;return `<div class="dash-wrow"><div><b>${escapeHtml(m.title)}</b><div class="muted" style="font-size:12.5px">${matTrail(m).map(escapeHtml).join(' › ')}</div><div class="mat-meta" style="margin-top:6px"><span class="badge blue">${kd[0]}</span><span class="badge ${m.is_published?'green':'amber'}">${m.is_published?'Publicado':'Rascunho'}</span>${m.is_free?'<span class="badge green">Amostra grátis</span>':''}<span class="badge">${m.kind==='pdf'?escapeHtml(m.file_name||'PDF')+' · '+fmtBytes(m.file_size):m.read_minutes+' min'}</span></div></div><div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end"><button class="small-btn" type="button" onclick="admMatEdit(${m.id})">Editar</button><button class="small-btn" type="button" onclick="admMatFlag(${m.id},'is_published',${!m.is_published})">${m.is_published?'Despublicar':'Publicar'}</button><button class="small-btn" type="button" onclick="admMatFlag(${m.id},'is_free',${!m.is_free})">${m.is_free?'Tirar da amostra':'Amostra grátis'}</button><button class="small-btn" type="button" style="color:#b42318" onclick="admMatDelete(${m.id})">Excluir</button></div></div>`}).join('')}</div>`:`<div class="empty"><strong>${tab==='pdf'?'Nenhum PDF ainda.':'Nenhum resumo ainda.'}</strong><span>${tab==='pdf'?'Clique em "Enviar PDF" para colocar o primeiro arquivo.':'Clique em "+ Novo resumo" para escrever o primeiro.'}</span></div>`}`;
+  box.innerHTML=`<div class="dash-head"><div><h2 style="margin:0">Materiais</h2><div class="muted">${all.length} no total · ${all.filter(m=>m.is_published).length} publicados</div></div><div style="display:flex;gap:8px;flex-wrap:wrap">${window._pdfOk?`<button class="${textOn()?'small-btn':'primary'}" type="button" onclick="admPdfNew()"><span class="ic" data-i="plus"></span> Enviar PDF</button>`:''}${textOn()?'<button class="primary" type="button" onclick="admMatNew()">+ Novo resumo</button>':''}</div></div>${window._pdfOk?`<div class="mat-switch"><div><b>Resumos escritos no site</b><div class="muted" style="font-size:12.5px">${textOn()?'Ligado: os alunos veem as abas Resumos e PDFs.':'Desligado: a aba Materiais mostra só PDFs. Os resumos que você já escreveu ficam guardados.'}</div></div><button type="button" class="small-btn" onclick="admMatTextToggle(${textOn()?'false':'true'})">${textOn()?'Desligar':'Ligar'}</button></div>`:''}${(window._pdfOk&&textOn())?`<div class="seg" role="tablist" style="margin:0 0 12px"><button type="button" class="${tab==='text'?'on':''}" onclick="admMatSetTab('text')">Resumos <small>${nT}</small></button><button type="button" class="${tab==='pdf'?'on':''}" onclick="admMatSetTab('pdf')">PDFs <small>${nP}</small></button></div>`:(window._pdfOk?'':'<div class="muted" style="margin-bottom:10px">Para enviar PDFs, execute o <b>materials_pdf_migration.sql</b> no Supabase.</div>')}${list.length?`<div class="dash-wrong">${list.map(m=>{const kd=MAT_KIND[m.kind]||MAT_KIND.resumo;return `<div class="dash-wrow"><div><b>${escapeHtml(m.title)}</b><div class="muted" style="font-size:12.5px">${matTrail(m).map(escapeHtml).join(' › ')}</div><div class="mat-meta" style="margin-top:6px"><span class="badge blue">${kd[0]}</span><span class="badge ${m.is_published?'green':'amber'}">${m.is_published?'Publicado':'Rascunho'}</span><span class="badge">${m.kind==='pdf'?escapeHtml(m.file_name||'PDF')+' · '+fmtBytes(m.file_size):m.read_minutes+' min'}</span></div></div><div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end"><button class="small-btn" type="button" onclick="admMatEdit(${m.id})">Editar</button><button class="small-btn" type="button" onclick="admMatFlag(${m.id},'is_published',${!m.is_published})">${m.is_published?'Despublicar':'Publicar'}</button><button class="small-btn" type="button" style="color:#b42318" onclick="admMatDelete(${m.id})">Excluir</button></div></div>`}).join('')}</div>`:`<div class="empty"><strong>${tab==='pdf'?'Nenhum PDF ainda.':'Nenhum resumo ainda.'}</strong><span>${tab==='pdf'?'Clique em "Enviar PDF" para colocar o primeiro arquivo.':'Clique em "+ Novo resumo" para escrever o primeiro.'}</span></div>`}`;
 }
 async function admMatFlag(id,col,val){
   const r=await sb.from('materials').update({[col]:val}).eq('id',id).select('id');
@@ -4532,7 +4720,6 @@ function admMatRenderEditor(m,pre){
   <label>Fontes <small class="muted">(livros, capítulos, páginas)</small><textarea id="mSrc" rows="3" placeholder="- Guyton &amp; Hall, Tratado de Fisiologia Médica, cap. 19">${escapeHtml(v.sources||'')}</textarea></label>
   ${id?`<div class="adm-images"><label style="margin-bottom:8px">Imagens <small class="muted">(esquemas, mapas mentais, quadros em imagem)</small></label><input id="mImgFile" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden onchange="admMatPickImages(this.files);this.value=''"><div class="adm-drop" tabindex="0" role="button" onclick="document.getElementById('mImgFile').click()"><span class="ic" data-i="plus"></span> Clique para enviar imagens</div><div id="mImgList"></div></div>`:'<div class="muted" style="margin:6px 0 12px">Salve o material para poder enviar imagens.</div>'}
   <label class="check-row"><input id="mPub" type="checkbox" ${v.is_published?'checked':''}> <span>Publicar para os alunos</span></label>
-  <label class="check-row"><input id="mFree" type="checkbox" ${v.is_free?'checked':''}> <span>Amostra grátis (abre mesmo sem assinatura)</span></label>
   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><button class="primary" type="button" onclick="admMatSave()">Salvar material</button><button class="small-btn" type="button" onclick="loadAdminMaterials()">Cancelar</button></div><div id="mStatus" class="status"></div></div>`;
   clsPopulate('m',{inst:sel.inst,per:sel.per,mod:sel.mod,dis:sel.dis,sub:sel.sub});
   admMatImgList();admMatPreview();
@@ -4595,7 +4782,7 @@ async function admMatSave(){
   {const cv=clsGet('m');clsNormalize(cv,'init');const bad=clsCheck(cv,true);if(bad){status('mStatus',bad);return}}
   const body=g('mBody').value,minimum=g('mMin').value.trim()||null,sources=g('mSrc').value.trim()||null;
   const words=(body+' '+(minimum||'')).trim().split(/\s+/).filter(Boolean).length;
-  const payload={title,kind:g('mKind').value,institution_id:(window._pInst||{})[per]!=null?window._pInst[per]:(g('mInst').value?Number(g('mInst').value):null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum,body,sources,read_minutes:Math.max(1,Math.min(600,Math.ceil(words/200))),is_published:g('mPub').checked,is_free:g('mFree').checked};
+  const payload={title,kind:g('mKind').value,institution_id:(window._pInst||{})[per]!=null?window._pInst[per]:(g('mInst').value?Number(g('mInst').value):null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum,body,sources,read_minutes:Math.max(1,Math.min(600,Math.ceil(words/200))),is_published:g('mPub').checked};
   const id=window._admMat.id;let r;
   if(id)r=await sb.from('materials').update(payload).eq('id',id).select('id');
   else r=await sb.from('materials').insert({...payload,created_by:currentUser.id}).select('id');
@@ -4623,7 +4810,6 @@ function admPdfRenderEditor(m,pre){
   <div id="pdfPicked" class="pdf-picked"></div>
   <label>Fontes <small class="muted">(opcional)</small><textarea id="mSrc" rows="3">${escapeHtml(v.sources||'')}</textarea></label>
   <label class="check-row"><input id="mPub" type="checkbox" ${v.is_published?'checked':''}> <span>Publicar para os alunos</span></label>
-  <label class="check-row"><input id="mFree" type="checkbox" ${v.is_free?'checked':''}> <span>Amostra grátis (abre mesmo sem assinatura)</span></label>
   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><button class="primary" id="pdfSaveBtn" type="button" onclick="admPdfSave()">${id?'Salvar alterações':'Enviar e salvar'}</button><button class="small-btn" type="button" onclick="admMatSetTab('pdf')">Cancelar</button></div><div id="mStatus" class="status"></div></div>`;
   clsPopulate('m',{inst:sel.inst,per:sel.per,mod:sel.mod,dis:sel.dis,sub:sel.sub});
   admPdfPicked();admPdfMinHint();
@@ -4666,7 +4852,7 @@ async function admPdfSave(){
     const up=await sb.storage.from('material-files').upload(path,P.file,{contentType:'application/pdf',upsert:false});
     if(up.error){btn.disabled=false;status('mStatus','Erro no envio: '+escapeHtml(up.error.message));return}
   }
-  const payload={title,kind:'pdf',institution_id:(window._pInst||{})[per]!=null?window._pInst[per]:(g('mInst').value?Number(g('mInst').value):null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum:g('mMin').value.trim()||null,body:'',sources:g('mSrc').value.trim()||null,read_minutes:1,is_published:g('mPub').checked,is_free:g('mFree').checked};
+  const payload={title,kind:'pdf',institution_id:(window._pInst||{})[per]!=null?window._pInst[per]:(g('mInst').value?Number(g('mInst').value):null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum:g('mMin').value.trim()||null,body:'',sources:g('mSrc').value.trim()||null,read_minutes:1,is_published:g('mPub').checked};
   if(P.file){payload.file_path=path;payload.file_name=P.file.name.slice(0,255);payload.file_size=P.file.size}
   let r;
   if(P.id)r=await sb.from('materials').update(payload).eq('id',P.id).select('id');
