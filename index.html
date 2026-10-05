@@ -202,6 +202,11 @@ html:has(body.dark){background:#0f1720}
 .renew-nav{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 8px;padding:11px 12px}
 .renew-nav[hidden]{display:none}
 body.sidebar-collapsed .renew-nav{padding:11px 0}body.sidebar-collapsed .renew-nav .rn-t{display:none}
+/* criar conta */
+.su-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:480px){.su-two{grid-template-columns:1fr;gap:0}}
+.su-rules{list-style:none;margin:2px 0 12px;padding:0;display:grid;gap:3px;font-size:12.5px;color:var(--muted)}
+.su-rules li.on{color:#1a9c62;font-weight:700}
 /* alunos online agora (admin) */
 .online-wrap{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .online-btn{display:inline-flex;align-items:center;gap:6px}
@@ -1254,11 +1259,26 @@ window.MEDQUEST_CONFIG={
         <p>Acesse sua área de estudos.</p>
         <label class="field"><span><span class="ic" data-i="mail"></span></span><input id="email" type="email" placeholder="Seu e-mail" autocomplete="email"></label>
         <label class="field"><span><span class="ic" data-i="lock"></span></span><input id="password" type="password" placeholder="Sua senha" autocomplete="current-password"><button type="button" onclick="togglePassword()" aria-label="Mostrar senha"><span class="ic" data-i="eye"></span></button></label>
-        <div id="signupFields" class="hidden"><label class="field"><span>👤</span><input id="firstName" placeholder="Nome" autocomplete="given-name"></label><label class="field"><span>👤</span><input id="lastName" placeholder="Sobrenome" autocomplete="family-name"></label></div>
         <button class="primary login-btn" onclick="signIn()">Entrar →</button>
-        <button class="login-alt" onclick="signUp()">Criar conta</button>
+        <button class="login-alt" onclick="showAuth('signup')">Criar conta</button>
         <button class="login-alt" onclick="resetPassword()">Esqueci minha senha</button>
         <div id="loginStatus" class="status"></div>
+      </div>
+
+      <div class="login-card hidden" id="signupCard">
+        <h2>Criar sua conta</h2>
+        <p>Leva menos de um minuto. Depois é só confirmar pelo e-mail.</p>
+        <div id="suForm">
+          <div class="su-two"><label class="field"><span>👤</span><input id="suFirst" placeholder="Nome" autocomplete="given-name"></label><label class="field"><span>👤</span><input id="suLast" placeholder="Sobrenome" autocomplete="family-name"></label></div>
+          <label class="field"><span><span class="ic" data-i="mail"></span></span><input id="suEmail" type="email" placeholder="Seu e-mail" autocomplete="email" oninput="suCheck()"></label>
+          <label class="field"><span><span class="ic" data-i="mail"></span></span><input id="suEmail2" type="email" placeholder="Confirme o e-mail" autocomplete="off" oninput="suCheck()" onpaste="return false" ondrop="return false" title="Digite o e-mail de novo"></label>
+          <label class="field"><span><span class="ic" data-i="lock"></span></span><input id="suPass" type="password" placeholder="Crie uma senha" autocomplete="new-password" oninput="suCheck()"><button type="button" onclick="suTogglePw()" aria-label="Mostrar senha"><span class="ic" data-i="eye"></span></button></label>
+          <label class="field"><span><span class="ic" data-i="lock"></span></span><input id="suPass2" type="password" placeholder="Confirme a senha" autocomplete="new-password" oninput="suCheck()" onpaste="return false" ondrop="return false"></label>
+          <ul id="suRules" class="su-rules"></ul>
+          <button class="primary login-btn" id="suBtn" onclick="signUp()">Criar conta →</button>
+        </div>
+        <button class="login-alt" onclick="showAuth('login')">Já tenho conta · Entrar</button>
+        <div id="signupStatus" class="status"></div>
       </div>
     </section>
 
@@ -1336,7 +1356,7 @@ window.MEDQUEST_CONFIG={
     <section class="lp-cta">
       <h2>Pronto para o primeiro caso?</h2>
       <p>Crie sua conta e comece a transformar cada questão em aprendizado.</p>
-      <button onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(function(){document.getElementById('email').focus()},450)">Começar agora →</button>
+      <button onclick="showAuth('signup')">Começar agora →</button>
     </section>
     <div class="lp-foot">MedGO — estudos em Medicina</div>
   </div>
@@ -1554,22 +1574,44 @@ function toggleTheme(){
 applyTheme(localStorage.getItem('medquest_theme')||'light');
 
 async function signIn(){if(!sb){status('loginStatus',sbProblem());return}const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;if(!email||!password){status('loginStatus','Digite seu e-mail e sua senha.');return}const {error}=await sb.auth.signInWithPassword({email,password});if(error){status('loginStatus',error.message);return}await bootstrap()}
+/* ===== Entrar / Criar conta: dois cartões separados na tela de entrada ===== */
+function showAuth(mode){
+  const su=mode==='signup';
+  document.getElementById('loginCard').classList.toggle('hidden',su);
+  document.getElementById('signupCard').classList.toggle('hidden',!su);
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(su){
+    document.getElementById('suForm').classList.remove('hidden');document.getElementById('signupStatus').innerHTML='';
+    const le=document.getElementById('email').value.trim(),se=document.getElementById('suEmail');if(le&&!se.value)se.value=le;
+    suCheck();setTimeout(()=>document.getElementById('suFirst').focus(),300);
+  }else setTimeout(()=>document.getElementById('email').focus(),300);
+}
+function suTogglePw(){['suPass','suPass2'].forEach(id=>{const p=document.getElementById(id);p.type=p.type==='password'?'text':'password'})}
+const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+function suVals(){const v=id=>document.getElementById(id).value;return {first:v('suFirst').trim(),last:v('suLast').trim(),email:v('suEmail').trim(),email2:v('suEmail2').trim(),pass:v('suPass'),pass2:v('suPass2')}}
+function suRules(v){return [
+  ['E-mail válido',EMAIL_RE.test(v.email)],
+  ['Os dois e-mails são iguais',!!v.email2&&v.email.toLowerCase()===v.email2.toLowerCase()],
+  ['Senha com pelo menos 8 caracteres',v.pass.length>=8],
+  ['Senha com letras e números',/[A-Za-z]/.test(v.pass)&&/\d/.test(v.pass)],
+  ['As duas senhas são iguais',!!v.pass2&&v.pass===v.pass2]
+]}
+function suCheck(){const el=document.getElementById('suRules');if(!el)return;el.innerHTML=suRules(suVals()).map(r=>`<li class="${r[1]?'on':''}">${r[1]?'✓':'○'} ${r[0]}</li>`).join('')}
 async function signUp(){
-  if(!sb){status('loginStatus',sbProblem());return}
-  const sf=document.getElementById('signupFields');
-  if(sf.classList.contains('hidden')){
-    sf.classList.remove('hidden');document.getElementById('firstName').focus();
-    status('loginStatus','Preencha nome, sobrenome, e-mail e senha e clique em "Criar conta" de novo.','ok');return;
-  }
-  const first=document.getElementById('firstName').value.trim(),last=document.getElementById('lastName').value.trim();
-  const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;
-  if(!first||!last){status('loginStatus','Informe seu nome e sobrenome.');return}
-  if(!email||password.length<8||!/[A-Za-z]/.test(password)||!/\d/.test(password)){status('loginStatus','Informe um e-mail e uma senha com pelo menos 8 caracteres, com letras e números.');return}
-  const full=first+' '+last;
-  const {error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname,data:{full_name:full,first_name:first,last_name:last}}});
-  if(error){status('loginStatus',error.message);return}
-  window._pendingEmail=email;
-  status('loginStatus','✅ Conta criada! Enviamos um e-mail de confirmação para '+escapeHtml(email)+'. Clique no botão do e-mail para ativar sua conta. Não chegou? <button class="link-btn" type="button" onclick="resendConfirmation(window._pendingEmail)" style="padding:0">Reenviar e-mail</button>','ok');
+  if(!sb){status('signupStatus',sbProblem());return}
+  const v=suVals();
+  if(!v.first||!v.last){status('signupStatus','Informe seu nome e sobrenome.');return}
+  const bad=suRules(v).find(r=>!r[1]);if(bad){suCheck();status('signupStatus','Confira: '+bad[0].toLowerCase()+'.');return}
+  const btn=document.getElementById('suBtn');btn.disabled=true;
+  const full=v.first+' '+v.last;
+  const {error}=await sb.auth.signUp({email:v.email,password:v.pass,options:{emailRedirectTo:location.origin+location.pathname,data:{full_name:full,first_name:v.first,last_name:v.last}}});
+  btn.disabled=false;
+  if(error){status('signupStatus',escapeHtml(error.message));return}
+  window._pendingEmail=v.email;
+  document.getElementById('email').value=v.email;
+  ['suPass','suPass2'].forEach(id=>{document.getElementById(id).value=''});
+  document.getElementById('suForm').classList.add('hidden');
+  status('signupStatus','✅ <b>Conta criada!</b> Enviamos um e-mail de confirmação para <b>'+escapeHtml(v.email)+'</b>. Clique no botão do e-mail para ativar sua conta e depois entre com seu e-mail e senha.<br>Não chegou? Veja a caixa de spam ou <button class="link-btn" type="button" onclick="resendConfirmation(window._pendingEmail,\'signupStatus\')" style="padding:0">reenvie o e-mail</button>.','ok');
 }
 async function resetPassword(){if(!sb){status('loginStatus',sbProblem());return}const email=document.getElementById('email').value.trim();if(!email){status('loginStatus','Digite seu e-mail antes de recuperar a senha.');return}const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.href.split('#')[0]});if(error){status('loginStatus',error.message);return}status('loginStatus','Enviamos as instruções de recuperação para o seu e-mail.','ok')}
 function clearLocalUserData(uid){try{Object.keys(localStorage).forEach(k=>{if(k.indexOf('mq_')===0&&uid&&k.endsWith(uid))localStorage.removeItem(k)});Object.keys(sessionStorage).forEach(k=>{if(k.indexOf('mq_cat_')===0)sessionStorage.removeItem(k)})}catch(e){}}
