@@ -2877,7 +2877,7 @@ async function loadAdminFormOptions(){admShowNewBlocks();if(!isAdmin)return;clsR
 async function loadAdminSubjects(){clsRefresh('a','mod')}
 function syncDisciplineFromSubject(){clsRefresh('a','sub')}
 async function loadAdminExams(){const p=document.getElementById('aPeriod').value;let q=sb.from('exams').select('id,name').order('name');if(p)q=q.or(`period_id.eq.${Number(p)},period_id.is.null`);const {data}=await q;document.getElementById('aExam').innerHTML='<option value="">Sem prova</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('')}
-async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};{const cv=clsGet('a');clsNormalize(cv,'init');const bad=clsCheck(cv,false);if(bad){status('adminQuestionStatus',bad);return}payload.period_id=Number(cv.per);{const sd=(admFind('subject',cv.sub)||{}).discipline_id;payload.discipline_id=sd!=null?sd:(editingQuestionId&&window._aEditDis!=null?window._aEditDis:null)}payload.subject_id=cv.sub?Number(cv.sub):null;if(window._modulesOk)payload.module_id=cv.mod?Number(cv.mod):null}
+async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};{const cv=clsGet('a');clsNormalize(cv,'init');const bad=clsCheck(cv,false);if(bad){status('adminQuestionStatus',bad);return}payload.period_id=Number(cv.per);{const sd=(admFind('subject',cv.sub)||{}).discipline_id;payload.discipline_id=sd!=null?sd:(editingQuestionId&&window._aEditDis!=null?window._aEditDis:null)}payload.subject_id=cv.sub?Number(cv.sub):null;if(window._modulesOk)payload.module_id=cv.mod?Number(cv.mod):null}
   if(window._v3ok){
     {const pp=admFind('period',payload.period_id);payload.institution_id=(pp&&pp.institution_id!=null)?pp.institution_id:numOrNull('aInst')}payload.year=yearOrNull();if(!yearValid(payload.year)){status('adminQuestionStatus','Ano inválido. Use 2025 ou, com semestre, 2025/1.');return}payload.qtype=document.getElementById('aType').value;
     if(payload.qtype==='discursiva'){
@@ -4795,7 +4795,7 @@ async function admMatSave(){
   const g=id=>document.getElementById(id);
   const title=g('mTitle').value.trim(),per=g('mPeriod').value;
   if(!title){status('mStatus','Digite o título.');return}
-  {const cv=clsGet('m');clsNormalize(cv,'init');const bad=clsCheck(cv,true);if(bad){status('mStatus',bad);return}}
+  {const cv=clsGet('m');clsNormalize(cv,'init');const bad=clsCheck(cv,false);if(bad){status('mStatus',bad);return}}
   const body=g('mBody').value,minimum=g('mMin').value.trim()||null,sources=g('mSrc').value.trim()||null;
   const words=(body+' '+(minimum||'')).trim().split(/\s+/).filter(Boolean).length;
   const payload={title,kind:g('mKind').value,institution_id:(window._pInst||{})[per]!=null?window._pInst[per]:(g('mInst').value?Number(g('mInst').value):null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:(admFind('subject',g('mSubject').value)||{}).discipline_id??null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum,body,sources,read_minutes:Math.max(1,Math.min(600,Math.ceil(words/200))),is_published:g('mPub').checked};
@@ -4858,7 +4858,7 @@ async function admPdfSave(){
   const g=x=>document.getElementById(x),P=window._admPdf;
   const title=g('mTitle').value.trim(),per=g('mPeriod').value;
   if(!title){status('mStatus','Digite o título.');return}
-  {const cv=clsGet('m');clsNormalize(cv,'init');const bad=clsCheck(cv,true);if(bad){status('mStatus',bad);return}}
+  {const cv=clsGet('m');clsNormalize(cv,'init');const bad=clsCheck(cv,false);if(bad){status('mStatus',bad);return}}
   if(!P.id&&!P.file){status('mStatus','Escolha o arquivo PDF.');return}
   const btn=g('pdfSaveBtn');btn.disabled=true;
   let path=null;
