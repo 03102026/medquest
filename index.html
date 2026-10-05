@@ -2846,7 +2846,7 @@ async function loadAdminReports(){
   let q=sb.from('question_reports').select('id,question_id,user_id,reason,details,status,created_at').order('created_at',{ascending:false}).limit(200);
   if(F!=='all')q=q.eq('status',F);
   const {data,error}=await q;
-  if(error){box.innerHTML='<div class="error-box">'+((error.code==='42P01'||error.code==='PGRST205')?'Os reportes ainda não foram ativados. Execute o arquivo <b>reports_devices_migration.sql</b> no SQL Editor do Supabase.':escapeHtml(error.message))+'</div>';return}
+  if(error){box.innerHTML='<div class="error-box">'+((error.code==='42P01'||error.code==='PGRST205')?'Os reportes ainda não foram ativados. Execute o arquivo <b>medgo_setup.sql</b> no SQL Editor do Supabase.':escapeHtml(error.message))+'</div>';return}
   admReportCount();
   const ids=[...new Set((data||[]).map(x=>x.user_id))];
   const names={};
@@ -3630,7 +3630,7 @@ async function loadAccess(){
   const pg=document.getElementById('simulados');if(window._simView==='setup'&&pg&&pg.classList.contains('active'))simRenderSetup();
 }
 /* Aluno sem assinatura ativa (nunca assinou, venceu ou foi cancelada): tela cheia pedindo para assinar. Não há teste grátis.
-   Vale sempre, sem depender de chave no admin; o banco aplica a mesma regra (public.has_access, access_migration.sql).
+   Vale sempre, sem depender de chave no admin; o banco aplica a mesma regra (public.has_access, medgo_setup.sql).
    O último estado fica salvo no aparelho para a tela já abrir bloqueada, sem mostrar o conteúdo antes. */
 function subValidNow(rows){const t=new Date();t.setHours(0,0,0,0);return (rows||[]).some(s=>s.status!=='cancelled'&&(!s.starts_at||dparse(s.starts_at)<=t)&&dparse(s.expires_at)>=t)}
 function accessLocked(){
