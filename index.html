@@ -202,6 +202,13 @@ html:has(body.dark){background:#0f1720}
 .renew-nav{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 8px;padding:11px 12px}
 .renew-nav[hidden]{display:none}
 body.sidebar-collapsed .renew-nav{padding:11px 0}body.sidebar-collapsed .renew-nav .rn-t{display:none}
+/* alunos online agora (admin) */
+.online-wrap{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.online-btn{display:inline-flex;align-items:center;gap:6px}
+.online-dot{width:9px;height:9px;border-radius:50%;background:#1a9c62;box-shadow:0 0 0 3px rgba(26,156,98,.18);flex:none}
+.online-list{display:grid;gap:6px;max-height:50vh;overflow:auto}
+.online-list>div{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--border);border-radius:12px}
+.online-list .grow{flex:1;min-width:0;display:grid}.online-list small{color:var(--muted);overflow-wrap:anywhere}
 /* tela de bloqueio (aluno sem assinatura) */
 .lock-screen{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:16px;background:var(--bg);overflow:auto}
 .lock-card{width:min(440px,100%);background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:30px 24px;text-align:center;box-shadow:var(--shadow);display:grid;gap:12px}
@@ -1432,7 +1439,7 @@ window.MEDQUEST_CONFIG={
     <section id="performance" class="page"><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="stat-title">Aproveitamento</div><div id="perfRate" class="kpi">0%</div><div class="subkpi">respostas registradas</div></div><div class="card"><div class="stat-title">Acertos</div><div id="perfCorrect" class="kpi">0</div><div class="subkpi">questões</div></div><div class="card"><div class="stat-title">Respondidas</div><div id="perfTotal" class="kpi">0</div><div class="subkpi">questões</div></div></div><div class="card" style="margin-top:18px"><h2>📈 Por módulo</h2><div id="disciplinePerf" class="empty" style="margin-top:14px">Ainda não há dados suficientes.</div></div></section>
 
     <section id="admin" class="page">
-      <div class="toolbar"><div><h2 style="margin:0">⚙️ Administração</h2><p class="muted" style="margin:5px 0 0">Gerencie questões e a estrutura acadêmica do MedGO.</p></div><span class="role-pill">Administrador</span></div>
+      <div class="toolbar"><div><h2 style="margin:0">⚙️ Administração</h2><p class="muted" style="margin:5px 0 0">Gerencie questões e a estrutura acadêmica do MedGO.</p></div><div class="online-wrap"><button id="onlineBtn" class="small-btn online-btn" type="button" onclick="showOnline()" title="Alunos com o site aberto nos últimos 2 minutos"><span class="online-dot"></span><b id="onlineCount">–</b> <span>online agora</span></button><span class="role-pill">Administrador</span></div></div>
       <div class="cards stats">
         <div class="card stat-card"><div><div class="stat-title">Questões</div><div class="stat-value" id="adminQuestionCount">0</div></div><div class="stat-icon">📝</div></div>
         <div class="card stat-card"><div><div class="stat-title">Publicadas</div><div class="stat-value" id="adminPublishedCount">0</div></div><div class="stat-icon">🌐</div></div>
@@ -1567,7 +1574,7 @@ async function signUp(){
 async function resetPassword(){if(!sb){status('loginStatus',sbProblem());return}const email=document.getElementById('email').value.trim();if(!email){status('loginStatus','Digite seu e-mail antes de recuperar a senha.');return}const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.href.split('#')[0]});if(error){status('loginStatus',error.message);return}status('loginStatus','Enviamos as instruções de recuperação para o seu e-mail.','ok')}
 function clearLocalUserData(uid){try{Object.keys(localStorage).forEach(k=>{if(k.indexOf('mq_')===0&&uid&&k.endsWith(uid))localStorage.removeItem(k)});Object.keys(sessionStorage).forEach(k=>{if(k.indexOf('mq_cat_')===0)sessionStorage.removeItem(k)})}catch(e){}}
 /* opts.local: sai só deste aparelho (usado quando a conta entrou em outro dispositivo); opts.msg: aviso na tela de login */
-async function signOut(opts){opts=opts||{};stopDeviceWatch();showAccessLock(false);{const rn=document.getElementById('renewNav');if(rn)rn.hidden=true}window._subOk=undefined;window._subRows=null;window._access=null;const uid=currentUser?currentUser.id:'';if(sb){try{await sb.auth.signOut(opts.local?{scope:'local'}:undefined)}catch(e){}}clearLocalUserData(uid);if(opts.msg)status('loginStatus',opts.msg,'error');window._allQ=null;window._attRows=null;window._catAt=0;window._sim=null;window._stmt={};window._mats=[];window._matOk=null;window._matProg={};window._matBody={};currentUser=null;isAdmin=false;document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden')}
+async function signOut(opts){opts=opts||{};stopDeviceWatch();onlineWatch(false);showAccessLock(false);{const rn=document.getElementById('renewNav');if(rn)rn.hidden=true}window._subOk=undefined;window._subRows=null;window._access=null;const uid=currentUser?currentUser.id:'';if(sb){try{await sb.auth.signOut(opts.local?{scope:'local'}:undefined)}catch(e){}}clearLocalUserData(uid);if(opts.msg)status('loginStatus',opts.msg,'error');window._allQ=null;window._attRows=null;window._catAt=0;window._sim=null;window._stmt={};window._mats=[];window._matOk=null;window._matProg={};window._matBody={};currentUser=null;isAdmin=false;document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden')}
 let _bootP=null;
 function bootstrap(){if(_bootP)return _bootP;_bootP=_bootstrap().finally(()=>{_bootP=null});return _bootP}
 async function _bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(!session)return;currentUser=session.user;document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');bootFromCache();go('home');const att=fetchAttemptRows();await loadProfile();await loadAttempts(att)}
@@ -1626,8 +1633,11 @@ var _devTimer=null,_devLast=0;
 var _subTimer=null;
 function stopDeviceWatch(){if(_devTimer){clearInterval(_devTimer);_devTimer=null}if(_subTimer){clearInterval(_subTimer);_subTimer=null}}
 // também reconfere a assinatura a cada minuto: cancelar/encurtar no admin bloqueia quem já está com o site aberto
-function startDeviceWatch(){stopDeviceWatch();_devTimer=setInterval(checkDevice,15000);_subTimer=setInterval(()=>{if(currentUser&&!isAdmin)loadSubscription()},60000);checkDevice()}
-function checkDeviceSoon(){if(_devTimer&&Date.now()-_devLast>3000)checkDevice()}
+function startDeviceWatch(){stopDeviceWatch();_devTimer=setInterval(checkDevice,15000);_subTimer=setInterval(()=>{if(currentUser&&!isAdmin){loadSubscription();touchPresence()}},60000);checkDevice();_presLast=0;touchPresence()}
+function checkDeviceSoon(){if(_devTimer&&Date.now()-_devLast>3000)checkDevice();touchPresence()}
+/* "estou aqui": alimenta a contagem de alunos online no painel de administração (no máximo 1 vez a cada 45 s) */
+var _presLast=0;
+function touchPresence(){if(!sb||!currentUser||isAdmin||Date.now()-_presLast<45000)return;_presLast=Date.now();sb.rpc('touch_presence').then(()=>{},()=>{})}
 async function checkDevice(){
   if(!sb||!currentUser||isAdmin)return;
   _devLast=Date.now();
@@ -2825,12 +2835,34 @@ function renderAttempts(){
 }
 
 async function saveProfile(){if(!sb||!currentUser)return;const name=document.getElementById('profileName').value.trim()||'Aluno';const {error}=await sb.from('profiles').update({full_name:name}).eq('id',currentUser.id);if(error){status('profileStatus',error.message);return}await loadProfile();status('profileStatus','Perfil atualizado.','ok')}
-function go(id){document.body.classList.remove('mobile-sidebar-open');checkDeviceSoon();if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);if(id==='questions'&&typeof showGrade==='function')showGrade();if(typeof simPersist==='function')simPersist();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='simulados'&&typeof renderSim==='function')renderSim();if(id==='materials'&&typeof renderMaterials==='function'){if(typeof closeMatPanel==='function')closeMatPanel(true);renderMaterials()}if(id==='admin'&&isAdmin){const dp=document.getElementById('adminDashPane');if(dp&&dp.classList.contains('active'))loadAdminDash()}const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?'Olá, Doc! 👋':l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();if(id==='profile'&&typeof fillProfilePrefs==='function')fillProfilePrefs();window.scrollTo({top:0,behavior:'smooth'})}
+function go(id){document.body.classList.remove('mobile-sidebar-open');checkDeviceSoon();onlineWatch(id==='admin');if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);if(id==='questions'&&typeof showGrade==='function')showGrade();if(typeof simPersist==='function')simPersist();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='simulados'&&typeof renderSim==='function')renderSim();if(id==='materials'&&typeof renderMaterials==='function'){if(typeof closeMatPanel==='function')closeMatPanel(true);renderMaterials()}if(id==='admin'&&isAdmin){const dp=document.getElementById('adminDashPane');if(dp&&dp.classList.contains('active'))loadAdminDash()}const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?'Olá, Doc! 👋':l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();if(id==='profile'&&typeof fillProfilePrefs==='function')fillProfilePrefs();window.scrollTo({top:0,behavior:'smooth'})}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
 function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminDashPane')loadAdminDash();if(pane==='adminMatPane')loadAdminMaterials();if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane'&&!editingQuestionId)loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions();if(pane==='adminUsersPane')loadAdminUsers();if(pane==='adminReportsPane')loadAdminReports()}
 async function loadAdminAll(){if(!isAdmin)return;invalidateCatalog();admReportCount();await ensureAllQ(true);await loadAdminStats();await loadAdminCatalogOptions();await loadAdminFormOptions();await loadAdminQuestions()}
 async function loadAdminStats(){try{const [q,p,d,s]=await Promise.all([sb.from('questions').select('id,is_published',{count:'exact',head:true}),sb.from('questions').select('id',{count:'exact',head:true}).eq('is_published',true),sb.from('subjects').select('id',{count:'exact',head:true}),sb.from('profiles').select('id',{count:'exact',head:true}).eq('role','student')]);document.getElementById('adminQuestionCount').textContent=q.count||0;document.getElementById('adminPublishedCount').textContent=p.count||0;document.getElementById('adminDisciplineCount').textContent=d.count||0;document.getElementById('adminStudentCount').textContent=s.count||0}catch(e){}}
+/* ===== Alunos online agora (admin) — atualiza a cada 30 s enquanto o painel está aberto ===== */
+var _onlineTimer=null;window._online=null;
+function onlineWatch(on){if(_onlineTimer){clearInterval(_onlineTimer);_onlineTimer=null}if(on&&isAdmin){loadOnline();_onlineTimer=setInterval(()=>{const pg=document.getElementById('admin');if(!isAdmin||!pg||!pg.classList.contains('active')){onlineWatch(false);return}loadOnline()},30000)}}
+async function loadOnline(){
+  if(!isAdmin||!sb)return;
+  const r=await sb.rpc('admin_online_now',{p_minutes:2});
+  window._online=r.error?{error:r.error}:(r.data||{count:0,users:[]});
+  const c=document.getElementById('onlineCount');if(c)c.textContent=r.error?'?':String(window._online.count||0);
+  if(document.getElementById('onlineModal'))showOnline(true);
+}
+function agoTxt(iso){const s=Math.max(0,Math.round((Date.now()-new Date(iso))/1000));return s<60?'agora há pouco':'há '+Math.round(s/60)+' min'}
+function showOnline(keep){
+  const O=window._online;
+  let o=document.getElementById('onlineModal');
+  if(!o){if(keep)return;o=document.createElement('div');o.id='onlineModal';o.className='onb';o.onclick=e=>{if(e.target===o)o.remove()};document.body.appendChild(o)}
+  const body=!O?'<div class="muted">Carregando...</div>'
+    :O.error?'<div class="error-box">Para ativar a contagem, execute o arquivo <b>medgo_security.sql</b> no SQL Editor do Supabase.</div>'
+    :(O.users||[]).length?`<div class="online-list">${O.users.map(u=>`<div><span class="online-dot"></span><span class="grow"><b>${escapeHtml(u.name||'Aluno')}</b><small>${escapeHtml(u.email||'')}</small></span><span class="muted">${agoTxt(u.last_seen)}</span></div>`).join('')}</div>`
+    :'<div class="empty">Nenhum aluno com o site aberto agora.</div>';
+  o.innerHTML=`<div class="onb-card" style="max-width:460px"><h3 style="margin-top:0">🟢 ${O&&!O.error?(O.count||0):'–'} aluno(s) online agora</h3><p class="muted" style="margin:0 0 12px">Alunos com o site aberto nos últimos 2 minutos. Atualiza sozinho a cada 30 segundos.</p>${body}<div class="rep-btns"><button class="small-btn" type="button" onclick="loadOnline()">↻ Atualizar</button><button class="primary" type="button" onclick="document.getElementById('onlineModal').remove()">Fechar</button></div></div>`;
+  if(!keep&&!O)loadOnline();
+}
 /* ===== Reportes de erro (aba admin) ===== */
 window._repFilter='aberto';
 async function admReportCount(){
