@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.supabase.co; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.supabase.co; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; object-src blob:; frame-src blob:; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>MedQuest — Banco de Questões</title>
 <style>
@@ -1121,6 +1121,20 @@ body.mat-panel-open{overflow:hidden}
 .mat-sheet-t .mg-kicker{width:fit-content}
 .mat-min>*:last-child{margin-bottom:0!important}
 @media(max-width:700px){.mat-sheet-f{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px 14px}.mat-sheet-f .grow{display:none}.mat-sheet-f .primary{grid-column:1/-1;padding:13px}.mat-sheet-f .small-btn{padding:9px 6px;font-size:12.5px;line-height:1.2}.mat-pbody{padding:10px 16px 18px}}
+
+/* v44 — PDFs nos materiais */
+.mat-tabs-seg{display:flex!important;width:fit-content;margin:16px auto 0!important}
+.mat-tabs-seg small{opacity:.8;font-weight:700}
+.pdf-card{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:16px 18px;border:1px solid var(--border);border-radius:16px;background:var(--surface);margin:14px 0}
+.pdf-ico{width:48px;height:56px;border-radius:10px;background:linear-gradient(135deg,#fde8e6,#fbd0cc);color:#b3261e;display:grid;place-items:center}
+body.dark .pdf-ico{background:#3a1c20;color:#ff9b96}
+.pdf-info{display:grid;gap:2px;min-width:0}.pdf-info b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pdf-actions{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
+.pdf-actions a{text-decoration:none;display:inline-flex;align-items:center}
+.pdf-frame{width:100%;height:78vh;min-height:420px;border:1px solid var(--border);border-radius:12px;background:#fff}
+.pdf-picked:empty{display:none}
+.mat-desc{margin-bottom:6px}
+@media(min-width:700px){.pdf-card{grid-template-columns:auto 1fr auto}.pdf-actions{grid-column:auto;justify-content:flex-end}}
 </style>
 <script src="supabase.js"></script>
 <script>window.supabase||document.write('<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"><\/script>')</script>
@@ -3237,6 +3251,7 @@ async function loadAdminDash(days){
   const msP=sb.rpc('admin_material_stats',{p_days:days});
   const [ov,tw,bd]=await Promise.all([sb.rpc('admin_overview',{p_days:days}),sb.rpc('admin_top_wrong',{p_limit:12,p_min_attempts:5}),sb.rpc('admin_breakdown')]);
   if(ov.error){box.innerHTML=srvMissing(ov.error)?'<div class="card"><b>Painel indisponível por enquanto.</b><div class="muted" style="margin-top:6px">Execute o <b>server_migration.sql</b> no Supabase para ativar a visão geral.</div></div>':'<div class="error-box">'+escapeHtml(ov.error.message)+'</div>';return}
+  if(!ov.data||!ov.data.users||!ov.data.attempts||!ov.data.subs||!ov.data.series){box.innerHTML='<div class="error-box">O servidor respondeu em um formato inesperado. Execute o server_migration.sql no Supabase e recarregue.</div>';return}
   const o=ov.data,u=o.users,a=o.attempts,sb2=o.subs,q=o.questions,ser=o.series;
   const acc=a.answers_period?Math.round(a.correct_period/a.answers_period*100):0;
   const wrong=(!tw.error&&tw.data)?tw.data:[],bk=(!bd.error&&bd.data)?bd.data:{disciplines:[],institutions:[]};
@@ -3969,10 +3984,14 @@ async function resendConfirmation(email,statusId){
 
 /* ===== Materiais (resumos, mapas e quadros) ===== */
 window._mats=[];window._matOk=null;window._matAt=0;window._matProg={};window._matBody={};
-window._mf={insts:[],periods:[],modules:[],disciplines:[],q:'',kind:'',fav:false,unread:false};
+window._mf={insts:[],periods:[],modules:[],disciplines:[],q:'',kind:'',fav:false,unread:false,tab:'all'};
 window._matView='list';window._matCur=null;window._matPanel=null;
 const MAT_COLS='id,title,kind,institution_id,period_id,module_id,discipline_id,subject_id,read_minutes,sort_order,is_published,is_free,updated_at';
-const MAT_KIND={resumo:['Resumo','note'],mapa:['Mapa mental','box'],quadro:['Quadro comparativo','chart']};
+const MAT_KIND={resumo:['Resumo','note'],mapa:['Mapa mental','box'],quadro:['Quadro comparativo','chart'],pdf:['PDF','doc']};
+const MAT_TEXT_KINDS=['resumo','mapa','quadro'];
+window._pdfOk=false;
+function fmtBytes(n){n=Number(n)||0;if(n<1024)return n+' B';if(n<1048576)return Math.round(n/1024)+' KB';return (n/1048576).toFixed(1).replace('.',',')+' MB'}
+function canEmbed(){return typeof navigator!=='undefined'&&navigator.pdfViewerEnabled===true}
 /* --- texto formatado (seguro): títulos, listas, tabelas, destaques e imagens --- */
 function mdEsc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function mdInline(raw){
@@ -4030,7 +4049,9 @@ async function loadMaterialsCatalog(force){
   if(!sb||!currentUser)return;
   if(!force&&window._matOk!==null&&Date.now()-window._matAt<600000)return;
   await ensureAllQ();
-  const r=await sb.from('materials').select(MAT_COLS).order('sort_order',{ascending:true}).order('id',{ascending:true});
+  let r=await sb.from('materials').select(MAT_COLS+',file_name,file_size').order('sort_order',{ascending:true}).order('id',{ascending:true});
+  window._pdfOk=!r.error;
+  if(r.error)r=await sb.from('materials').select(MAT_COLS).order('sort_order',{ascending:true}).order('id',{ascending:true});
   if(r.error){window._matOk=false;window._mats=[];return}
   window._matOk=true;window._matAt=Date.now();window._mats=r.data||[];
   const p=await sb.from('material_progress').select('material_id,read_at,favorite');
@@ -4067,6 +4088,8 @@ function matFiltered(){
     if(F.periods.length&&!qfHas(F.periods,m.period_id))return false;
     if(F.modules.length&&!F.modules.some(x=>x==='none'?m.module_id==null:String(m.module_id)===String(x)))return false;
     if(F.disciplines.length&&!qfHas(F.disciplines,m.discipline_id))return false;
+    if(F.tab==='text'&&m.kind==='pdf')return false;
+    if(F.tab==='pdf'&&m.kind!=='pdf')return false;
     if(F.kind&&m.kind!==F.kind)return false;
     const pr=window._matProg[m.id]||{};
     if(F.fav&&!pr.fav)return false;
@@ -4089,12 +4112,18 @@ function matPick(k,v){
   matPrune();renderMaterials();
 }
 function matToggleFilter(k){window._mf[k]=!window._mf[k];renderMaterials()}
+function matSetTab(t){window._mf.tab=t;if(t==='pdf')window._mf.kind='';renderMaterials()}
+function matTabsHtml(){
+  if(!window._pdfOk)return '';
+  const F=window._mf,all=matVisible(),n={all:all.length,text:all.filter(m=>m.kind!=='pdf').length,pdf:all.filter(m=>m.kind==='pdf').length};
+  return `<div class="seg mat-tabs-seg" role="tablist">${[['all','Todos'],['text','Resumos'],['pdf','PDFs']].map(t=>`<button type="button" role="tab" aria-selected="${F.tab===t[0]?'true':'false'}" class="${F.tab===t[0]?'on':''}" onclick="matSetTab('${t[0]}')">${t[1]} <small>${n[t[0]]}</small></button>`).join('')}</div>`;
+}
 function matSetKind(v){window._mf.kind=window._mf.kind===v?'':v;renderMaterials()}
 function matSetQ(v){window._mf.q=v||'';matRefreshList()}
 function matChips(kind,items,sel){return `<div class="qf-chips" style="justify-content:flex-start">${items.map(it=>`<button type="button" class="qf-chip${qfHas(sel,it.id)?' on':''}" aria-pressed="${qfHas(sel,it.id)?'true':'false'}" onclick="matPick('${kind}','${it.id}')">${escapeHtml(it.name)}</button>`).join('')}</div>`}
 function matCardHtml(m){
   const pr=window._matProg[m.id]||{},kd=MAT_KIND[m.kind]||MAT_KIND.resumo;
-  return `<div class="mat-card" role="button" tabindex="0" onclick="openMaterial(${m.id},'list')" onkeydown="if(event.key==='Enter')openMaterial(${m.id},'list')"><div class="mat-ico"><span class="ic" data-i="${kd[1]}"></span></div><div class="mat-info">${matTrail(m).slice(3).length?`<div class="mat-trail">${matTrail(m).slice(3).map(escapeHtml).join(' › ')}</div>`:''}<h3>${escapeHtml(m.title)}</h3><div class="mat-meta"><span class="badge blue">${kd[0]}</span><span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min</span>${pr.read?'<span class="badge green">✓ Lido</span>':''}${pr.fav?'<span class="badge amber">★ Favorito</span>':''}${m.is_free?'<span class="badge green">Amostra grátis</span>':''}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div></div><span class="primary mat-go">Ler →</span></div>`;
+  return `<div class="mat-card" role="button" tabindex="0" onclick="openMaterial(${m.id},'list')" onkeydown="if(event.key==='Enter')openMaterial(${m.id},'list')"><div class="mat-ico"><span class="ic" data-i="${kd[1]}"></span></div><div class="mat-info">${matTrail(m).slice(3).length?`<div class="mat-trail">${matTrail(m).slice(3).map(escapeHtml).join(' › ')}</div>`:''}<h3>${escapeHtml(m.title)}</h3><div class="mat-meta"><span class="badge blue">${kd[0]}</span>${m.kind==='pdf'?`<span class="badge">${m.file_size?fmtBytes(m.file_size):'PDF'}</span>`:`<span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min</span>`}${pr.read?'<span class="badge green">✓ Lido</span>':''}${pr.fav?'<span class="badge amber">★ Favorito</span>':''}${m.is_free?'<span class="badge green">Amostra grátis</span>':''}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div></div><span class="primary mat-go">${m.kind==='pdf'?'Abrir →':'Ler →'}</span></div>`;
 }
 function matListHtml(){
   const list=matFiltered();
@@ -4118,7 +4147,7 @@ function matFilterHtml(){
   const mods=F.periods.length?(window._modules||[]).filter(m=>qfHas(F.periods,m.period_id)&&modIds.has(String(m.id))).map(m=>({id:String(m.id),name:m.name})):[];
   const dis=[...new Set(all.map(m=>m.discipline_id).filter(x=>x!=null))].map(id=>({id:String(id),name:matName(window._disciplines,id)})).filter(x=>x.name).sort((a,b)=>a.name.localeCompare(b.name));
   const blk=(label,inner)=>inner?`<div class="sim-field" style="gap:8px"><span>${label}</span>${inner}</div>`:'';
-  return `<div class="mat-filters"><div class="mat-search"><span class="ic" data-i="search"></span><input id="matQ" type="search" placeholder="Buscar por título ou assunto..." value="${escapeHtml(F.q)}" oninput="matSetQ(this.value)"></div><div class="qf-chips" style="justify-content:flex-start">${Object.keys(MAT_KIND).map(k=>`<button type="button" class="qf-chip${F.kind===k?' on':''}" onclick="matSetKind('${k}')">${MAT_KIND[k][0]}</button>`).join('')}<button type="button" class="qf-chip${F.fav?' on':''}" onclick="matToggleFilter('fav')">★ Favoritos</button><button type="button" class="qf-chip${F.unread?' on':''}" onclick="matToggleFilter('unread')">Não lidos</button></div>${blk('Instituição',insts.length>1?matChips('inst',insts,F.insts):'')}${blk('Período',pers.length>1?matChips('period',pers,F.periods):'')}${blk('Módulo',mods.length?matChips('module',mods,F.modules):'')}${blk('Matéria',dis.length>1?matChips('discipline',dis,F.disciplines):'')}</div>`;
+  return `<div class="mat-filters"><div class="mat-search"><span class="ic" data-i="search"></span><input id="matQ" type="search" placeholder="Buscar por título ou assunto..." value="${escapeHtml(F.q)}" oninput="matSetQ(this.value)"></div><div class="qf-chips" style="justify-content:flex-start">${F.tab==='pdf'?'':MAT_TEXT_KINDS.map(k=>`<button type="button" class="qf-chip${F.kind===k?' on':''}" onclick="matSetKind('${k}')">${MAT_KIND[k][0]}</button>`).join('')}<button type="button" class="qf-chip${F.fav?' on':''}" onclick="matToggleFilter('fav')">★ Favoritos</button><button type="button" class="qf-chip${F.unread?' on':''}" onclick="matToggleFilter('unread')">Não lidos</button></div>${blk('Instituição',insts.length>1?matChips('inst',insts,F.insts):'')}${blk('Período',pers.length>1?matChips('period',pers,F.periods):'')}${blk('Módulo',mods.length?matChips('module',mods,F.modules):'')}${blk('Matéria',dis.length>1?matChips('discipline',dis,F.disciplines):'')}</div>`;
 }
 function renderMaterials(){
   const v=document.getElementById('matView');if(!v)return;
@@ -4128,7 +4157,7 @@ function renderMaterials(){
   if(window._matOk===null){v.innerHTML='<div class="empty"><strong>Carregando materiais...</strong></div>';loadMaterialsCatalog().then(()=>{if(window._matView==='list')renderMaterials()});return}
   if(window._matOk===false){v.innerHTML=hero+'<div class="card" style="margin-top:14px"><b>Os materiais ainda não estão disponíveis.</b><div class="muted" style="margin-top:6px">Peça à administração para executar o materials_migration.sql no Supabase.</div></div>';return}
   const note=(window._access&&window._access.allowed===false)?paywallNote():'';
-  v.innerHTML=hero+note+matFilterHtml()+`<div class="muted" id="matCount" style="margin:6px 4px 10px;font-weight:700">${matFiltered().length} material(is)</div><div id="matList">${matListHtml()}</div>`;
+  v.innerHTML=hero+note+matTabsHtml()+matFilterHtml()+`<div class="muted" id="matCount" style="margin:6px 4px 10px;font-weight:700">${matFiltered().length} material(is)</div><div id="matList">${matListHtml()}</div>`;
 }
 /* --- progresso, leitura e registro --- */
 async function matSetProgress(id,patch){
@@ -4153,9 +4182,12 @@ function matPaintActions(id){
 function matRecord(id,src,qid){if(!sb||!currentUser)return;try{sb.from('material_views').insert({material_id:id,source:src||'list',question_id:qid||null}).then(()=>{},()=>{})}catch(e){}}
 async function getMaterial(id){
   const c=window._matBody[id];if(c&&Date.now()-c.t<600000)return c.m;
-  const r=await sb.from('materials').select('id,title,kind,institution_id,period_id,module_id,discipline_id,subject_id,minimum,body,sources,read_minutes,is_published,is_free,updated_at').eq('id',id).maybeSingle();
+  const cols='id,title,kind,institution_id,period_id,module_id,discipline_id,subject_id,minimum,body,sources,read_minutes,is_published,is_free,updated_at';
+  let r=await sb.from('materials').select(cols+',file_path,file_name,file_size').eq('id',id).maybeSingle();
+  if(r.error)r=await sb.from('materials').select(cols).eq('id',id).maybeSingle();
   if(r.error||!r.data)return null;
   const m=r.data;m.imgMap={};
+  if(m.kind==='pdf'&&m.file_path)await matPdfSign(m);
   const im=await sb.from('material_images').select('id,path,alt,caption,position').eq('material_id',id).order('position',{ascending:true});
   if(!im.error&&(im.data||[]).length){
     const su=await sb.storage.from('material-images').createSignedUrls(im.data.map(x=>x.path),3600),urls={};
@@ -4166,6 +4198,45 @@ async function getMaterial(id){
   m.note=(!pr.error&&pr.data&&pr.data.note)||'';
   window._matBody[id]={t:Date.now(),m};
   return m;
+}
+/* --- PDFs: links assinados (valem 1 hora), abrir, baixar e visualizar aqui --- */
+async function matPdfSign(m){
+  const bk=sb.storage.from('material-files');
+  const a=await bk.createSignedUrl(m.file_path,3600);
+  const b=await bk.createSignedUrl(m.file_path,3600,{download:m.file_name||true});
+  m.pdf={view:(!a.error&&a.data)?a.data.signedUrl:'',dl:(!b.error&&b.data)?b.data.signedUrl:'',t:Date.now()};
+}
+function matPdfOpen(ev,id,which){
+  const c=window._matBody[id];if(!c)return true;
+  const m=c.m,p=m.pdf||{};
+  if(Date.now()-(p.t||0)<50*60*1000)return true;
+  ev.preventDefault();
+  matPdfSign(m).then(()=>{
+    const u=which==='dl'?m.pdf.dl:m.pdf.view;if(!u)return;
+    if(which==='dl'){const a=document.createElement('a');a.href=u;a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}
+    else window.open(u,'_blank','noopener');
+  });
+  return false;
+}
+async function matPdfEmbed(id){
+  const c=window._matBody[id],box=document.getElementById('pdfEmbed');if(!c||!box)return;
+  const m=c.m;
+  box.innerHTML='<div class="muted" style="padding:14px">Carregando o PDF...</div>';
+  try{
+    if(Date.now()-((m.pdf||{}).t||0)>50*60*1000)await matPdfSign(m);
+    const r=await fetch(m.pdf.view);if(!r.ok)throw new Error('erro '+r.status);
+    const buf=await r.arrayBuffer();
+    if(String.fromCharCode(...new Uint8Array(buf.slice(0,5)))!=='%PDF-')throw new Error('arquivo inválido');
+    matPdfCleanup();
+    window._pdfBlobUrl=URL.createObjectURL(new Blob([buf],{type:'application/pdf'}));
+    box.innerHTML=`<iframe class="pdf-frame" src="${escapeHtml(window._pdfBlobUrl)}" title="${escapeHtml(m.title)}"></iframe><div class="muted" style="font-size:12.5px;margin-top:6px">Se o arquivo não aparecer aqui, use "Abrir em nova aba".</div>`;
+  }catch(e){box.innerHTML='<div class="save-warn">Não foi possível exibir aqui ('+escapeHtml(e.message)+'). Use "Abrir em nova aba".</div>'}
+}
+function matPdfHtml(m,ctx,compact){
+  const p=m.pdf||{};
+  const desc=m.minimum?`<div class="mat-body mat-desc">${mdRender(m.minimum,{},ctx+'d').html}</div>`:'';
+  const acts=(p.view||p.dl)?`${p.view?`<a class="primary" href="${escapeHtml(p.view)}" target="_blank" rel="noopener noreferrer" onclick="return matPdfOpen(event,${m.id},'view')">Abrir em nova aba</a>`:''}${p.dl?`<a class="small-btn" href="${escapeHtml(p.dl)}" rel="noopener noreferrer" onclick="return matPdfOpen(event,${m.id},'dl')">Baixar PDF</a>`:''}${(!compact&&canEmbed()&&p.view)?`<button type="button" class="small-btn" onclick="matPdfEmbed(${m.id})">Visualizar aqui</button>`:''}`:'<span class="muted">Não foi possível gerar o link deste arquivo agora. Tente novamente em instantes.</span>';
+  return `${desc}<div class="pdf-card"><div class="pdf-ico"><span class="ic" data-i="doc"></span></div><div class="pdf-info"><b>${escapeHtml(m.file_name||'material.pdf')}</b><span class="muted">PDF · ${fmtBytes(m.file_size)}</span></div><div class="pdf-actions">${acts}</div></div><div id="pdfEmbed"></div>${m.sources?`<section class="mat-src"><b>Fontes</b>${mdRender(m.sources,{},ctx+'s').html}</section>`:''}`;
 }
 function matGoto(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
 function matArticleHtml(m,ctx){
@@ -4185,7 +4256,8 @@ async function openMaterial(id,src,qid){
   window.scrollTo({top:0});
   matRecord(id,src,qid);
 }
-function matBack(){window._matView='list';window._matCur=null;renderMaterials();window.scrollTo({top:0,behavior:'smooth'})}
+function matPdfCleanup(){if(window._pdfBlobUrl){try{URL.revokeObjectURL(window._pdfBlobUrl)}catch(e){}window._pdfBlobUrl=null}}
+function matBack(){matPdfCleanup();window._matView='list';window._matCur=null;renderMaterials();window.scrollTo({top:0,behavior:'smooth'})}
 function matRenderReader(m){
   const v=document.getElementById('matView');if(!v)return;
   const pr=window._matProg[m.id]||{},kd=MAT_KIND[m.kind]||MAT_KIND.resumo;
@@ -4194,8 +4266,8 @@ function matRenderReader(m){
   const qs=m.subject_id!=null?(window._allQ||[]).filter(q=>String(q.subject_id)===String(m.subject_id)):[];
   const lat=window._latest||{},done=qs.filter(q=>lat[q.id]!==undefined),okc=done.filter(q=>lat[q.id]===true).length;
   const study=qs.length?`<section class="mat-study"><div><b>Fixe com questões</b><div class="muted">${plQ(qs.length)} deste assunto${done.length?' · você acertou '+Math.round(okc/done.length*100)+'% de '+done.length+' respondida(s)':''}</div></div><button class="primary" type="button" onclick="matStudy(${m.subject_id})">Fazer questões deste assunto →</button></section>`:'';
-  v.innerHTML=`<div class="mat-reader"><div class="mat-bar"><button class="small-btn" type="button" onclick="matBack()">← Voltar aos materiais</button><div class="mat-actions"><button type="button" class="small-btn mat-tg${pr.fav?' on':''}" data-mat-fav="${m.id}" onclick="matToggleFav(${m.id})">${pr.fav?'★ Favorito':'☆ Favoritar'}</button><button type="button" class="small-btn mat-tg${pr.read?' on':''}" data-mat-read="${m.id}" onclick="matToggleRead(${m.id})"><span class="ic" data-i="check-circle"></span> ${pr.read?'Lido':'Marcar como lido'}</button><button type="button" class="small-btn" onclick="window.print()">Imprimir</button></div></div>
-  <article class="mat-article"><div class="mat-trail">${matTrail(m).map(escapeHtml).join(' › ')}</div><h1>${escapeHtml(m.title)}</h1><div class="mat-meta"><span class="badge blue">${kd[0]}</span><span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min de leitura</span>${m.is_free?'<span class="badge green">Amostra grátis</span>':''}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div>${matArticleHtml(m,'r')}${study}<section class="mat-note"><label for="matNote"><b>Minhas anotações</b> <span class="muted">(só você vê)</span></label><textarea id="matNote" rows="4" placeholder="Escreva aqui o que quiser lembrar..." onblur="matSaveNote(${m.id})">${escapeHtml(m.note||'')}</textarea></section><div class="mat-nav">${prev?`<button class="small-btn" type="button" onclick="openMaterial(${prev.id},'list')">← ${escapeHtml(prev.title.slice(0,40))}</button>`:'<span></span>'}${next?`<button class="primary" type="button" onclick="openMaterial(${next.id},'list')">${escapeHtml(next.title.slice(0,40))} →</button>`:'<span></span>'}</div></article></div>`;
+  v.innerHTML=`<div class="mat-reader"><div class="mat-bar"><button class="small-btn" type="button" onclick="matBack()">← Voltar aos materiais</button><div class="mat-actions"><button type="button" class="small-btn mat-tg${pr.fav?' on':''}" data-mat-fav="${m.id}" onclick="matToggleFav(${m.id})">${pr.fav?'★ Favorito':'☆ Favoritar'}</button><button type="button" class="small-btn mat-tg${pr.read?' on':''}" data-mat-read="${m.id}" onclick="matToggleRead(${m.id})"><span class="ic" data-i="check-circle"></span> ${pr.read?'Lido':'Marcar como lido'}</button>${m.kind==='pdf'?'':'<button type="button" class="small-btn" onclick="window.print()">Imprimir</button>'}</div></div>
+  <article class="mat-article"><div class="mat-trail">${matTrail(m).map(escapeHtml).join(' › ')}</div><h1>${escapeHtml(m.title)}</h1><div class="mat-meta"><span class="badge blue">${kd[0]}</span>${m.kind==='pdf'?`<span class="badge">${fmtBytes(m.file_size)}</span>`:`<span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min de leitura</span>`}${m.is_free?'<span class="badge green">Amostra grátis</span>':''}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div>${m.kind==='pdf'?matPdfHtml(m,'r',false):matArticleHtml(m,'r')}${study}<section class="mat-note"><label for="matNote"><b>Minhas anotações</b> <span class="muted">(só você vê)</span></label><textarea id="matNote" rows="4" placeholder="Escreva aqui o que quiser lembrar..." onblur="matSaveNote(${m.id})">${escapeHtml(m.note||'')}</textarea></section><div class="mat-nav">${prev?`<button class="small-btn" type="button" onclick="openMaterial(${prev.id},'list')">← ${escapeHtml(prev.title.slice(0,40))}</button>`:'<span></span>'}${next?`<button class="primary" type="button" onclick="openMaterial(${next.id},'list')">${escapeHtml(next.title.slice(0,40))} →</button>`:'<span></span>'}</div></article></div>`;
 }
 function matStudy(sid){
   const ids=(window._allQ||[]).filter(q=>String(q.subject_id)===String(sid)).map(q=>q.id);
@@ -4208,13 +4280,13 @@ function paintMatCta(){
   const el=document.getElementById('matCta');if(!el)return;
   const q=solverQ;if(!q){el.innerHTML='';return}
   const ms=matsForSubject(q.subject_id);
-  if(ms.length)el.innerHTML=`<button type="button" class="mat-cta-btn" onclick="openMatPanel(${Number(q.subject_id)},'question')"><span class="ic" data-i="books"></span> Ler o resumo deste assunto${ms.length>1?' ('+ms.length+')':''}</button>`;
+  if(ms.length)el.innerHTML=`<button type="button" class="mat-cta-btn" onclick="openMatPanel(${Number(q.subject_id)},'question')"><span class="ic" data-i="books"></span> ${ms.some(x=>x.kind!=='pdf')?'Ler o resumo deste assunto':'Abrir o PDF deste assunto'}${ms.length>1?' ('+ms.length+')':''}</button>`;
   else if(isAdmin&&q.subject_id!=null)el.innerHTML=`<button type="button" class="small-btn" onclick="admMatFromQuestion()">+ Criar resumo deste assunto</button>`;
   else el.innerHTML='';
 }
 function matBtnSmall(sid,src){
   if(sid==null||!window._matOk)return '';
-  return matsForSubject(sid).length?`<button class="small-btn" type="button" onclick="openMatPanel(${Number(sid)},'${src||'review'}')"><span class="ic" data-i="books"></span> Resumo</button>`:'';
+  {const ms=matsForSubject(sid);return ms.length?`<button class="small-btn" type="button" onclick="openMatPanel(${Number(sid)},'${src||'review'}')"><span class="ic" data-i="books"></span> ${ms.some(x=>x.kind!=='pdf')?'Resumo':'PDF'}</button>`:''}
 }
 async function openMatPanel(sid,src,startId){
   const ms=matsForSubject(sid);
@@ -4222,7 +4294,7 @@ async function openMatPanel(sid,src,startId){
   closeMatPanel(true);
   const opener=document.activeElement;
   const o=document.createElement('div');o.id='matPanel';o.className='mat-panel';
-  o.innerHTML=`<div class="mat-scrim" onclick="closeMatPanel()"></div><aside class="mat-sheet" role="dialog" aria-modal="true" aria-label="Resumo do assunto"><header class="mat-sheet-h"><div class="mat-sheet-t"><span class="mg-kicker">Resumo do assunto</span><b id="matPTitle">Carregando...</b></div><button type="button" class="mat-x" id="matPClose" onclick="closeMatPanel()" aria-label="Fechar"><span class="ic" data-i="x"></span></button></header><div class="mat-tabs" id="matPTabs"></div><div class="mat-pbody" id="matPBody"><div class="muted" style="padding:20px">Carregando...</div></div><footer class="mat-sheet-f" id="matPFoot"></footer></aside>`;
+  o.innerHTML=`<div class="mat-scrim" onclick="closeMatPanel()"></div><aside class="mat-sheet" role="dialog" aria-modal="true" aria-label="Resumo do assunto"><header class="mat-sheet-h"><div class="mat-sheet-t"><span class="mg-kicker">Material do assunto</span><b id="matPTitle">Carregando...</b></div><button type="button" class="mat-x" id="matPClose" onclick="closeMatPanel()" aria-label="Fechar"><span class="ic" data-i="x"></span></button></header><div class="mat-tabs" id="matPTabs"></div><div class="mat-pbody" id="matPBody"><div class="muted" style="padding:20px">Carregando...</div></div><footer class="mat-sheet-f" id="matPFoot"></footer></aside>`;
   document.body.appendChild(o);document.body.classList.add('mat-panel-open');
   try{history.pushState({mqPanel:1},'')}catch(e){}
   window._matPanel={sid,src:src||'review',ids:ms.map(m=>m.id),cur:startId||ms[0].id,opener,qid:solverQ?solverQ.id:null};
@@ -4238,7 +4310,7 @@ async function matPanelShow(id){
   const pr=window._matProg[id]||{};
   document.getElementById('matPTitle').textContent=m.title;
   document.getElementById('matPTabs').innerHTML=P.ids.length>1?P.ids.map(i=>{const x=(window._mats||[]).find(y=>y.id===i);return `<button type="button" class="${i===id?'on':''}" onclick="matPanelShow(${i})">${escapeHtml(x?x.title:'Material')}</button>`}).join(''):'';
-  body.innerHTML=`<article class="mat-article mat-compact"><div class="mat-meta"><span class="badge blue">${(MAT_KIND[m.kind]||MAT_KIND.resumo)[0]}</span><span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min</span></div>${matArticleHtml(m,'p')}</article>`;
+  body.innerHTML=`<article class="mat-article mat-compact"><div class="mat-meta"><span class="badge blue">${(MAT_KIND[m.kind]||MAT_KIND.resumo)[0]}</span>${m.kind==='pdf'?`<span class="badge">${fmtBytes(m.file_size)}</span>`:`<span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min</span>`}</div>${m.kind==='pdf'?matPdfHtml(m,'p',true):matArticleHtml(m,'p')}</article>`;
   body.scrollTop=0;
   const canRedo=P.src==='question'&&solverQ&&solverQ.id===P.qid;
   document.getElementById('matPFoot').innerHTML=`<button type="button" class="small-btn mat-tg${pr.read?' on':''}" data-mat-read="${id}" onclick="matToggleRead(${id})"><span class="ic" data-i="check-circle"></span> ${pr.read?'Lido':'Marcar como lido'}</button><span class="grow"></span><button type="button" class="small-btn" onclick="matPanelFull(${id})">Abrir em tela cheia</button>${canRedo?'<button type="button" class="small-btn" onclick="matPanelRedo()">Refazer esta questão</button>':''}<button type="button" class="primary" onclick="closeMatPanel()">${P.src==='question'?'Voltar à questão':'Fechar'}</button>`;
@@ -4257,14 +4329,17 @@ function matPanelRedo(){const P=window._matPanel,q=solverQ;closeMatPanel();if(q)
 window.addEventListener('popstate',()=>{if(window._matPanel)closeMatPanel(true)});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&window._matPanel&&!document.getElementById('lightbox'))closeMatPanel()});
 /* ===== administração dos materiais ===== */
-window._admMat={id:null,imgs:[]};
+window._admMat={id:null,imgs:[]};window._admMatTab='text';window._admPdf={id:null,file:null,existing:null};
+function admMatSetTab(t){window._admMatTab=t;loadAdminMaterials()}
 async function loadAdminMaterials(){
   if(!isAdmin)return;
   const box=document.getElementById('adminMat');if(!box)return;
   await loadMaterialsCatalog(true);
   if(window._matOk===false){box.innerHTML='<div class="card"><b>Materiais indisponíveis por enquanto.</b><div class="muted" style="margin-top:6px">Execute o <b>materials_migration.sql</b> no Supabase (depois do server_migration.sql).</div></div>';return}
-  const list=window._mats||[];
-  box.innerHTML=`<div class="dash-head"><div><h2 style="margin:0">Materiais</h2><div class="muted">${list.length} no total · ${list.filter(m=>m.is_published).length} publicados</div></div><button class="primary" type="button" onclick="admMatNew()">+ Novo material</button></div>${list.length?`<div class="dash-wrong">${list.map(m=>{const kd=MAT_KIND[m.kind]||MAT_KIND.resumo;return `<div class="dash-wrow"><div><b>${escapeHtml(m.title)}</b><div class="muted" style="font-size:12.5px">${matTrail(m).map(escapeHtml).join(' › ')}</div><div class="mat-meta" style="margin-top:6px"><span class="badge blue">${kd[0]}</span><span class="badge ${m.is_published?'green':'amber'}">${m.is_published?'Publicado':'Rascunho'}</span>${m.is_free?'<span class="badge green">Amostra grátis</span>':''}<span class="badge">${m.read_minutes} min</span></div></div><div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end"><button class="small-btn" type="button" onclick="admMatEdit(${m.id})">Editar</button><button class="small-btn" type="button" onclick="admMatFlag(${m.id},'is_published',${!m.is_published})">${m.is_published?'Despublicar':'Publicar'}</button><button class="small-btn" type="button" onclick="admMatFlag(${m.id},'is_free',${!m.is_free})">${m.is_free?'Tirar da amostra':'Amostra grátis'}</button><button class="small-btn" type="button" style="color:#b42318" onclick="admMatDelete(${m.id})">Excluir</button></div></div>`}).join('')}</div>`:'<div class="empty"><strong>Nenhum material ainda.</strong><span>Clique em "+ Novo material" para escrever o primeiro resumo.</span></div>'}`;
+  const all=window._mats||[],tab=window._pdfOk?window._admMatTab:'text';
+  const list=all.filter(m=>tab==='pdf'?m.kind==='pdf':m.kind!=='pdf');
+  const nT=all.filter(m=>m.kind!=='pdf').length,nP=all.filter(m=>m.kind==='pdf').length;
+  box.innerHTML=`<div class="dash-head"><div><h2 style="margin:0">Materiais</h2><div class="muted">${all.length} no total · ${all.filter(m=>m.is_published).length} publicados</div></div><div style="display:flex;gap:8px;flex-wrap:wrap">${window._pdfOk?'<button class="small-btn" type="button" onclick="admPdfNew()"><span class="ic" data-i="plus"></span> Enviar PDF</button>':''}<button class="primary" type="button" onclick="admMatNew()">+ Novo resumo</button></div></div>${window._pdfOk?`<div class="seg" role="tablist" style="margin:0 0 12px"><button type="button" class="${tab==='text'?'on':''}" onclick="admMatSetTab('text')">Resumos <small>${nT}</small></button><button type="button" class="${tab==='pdf'?'on':''}" onclick="admMatSetTab('pdf')">PDFs <small>${nP}</small></button></div>`:'<div class="muted" style="margin-bottom:10px">Para enviar PDFs, execute o <b>materials_pdf_migration.sql</b> no Supabase.</div>'}${list.length?`<div class="dash-wrong">${list.map(m=>{const kd=MAT_KIND[m.kind]||MAT_KIND.resumo;return `<div class="dash-wrow"><div><b>${escapeHtml(m.title)}</b><div class="muted" style="font-size:12.5px">${matTrail(m).map(escapeHtml).join(' › ')}</div><div class="mat-meta" style="margin-top:6px"><span class="badge blue">${kd[0]}</span><span class="badge ${m.is_published?'green':'amber'}">${m.is_published?'Publicado':'Rascunho'}</span>${m.is_free?'<span class="badge green">Amostra grátis</span>':''}<span class="badge">${m.kind==='pdf'?escapeHtml(m.file_name||'PDF')+' · '+fmtBytes(m.file_size):m.read_minutes+' min'}</span></div></div><div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end"><button class="small-btn" type="button" onclick="admMatEdit(${m.id})">Editar</button><button class="small-btn" type="button" onclick="admMatFlag(${m.id},'is_published',${!m.is_published})">${m.is_published?'Despublicar':'Publicar'}</button><button class="small-btn" type="button" onclick="admMatFlag(${m.id},'is_free',${!m.is_free})">${m.is_free?'Tirar da amostra':'Amostra grátis'}</button><button class="small-btn" type="button" style="color:#b42318" onclick="admMatDelete(${m.id})">Excluir</button></div></div>`}).join('')}</div>`:`<div class="empty"><strong>${tab==='pdf'?'Nenhum PDF ainda.':'Nenhum resumo ainda.'}</strong><span>${tab==='pdf'?'Clique em "Enviar PDF" para colocar o primeiro arquivo.':'Clique em "+ Novo resumo" para escrever o primeiro.'}</span></div>`}`;
 }
 async function admMatFlag(id,col,val){
   const r=await sb.from('materials').update({[col]:val}).eq('id',id).select('id');
@@ -4274,9 +4349,11 @@ async function admMatFlag(id,col,val){
 async function admMatDelete(id){
   if(!confirm('Excluir este material e as imagens dele? Esta ação não pode ser desfeita.'))return;
   const ip=await sb.from('material_images').select('path').eq('material_id',id);
+  const fp=window._pdfOk?await sb.from('materials').select('file_path').eq('id',id).maybeSingle():null;
   const r=await sb.from('materials').delete().eq('id',id).select('id');
   if(r.error){alert('Erro: '+r.error.message);return}
   const paths=(ip.data||[]).map(x=>x.path);if(paths.length)sb.storage.from('material-images').remove(paths);
+  if(fp&&fp.data&&fp.data.file_path)sb.storage.from('material-files').remove([fp.data.file_path]);
   matInvalidate();await loadAdminMaterials();toast('Material excluído.');
 }
 function mOpts(list,cur,label){return `<option value="">${label}</option>`+list.map(x=>`<option value="${x.id}"${String(x.id)===String(cur)?' selected':''}>${escapeHtml(x.name)}</option>`).join('')}
@@ -4288,12 +4365,13 @@ function mCascade(changed){
   const mods=v.per?(window._modules||[]).filter(m=>String(m.period_id)===v.per):[];if(v.mod&&!mods.some(m=>String(m.id)===v.mod))v.mod='';
   const subs=(window._subjects||[]).filter(x=>(!v.mod||String(x.module_id)===v.mod)&&(!v.dis||String(x.discipline_id)===v.dis));if(v.sub&&!subs.some(x=>String(x.id)===v.sub))v.sub='';
   g('mPeriod').innerHTML=mOpts(pers,v.per,'Período...');g('mModule').innerHTML=mOpts(mods,v.mod,'Módulo (opcional)');
-  g('mDiscipline').innerHTML=mOpts(window._disciplines||[],v.dis,'Matéria (opcional)');g('mSubject').innerHTML=mOpts(subs,v.sub,'Assunto (liga o resumo às questões)');
+  g('mDiscipline').innerHTML=mOpts(window._disciplines||[],v.dis,'Matéria (opcional)');g('mSubject').innerHTML=mOpts(subs,v.sub,'Assunto (liga o material às questões)');
 }
 function admMatNew(pre){window._admMat={id:null,imgs:[]};admMatRenderEditor(null,pre||{})}
 async function admMatEdit(id){
   const r=await sb.from('materials').select('*').eq('id',id).maybeSingle();
   if(r.error||!r.data){toast('Não foi possível abrir o material.');return}
+  if(r.data.kind==='pdf'){window._admPdf={id,file:null,existing:{path:r.data.file_path,name:r.data.file_name,size:r.data.file_size}};admPdfRenderEditor(r.data,{});return}
   window._admMat={id,imgs:[]};
   await admMatLoadImgs(id);
   admMatRenderEditor(r.data,{});
@@ -4312,7 +4390,7 @@ function admMatRenderEditor(m,pre){
   box.innerHTML=`<div class="card"><div class="dash-head"><h2 style="margin:0">${id?'Editar material #'+id:'Novo material'}</h2><button class="small-btn" type="button" onclick="loadAdminMaterials()">← Voltar à lista</button></div>
   <div class="adm-mgrid"><label>Instituição<select id="mInst" onchange="mCascade('inst')">${mOpts(insts,sel.inst,'Instituição (opcional)')}</select></label><label>Período<select id="mPeriod" onchange="mCascade('per')"></select></label><label>Módulo<select id="mModule" onchange="mCascade('mod')"></select></label><label>Matéria<select id="mDiscipline" onchange="mCascade('dis')"></select></label><label style="grid-column:1/-1">Assunto<select id="mSubject" onchange="mCascade('sub')"></select></label></div>
   <label>Título<input id="mTitle" maxlength="200" value="${escapeHtml(v.title||'')}" placeholder="Ex.: Regulação da pressão arterial"></label>
-  <label>Tipo<select id="mKind">${Object.keys(MAT_KIND).map(k=>`<option value="${k}"${(v.kind||'resumo')===k?' selected':''}>${MAT_KIND[k][0]}</option>`).join('')}</select></label>
+  <label>Tipo<select id="mKind">${MAT_TEXT_KINDS.map(k=>`<option value="${k}"${(v.kind||'resumo')===k?' selected':''}>${MAT_KIND[k][0]}</option>`).join('')}</select></label>
   <label>O mínimo que precisa saber <small class="muted">(aparece em destaque, antes do texto)</small><textarea id="mMin" rows="5" oninput="admMatPreview()" placeholder="- Ponto principal 1&#10;- Ponto principal 2">${escapeHtml(v.minimum||'')}</textarea></label>
   <div class="mat-tools" role="toolbar" aria-label="Formatação">${[['h2','Título'],['h3','Subtítulo'],['b','Negrito'],['i','Itálico'],['ul','Lista'],['ol','Numerada'],['quote','Citação'],['table','Tabela'],['dica','Dica'],['atencao','Atenção'],['importante','Importante'],['hr','Linha'],['link','Link']].map(t=>`<button type="button" class="small-btn" onclick="admMd('${t[0]}')">${t[1]}</button>`).join('')}</div>
   <div class="mat-edit-grid"><label>Texto completo<textarea id="mBody" rows="20" oninput="admMatPreview()" placeholder="# Introdução&#10;Escreva aqui. Use a barra acima para formatar.">${escapeHtml(v.body||'')}</textarea></label><div><div class="muted" style="font-weight:800;font-size:12.5px;margin-bottom:6px">PRÉVIA</div><div id="mPreview" class="mat-preview mat-body"></div></div></div>
@@ -4395,6 +4473,75 @@ async function admMatSave(){
   matInvalidate();await loadMaterialsCatalog(true);
   if(!id&&newId){await admMatEdit(newId);status('mStatus','✅ Material criado. Agora você já pode enviar imagens.','ok')}
   else status('mStatus','✅ Material atualizado.','ok');
+}
+/* ----- enviar PDF (administração) ----- */
+const PDF_MAX=25*1024*1024;
+function admPdfNew(pre){window._admPdf={id:null,file:null,existing:null};admPdfRenderEditor(null,pre||{})}
+function readHead(file,n){return new Promise((res,rej)=>{try{const fr=new FileReader();fr.onload=()=>res(new Uint8Array(fr.result));fr.onerror=()=>rej(fr.error);fr.readAsArrayBuffer(file.slice(0,n))}catch(e){rej(e)}})}
+function admPdfRenderEditor(m,pre){
+  const box=document.getElementById('adminMat');if(!box)return;
+  const v=m||{},id=window._admPdf.id;
+  const sel={inst:v.institution_id||pre.inst||'',per:v.period_id||pre.period||'',mod:v.module_id||pre.module||'',dis:v.discipline_id||pre.discipline||'',sub:v.subject_id||pre.subject||''};
+  box.innerHTML=`<div class="card"><div class="dash-head"><h2 style="margin:0">${id?'Editar PDF #'+id:'Enviar PDF'}</h2><button class="small-btn" type="button" onclick="admMatSetTab('pdf')">← Voltar à lista</button></div>
+  <div class="adm-mgrid"><label>Instituição<select id="mInst" onchange="mCascade('inst')">${mOpts(window._institutions||[],sel.inst,'Instituição (opcional)')}</select></label><label>Período<select id="mPeriod" onchange="mCascade('per')"></select></label><label>Módulo<select id="mModule" onchange="mCascade('mod')"></select></label><label>Matéria<select id="mDiscipline" onchange="mCascade('dis')"></select></label><label style="grid-column:1/-1">Assunto<select id="mSubject" onchange="mCascade('sub')"></select></label></div>
+  <label>Título<input id="mTitle" maxlength="200" value="${escapeHtml(v.title||'')}" placeholder="Ex.: Apostila de Fisiologia Renal"></label>
+  <label>Descrição <small class="muted">(opcional, aparece acima do arquivo)</small><textarea id="mMin" rows="4" placeholder="Do que se trata este material?">${escapeHtml(v.minimum||'')}</textarea></label>
+  <label style="margin-top:12px">Arquivo PDF <small class="muted">(até 25 MB)</small></label>
+  <input id="pdfFile" type="file" accept="application/pdf,.pdf" hidden onchange="admPdfPick(this.files[0]);this.value=''">
+  <div class="adm-drop" id="pdfDrop" tabindex="0" role="button" onclick="document.getElementById('pdfFile').click()" ondragover="event.preventDefault()" ondrop="event.preventDefault();admPdfPick(event.dataTransfer.files[0])"><span class="ic" data-i="plus"></span> Clique ou arraste o PDF aqui</div>
+  <div id="pdfPicked" class="pdf-picked"></div>
+  <label>Fontes <small class="muted">(opcional)</small><textarea id="mSrc" rows="3">${escapeHtml(v.sources||'')}</textarea></label>
+  <label class="check-row"><input id="mPub" type="checkbox" ${v.is_published?'checked':''}> <span>Publicar para os alunos</span></label>
+  <label class="check-row"><input id="mFree" type="checkbox" ${v.is_free?'checked':''}> <span>Amostra grátis (abre mesmo sem assinatura)</span></label>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><button class="primary" id="pdfSaveBtn" type="button" onclick="admPdfSave()">${id?'Salvar alterações':'Enviar e salvar'}</button><button class="small-btn" type="button" onclick="admMatSetTab('pdf')">Cancelar</button></div><div id="mStatus" class="status"></div></div>`;
+  mCascade('init');
+  const g=x=>document.getElementById(x);
+  g('mPeriod').value=String(sel.per||'');mCascade('per');g('mModule').value=String(sel.mod||'');mCascade('mod');g('mDiscipline').value=String(sel.dis||'');mCascade('dis');g('mSubject').value=String(sel.sub||'');
+  admPdfPicked();
+}
+function admPdfPicked(){
+  const el=document.getElementById('pdfPicked');if(!el)return;
+  const P=window._admPdf;
+  if(P.file)el.innerHTML=`<div class="pdf-card"><div class="pdf-ico"><span class="ic" data-i="doc"></span></div><div class="pdf-info"><b>${escapeHtml(P.file.name)}</b><span class="muted">PDF · ${fmtBytes(P.file.size)} · pronto para enviar</span></div></div>`;
+  else if(P.existing&&P.existing.name)el.innerHTML=`<div class="pdf-card"><div class="pdf-ico"><span class="ic" data-i="doc"></span></div><div class="pdf-info"><b>${escapeHtml(P.existing.name)}</b><span class="muted">PDF atual · ${fmtBytes(P.existing.size)} · escolha outro arquivo para substituir</span></div></div>`;
+  else el.innerHTML='';
+}
+async function admPdfPick(f){
+  if(!f)return;
+  if(f.type&&f.type!=='application/pdf'){status('mStatus','Este arquivo não é um PDF.');return}
+  if(!/\.pdf$/i.test(f.name||'')){status('mStatus','O arquivo precisa terminar em .pdf.');return}
+  if(!f.size){status('mStatus','O arquivo está vazio.');return}
+  if(f.size>PDF_MAX){status('mStatus','O arquivo tem '+fmtBytes(f.size)+'. O limite é 25 MB. Reduza o PDF e tente de novo.');return}
+  try{const h=await readHead(f,5);if(String.fromCharCode(...h)!=='%PDF-'){status('mStatus','O conteúdo não parece ser um PDF válido.');return}}
+  catch(e){status('mStatus','Não foi possível ler o arquivo.');return}
+  window._admPdf.file=f;status('mStatus','');document.getElementById('mStatus').className='status';
+  const t=document.getElementById('mTitle');if(t&&!t.value.trim())t.value=f.name.replace(/\.pdf$/i,'').replace(/[_]+/g,' ').slice(0,200);
+  admPdfPicked();
+}
+async function admPdfSave(){
+  const g=x=>document.getElementById(x),P=window._admPdf;
+  const title=g('mTitle').value.trim(),per=g('mPeriod').value;
+  if(!title){status('mStatus','Digite o título.');return}
+  if(!per){status('mStatus','Escolha o período.');return}
+  if(!P.id&&!P.file){status('mStatus','Escolha o arquivo PDF.');return}
+  const btn=g('pdfSaveBtn');btn.disabled=true;
+  let path=null;
+  if(P.file){
+    status('mStatus','Enviando o arquivo... aguarde.','ok');
+    path='pdf/'+Date.now()+'-'+Math.random().toString(36).slice(2,10)+'.pdf';
+    const up=await sb.storage.from('material-files').upload(path,P.file,{contentType:'application/pdf',upsert:false});
+    if(up.error){btn.disabled=false;status('mStatus','Erro no envio: '+escapeHtml(up.error.message));return}
+  }
+  const payload={title,kind:'pdf',institution_id:g('mInst').value?Number(g('mInst').value):((window._pInst||{})[per]||null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum:g('mMin').value.trim()||null,body:'',sources:g('mSrc').value.trim()||null,read_minutes:1,is_published:g('mPub').checked,is_free:g('mFree').checked};
+  if(P.file){payload.file_path=path;payload.file_name=P.file.name.slice(0,255);payload.file_size=P.file.size}
+  let r;
+  if(P.id)r=await sb.from('materials').update(payload).eq('id',P.id).select('id');
+  else r=await sb.from('materials').insert({...payload,created_by:currentUser.id}).select('id');
+  btn.disabled=false;
+  if(r.error){if(path)sb.storage.from('material-files').remove([path]);status('mStatus','Erro ao salvar: '+escapeHtml(r.error.message));return}
+  if(P.id&&path&&P.existing&&P.existing.path)sb.storage.from('material-files').remove([P.existing.path]);
+  matInvalidate();await loadMaterialsCatalog(true);
+  window._admMatTab='pdf';await loadAdminMaterials();toast('✅ PDF salvo.');
 }
 function admMatFromQuestion(){
   const q=solverQ;if(!q)return;
