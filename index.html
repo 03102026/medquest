@@ -1200,7 +1200,7 @@ window.MEDQUEST_CONFIG={
         <div class="lp-brand"><img src="medquest-mark.png" alt="MedQuest"><div><div class="wm2">Med<b>Quest</b></div><small>ESTUDOS EM MEDICINA</small></div></div>
         <span class="lp-kicker">Banco de questões de Medicina</span>
         <h1>Cada erro de hoje é um <em>diagnóstico certo</em> amanhã.</h1>
-        <p>Questões organizadas por período, disciplina e assunto, com caderno de erros automático e desempenho por matéria. Você sabe o que revisar antes de a prova chegar.</p>
+        <p>Questões organizadas por período, matéria e assunto, com caderno de erros automático e desempenho por matéria. Você sabe o que revisar antes de a prova chegar.</p>
         <ul class="lp-checks">
           <li>Treine exatamente o conteúdo do seu período</li>
           <li>Seus erros viram material de revisão, sem anotar nada</li>
@@ -1267,7 +1267,7 @@ window.MEDQUEST_CONFIG={
       </div>
       <div class="lp-tiles">
         <div class="lp-tile"><strong>Período</strong><span>Questões organizadas do jeito que a grade da faculdade cobra.</span></div>
-        <div class="lp-tile"><strong>Assunto</strong><span>Escolha a disciplina e o tema e vá direto ao que precisa revisar.</span></div>
+        <div class="lp-tile"><strong>Assunto</strong><span>Escolha a matéria e o tema e vá direto ao que precisa revisar.</span></div>
         <div class="lp-tile"><strong>Revisão</strong><span>Seus erros voltam como missão até você acertar, sem anotar nada.</span></div>
       </div>
     </section>
@@ -1275,7 +1275,7 @@ window.MEDQUEST_CONFIG={
     <section class="lp-section">
       <div class="lp-title"><h2>Tudo o que você precisa para estudar com direção</h2><p>Menos tempo procurando material, mais tempo resolvendo questões que importam.</p></div>
       <div class="lp-grid">
-        <div class="lp-feat"><div class="lp-ico">📚</div><h3>Questões por período e assunto</h3><p>Filtre por período, disciplina e dificuldade e vá direto ao conteúdo da sua prova.</p></div>
+        <div class="lp-feat"><div class="lp-ico">📚</div><h3>Questões por período e assunto</h3><p>Filtre por período, matéria e dificuldade e vá direto ao conteúdo da sua prova.</p></div>
         <div class="lp-feat"><div class="lp-ico">🧠</div><h3>Caderno de erros</h3><p>As questões que você errou ficam guardadas para você revisar até dominar.</p></div>
         <div class="lp-feat"><div class="lp-ico">📈</div><h3>Desempenho por matéria</h3><p>Veja sua taxa de acerto e descubra onde revisar primeiro.</p></div>
         <div class="lp-feat"><div class="lp-ico">💡</div><h3>Explicação em cada questão</h3><p>Entenda por que a alternativa está correta, em vez de apenas decorar a resposta.</p></div>
@@ -1288,7 +1288,7 @@ window.MEDQUEST_CONFIG={
       <div class="lp-title"><h2>Como funciona</h2><p>Em três passos você já está estudando.</p></div>
       <div class="lp-steps">
         <div class="lp-step"><h3>Crie sua conta</h3><p>Use seu e-mail e comece em segundos.</p></div>
-        <div class="lp-step"><h3>Escolha o que estudar</h3><p>Selecione o período, a disciplina e o assunto da sua prova.</p></div>
+        <div class="lp-step"><h3>Escolha o que estudar</h3><p>Selecione o período, a matéria e o assunto da sua prova.</p></div>
         <div class="lp-step"><h3>Resolva, erre e revise</h3><p>Seus erros e seu desempenho aparecem automaticamente para guiar a revisão.</p></div>
       </div>
     </section>
@@ -1395,14 +1395,14 @@ window.MEDQUEST_CONFIG={
     <section id="simulados" class="page"><div id="simView"></div>
     </section>
     <section id="errors" class="page"><div class="card"><h2>🧠 Caderno de erros</h2><p class="muted">Questões em que a sua última resposta foi errada. Acerte-as de novo para saírem do caderno.</p><div id="missionBanner"></div><div id="errorList" class="empty" style="margin-top:15px">Ainda não há tentativas registradas.</div></div></section>
-    <section id="performance" class="page"><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="stat-title">Aproveitamento</div><div id="perfRate" class="kpi">0%</div><div class="subkpi">respostas registradas</div></div><div class="card"><div class="stat-title">Acertos</div><div id="perfCorrect" class="kpi">0</div><div class="subkpi">questões</div></div><div class="card"><div class="stat-title">Respondidas</div><div id="perfTotal" class="kpi">0</div><div class="subkpi">questões</div></div></div><div class="card" style="margin-top:18px"><h2>📈 Por disciplina</h2><div id="disciplinePerf" class="empty" style="margin-top:14px">Ainda não há dados suficientes.</div></div></section>
+    <section id="performance" class="page"><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="stat-title">Aproveitamento</div><div id="perfRate" class="kpi">0%</div><div class="subkpi">respostas registradas</div></div><div class="card"><div class="stat-title">Acertos</div><div id="perfCorrect" class="kpi">0</div><div class="subkpi">questões</div></div><div class="card"><div class="stat-title">Respondidas</div><div id="perfTotal" class="kpi">0</div><div class="subkpi">questões</div></div></div><div class="card" style="margin-top:18px"><h2>📈 Por matéria</h2><div id="disciplinePerf" class="empty" style="margin-top:14px">Ainda não há dados suficientes.</div></div></section>
 
     <section id="admin" class="page">
       <div class="toolbar"><div><h2 style="margin:0">⚙️ Administração</h2><p class="muted" style="margin:5px 0 0">Gerencie questões e a estrutura acadêmica do MedQuest.</p></div><span class="role-pill">Administrador</span></div>
       <div class="cards stats">
         <div class="card stat-card"><div><div class="stat-title">Questões</div><div class="stat-value" id="adminQuestionCount">0</div></div><div class="stat-icon">📝</div></div>
         <div class="card stat-card"><div><div class="stat-title">Publicadas</div><div class="stat-value" id="adminPublishedCount">0</div></div><div class="stat-icon">🌐</div></div>
-        <div class="card stat-card"><div><div class="stat-title">Disciplinas</div><div class="stat-value" id="adminDisciplineCount">0</div></div><div class="stat-icon">📚</div></div>
+        <div class="card stat-card"><div><div class="stat-title">Matérias</div><div class="stat-value" id="adminDisciplineCount">0</div></div><div class="stat-icon">📚</div></div>
         <div class="card stat-card"><div><div class="stat-title">Alunos</div><div class="stat-value" id="adminStudentCount">0</div></div><div class="stat-icon">👥</div></div>
       </div>
       <div class="admin-tabs" style="margin-top:20px">
@@ -1427,9 +1427,9 @@ window.MEDQUEST_CONFIG={
           <div class="card">
             <div class="card-head"><h2 id="aFormTitle">➕ Cadastrar questão</h2></div>
             <form class="admin-form" onsubmit="createQuestion(event)">
-              <div class="admin-two"><label id="aInstWrap">Instituição<select id="aInst" onchange="fillAdminPeriods();loadAdminExams();loadAdminModuleSelect().then(loadAdminSubjects)"><option value="">Todas</option></select></label><label>Período<select id="aPeriod" required onchange="loadAdminExams();loadAdminModuleSelect().then(loadAdminSubjects)"></select></label></div>
-              <div class="admin-two"><label id="aModuleWrap">Módulo <small style="font-weight:500;color:var(--muted)">(opcional)</small><select id="aModule" onchange="loadAdminSubjects()"><option value="">Sem módulo</option></select></label><label>Disciplina<select id="aDiscipline" required onchange="loadAdminSubjects()"></select></label></div>
-              <div class="admin-two"><label>Assunto<select id="aSubject" required onchange="syncDisciplineFromSubject()"></select></label><label>Prova<select id="aExam"></select></label></div>
+              <div class="admin-two"><label id="aInstWrap">Instituição<select id="aInst" onchange="clsRefresh('a','inst');loadAdminExams()"><option value="">Escolha a instituição</option></select></label><label>Período<select id="aPeriod" required onchange="clsRefresh('a','per');loadAdminExams()"></select></label></div>
+              <div class="admin-two"><label id="aModuleWrap">Módulo <small style="font-weight:500;color:var(--muted)">(opcional)</small><select id="aModule" onchange="clsRefresh('a','mod')"><option value="">Sem módulo (geral)</option></select></label><label>Matéria<select id="aDiscipline" required onchange="clsRefresh('a','dis')"></select></label></div>
+              <div class="admin-two"><label>Assunto <small style="font-weight:500;color:var(--muted)">(opcional)</small><select id="aSubject" onchange="clsRefresh('a','sub')"></select></label><label>Prova<select id="aExam"></select></label></div>
               <div class="admin-two"><label id="aYearWrap">Ano <small style="font-weight:500;color:var(--muted)">(opcional)</small><input id="aYear" type="text" inputmode="numeric" maxlength="7" placeholder="2025 ou 2025/1" pattern="[0-9]{4}(/[0-9]{1,2})?"></label><label id="aTypeWrap">Tipo da questão<select id="aType" onchange="adminTypeChange()"><option value="objetiva">Objetiva (alternativas)</option><option value="discursiva">Discursiva (resposta escrita)</option></select></label></div>
               <label>Enunciado<textarea id="aStatement" placeholder="Digite o enunciado da questão..." required></textarea></label>
               <div id="aObjFields"><div class="admin-two"><label>A<input id="aA" required></label><label>B<input id="aB" required></label></div>
@@ -1446,15 +1446,16 @@ window.MEDQUEST_CONFIG={
               <div id="adminQuestionStatus"></div>
             </form>
           </div>
-          <div class="card"><div class="card-head"><h2>Como funciona</h2></div><p class="admin-note">Cadastre primeiro os períodos, disciplinas, assuntos e provas na aba <b>Cadastros</b>. Depois eles aparecem automaticamente nos campos desta tela.</p><div class="mini-card" style="margin-top:12px"><b>Rascunho</b><p class="admin-note">A questão fica guardada no banco mas não aparece para os alunos.</p></div><div class="mini-card" style="margin-top:10px"><b>Publicada</b><p class="admin-note">A questão aparece na área de questões para alunos autenticados.</p></div></div>
+          <div class="card"><div class="card-head"><h2>Como funciona</h2></div><p class="admin-note">Cadastre primeiro os períodos, matérias, assuntos e provas na aba <b>Cadastros</b>. Depois eles aparecem automaticamente nos campos desta tela.</p><div class="mini-card" style="margin-top:12px"><b>Rascunho</b><p class="admin-note">A questão fica guardada no banco mas não aparece para os alunos.</p></div><div class="mini-card" style="margin-top:10px"><b>Publicada</b><p class="admin-note">A questão aparece na área de questões para alunos autenticados.</p></div></div>
         </div>
       </div>
 
       <div id="adminCatalogPane" class="admin-pane">
         <div class="catalog-grid">
           <div class="card" style="grid-column:1/-1"><div class="card-head"><h3 style="margin:0">🌳 Estrutura do conteúdo</h3><button class="primary" type="button" onclick="admAdd('inst',null)">+ Instituição</button></div><p class="admin-note">Organize em árvore: <b>Instituição → Períodos → Módulos → Assuntos</b>. Use os botões de cada linha para adicionar, editar, mover (▲▼), ocultar dos alunos (👁) ou excluir. O que você criar aparece para os alunos na hora.</p><div id="adminTree" class="admin-list"><div class="empty">Carregando...</div></div></div>
-          <div class="card"><h3>📚 Nova disciplina</h3><form class="admin-form" onsubmit="createDiscipline(event)"><label>Nome<input id="cDisciplineName" placeholder="Ex.: Fisiologia" required></label><button class="primary">Adicionar disciplina</button><div id="disciplineStatus"></div></form></div>
+          <div class="card"><h3>📚 Nova matéria</h3><form class="admin-form" onsubmit="createDiscipline(event)"><label>Nome<input id="cDisciplineName" placeholder="Ex.: Fisiologia" required></label><button class="primary">Adicionar matéria</button><div id="disciplineStatus"></div></form></div>
           <div class="card"><h3>🧪 Nova prova</h3><form class="admin-form" onsubmit="createExam(event)"><label>Período<select id="cExamPeriod"></select></label><label>Nome<input id="cExamName" placeholder="Ex.: Integradora 1"></label><button class="primary">Adicionar prova</button><div id="examStatus"></div></form></div>
+          <div class="card" id="clsCard"><h3>✅ Conferir classificação</h3><p class="muted" style="margin:0 0 10px">Procura questões e materiais com instituição, período, módulo, matéria ou assunto que não combinam entre si (por exemplo, um módulo que é de outro período).</p><button class="small-btn" type="button" onclick="admClsCheck()">Verificar agora</button><div id="clsResult" style="margin-top:12px"></div></div>
         </div>
       </div>
 
@@ -1863,7 +1864,7 @@ const ACH=[
   {ico:'🎯',n:'Mira certeira',d:'10 acertos seguidos',ok:g=>g.bestRun>=10},
   {ico:'🔥',n:'Pegando fogo',d:'3 dias seguidos estudando',ok:g=>g.bestDays>=3},
   {ico:'⚡',n:'Semana de fogo',d:'7 dias seguidos estudando',ok:g=>g.bestDays>=7},
-  {ico:'🧠',n:'Disciplina dominada',d:'80%+ de acerto numa matéria (mín. 10 questões)',ok:g=>!!g.master},
+  {ico:'🧠',n:'Matéria dominada',d:'80%+ de acerto numa matéria (mín. 10 questões)',ok:g=>!!g.master},
   {ico:'✨',n:'Caderno limpo',d:'Zere os erros pendentes (mín. 10 questões)',ok:g=>g.total>=10&&g.wrongCount===0},
   {ico:'✅',n:'Meta batida',d:'Cumpra sua meta diária',ok:g=>g.maxDay>=g.goal}
 ];
@@ -2087,7 +2088,7 @@ async function _ensureAllQ(force){
   let list=r.data||[];
   if(!isAdmin){
     const H=window._hidden;
-    list=list.filter(q=>!(H.p.has(String(q.period_id))||(q.module_id!=null&&H.m.has(String(q.module_id)))||(q.subject_id!=null&&H.s.has(String(q.subject_id)))||(q.institution_id!=null&&H.i.has(String(q.institution_id)))));
+    list=list.filter(q=>!(H.p.has(String(q.period_id))||(q.module_id!=null&&H.m.has(String(q.module_id)))||(q.subject_id!=null&&H.s.has(String(q.subject_id)))||(qInst(q)!=null&&H.i.has(String(qInst(q))))));
   }
   const dn={},sn={};
   (window._disciplines||[]).forEach(d=>{dn[String(d.id)]=d.name});
@@ -2158,7 +2159,7 @@ function updateHome(){
   const un=all.filter(q=>lat[q.id]===undefined);
   let label=g.total?'Continuar estudando →':'Começar a estudar →',next='';
   if(!all.length){label='Ver questões →';next='Ainda não há questões publicadas.'}
-  else if(un.length){const q=un[0];next='Próxima: '+(q.disciplines&&q.disciplines.name||'Disciplina')+(q.subjects&&q.subjects.name?' · '+q.subjects.name:'')+' · '+un.length+' restante(s)'}
+  else if(un.length){const q=un[0];next='Próxima: '+(q.disciplines&&q.disciplines.name||'Matéria')+(q.subjects&&q.subjects.name?' · '+q.subjects.name:'')+' · '+un.length+' restante(s)'}
   else if(wrong.length){label='Revisar meus erros →';next='Você respondeu todas! Hora de derrotar os erros.'}
   else{label='Refazer questões →';next='Você respondeu todo o banco sem erros pendentes. 👏'}
   $('heroCta').textContent=g.total?'Escolher o que estudar →':'Começar a estudar →';$('heroNext').textContent=next;{const rs=$('heroResume');if(rs)rs.classList.toggle('hidden',!(un.length&&g.total))}
@@ -2206,7 +2207,7 @@ function gameFx(ok){
   if(!ok){const w=document.querySelector('#optList .opt.wrong');if(w)w.classList.add('mq-shake')}
 }
 const ONB=[
-  {i:'📚',t:'Escolha o que estudar',p:'Filtre por período, disciplina e dificuldade na aba Questões, ou toque em "Continuar estudando" e o MedQuest escolhe a próxima para você.'},
+  {i:'📚',t:'Escolha o que estudar',p:'Filtre por período, matéria e dificuldade na aba Questões, ou toque em "Continuar estudando" e o MedQuest escolhe a próxima para você.'},
   {i:'💡',t:'Responda e entenda',p:'Marque a alternativa, confirme e veja a explicação na hora. Cada resposta rende XP e ajuda você a subir de nível.'},
   {i:'⚔️',t:'Revise e mantenha a chama',p:'Seus erros viram uma missão de revisão. Bata a meta diária e estude todo dia para manter a sequência 🔥 acesa.'}
 ];
@@ -2673,7 +2674,7 @@ function renderAttempts(){
   if(wrongRows.length){
     eb.className='question-list';eb.style.marginTop='15px';
     window._errLimit=window._errLimit||40;
-    eb.innerHTML=wrongRows.slice(0,window._errLimit).map((r,wi)=>{const q=r.questions||{};const sv=(window._stmt||{})[r.question_id];const st=sv===undefined?'Carregando enunciado...':sv;return `<div class="card question-row qcard"><div class="q-num">${wi+1}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Disciplina')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge red">✗ Errou</span></div><p>${escapeHtml(st.slice(0,200))}${st.length>200?'...':''}</p></div><div class="mat-rowbtns">${matBtnSmall(q.subject_id,'review')}<button class="primary" onclick="reviewError(${r.question_id})">Refazer →</button></div></div>`}).join('')+(wrongRows.length>window._errLimit?`<div style="text-align:center;margin:14px 0"><button class="small-btn" type="button" onclick="window._errLimit+=40;renderAttempts()">Mostrar mais (${wrongRows.length-window._errLimit})</button></div>`:'');
+    eb.innerHTML=wrongRows.slice(0,window._errLimit).map((r,wi)=>{const q=r.questions||{};const sv=(window._stmt||{})[r.question_id];const st=sv===undefined?'Carregando enunciado...':sv;return `<div class="card question-row qcard"><div class="q-num">${wi+1}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Matéria')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge red">✗ Errou</span></div><p>${escapeHtml(st.slice(0,200))}${st.length>200?'...':''}</p></div><div class="mat-rowbtns">${matBtnQ(r.question_id,'review')}<button class="primary" onclick="reviewError(${r.question_id})">Refazer →</button></div></div>`}).join('')+(wrongRows.length>window._errLimit?`<div style="text-align:center;margin:14px 0"><button class="small-btn" type="button" onclick="window._errLimit+=40;renderAttempts()">Mostrar mais (${wrongRows.length-window._errLimit})</button></div>`:'');
   }else{
     eb.className='empty';eb.style.marginTop='15px';
     eb.innerHTML=total?'<strong>🎉 Nenhum erro pendente.</strong><span>Quando você errar uma questão, ela aparece aqui para revisão.</span>':'Ainda não há tentativas registradas.';
@@ -2747,27 +2748,11 @@ async function loadAdminCatalogOptions(){
   await loadAdminModules();
 }
 function admShowNewBlocks(){const a=document.getElementById('aImgBlock'),f=document.getElementById('aFreeWrap');if(a)a.classList.toggle('hidden',!window._imgUiOk);if(f)f.classList.toggle('hidden',!window._keysOk)}
-async function loadAdminFormOptions(){admShowNewBlocks();if(!isAdmin)return;const [p,d]=await Promise.all([sb.from('periods').select('id,name').order('sort_order',{ascending:true}),sb.from('disciplines').select('id,name').order('name')]);const periods=p.data||[],disc=d.data||[];fillInstSelect();fillAdminPeriods();document.getElementById('aDiscipline').innerHTML='<option value="">Selecione</option>'+disc.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');await loadAdminModuleSelect();await loadAdminSubjects();await loadAdminExams();fillInstSelect();adminTypeChange();}
-async function loadAdminSubjects(){
-  const d=document.getElementById('aDiscipline').value,mEl=document.getElementById('aModule');
-  const m=(window._assuntosOk&&mEl)?mEl.value:'';
-  const select=document.getElementById('aSubject');
-  const fmt=x=>`<option value="${x.id}" data-disc="${x.discipline_id||''}" data-mod="${x.module_id||''}">${x.module_id&&x.sort_order>0?String(x.sort_order).padStart(2,'0')+' - ':''}${escapeHtml(x.name)}</option>`;
-  let rows=null;
-  if(m){const r=await sb.from('subjects').select('id,name,discipline_id,module_id,sort_order').eq('module_id',Number(m)).order('sort_order',{ascending:true});if(!r.error&&r.data&&r.data.length)rows=r.data}
-  if(!rows){
-    if(!d){select.innerHTML='<option value="">Selecione a disciplina primeiro</option>';return}
-    const cols=window._assuntosOk?'id,name,discipline_id,module_id,sort_order':'id,name,discipline_id';
-    const r=await sb.from('subjects').select(cols).eq('discipline_id',Number(d)).order('name');rows=r.data||[];
-  }
-  select.innerHTML='<option value="">Selecione</option>'+rows.map(fmt).join('');
-}
-function syncDisciplineFromSubject(){
-  const sel=document.getElementById('aSubject'),o=sel.options[sel.selectedIndex];
-  if(o&&o.dataset&&o.dataset.disc)document.getElementById('aDiscipline').value=o.dataset.disc;
-}
+async function loadAdminFormOptions(){admShowNewBlocks();if(!isAdmin)return;clsRefresh('a','init');await loadAdminExams();adminTypeChange();}
+async function loadAdminSubjects(){clsRefresh('a','mod')}
+function syncDisciplineFromSubject(){clsRefresh('a','sub')}
 async function loadAdminExams(){const p=document.getElementById('aPeriod').value;let q=sb.from('exams').select('id,name').order('name');if(p)q=q.or(`period_id.eq.${Number(p)},period_id.is.null`);const {data}=await q;document.getElementById('aExam').innerHTML='<option value="">Sem prova</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('')}
-async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};if(window._keysOk)payload.is_free=!!(document.getElementById('aFree')||{}).checked;if(!payload.period_id||!payload.discipline_id||!payload.subject_id){status('adminQuestionStatus','Preencha período, disciplina e assunto.');return}if(window._modulesOk){let mv=numOrNull('aModule');if(mv==null){const so=document.getElementById('aSubject'),oo=so.options[so.selectedIndex];if(oo&&oo.dataset&&oo.dataset.mod)mv=Number(oo.dataset.mod)}payload.module_id=mv}
+async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};if(window._keysOk)payload.is_free=!!(document.getElementById('aFree')||{}).checked;{const cv=clsGet('a');clsNormalize(cv,'init');const bad=clsCheck(cv,true);if(bad){status('adminQuestionStatus',bad);return}payload.period_id=Number(cv.per);payload.discipline_id=cv.dis?Number(cv.dis):(admFind('subject',cv.sub)||{}).discipline_id;payload.subject_id=cv.sub?Number(cv.sub):null;if(window._modulesOk)payload.module_id=cv.mod?Number(cv.mod):null}
   if(window._v3ok){
     {const pp=admFind('period',payload.period_id);payload.institution_id=(pp&&pp.institution_id!=null)?pp.institution_id:numOrNull('aInst')}payload.year=yearOrNull();if(!yearValid(payload.year)){status('adminQuestionStatus','Ano inválido. Use 2025 ou, com semestre, 2025/1.');return}payload.qtype=document.getElementById('aType').value;
     if(payload.qtype==='discursiva'){
@@ -2785,7 +2770,10 @@ async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const pay
   let imgErr=null;if(!error&&qid&&window._imgUiOk)imgErr=await admSaveImages(qid);
   if(error){status('adminQuestionStatus','Erro ao salvar: '+escapeHtml(/integer|invalid input syntax/i.test(error.message||'')&&payload.year&&String(payload.year).includes('/')?'o banco ainda guarda o ano só como número. Execute o server_migration.sql no Supabase para aceitar 2025/1.':error.message));return}
   status('adminQuestionStatus',editing?'✅ Questão #'+editing+' atualizada.':'✅ Questão salva com sucesso.','ok');if(imgErr)toast('Questão salva, mas houve erro nas imagens: '+imgErr.message);
-  e.target.reset();resetEditState();await loadAdminAll();if(typeof loadQuestions==='function')loadQuestions();}
+  e.target.reset();resetEditState();
+  if(editing)clsPopulate('a',{});else{const sb_=document.getElementById('aSubject');if(sb_)sb_.value=''}
+  if(!editing)status('adminQuestionStatus','✅ Questão salva com sucesso. Instituição, período, módulo e matéria foram mantidos para a próxima.','ok');
+  await loadAdminAll();if(typeof loadQuestions==='function')loadQuestions();}
 async function loadAdminQuestions(){if(!isAdmin)return;const box=document.getElementById('adminQuestionList');const {data,error}=await sb.from('questions').select('id,statement,difficulty,is_published,created_at,disciplines(name),subjects(name),periods(name),exams(name)'+(window._modulesOk?',modules(name)':'')+(window._v3ok?',institutions(name),year,qtype':'')+(window._keysOk?',is_free':'')).order('id',{ascending:false}).limit(100);if(error){box.innerHTML='<div class="error-box">'+escapeHtml(error.message)+'</div>';return}if(!data?.length){box.innerHTML='<div class="empty"><strong>Nenhuma questão cadastrada.</strong><span>Crie a primeira na aba “Nova questão”.</span></div>';return}box.innerHTML=data.map(x=>`<div class="admin-q"><div><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'')}</span><span class="badge">${escapeHtml(x.periods?.name||'')}</span>${x.modules?.name?`<span class="badge">🧩 ${escapeHtml(x.modules.name)}</span>`:''}${x.institutions?.name?`<span class="badge">🏛️ ${escapeHtml(x.institutions.name)}</span>`:''}${x.year?`<span class="badge">${x.year}</span>`:''}${x.qtype==='discursiva'?'<span class="badge">Discursiva</span>':''}${x.is_free?'<span class="badge green">Amostra grátis</span>':''}<span class="badge ${x.is_published?'green':'amber'}">${x.is_published?'Publicada':'Rascunho'}</span></div><h4>#${x.id} — ${escapeHtml(x.subjects?.name||'Sem assunto')}</h4><p>${escapeHtml(x.statement).slice(0,220)}${x.statement.length>220?'...':''}</p></div><div class="admin-actions"><button class="small-btn" onclick="editQuestion(${x.id})">✏️ Editar</button><button class="small-btn ${x.is_published?'unpublish':'publish'}" onclick="toggleQuestion(${x.id},${!x.is_published})">${x.is_published?'Despublicar':'Publicar'}</button>${window._keysOk?`<button class="small-btn" onclick="toggleFree(${x.id},${!x.is_free})">${x.is_free?'Tirar da amostra':'Amostra grátis'}</button>`:''}<button class="small-btn" style="color:#b42318;border-color:#f3c9c9" onclick="deleteQuestion(${x.id})">🗑 Excluir</button></div></div>`).join('')}
 async function toggleQuestion(id,published){
   if(!isAdmin)return;
@@ -2908,9 +2896,7 @@ async function editQuestion(id){
   document.querySelectorAll('.admin-tab').forEach(x=>x.classList.toggle('active',x.dataset.pane==='adminNewPane'));
   await loadAdminFormOptions();
   const set=(i,v)=>{document.getElementById(i).value=(v==null?'':String(v))};
-  {const pp=admFind('period',q.period_id);const ii=(pp&&pp.institution_id!=null)?pp.institution_id:q.institution_id;set('aInst',ii);fillAdminPeriods()}set('aPeriod',q.period_id);set('aDiscipline',q.discipline_id);
-  await loadAdminModuleSelect();set('aModule',q.module_id);
-  await loadAdminSubjects();set('aSubject',q.subject_id);
+  {const pp=admFind('period',q.period_id);const ii=(pp&&pp.institution_id!=null)?pp.institution_id:q.institution_id;window._clsNotice=clsPopulate('a',{inst:ii,per:q.period_id,mod:q.module_id,dis:q.discipline_id,sub:q.subject_id})}
   await loadAdminExams();set('aExam',q.exam_id);set('aYear',q.year);set('aType',q.qtype||'objetiva');set('aExpected',q.expected_answer);adminTypeChange();
   set('aStatement',q.statement);set('aA',q.option_a);set('aB',q.option_b);set('aC',q.option_c);set('aD',q.option_d);set('aE',q.option_e);
   set('aCorrect',q.correct_option);set('aDifficulty',q.difficulty||'medio');set('aExplanation',q.explanation);
@@ -2921,7 +2907,7 @@ async function editQuestion(id){
   document.getElementById('aFormTitle').textContent='✏️ Editando questão #'+id;
   document.getElementById('aSubmitBtn').textContent='💾 Atualizar questão';
   document.getElementById('aCancelBtn').classList.remove('hidden');
-  document.getElementById('adminQuestionStatus').innerHTML='';
+  document.getElementById('adminQuestionStatus').innerHTML=window._clsNotice?'<div class="save-warn">Esta questão estava com campos que não combinam ('+window._clsNotice+'). Revise antes de salvar.</div>':'';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 async function createPeriod(e){
@@ -2999,6 +2985,75 @@ async function loadAdminModules(){
   box.innerHTML=html;
 }
 function admTable(kind){return {period:'periods',module:'modules',subject:'subjects',inst:'institutions'}[kind]}
+/* ===== Classificação: a MESMA regra para questão, material e PDF =====
+   Instituição → Período → Módulo → Matéria → Assunto (opcional).
+   O assunto manda sobre módulo e matéria; o módulo manda sobre o período; o período manda sobre a instituição. */
+function clsGet(p){const g=id=>document.getElementById(p+id);const v=id=>(g(id)||{}).value||'';return {inst:v('Inst'),per:v('Period'),mod:v('Module'),dis:v('Discipline'),sub:v('Subject')}}
+function clsLists(v){
+  const pers=qfPeriodsFor(v.inst?[v.inst]:[]);
+  const mods=v.per?(window._modules||[]).filter(m=>String(m.period_id)===String(v.per)):[];
+  const modIds=new Set(mods.map(m=>String(m.id)));
+  let subs=[];
+  if(v.per||!window._assuntosOk){
+    subs=(window._subjects||[]).filter(x=>{
+      if(window._assuntosOk){
+        if(v.mod){if(String(x.module_id)!==String(v.mod))return false}
+        else if(x.module_id!=null&&!modIds.has(String(x.module_id)))return false;
+      }
+      if(v.dis&&x.discipline_id!=null&&String(x.discipline_id)!==String(v.dis))return false;
+      return true;
+    });
+  }
+  return {pers,mods,subs};
+}
+function clsConsistent(v){
+  const sj=v.sub?admFind('subject',v.sub):null,md=v.mod?admFind('module',v.mod):null;
+  if(md&&v.per&&String(md.period_id)!==String(v.per))return 'o módulo não pertence ao período';
+  if(sj&&sj.module_id!=null&&v.mod&&String(sj.module_id)!==String(v.mod))return 'o assunto é de outro módulo';
+  if(sj&&sj.discipline_id!=null&&v.dis&&String(sj.discipline_id)!==String(v.dis))return 'a matéria é diferente da matéria do assunto';
+  return '';
+}
+function clsNormalize(v,changed){
+  const sj=v.sub?admFind('subject',v.sub):null;
+  if(changed==='sub'&&sj){
+    if(sj.module_id!=null){v.mod=String(sj.module_id);const md=admFind('module',v.mod);if(md)v.per=String(md.period_id)}
+    if(sj.discipline_id!=null)v.dis=String(sj.discipline_id);
+  }
+  if(changed==='inst'){
+    const pers=qfPeriodsFor(v.inst?[v.inst]:[]);
+    if(v.per&&!pers.some(p=>String(p.id)===v.per))v.per='';
+  }else if(v.per&&window._instLinkOk){
+    const pp=admFind('period',v.per);if(pp&&pp.institution_id!=null)v.inst=String(pp.institution_id);
+  }
+  let L=clsLists(v);
+  if(v.mod&&!L.mods.some(m=>String(m.id)===v.mod))v.mod='';
+  L=clsLists(v);
+  if(v.sub&&!L.subs.some(x=>String(x.id)===v.sub))v.sub='';
+  return v;
+}
+function clsPopulate(p,v){
+  const g=id=>document.getElementById(p+id);if(!g('Period'))return;
+  v=Object.assign({inst:'',per:'',mod:'',dis:'',sub:''},v||{});
+  Object.keys(v).forEach(k=>{v[k]=(v[k]==null?'':String(v[k]))});
+  const notice=clsConsistent(v);
+  clsNormalize(v,'init');
+  const L=clsLists(v);
+  const opts=(list,cur,label,fmt)=>`<option value="">${label}</option>`+list.map(x=>`<option value="${x.id}"${String(x.id)===String(cur)?' selected':''}>${fmt?fmt(x):escapeHtml(x.name)}</option>`).join('');
+  if(g('Inst'))g('Inst').innerHTML=opts(window._institutions||[],v.inst,'Escolha a instituição');
+  g('Period').innerHTML=opts(L.pers,v.per,'Escolha o período');
+  if(g('Module'))g('Module').innerHTML=opts(L.mods,v.mod,v.per?'Sem módulo (geral)':'Escolha o período primeiro');
+  g('Discipline').innerHTML=opts(window._disciplines||[],v.dis,'Escolha a matéria');
+  g('Subject').innerHTML=opts(L.subs,v.sub,v.per?'Sem assunto':'Escolha o período primeiro',x=>(x.module_id&&x.sort_order>0?String(x.sort_order).padStart(2,'0')+' - ':'')+escapeHtml(x.name));
+  return notice;
+}
+function clsRefresh(p,changed){const v=clsGet(p);clsNormalize(v,changed||'init');return clsPopulate(p,v)}
+function mCascade(changed){clsRefresh('m',changed||'init')}
+function clsCheck(v,needDiscipline){
+  if(!v.per)return 'Escolha o período.';
+  if(needDiscipline&&!v.dis&&!v.sub)return 'Escolha a matéria.';
+  const bad=clsConsistent(v);
+  return bad?('Revise os campos: '+bad+'.'):'';
+}
 function admFind(kind,id){const src={period:'_periods',module:'_modules',subject:'_subjects',inst:'_institutions'}[kind];return (window[src]||[]).find(x=>String(x.id)===String(id))}
 function admSiblings(kind,id){
   const it=admFind(kind,id);if(!it)return [];
@@ -3083,7 +3138,7 @@ async function admAdd(kind,pid){
     const d=await sb.from('disciplines').select('id,name').order('name');
     const opts=(d.data||[]).map(x=>[x.id,x.name]);
     const secs=[...new Set((window._subjects||[]).map(x=>x.section).filter(Boolean))];
-    admModal('🧠 Novo assunto',admSel('Disciplina','ad_disc',opts,'')+admF('Seção <span style="font-weight:500;color:var(--muted)">(opcional — ex.: APG)</span>','ad_sec','','text','APG')+admF('Assunto','ad_name','','text','Ex.: 01 - Fisiologia Cardiovascular')+admTA('Objetivos de aprendizagem <span style="font-weight:500;color:var(--muted)">(opcional)</span>','ad_obj','','',70)+`<details><summary style="cursor:pointer;font-weight:800">➕ Adicionar vários de uma vez</summary>${admTA('Lista de assuntos','ad_bulk','','01 - Título | objetivo 1; objetivo 2\n02 - Outro assunto',110)}<small class="muted">Um por linha. O número do começo vira a ordem. Tudo depois de | vira os objetivos.</small></details>`,`admAddSave('subject',${pid})`);
+    admModal('🧠 Novo assunto',admSel('Matéria','ad_disc',opts,'')+admF('Seção <span style="font-weight:500;color:var(--muted)">(opcional — ex.: APG)</span>','ad_sec','','text','APG')+admF('Assunto','ad_name','','text','Ex.: 01 - Fisiologia Cardiovascular')+admTA('Objetivos de aprendizagem <span style="font-weight:500;color:var(--muted)">(opcional)</span>','ad_obj','','',70)+`<details><summary style="cursor:pointer;font-weight:800">➕ Adicionar vários de uma vez</summary>${admTA('Lista de assuntos','ad_bulk','','01 - Título | objetivo 1; objetivo 2\n02 - Outro assunto',110)}<small class="muted">Um por linha. O número do começo vira a ordem. Tudo depois de | vira os objetivos.</small></details>`,`admAddSave('subject',${pid})`);
   }
 }
 async function admAddSave(kind,pid){
@@ -3120,7 +3175,7 @@ async function admAddSave(kind,pid){
   if(kind==='subject'){
     const disc=v('ad_disc'),sec=v('ad_sec'),single=v('ad_name'),obj=v('ad_obj');
     const bulk=v('ad_bulk').split('\n').map(x=>x.trim()).filter(Boolean);
-    if(!disc){status('admModalMsg','Escolha a disciplina.');return}
+    if(!disc){status('admModalMsg','Escolha a matéria.');return}
     const lines=bulk.length?bulk:(single?[single+(obj?' | '+obj.split('\n').map(x=>x.trim()).filter(Boolean).join('; '):'')]:[]);
     if(!lines.length){status('admModalMsg','Digite o assunto ou cole uma lista.');return}
     if(!window._assuntosOk){status('admModalMsg','Execute o <b>modules_migration.sql</b> no Supabase e atualize a página.');return}
@@ -3173,16 +3228,7 @@ async function admDupSave(pid){
   await loadAdminAll();if(typeof refreshGrade==='function')refreshGrade();
   toast('✅ Período duplicado: '+nm+' módulo(s) e '+ns+' assunto(s).');
 }
-function fillAdminPeriods(){
-  const el=document.getElementById('aPeriod');if(!el)return;
-  const inst=document.getElementById('aInst')?document.getElementById('aInst').value:'';
-  const insMap={};(window._institutions||[]).forEach(i=>insMap[String(i.id)]=i.name);
-  let per=(window._periods||[]).slice().sort(byOrder);
-  if(window._instLinkOk&&inst)per=per.filter(p=>String(p.institution_id)===String(inst));
-  const cur=el.value;
-  el.innerHTML='<option value="">Selecione</option>'+per.map(p=>`<option value="${p.id}">${(window._instLinkOk&&p.institution_id!=null&&!inst?escapeHtml(insMap[String(p.institution_id)]||'')+' · ':'')}${escapeHtml(p.name)}</option>`).join('');
-  if(cur&&per.some(p=>String(p.id)===cur))el.value=cur;
-}
+function fillAdminPeriods(){clsRefresh('a','inst')}
 window._users=[];window._userStats={};window._userSubs={};let _uShown=50;
 async function loadAdminUsers(){
   if(!isAdmin)return;
@@ -3381,10 +3427,7 @@ async function admSaveRenew(){
   if(error){status('renewStatus','Não foi possível salvar: '+escapeHtml(error.message)+' (execute o modules_migration.sql).');return}
   status('renewStatus','✅ Link de renovação salvo.','ok');
 }
-function fillInstSelect(){
-  const el=document.getElementById('aInst');if(!el)return;
-  el.innerHTML='<option value="">Todas</option>'+(window._institutions||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');
-}
+function fillInstSelect(){clsRefresh('a','init')}
 function adminTypeChange(){
   const t=document.getElementById('aType');if(!t)return;
   const disc=t.value==='discursiva';
@@ -3395,23 +3438,15 @@ function adminTypeChange(){
   document.getElementById('aCorrect').required=!disc;
   ['aInstWrap','aYearWrap','aTypeWrap'].forEach(i=>{const e=document.getElementById(i);if(e)e.style.display=window._v3ok?'':'none'});
 }
-async function loadAdminModuleSelect(){
-  const wrap=document.getElementById('aModuleWrap'),sel=document.getElementById('aModule');if(!sel||!wrap)return;
-  if(!window._modulesOk){wrap.style.display='none';sel.innerHTML='<option value="">Sem módulo</option>';return}
-  wrap.style.display='';
-  const p=document.getElementById('aPeriod').value;
-  if(!p){sel.innerHTML='<option value="">Selecione o período primeiro</option>';return}
-  const {data}=await sb.from('modules').select('id,name').eq('period_id',Number(p)).order('sort_order',{ascending:true});
-  sel.innerHTML='<option value="">Sem módulo</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');
-}
-async function createDiscipline(e){e.preventDefault();const {error}=await sb.from('disciplines').insert({name:document.getElementById('cDisciplineName').value.trim()});if(error){status('disciplineStatus',error.message);return}status('disciplineStatus','✅ Disciplina adicionada.','ok');e.target.reset();await loadAdminAll()}
+async function loadAdminModuleSelect(){clsRefresh('a','per')}
+async function createDiscipline(e){e.preventDefault();const {error}=await sb.from('disciplines').insert({name:document.getElementById('cDisciplineName').value.trim()});if(error){status('disciplineStatus',error.message);return}status('disciplineStatus','✅ Matéria adicionada.','ok');e.target.reset();await loadAdminAll()}
 async function createSubject(e){
   e.preventDefault();
   const g=id=>document.getElementById(id);
   const disc=g('cSubjectDiscipline').value,mod=g('cSubjectModule').value,sec=g('cSubjectSection').value.trim();
   const single=g('cSubjectName').value.trim(),obj=g('cSubjectObjectives').value.trim();
   const bulk=(g('cSubjectBulk').value||'').split('\n').map(x=>x.trim()).filter(Boolean);
-  if(!disc){status('subjectStatus','Escolha a disciplina.');return}
+  if(!disc){status('subjectStatus','Escolha a matéria.');return}
   const lines=bulk.length?bulk:(single?[single+(obj?' | '+obj.split('\n').map(x=>x.trim()).filter(Boolean).join('; '):'')]:[]);
   if(!lines.length){status('subjectStatus','Digite o assunto ou cole uma lista.');return}
   const useNew=!!window._assuntosOk;
@@ -3897,7 +3932,7 @@ function simQReview(it){
   if(!q)return `<div class="sim-qr ${it.ok?'ok':'bad'}"><div style="padding:10px 13px">${st} · questão ${it.pos+1} (não está mais disponível)</div></div>`;
   const corr=String(q.correct_option||'').trim().toUpperCase();
   const opts=['A','B','C','D','E'].map(L=>({L,t:q['option_'+L.toLowerCase()]})).filter(o=>o.t);
-  return `<details class="sim-qr ${it.ok?'ok':'bad'}"><summary>${st}<span class="sn">Questão ${it.pos+1} · ${escapeHtml((q.statement||'').slice(0,90))}</span><span class="muted" style="white-space:nowrap">${fmtT(it.time)}</span></summary><div class="sim-qb"><div style="white-space:pre-wrap">${escapeHtml(q.statement||'')}</div>${opts.map(o=>`<div class="sim-opt${o.L===corr?' c':(o.L===it.sel?' w':'')}"><i>${o.L}</i><span>${escapeHtml(o.t)}</span>${o.L===corr?'<em style="color:#0f6b43">Correta</em>':(o.L===it.sel?'<em style="color:#a02222">Sua resposta</em>':'')}</div>`).join('')}${q.explanation?`<div class="explain" style="margin-top:10px"><b>💡 Explicação</b>${escapeHtml(q.explanation)}</div>`:''}<div style="margin-top:10px">${matBtnSmall(q.subject_id,'review')}</div></div></details>`;
+  return `<details class="sim-qr ${it.ok?'ok':'bad'}"><summary>${st}<span class="sn">Questão ${it.pos+1} · ${escapeHtml((q.statement||'').slice(0,90))}</span><span class="muted" style="white-space:nowrap">${fmtT(it.time)}</span></summary><div class="sim-qb"><div style="white-space:pre-wrap">${escapeHtml(q.statement||'')}</div>${opts.map(o=>`<div class="sim-opt${o.L===corr?' c':(o.L===it.sel?' w':'')}"><i>${o.L}</i><span>${escapeHtml(o.t)}</span>${o.L===corr?'<em style="color:#0f6b43">Correta</em>':(o.L===it.sel?'<em style="color:#a02222">Sua resposta</em>':'')}</div>`).join('')}${q.explanation?`<div class="explain" style="margin-top:10px"><b>💡 Explicação</b>${escapeHtml(q.explanation)}</div>`:''}<div style="margin-top:10px">${matBtnQ(it.id,'review')}</div></div></details>`;
 }
 function simRenderResult(){
   const R=window._simRes,v=document.getElementById('simView');if(!R||!v)return;
@@ -4069,7 +4104,7 @@ async function loadMaterialsCatalog(force){
   if(document.getElementById('matCta'))paintMatCta();
 }
 function matInvalidate(){window._matAt=0;window._matBody={}}
-function matInstId(m){return m.institution_id!=null?m.institution_id:(window._pInst||{})[String(m.period_id)]}
+function matInstId(m){const pi=(window._pInst||{})[String(m.period_id)];return pi!=null?pi:(m.institution_id!=null?m.institution_id:null)}
 function matSort(){
   const io={},po={},mo={},so={};
   (window._institutions||[]).forEach((x,i)=>{io[String(x.id)]=[x.sort_order||0,i]});
@@ -4081,10 +4116,22 @@ function matSort(){
 }
 function matVisible(){
   const H=window._hidden||{p:new Set(),m:new Set(),s:new Set(),i:new Set()};
-  return (window._mats||[]).filter(m=>textOn()||m.kind==='pdf').filter(m=>isAdmin||!((m.period_id!=null&&H.p.has(String(m.period_id)))||(m.module_id!=null&&H.m.has(String(m.module_id)))||(m.subject_id!=null&&H.s.has(String(m.subject_id)))||(m.institution_id!=null&&H.i.has(String(m.institution_id)))));
+  return (window._mats||[]).filter(m=>textOn()||m.kind==='pdf').filter(m=>isAdmin||!((m.period_id!=null&&H.p.has(String(m.period_id)))||(m.module_id!=null&&H.m.has(String(m.module_id)))||(m.subject_id!=null&&H.s.has(String(m.subject_id)))||(matInstId(m)!=null&&H.i.has(String(matInstId(m))))));
 }
 function matName(arr,id){const x=(arr||[]).find(y=>String(y.id)===String(id));return x?x.name:''}
 function matTrail(m){return [matName(window._institutions,matInstId(m)),matName(window._periods,m.period_id),matName(window._modules,m.module_id),matName(window._disciplines,m.discipline_id),matName(window._subjects,m.subject_id)].filter(Boolean)}
+function matsForQuestion(q0){
+  if(!q0||!window._matOk)return [];
+  const q=Object.assign({},(window._qById||{})[q0.id]||{},q0);
+  const vis=matVisible().filter(m=>isAdmin||m.is_published!==false);
+  if(q.subject_id!=null){const bySub=vis.filter(m=>String(m.subject_id)===String(q.subject_id));if(bySub.length)return bySub}
+  const nz=x=>(x==null?'':String(x));
+  return vis.filter(m=>m.subject_id==null&&nz(m.period_id)===nz(q.period_id)&&nz(m.module_id)===nz(q.module_id)&&nz(m.discipline_id)===nz(q.discipline_id)&&m.discipline_id!=null);
+}
+function matQuestionsOf(m){
+  const nz=x=>(x==null?'':String(x));
+  return (window._allQ||[]).filter(q=>m.subject_id!=null?String(q.subject_id)===String(m.subject_id):(nz(q.period_id)===nz(m.period_id)&&nz(q.module_id)===nz(m.module_id)&&nz(q.discipline_id)===nz(m.discipline_id)));
+}
 function matsForSubject(sid){
   if(sid==null||!window._matOk)return [];
   return matVisible().filter(m=>String(m.subject_id)===String(sid)&&(isAdmin||m.is_published!==false));
@@ -4274,11 +4321,18 @@ function matRenderReader(m){
   const pr=window._matProg[m.id]||{},kd=MAT_KIND[m.kind]||MAT_KIND.resumo;
   const sib=matVisible().filter(x=>String(x.module_id)===String(m.module_id)&&String(x.period_id)===String(m.period_id));
   const ix=sib.findIndex(x=>x.id===m.id),prev=ix>0?sib[ix-1]:null,next=ix>=0&&ix<sib.length-1?sib[ix+1]:null;
-  const qs=m.subject_id!=null?(window._allQ||[]).filter(q=>String(q.subject_id)===String(m.subject_id)):[];
+  const qs=matQuestionsOf(m);
   const lat=window._latest||{},done=qs.filter(q=>lat[q.id]!==undefined),okc=done.filter(q=>lat[q.id]===true).length;
-  const study=qs.length?`<section class="mat-study"><div><b>Fixe com questões</b><div class="muted">${plQ(qs.length)} deste assunto${done.length?' · você acertou '+Math.round(okc/done.length*100)+'% de '+done.length+' respondida(s)':''}</div></div><button class="primary" type="button" onclick="matStudy(${m.subject_id})">Fazer questões deste assunto →</button></section>`:'';
+  const study=qs.length?`<section class="mat-study"><div><b>Fixe com questões</b><div class="muted">${plQ(qs.length)} ${m.subject_id!=null?'deste assunto':'desta matéria neste módulo'}${done.length?' · você acertou '+Math.round(okc/done.length*100)+'% de '+done.length+' respondida(s)':''}</div></div><button class="primary" type="button" onclick="matStudyM(${m.id})">${m.subject_id!=null?'Fazer questões deste assunto →':'Fazer questões desta matéria →'}</button></section>`:'';
   v.innerHTML=`<div class="mat-reader"><div class="mat-bar"><button class="small-btn" type="button" onclick="matBack()">← Voltar aos materiais</button><div class="mat-actions"><button type="button" class="small-btn mat-tg${pr.fav?' on':''}" data-mat-fav="${m.id}" onclick="matToggleFav(${m.id})">${pr.fav?'★ Favorito':'☆ Favoritar'}</button><button type="button" class="small-btn mat-tg${pr.read?' on':''}" data-mat-read="${m.id}" onclick="matToggleRead(${m.id})"><span class="ic" data-i="check-circle"></span> ${pr.read?'Lido':'Marcar como lido'}</button>${m.kind==='pdf'?'':'<button type="button" class="small-btn" onclick="window.print()">Imprimir</button>'}</div></div>
   <article class="mat-article"><div class="mat-trail">${matTrail(m).map(escapeHtml).join(' › ')}</div><h1>${escapeHtml(m.title)}</h1><div class="mat-meta"><span class="badge blue">${kd[0]}</span>${m.kind==='pdf'?`<span class="badge">${fmtBytes(m.file_size)}</span>`:`<span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min de leitura</span>`}${m.is_free?'<span class="badge green">Amostra grátis</span>':''}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div>${m.kind==='pdf'?matPdfHtml(m,'r',false):matArticleHtml(m,'r')}${study}<section class="mat-note"><label for="matNote"><b>Minhas anotações</b> <span class="muted">(só você vê)</span></label><textarea id="matNote" rows="4" placeholder="Escreva aqui o que quiser lembrar..." onblur="matSaveNote(${m.id})">${escapeHtml(m.note||'')}</textarea></section><div class="mat-nav">${prev?`<button class="small-btn" type="button" onclick="openMaterial(${prev.id},'list')">← ${escapeHtml(prev.title.slice(0,40))}</button>`:'<span></span>'}${next?`<button class="primary" type="button" onclick="openMaterial(${next.id},'list')">${escapeHtml(next.title.slice(0,40))} →</button>`:'<span></span>'}</div></article></div>`;
+}
+function matStudyM(id){
+  const m=(window._mats||[]).find(x=>x.id===id);if(!m)return;
+  const ids=matQuestionsOf(m).map(q=>q.id);
+  if(!ids.length){toast('Ainda não há questões para este material.');return}
+  const lat=window._latest||{},first=Math.max(0,ids.findIndex(i=>lat[i]===undefined));
+  go('questions');openQuestion(ids[first],ids,'materials');
 }
 function matStudy(sid){
   const ids=(window._allQ||[]).filter(q=>String(q.subject_id)===String(sid)).map(q=>q.id);
@@ -4290,25 +4344,41 @@ function matStudy(sid){
 function paintMatCta(){
   const el=document.getElementById('matCta');if(!el)return;
   const q=solverQ;if(!q){el.innerHTML='';return}
-  const ms=matsForSubject(q.subject_id);
-  if(ms.length)el.innerHTML=`<button type="button" class="mat-cta-btn" onclick="openMatPanel(${Number(q.subject_id)},'question')"><span class="ic" data-i="books"></span> ${ms.some(x=>x.kind!=='pdf')?'Ler o resumo deste assunto':'Abrir o PDF deste assunto'}${ms.length>1?' ('+ms.length+')':''}</button>`;
-  else if(isAdmin&&q.subject_id!=null)el.innerHTML=`<button type="button" class="small-btn" onclick="admMatFromQuestion()">${textOn()?'+ Criar resumo deste assunto':'+ Enviar o PDF deste assunto'}</button>`;
+  const ms=matsForQuestion(q);
+  if(ms.length)el.innerHTML=`<button type="button" class="mat-cta-btn" onclick="openMatPanelQ(${Number(q.id)},'question')"><span class="ic" data-i="books"></span> ${ms.some(x=>x.kind!=='pdf')?'Ler o resumo deste assunto':'Abrir o PDF deste assunto'}${ms.length>1?' ('+ms.length+')':''}</button>`;
+  else if(isAdmin)el.innerHTML=`<button type="button" class="small-btn" onclick="admMatFromQuestion()">${textOn()?'+ Criar resumo deste assunto':'+ Enviar o PDF deste assunto'}</button>`;
   else el.innerHTML='';
+}
+function matBtnQ(qid,src){
+  if(qid==null||!window._matOk)return '';
+  const q=(window._qById||{})[qid];if(!q)return '';
+  const ms=matsForQuestion(q);
+  return ms.length?`<button class="small-btn" type="button" onclick="openMatPanelQ(${Number(qid)},'${src||'review'}')"><span class="ic" data-i="books"></span> ${ms.some(x=>x.kind!=='pdf')?'Resumo':'PDF'}</button>`:'';
 }
 function matBtnSmall(sid,src){
   if(sid==null||!window._matOk)return '';
   {const ms=matsForSubject(sid);return ms.length?`<button class="small-btn" type="button" onclick="openMatPanel(${Number(sid)},'${src||'review'}')"><span class="ic" data-i="books"></span> ${ms.some(x=>x.kind!=='pdf')?'Resumo':'PDF'}</button>`:''}
 }
+function openMatPanelQ(qid,src,startId){
+  const q=(window._qById||{})[qid]||(solverQ&&solverQ.id===qid?solverQ:null);
+  const ms=matsForQuestion(q?Object.assign({id:qid},q):{id:qid});
+  if(!ms.length){toast('Esta questão ainda não tem material.');return}
+  return _openMatPanelList(ms,src,startId,qid);
+}
 async function openMatPanel(sid,src,startId){
   const ms=matsForSubject(sid);
   if(!ms.length){toast('Este assunto ainda não tem resumo.');return}
+  return _openMatPanelList(ms,src,startId,null);
+}
+async function _openMatPanelList(ms,src,startId,qidArg){
+  const sid=null;
   closeMatPanel(true);
   const opener=document.activeElement;
   const o=document.createElement('div');o.id='matPanel';o.className='mat-panel';
   o.innerHTML=`<div class="mat-scrim" onclick="closeMatPanel()"></div><aside class="mat-sheet" role="dialog" aria-modal="true" aria-label="Resumo do assunto"><header class="mat-sheet-h"><div class="mat-sheet-t"><span class="mg-kicker">Material do assunto</span><b id="matPTitle">Carregando...</b></div><button type="button" class="mat-x" id="matPClose" onclick="closeMatPanel()" aria-label="Fechar"><span class="ic" data-i="x"></span></button></header><div class="mat-tabs" id="matPTabs"></div><div class="mat-pbody" id="matPBody"><div class="muted" style="padding:20px">Carregando...</div></div><footer class="mat-sheet-f" id="matPFoot"></footer></aside>`;
   document.body.appendChild(o);document.body.classList.add('mat-panel-open');
   try{history.pushState({mqPanel:1},'')}catch(e){}
-  window._matPanel={sid,src:src||'review',ids:ms.map(m=>m.id),cur:startId||ms[0].id,opener,qid:solverQ?solverQ.id:null};
+  window._matPanel={sid,src:src||'review',ids:ms.map(m=>m.id),cur:startId||ms[0].id,opener,qid:qidArg!=null?qidArg:(solverQ?solverQ.id:null)};
   const x=document.getElementById('matPClose');if(x)x.focus();
   await matPanelShow(window._matPanel.cur);
 }
@@ -4341,6 +4411,27 @@ window.addEventListener('popstate',()=>{if(window._matPanel)closeMatPanel(true)}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&window._matPanel&&!document.getElementById('lightbox'))closeMatPanel()});
 /* ===== administração dos materiais ===== */
 window._admMat={id:null,imgs:[]};window._admMatTab='text';window._admPdf={id:null,file:null,existing:null};
+/* ----- conferir classificação (administração > cadastros) ----- */
+const CLS_WHY={modulo_de_outro_periodo:'módulo de outro período',assunto_de_outro_modulo:'assunto de outro módulo',materia_diferente_do_assunto:'matéria diferente da do assunto',instituicao_diferente_do_periodo:'instituição diferente da do período'};
+async function admClsCheck(){
+  const box=document.getElementById('clsResult');if(!box)return;
+  box.innerHTML='<div class="muted">Verificando...</div>';
+  const r=await sb.rpc('admin_classification_report');
+  if(r.error){box.innerHTML=srvMissing(r.error)?'<div class="save-warn">Execute o <b>classification_migration.sql</b> no Supabase para usar esta verificação.</div>':'<div class="error-box">'+escapeHtml(r.error.message)+'</div>';return}
+  const d=r.data||{},q=d.questions||{bad:0,total:0,items:[]},m=d.materials||{bad:0,total:0,items:[]};
+  if(!q.bad&&!m.bad){box.innerHTML=`<div class="success-box">✅ Tudo certo: ${q.total} questão(ões) e ${m.total} material(is) com classificação coerente.</div>`;return}
+  const list=(items,kind)=>items.map(x=>`<div class="dash-wrow" style="grid-template-columns:1fr auto"><div><b>${kind==='q'?'Questão #'+x.id:escapeHtml(x.title||('Material #'+x.id))}</b><div class="muted" style="font-size:12.5px">${(x.reasons||[]).map(k=>CLS_WHY[k]||k).join(' · ')}</div></div><button class="small-btn" type="button" onclick="${kind==='q'?'editQuestion('+x.id+')':'goEditMaterial('+x.id+')'}">Abrir</button></div>`).join('');
+  box.innerHTML=`<div class="save-warn" style="margin-bottom:10px">${q.bad} questão(ões) e ${m.bad} material(is) com problema (de ${q.total} e ${m.total}).</div>${q.bad?`<div class="dash-wrong">${list(q.items,'q')}</div>`:''}${m.bad?`<div class="dash-wrong" style="margin-top:8px">${list(m.items,'m')}</div>`:''}<div style="margin-top:12px"><button class="primary" type="button" onclick="admClsFix()">Corrigir automaticamente</button><div class="muted" style="font-size:12.5px;margin-top:6px">A correção segue a regra: o assunto define o módulo e a matéria; o módulo define o período; o período define a instituição.</div></div>`;
+}
+async function admClsFix(){
+  if(!confirm('Corrigir automaticamente a classificação das questões e materiais listados?\n\nO assunto define o módulo e a matéria, o módulo define o período e o período define a instituição. Isso pode mudar onde estas questões aparecem para os alunos.'))return;
+  const r=await sb.rpc('admin_fix_classification');
+  if(r.error){alert('Erro: '+r.error.message);return}
+  const d=r.data||{};matInvalidate();await loadAdminAll();
+  toast('✅ Corrigidos: '+(d.questions||0)+' questão(ões) e '+(d.materials||0)+' material(is).');
+  admClsCheck();
+}
+function goEditMaterial(id){const btn=document.querySelector('.admin-tab[data-pane="adminMatPane"]');if(btn)adminTab('adminMatPane',btn);setTimeout(()=>admMatEdit(id),80)}
 async function admMatTextToggle(on){
   if(on&&!confirm('Ligar os resumos escritos no site? Os alunos passam a ver as abas Resumos e PDFs.'))return;
   if(!on&&!confirm('Desligar os resumos escritos? A aba Materiais passa a mostrar só PDFs. Nada é apagado.'))return;
@@ -4375,16 +4466,6 @@ async function admMatDelete(id){
   matInvalidate();await loadAdminMaterials();toast('Material excluído.');
 }
 function mOpts(list,cur,label){return `<option value="">${label}</option>`+list.map(x=>`<option value="${x.id}"${String(x.id)===String(cur)?' selected':''}>${escapeHtml(x.name)}</option>`).join('')}
-function mCascade(changed){
-  const g=id=>document.getElementById(id);
-  const v={inst:g('mInst').value,per:g('mPeriod').value,mod:g('mModule').value,dis:g('mDiscipline').value,sub:g('mSubject').value};
-  if(changed==='sub'&&v.sub){const sj=(window._subjects||[]).find(x=>String(x.id)===v.sub);if(sj){if(sj.module_id!=null)v.mod=String(sj.module_id);if(sj.discipline_id!=null)v.dis=String(sj.discipline_id);const md=(window._modules||[]).find(x=>String(x.id)===v.mod);if(md)v.per=String(md.period_id)}}
-  const pers=qfPeriodsFor(v.inst?[v.inst]:[]);if(v.per&&!pers.some(p=>String(p.id)===v.per))v.per='';
-  const mods=v.per?(window._modules||[]).filter(m=>String(m.period_id)===v.per):[];if(v.mod&&!mods.some(m=>String(m.id)===v.mod))v.mod='';
-  const subs=(window._subjects||[]).filter(x=>(!v.mod||String(x.module_id)===v.mod)&&(!v.dis||String(x.discipline_id)===v.dis));if(v.sub&&!subs.some(x=>String(x.id)===v.sub))v.sub='';
-  g('mPeriod').innerHTML=mOpts(pers,v.per,'Período...');g('mModule').innerHTML=mOpts(mods,v.mod,'Módulo (opcional)');
-  g('mDiscipline').innerHTML=mOpts(window._disciplines||[],v.dis,'Matéria (opcional)');g('mSubject').innerHTML=mOpts(subs,v.sub,'Assunto (liga o material às questões)');
-}
 function admMatNew(pre){window._admMat={id:null,imgs:[]};admMatRenderEditor(null,pre||{})}
 async function admMatEdit(id){
   const r=await sb.from('materials').select('*').eq('id',id).maybeSingle();
@@ -4418,10 +4499,7 @@ function admMatRenderEditor(m,pre){
   <label class="check-row"><input id="mPub" type="checkbox" ${v.is_published?'checked':''}> <span>Publicar para os alunos</span></label>
   <label class="check-row"><input id="mFree" type="checkbox" ${v.is_free?'checked':''}> <span>Amostra grátis (abre mesmo sem assinatura)</span></label>
   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><button class="primary" type="button" onclick="admMatSave()">Salvar material</button><button class="small-btn" type="button" onclick="loadAdminMaterials()">Cancelar</button></div><div id="mStatus" class="status"></div></div>`;
-  mCascade('init');
-  const g=x=>document.getElementById(x);
-  // aplica a seleção salva (os selects acabaram de ser criados)
-  g('mPeriod').value=String(sel.per||'');mCascade('per');g('mModule').value=String(sel.mod||'');mCascade('mod');g('mDiscipline').value=String(sel.dis||'');mCascade('dis');g('mSubject').value=String(sel.sub||'');
+  clsPopulate('m',{inst:sel.inst,per:sel.per,mod:sel.mod,dis:sel.dis,sub:sel.sub});
   admMatImgList();admMatPreview();
 }
 function admMatImgMap(){const mp={};(window._admMat.imgs||[]).forEach(x=>{if(x.url)mp[x.id]={url:x.url,alt:x.alt,caption:x.caption}});return mp}
@@ -4479,10 +4557,10 @@ async function admMatSave(){
   const g=id=>document.getElementById(id);
   const title=g('mTitle').value.trim(),per=g('mPeriod').value;
   if(!title){status('mStatus','Digite o título.');return}
-  if(!per){status('mStatus','Escolha o período.');return}
+  {const cv=clsGet('m');clsNormalize(cv,'init');const bad=clsCheck(cv,true);if(bad){status('mStatus',bad);return}}
   const body=g('mBody').value,minimum=g('mMin').value.trim()||null,sources=g('mSrc').value.trim()||null;
   const words=(body+' '+(minimum||'')).trim().split(/\s+/).filter(Boolean).length;
-  const payload={title,kind:g('mKind').value,institution_id:g('mInst').value?Number(g('mInst').value):((window._pInst||{})[per]||null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum,body,sources,read_minutes:Math.max(1,Math.min(600,Math.ceil(words/200))),is_published:g('mPub').checked,is_free:g('mFree').checked};
+  const payload={title,kind:g('mKind').value,institution_id:(window._pInst||{})[per]!=null?window._pInst[per]:(g('mInst').value?Number(g('mInst').value):null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum,body,sources,read_minutes:Math.max(1,Math.min(600,Math.ceil(words/200))),is_published:g('mPub').checked,is_free:g('mFree').checked};
   const id=window._admMat.id;let r;
   if(id)r=await sb.from('materials').update(payload).eq('id',id).select('id');
   else r=await sb.from('materials').insert({...payload,created_by:currentUser.id}).select('id');
@@ -4512,9 +4590,7 @@ function admPdfRenderEditor(m,pre){
   <label class="check-row"><input id="mPub" type="checkbox" ${v.is_published?'checked':''}> <span>Publicar para os alunos</span></label>
   <label class="check-row"><input id="mFree" type="checkbox" ${v.is_free?'checked':''}> <span>Amostra grátis (abre mesmo sem assinatura)</span></label>
   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><button class="primary" id="pdfSaveBtn" type="button" onclick="admPdfSave()">${id?'Salvar alterações':'Enviar e salvar'}</button><button class="small-btn" type="button" onclick="admMatSetTab('pdf')">Cancelar</button></div><div id="mStatus" class="status"></div></div>`;
-  mCascade('init');
-  const g=x=>document.getElementById(x);
-  g('mPeriod').value=String(sel.per||'');mCascade('per');g('mModule').value=String(sel.mod||'');mCascade('mod');g('mDiscipline').value=String(sel.dis||'');mCascade('dis');g('mSubject').value=String(sel.sub||'');
+  clsPopulate('m',{inst:sel.inst,per:sel.per,mod:sel.mod,dis:sel.dis,sub:sel.sub});
   admPdfPicked();admPdfMinHint();
 }
 function admPdfMinHint(){
@@ -4545,7 +4621,7 @@ async function admPdfSave(){
   const g=x=>document.getElementById(x),P=window._admPdf;
   const title=g('mTitle').value.trim(),per=g('mPeriod').value;
   if(!title){status('mStatus','Digite o título.');return}
-  if(!per){status('mStatus','Escolha o período.');return}
+  {const cv=clsGet('m');clsNormalize(cv,'init');const bad=clsCheck(cv,true);if(bad){status('mStatus',bad);return}}
   if(!P.id&&!P.file){status('mStatus','Escolha o arquivo PDF.');return}
   const btn=g('pdfSaveBtn');btn.disabled=true;
   let path=null;
@@ -4555,7 +4631,7 @@ async function admPdfSave(){
     const up=await sb.storage.from('material-files').upload(path,P.file,{contentType:'application/pdf',upsert:false});
     if(up.error){btn.disabled=false;status('mStatus','Erro no envio: '+escapeHtml(up.error.message));return}
   }
-  const payload={title,kind:'pdf',institution_id:g('mInst').value?Number(g('mInst').value):((window._pInst||{})[per]||null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum:g('mMin').value.trim()||null,body:'',sources:g('mSrc').value.trim()||null,read_minutes:1,is_published:g('mPub').checked,is_free:g('mFree').checked};
+  const payload={title,kind:'pdf',institution_id:(window._pInst||{})[per]!=null?window._pInst[per]:(g('mInst').value?Number(g('mInst').value):null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum:g('mMin').value.trim()||null,body:'',sources:g('mSrc').value.trim()||null,read_minutes:1,is_published:g('mPub').checked,is_free:g('mFree').checked};
   if(P.file){payload.file_path=path;payload.file_name=P.file.name.slice(0,255);payload.file_size=P.file.size}
   let r;
   if(P.id)r=await sb.from('materials').update(payload).eq('id',P.id).select('id');
@@ -4568,9 +4644,10 @@ async function admPdfSave(){
 }
 function admMatFromQuestion(){
   const q=solverQ;if(!q)return;
-  const sj=(window._subjects||[]).find(x=>String(x.id)===String(q.subject_id));
+  const sj=q.subject_id!=null?(window._subjects||[]).find(x=>String(x.id)===String(q.subject_id)):null;
   const md=sj&&sj.module_id!=null?(window._modules||[]).find(x=>String(x.id)===String(sj.module_id)):null;
-  const pre={period:(md&&md.period_id)||q.period_id||'',module:(sj&&sj.module_id)||q.module_id||'',discipline:(sj&&sj.discipline_id)||q.discipline_id||'',subject:q.subject_id||''};
+  const qq=Object.assign({},(window._qById||{})[q.id]||{},q);
+  const pre={period:(md&&md.period_id)||qq.period_id||'',module:(sj&&sj.module_id)||qq.module_id||'',discipline:(sj&&sj.discipline_id)||qq.discipline_id||'',subject:qq.subject_id||''};
   closeSolver(true);go('admin');
   const btn=document.querySelector('.admin-tab[data-pane="adminMatPane"]');if(btn)adminTab('adminMatPane',btn);
   setTimeout(()=>{if(textOn())admMatNew(pre);else{window._admMatTab='pdf';admPdfNew(pre)}},60);
