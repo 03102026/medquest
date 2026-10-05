@@ -1035,6 +1035,92 @@ body.dark .dash-wrow.alert{background:#2d1a1d;border-color:#5b2a2e}
 .home-row .mission{flex-wrap:wrap}
 .home-row .weakness-card .weakness-copy h3{font-size:17px;margin:0 0 4px}
 .home-row .weakness-card .weakness-copy p{margin:0;font-size:13.5px}
+
+/* v43 — Materiais */
+#matView{max-width:980px;margin-left:auto;margin-right:auto}
+#matView .mg-hero{flex-direction:column;justify-content:center;text-align:center;gap:10px}
+#matView .mg-hero .mg-ico{margin:0 auto}
+#matView .mg-hero-text p{margin-left:auto;margin-right:auto}
+.mat-filters{display:grid;gap:12px;margin:14px 0 4px;padding:16px;border:1px solid var(--border);border-radius:20px;background:var(--surface)}
+.mat-search{display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:14px;padding:0 14px;background:var(--surface)}
+.mat-search input{border:0;outline:0;background:transparent;color:var(--text);padding:12px 0;font-size:15px;flex:1;min-width:0}
+.mat-group{margin:20px 4px 8px;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.mat-card{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 18px;border:1px solid var(--border);border-radius:18px;background:var(--surface);margin-top:10px;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.mat-card:hover,.mat-card:focus{transform:translateY(-1px);border-color:#9fd6d0;outline:none}
+.mat-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(32,181,162,.14);color:var(--primary)}
+.mat-ico .ic{width:24px;height:24px}
+.mat-info h3{margin:2px 0 6px;font-size:17px;letter-spacing:-.02em}
+.mat-trail{font-size:12px;color:var(--muted);font-weight:700}
+.mat-meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.mat-go{pointer-events:none}
+.mat-reader{max-width:820px;margin:0 auto}
+.mat-bar{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.mat-actions{display:flex;gap:8px;flex-wrap:wrap}
+.mat-tg.on{background:#fff7e7;border-color:#f3dfb1;color:#8a5a00}
+[data-mat-read].on{background:#eaf8f0;border-color:#cdebd9;color:#0f6b43}
+.mat-article{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:28px 30px;box-shadow:var(--shadow)}
+.mat-article h1{margin:6px 0 10px;font-size:30px;letter-spacing:-.04em;line-height:1.15}
+.mat-compact{border:0;box-shadow:none;padding:6px 4px;background:transparent}
+.mat-min{margin:18px 0;padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(32,181,162,.14),rgba(11,110,142,.08));border:1px solid #b7e0dc}
+.mat-min-h{display:flex;align-items:center;gap:8px;font-weight:900;color:#0b6e8e;margin-bottom:6px;text-transform:uppercase;font-size:12.5px;letter-spacing:.06em}
+.mat-toc{margin:16px 0;padding:14px 16px;border:1px solid var(--border);border-radius:14px;display:grid;gap:6px;font-size:14px}
+.mat-toc a{color:var(--text);text-decoration:none}.mat-toc a.sub{padding-left:14px;color:var(--muted)}.mat-toc a:hover{color:var(--primary)}
+.mat-body{line-height:1.75;font-size:16px}
+.mat-body h2{margin:26px 0 8px;font-size:23px;letter-spacing:-.03em}.mat-body h3{margin:20px 0 6px;font-size:19px}.mat-body h4{margin:16px 0 4px}
+.mat-body p{margin:0 0 12px}.mat-body ul,.mat-body ol{margin:0 0 14px;padding-left:24px}.mat-body li{margin:4px 0}
+.mat-body blockquote{margin:12px 0;padding:6px 16px;border-left:4px solid #20b5a2;background:rgba(32,181,162,.08);border-radius:0 12px 12px 0}
+.mat-body hr{border:0;border-top:1px solid var(--border);margin:20px 0}
+.mat-body a{color:var(--primary);font-weight:700}
+.md-tablewrap{overflow-x:auto;margin:12px 0}
+.md-tablewrap table{border-collapse:collapse;width:100%;font-size:14.5px}
+.md-tablewrap th,.md-tablewrap td{border:1px solid var(--border);padding:8px 12px;text-align:left;vertical-align:top}
+.md-tablewrap th{background:rgba(11,110,142,.08)}
+.md-call{margin:14px 0;padding:12px 16px;border-radius:14px;border:1px solid;border-left-width:5px}
+.md-call .md-call-h{font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:.06em;margin-bottom:4px}
+.md-call p:last-child{margin-bottom:0}
+.md-tip{background:#eaf8f0;border-color:#a8dcc0;color:#14522f}.md-warn{background:#fff7e7;border-color:#f0d58c;color:#6b4a00}.md-imp{background:#fff1f1;border-color:#f0b5b5;color:#7a1f1f}.md-ex{background:#eef6ff;border-color:#b6d3f2;color:#16406b}
+body.dark .md-tip{background:#12312a;color:#9fe6c3}body.dark .md-warn{background:#3a2f19;color:#f3cf7a}body.dark .md-imp{background:#3a1c20;color:#ffb3ae}body.dark .md-ex{background:#14283d;color:#a9cdf0}
+.md-missing{padding:14px;border:1px dashed var(--border);border-radius:12px;color:var(--muted);text-align:center;margin:12px 0}
+.mat-src{margin-top:22px;padding-top:14px;border-top:1px solid var(--border);font-size:14px;color:var(--muted)}
+.mat-study{display:flex;gap:14px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:24px 0 14px;padding:16px 18px;border-radius:16px;background:rgba(11,110,142,.08);border:1px solid #b9d8e4}
+.mat-note textarea{width:100%;margin-top:6px;border:1px solid var(--border);border-radius:12px;padding:12px;background:var(--surface);color:var(--text);font:inherit;resize:vertical}
+.mat-nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px;flex-wrap:wrap}
+.mat-cta{margin-top:12px}
+.mat-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 18px;border-radius:14px;border:1.5px solid #20b5a2;background:rgba(32,181,162,.12);color:#0b6e8e;font-weight:850;font-size:15px}
+.mat-cta-btn:hover{background:rgba(32,181,162,.2)}
+body.dark .mat-cta-btn{color:#7fe0d0}
+.mat-rowbtns{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mat-panel{position:fixed;inset:0;z-index:350}
+.mat-scrim{position:absolute;inset:0;background:rgba(5,15,22,.5);animation:matfade .2s}
+.mat-sheet{position:absolute;top:0;right:0;bottom:0;width:min(600px,100vw);background:var(--surface);color:var(--text);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.3);animation:matslide .26s cubic-bezier(.2,.8,.2,1)}
+.mat-sheet-h{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 20px 10px;border-bottom:1px solid var(--border)}
+.mat-sheet-t{display:grid;gap:4px}.mat-sheet-t b{font-size:19px;letter-spacing:-.03em;line-height:1.2}
+.mat-x{width:40px;height:40px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--muted);display:grid;place-items:center;flex:none}
+.mat-tabs{display:flex;gap:6px;padding:8px 20px 0;overflow-x:auto}
+.mat-tabs:empty{display:none}
+.mat-tabs button{border:1px solid var(--border);background:var(--surface);color:var(--muted);border-radius:999px;padding:7px 14px;font-weight:800;white-space:nowrap}
+.mat-tabs button.on{background:linear-gradient(120deg,#0b6e8e,#20b5a2);color:#fff;border-color:transparent}
+.mat-pbody{flex:1;overflow:auto;padding:12px 20px 24px}
+.mat-sheet-f{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 20px;border-top:1px solid var(--border);background:var(--surface)}
+.mat-sheet-f .grow{flex:1}
+body.mat-panel-open{overflow:hidden}
+@keyframes matslide{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes matfade{from{opacity:0}to{opacity:1}}
+.adm-mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.adm-mgrid label{display:grid;gap:5px;font-weight:800;font-size:12.5px}
+.adm-mgrid select,#adminMat input[type=text],#adminMat input:not([type]),#adminMat textarea,#adminMat select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);font:inherit}
+#adminMat label{display:grid;gap:6px;font-weight:800;margin-top:12px;font-size:13.5px}
+.mat-tools{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 8px}
+.mat-edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.mat-preview{border:1px solid var(--border);border-radius:14px;padding:14px 16px;min-height:200px;max-height:520px;overflow:auto}
+@media(max-width:900px){.adm-mgrid{grid-template-columns:1fr 1fr}.mat-edit-grid{grid-template-columns:1fr}.mat-card{grid-template-columns:auto 1fr}.mat-go{display:none}.mat-article{padding:20px 18px}.mat-article h1{font-size:25px}}
+@media(max-width:700px){.mat-sheet{top:5vh;left:0;right:0;bottom:0;width:auto;border-radius:24px 24px 0 0;animation:matup .28s cubic-bezier(.2,.8,.2,1)}@keyframes matup{from{transform:translateY(60px);opacity:0}to{transform:none;opacity:1}}}
+@media print{.sidebar,.topbar,.mobile-sidebar-toggle,.mat-bar,.mat-study,.mat-note,.mat-nav,.mat-panel,.sub-ban,#toastBox{display:none!important}.main{margin:0!important;padding:0!important}.mat-article{border:0;box-shadow:none;padding:0}.page:not(.active){display:none!important}body{background:#fff!important;color:#000!important}.mat-body a::after{content:" (" attr(href) ")";font-size:11px;color:#555}}
+@media(prefers-reduced-motion:reduce){.mat-sheet,.mat-scrim{animation:none}}
+
+.mat-sheet-t .mg-kicker{width:fit-content}
+.mat-min>*:last-child{margin-bottom:0!important}
+@media(max-width:700px){.mat-sheet-f{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px 14px}.mat-sheet-f .grow{display:none}.mat-sheet-f .primary{grid-column:1/-1;padding:13px}.mat-sheet-f .small-btn{padding:9px 6px;font-size:12.5px;line-height:1.2}.mat-pbody{padding:10px 16px 18px}}
 </style>
 <script src="supabase.js"></script>
 <script>window.supabase||document.write('<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"><\/script>')</script>
@@ -1202,6 +1288,7 @@ window.MEDQUEST_CONFIG={
     <nav class="nav">
       <button class="nav-btn active nav-home" data-page="home" onclick="go('home')"><span class="nav-ico"><span class="ic" data-i="home"></span></span><span>Início</span></button>
       <button class="nav-btn nav-questions" data-page="questions" onclick="go('questions')"><span class="nav-ico"><span class="ic" data-i="doc"></span></span><span>Questões</span></button>
+      <button class="nav-btn nav-materials" data-page="materials" onclick="go('materials')"><span class="nav-ico"><span class="ic" data-i="books"></span></span><span>Materiais</span></button>
       <button class="nav-btn nav-sim" data-page="simulados" onclick="go('simulados')"><span class="nav-ico"><span class="ic" data-i="target"></span></span><span>Simulados</span></button>
       <button class="nav-btn nav-errors" data-page="errors" onclick="go('errors')"><span class="nav-ico"><span class="ic" data-i="alert-circle"></span></span><span>Caderno de erros</span></button>
       <button class="nav-btn nav-performance" data-page="performance" onclick="go('performance')"><span class="nav-ico"><span class="ic" data-i="bar-chart"></span></span><span>Desempenho</span></button>
@@ -1284,6 +1371,7 @@ window.MEDQUEST_CONFIG={
       <div id="solverView" class="hidden"></div>
     </section>
 
+    <section id="materials" class="page"><div id="matView"></div></section>
     <section id="simulados" class="page"><div id="simView"></div>
     </section>
     <section id="errors" class="page"><div class="card"><h2>🧠 Caderno de erros</h2><p class="muted">Questões em que a sua última resposta foi errada. Acerte-as de novo para saírem do caderno.</p><div id="missionBanner"></div><div id="errorList" class="empty" style="margin-top:15px">Ainda não há tentativas registradas.</div></div></section>
@@ -1299,6 +1387,7 @@ window.MEDQUEST_CONFIG={
       </div>
       <div class="admin-tabs" style="margin-top:20px">
         <button class="admin-tab active" data-pane="adminDashPane" onclick="adminTab('adminDashPane',this)">📊 Visão geral</button>
+        <button class="admin-tab" data-pane="adminMatPane" onclick="adminTab('adminMatPane',this)">📚 Materiais</button>
         <button class="admin-tab" data-pane="adminQuestionsPane" onclick="adminTab('adminQuestionsPane',this)">📝 Questões</button>
         <button class="admin-tab" data-pane="adminNewPane" onclick="adminTab('adminNewPane',this)">➕ Nova questão</button>
         <button class="admin-tab" data-pane="adminCatalogPane" onclick="adminTab('adminCatalogPane',this)">🗂️ Cadastros</button>
@@ -1306,6 +1395,8 @@ window.MEDQUEST_CONFIG={
       </div>
 
       <div id="adminDashPane" class="admin-pane active"><div id="adminDash"><div class="muted">Carregando...</div></div></div>
+
+      <div id="adminMatPane" class="admin-pane"><div id="adminMat"><div class="muted">Carregando...</div></div></div>
 
       <div id="adminQuestionsPane" class="admin-pane">
         <div class="card"><div class="card-head"><h2>Questões cadastradas</h2><button class="link-btn" onclick="loadAdminQuestions()">↻ Atualizar</button></div><div id="adminQuestionList" class="admin-list"><div class="empty">Carregando...</div></div></div>
@@ -1375,7 +1466,7 @@ const supabaseReady=!!(cfg.SUPABASE_URL&&String(cfg.SUPABASE_URL).startsWith('ht
 const libOk=!!(window.supabase&&window.supabase.createClient);
 const sb=(supabaseReady&&libOk)?window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
 function sbProblem(){return !libOk?'Não foi possível carregar a biblioteca do Supabase. Verifique sua internet ou desative bloqueadores de anúncios para este site.':'A configuração do Supabase está incompleta. Confira o endereço e a chave no começo do index.html.'}
-const labels={home:['Olá! 👋','Continue de onde parou.'],questions:['Questões','Escolha a instituição e afunile o que vai estudar.'],simulados:['Simulados','Treine com tempo e veja o resultado só no final.'],errors:['Caderno de erros','Revise as questões que você errou.'],performance:['Desempenho','Acompanhe sua evolução nos estudos.'],admin:['Administração','Gerencie o conteúdo do MedQuest.'],profile:['Perfil','Gerencie seus dados.']};
+const labels={home:['Olá! 👋','Continue de onde parou.'],questions:['Questões','Escolha a instituição e afunile o que vai estudar.'],materials:['Materiais','Resumos e conteúdos para estudar.'],simulados:['Simulados','Treine com tempo e veja o resultado só no final.'],errors:['Caderno de erros','Revise as questões que você errou.'],performance:['Desempenho','Acompanhe sua evolução nos estudos.'],admin:['Administração','Gerencie o conteúdo do MedQuest.'],profile:['Perfil','Gerencie seus dados.']};
 let currentUser=null,isAdmin=false;
 function status(id,msg,type='error'){const e=document.getElementById(id);if(!e)return;e.innerHTML=msg;e.className=(type==='ok'?'success-box':'error-box')}
 function togglePassword(){const p=document.getElementById('password');p.type=p.type==='password'?'text':'password'}
@@ -1415,7 +1506,7 @@ async function signUp(){
 }
 async function resetPassword(){if(!sb){status('loginStatus',sbProblem());return}const email=document.getElementById('email').value.trim();if(!email){status('loginStatus','Digite seu e-mail antes de recuperar a senha.');return}const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.href.split('#')[0]});if(error){status('loginStatus',error.message);return}status('loginStatus','Enviamos as instruções de recuperação para o seu e-mail.','ok')}
 function clearLocalUserData(uid){try{Object.keys(localStorage).forEach(k=>{if(k.indexOf('mq_')===0&&uid&&k.endsWith(uid))localStorage.removeItem(k)});Object.keys(sessionStorage).forEach(k=>{if(k.indexOf('mq_cat_')===0)sessionStorage.removeItem(k)})}catch(e){}}
-async function signOut(){const uid=currentUser?currentUser.id:'';if(sb)await sb.auth.signOut();clearLocalUserData(uid);window._allQ=null;window._attRows=null;window._catAt=0;window._sim=null;window._stmt={};currentUser=null;isAdmin=false;document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden')}
+async function signOut(){const uid=currentUser?currentUser.id:'';if(sb)await sb.auth.signOut();clearLocalUserData(uid);window._allQ=null;window._attRows=null;window._catAt=0;window._sim=null;window._stmt={};window._mats=[];window._matOk=null;window._matProg={};window._matBody={};currentUser=null;isAdmin=false;document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden')}
 let _bootP=null;
 function bootstrap(){if(_bootP)return _bootP;_bootP=_bootstrap().finally(()=>{_bootP=null});return _bootP}
 async function _bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(!session)return;currentUser=session.user;document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');await loadProfile();await loadAttempts();go('home')}
@@ -1447,6 +1538,7 @@ async function loadProfile(){
   document.getElementById('adminNav').style.display=isAdmin?'flex':'none';
   await loadSubscription();
   await loadAccess();
+  loadMaterialsCatalog();
   if(typeof simLoadHist==='function')await simLoadHist();
   if(isAdmin)await loadAdminAll();
 }
@@ -1547,7 +1639,7 @@ async function showSolver(id){
   view.classList.remove('hidden');
   view.innerHTML='<div class="empty"><strong>Carregando questão...</strong></div>';
   window.scrollTo({top:0,behavior:'smooth'});
-  const base='id,statement,option_a,option_b,option_c,option_d,option_e,difficulty,disciplines(name),subjects(name),periods(name)';
+  const base='id,statement,option_a,option_b,option_c,option_d,option_e,difficulty,subject_id,discipline_id,disciplines(name),subjects(name),periods(name)';
   const ext=window._v3ok?',qtype,institution_id,period_id,year'+(window._modulesOk?',module_id':''):'';
   let r=await sb.from('questions').select(base+ext+',is_free').eq('id',id).maybeSingle();
   if(r.error)r=await sb.from('questions').select(base+ext).eq('id',id).maybeSingle();
@@ -1648,8 +1740,8 @@ async function confirmAnswer(){
   document.querySelectorAll('#optList .opt').forEach(b=>{const L=b.id.slice(3);b.classList.remove('selected');if(L===correct)b.classList.add('correct');else if(L===picked)b.classList.add('wrong')});
   const exp=(res.explanation||'').trim();
   const cutCorrect=(solverCuts[q.id]||{})[correct];
-  document.getElementById('solverFeedback').innerHTML=`<div class="feedback ${ok?'ok':'bad'}">${feedbackText(ok,correct)}${xpChip(q.id,ok)}</div>${cutCorrect?'<div class="cut-note">✂️ Você tinha cortado a alternativa correta ('+escapeHtml(correct)+'). Vale revisar por que ela parecia errada.</div>':''}<div class="explain"><b>💡 Explicação</b>${exp?escapeHtml(exp):'Esta questão ainda não tem explicação cadastrada.'}<div id="qImgsExplanation" class="q-imgs"></div></div>`;
-  gameFx(ok);paintSolverImages();
+  document.getElementById('solverFeedback').innerHTML=`<div class="feedback ${ok?'ok':'bad'}">${feedbackText(ok,correct)}${xpChip(q.id,ok)}</div>${cutCorrect?'<div class="cut-note">✂️ Você tinha cortado a alternativa correta ('+escapeHtml(correct)+'). Vale revisar por que ela parecia errada.</div>':''}<div class="explain"><b>💡 Explicação</b>${exp?escapeHtml(exp):'Esta questão ainda não tem explicação cadastrada.'}<div id="qImgsExplanation" class="q-imgs"></div></div><div id="matCta" class="mat-cta"></div>`;
+  gameFx(ok);paintSolverImages();paintMatCta();
   const nb=document.getElementById('nextBtn');if(nb&&!nb.disabled){nb.className='primary'}
   btn.textContent='Resposta registrada ✓';
   attemptsAdd([{question_id:q.id,is_correct:ok}]);loadHistory();
@@ -1673,6 +1765,7 @@ async function revealDiscursive(){
   const ta=document.getElementById('solverAnswer');if(ta)ta.readOnly=true;
   document.getElementById('solverFeedback').innerHTML=`<div class="explain" style="margin-top:16px"><b>✅ Resposta esperada</b>${exp2?escapeHtml(exp2):'Esta questão ainda não tem resposta esperada cadastrada.'}</div>${exp?`<div class="explain"><b>💡 Comentário</b>${escapeHtml(exp)}<div id="qImgsExplanation" class="q-imgs"></div></div>`:'<div id="qImgsExplanation" class="q-imgs"></div>'}<div class="muted" style="margin-top:14px;font-weight:700">Comparando com a sua resposta, como você se saiu?</div><div class="disc-actions" id="selfGrade"><button type="button" class="primary" onclick="selfGrade(true)">✅ Acertei</button><button type="button" class="small-btn" onclick="selfGrade(false)">❌ Errei</button></div>`;
   paintSolverImages();
+  document.getElementById('solverFeedback').insertAdjacentHTML('beforeend','<div id="matCta" class="mat-cta"></div>');paintMatCta();
 }
 async function selfGrade(ok){
   const box=document.getElementById('selfGrade');if(!box||box.dataset.done)return;
@@ -1718,6 +1811,7 @@ function closeSolver(noNav){
   v.classList.add('hidden');v.innerHTML='';
   if(noNav)return;
   if(solverFrom==='errors'){go('errors');return}
+  if(solverFrom==='materials'){go('materials');return}
   if(solverFrom==='grade'||solverFrom==='questions'){go('questions');return}
   document.getElementById('questionsToolbar').classList.remove('hidden');
   document.getElementById('questionList').classList.remove('hidden');
@@ -1957,7 +2051,9 @@ async function fetchAllQ(cols){
   return {data:all};
 }
 /* Baixa só o necessário (sem enunciados) e guarda por 10 minutos. force=true refaz tudo. */
-async function ensureAllQ(force){
+let _catP=null;
+function ensureAllQ(force){if(_catP&&!force)return _catP;const p=_ensureAllQ(force).finally(()=>{if(_catP===p)_catP=null});_catP=p;return p}
+async function _ensureAllQ(force){
   if(!sb)return;
   const fresh=window._allQ&&window._catAt&&(Date.now()-window._catAt<CAT_TTL);
   if(!force&&fresh)return;
@@ -2557,7 +2653,7 @@ function renderAttempts(){
   if(wrongRows.length){
     eb.className='question-list';eb.style.marginTop='15px';
     window._errLimit=window._errLimit||40;
-    eb.innerHTML=wrongRows.slice(0,window._errLimit).map((r,wi)=>{const q=r.questions||{};const sv=(window._stmt||{})[r.question_id];const st=sv===undefined?'Carregando enunciado...':sv;return `<div class="card question-row qcard"><div class="q-num">${wi+1}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Disciplina')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge red">✗ Errou</span></div><p>${escapeHtml(st.slice(0,200))}${st.length>200?'...':''}</p></div><button class="primary" onclick="reviewError(${r.question_id})">Refazer →</button></div>`}).join('')+(wrongRows.length>window._errLimit?`<div style="text-align:center;margin:14px 0"><button class="small-btn" type="button" onclick="window._errLimit+=40;renderAttempts()">Mostrar mais (${wrongRows.length-window._errLimit})</button></div>`:'');
+    eb.innerHTML=wrongRows.slice(0,window._errLimit).map((r,wi)=>{const q=r.questions||{};const sv=(window._stmt||{})[r.question_id];const st=sv===undefined?'Carregando enunciado...':sv;return `<div class="card question-row qcard"><div class="q-num">${wi+1}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Disciplina')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge red">✗ Errou</span></div><p>${escapeHtml(st.slice(0,200))}${st.length>200?'...':''}</p></div><div class="mat-rowbtns">${matBtnSmall(q.subject_id,'review')}<button class="primary" onclick="reviewError(${r.question_id})">Refazer →</button></div></div>`}).join('')+(wrongRows.length>window._errLimit?`<div style="text-align:center;margin:14px 0"><button class="small-btn" type="button" onclick="window._errLimit+=40;renderAttempts()">Mostrar mais (${wrongRows.length-window._errLimit})</button></div>`:'');
   }else{
     eb.className='empty';eb.style.marginTop='15px';
     eb.innerHTML=total?'<strong>🎉 Nenhum erro pendente.</strong><span>Quando você errar uma questão, ela aparece aqui para revisão.</span>':'Ainda não há tentativas registradas.';
@@ -2616,10 +2712,10 @@ function renderAttempts(){
 }
 
 async function saveProfile(){if(!sb||!currentUser)return;const name=document.getElementById('profileName').value.trim()||'Aluno';const {error}=await sb.from('profiles').update({full_name:name}).eq('id',currentUser.id);if(error){status('profileStatus',error.message);return}await loadProfile();status('profileStatus','Perfil atualizado.','ok')}
-function go(id){document.body.classList.remove('mobile-sidebar-open');if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);if(id==='questions'&&typeof showGrade==='function')showGrade();if(typeof simPersist==='function')simPersist();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='simulados'&&typeof renderSim==='function')renderSim();if(id==='admin'&&isAdmin){const dp=document.getElementById('adminDashPane');if(dp&&dp.classList.contains('active'))loadAdminDash()}const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?'Olá, Doc! 👋':l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();if(id==='profile'&&typeof fillProfilePrefs==='function')fillProfilePrefs();window.scrollTo({top:0,behavior:'smooth'})}
+function go(id){document.body.classList.remove('mobile-sidebar-open');if(id==='admin'&&!isAdmin){alert('Acesso restrito ao administrador.');return}if(id==='questions'&&typeof closeSolver==='function')closeSolver(true);if(id==='questions'&&typeof showGrade==='function')showGrade();if(typeof simPersist==='function')simPersist();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='simulados'&&typeof renderSim==='function')renderSim();if(id==='materials'&&typeof renderMaterials==='function'){if(typeof closeMatPanel==='function')closeMatPanel(true);renderMaterials()}if(id==='admin'&&isAdmin){const dp=document.getElementById('adminDashPane');if(dp&&dp.classList.contains('active'))loadAdminDash()}const l=labels[id]||labels.home;document.getElementById('pageTitle').textContent=id==='home'?'Olá, Doc! 👋':l[0];document.getElementById('pageSub').textContent=l[1];document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='admin')loadAdminAll();if(id==='profile'&&typeof fillProfilePrefs==='function')fillProfilePrefs();window.scrollTo({top:0,behavior:'smooth'})}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
-function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminDashPane')loadAdminDash();if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane'&&!editingQuestionId)loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions();if(pane==='adminUsersPane')loadAdminUsers()}
+function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminDashPane')loadAdminDash();if(pane==='adminMatPane')loadAdminMaterials();if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane'&&!editingQuestionId)loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions();if(pane==='adminUsersPane')loadAdminUsers()}
 async function loadAdminAll(){if(!isAdmin)return;invalidateCatalog();await ensureAllQ(true);await loadAdminStats();await loadAdminCatalogOptions();await loadAdminFormOptions();await loadAdminQuestions()}
 async function loadAdminStats(){try{const [q,p,d,s]=await Promise.all([sb.from('questions').select('id,is_published',{count:'exact',head:true}),sb.from('questions').select('id',{count:'exact',head:true}).eq('is_published',true),sb.from('disciplines').select('id',{count:'exact',head:true}),sb.from('profiles').select('id',{count:'exact',head:true}).eq('role','student')]);document.getElementById('adminQuestionCount').textContent=q.count||0;document.getElementById('adminPublishedCount').textContent=p.count||0;document.getElementById('adminDisciplineCount').textContent=d.count||0;document.getElementById('adminStudentCount').textContent=s.count||0}catch(e){}}
 async function loadAdminCatalogOptions(){
@@ -3138,6 +3234,7 @@ async function loadAdminDash(days){
   if(!isAdmin)return;
   const box=document.getElementById('adminDash');if(!box)return;
   days=days||window._dashDays||30;window._dashDays=days;
+  const msP=sb.rpc('admin_material_stats',{p_days:days});
   const [ov,tw,bd]=await Promise.all([sb.rpc('admin_overview',{p_days:days}),sb.rpc('admin_top_wrong',{p_limit:12,p_min_attempts:5}),sb.rpc('admin_breakdown')]);
   if(ov.error){box.innerHTML=srvMissing(ov.error)?'<div class="card"><b>Painel indisponível por enquanto.</b><div class="muted" style="margin-top:6px">Execute o <b>server_migration.sql</b> no Supabase para ativar a visão geral.</div></div>':'<div class="error-box">'+escapeHtml(ov.error.message)+'</div>';return}
   const o=ov.data,u=o.users,a=o.attempts,sb2=o.subs,q=o.questions,ser=o.series;
@@ -3149,6 +3246,7 @@ async function loadAdminDash(days){
   <div class="dash-grid"><div class="sim-card"><h3>Situação das assinaturas</h3><div class="dash-subs">${[['Ativas',sb2.active,'#1a9c62'],['Vencendo',sb2.expiring,'#e3a008'],['Vencidas',sb2.expired,'#d9534f'],['Canceladas',sb2.cancelled,'#8a99a8'],['Sem assinatura',sb2.none,'#5a6b7d']].map(x=>`<div><b style="color:${x[2]}">${x[1]}</b><span>${x[0]}</span></div>`).join('')}</div></div><div class="sim-card"><h3>Acerto por instituição</h3><div class="sim-w">${dashBarRows(bk.institutions)}</div></div></div>
   <div class="sim-card"><h3>Acerto por matéria</h3><div class="sub">Da matéria com mais respostas para a que tem menos.</div><div class="sim-w">${dashBarRows(bk.disciplines)}</div></div>
   <div class="sim-card"><h3>Questões mais erradas</h3><div class="sub">Com pelo menos 5 respostas. Acima de 60% de erro (com 20 ou mais respostas) vale conferir o gabarito.</div>${wrong.length?`<div class="dash-wrong">${wrong.map(w=>{const alert=Number(w.error_rate)>=60&&w.attempts>=20;return `<div class="dash-wrow${alert?' alert':''}"><div><b>#${w.question_id}</b> <span class="muted">${escapeHtml(w.discipline||'')}</span>${alert?' <span class="tagx f">Conferir gabarito</span>':''}<div class="muted" style="font-size:13px">${escapeHtml(w.snippet||'')}</div></div><div style="text-align:right;white-space:nowrap"><b>${w.error_rate}% de erro</b><div class="muted" style="font-size:12px">${w.wrong} de ${w.attempts}</div></div><button class="small-btn" type="button" onclick="editQuestion(${w.question_id})">Editar</button></div>`}).join('')}</div>`:'<div class="muted">Ainda não há respostas suficientes.</div>'}</div>`;
+  msP.then(ms=>{if(!ms.error&&ms.data)box.insertAdjacentHTML('beforeend',matStatsHtml(ms.data))}).catch(()=>{});
 }
 async function exportUsersCsv(){
   if(!(window._users||[]).length)await loadAdminUsers();
@@ -3581,7 +3679,7 @@ async function simGenerate(){
 }
 async function simFetchQuestions(ids){
   const out={};
-  const cols='id,statement,option_a,option_b,option_c,option_d,option_e,difficulty,discipline_id,disciplines(name),subjects(name),periods(name)';
+  const cols='id,statement,option_a,option_b,option_c,option_d,option_e,difficulty,discipline_id,subject_id,disciplines(name),subjects(name),periods(name)';
   for(let i=0;i<ids.length;i+=100){
     const r=await sb.from('questions').select(cols).in('id',ids.slice(i,i+100));
     if(!r.error)(r.data||[]).forEach(q=>{out[q.id]=q});
@@ -3778,7 +3876,7 @@ function simQReview(it){
   if(!q)return `<div class="sim-qr ${it.ok?'ok':'bad'}"><div style="padding:10px 13px">${st} · questão ${it.pos+1} (não está mais disponível)</div></div>`;
   const corr=String(q.correct_option||'').trim().toUpperCase();
   const opts=['A','B','C','D','E'].map(L=>({L,t:q['option_'+L.toLowerCase()]})).filter(o=>o.t);
-  return `<details class="sim-qr ${it.ok?'ok':'bad'}"><summary>${st}<span class="sn">Questão ${it.pos+1} · ${escapeHtml((q.statement||'').slice(0,90))}</span><span class="muted" style="white-space:nowrap">${fmtT(it.time)}</span></summary><div class="sim-qb"><div style="white-space:pre-wrap">${escapeHtml(q.statement||'')}</div>${opts.map(o=>`<div class="sim-opt${o.L===corr?' c':(o.L===it.sel?' w':'')}"><i>${o.L}</i><span>${escapeHtml(o.t)}</span>${o.L===corr?'<em style="color:#0f6b43">Correta</em>':(o.L===it.sel?'<em style="color:#a02222">Sua resposta</em>':'')}</div>`).join('')}${q.explanation?`<div class="explain" style="margin-top:10px"><b>💡 Explicação</b>${escapeHtml(q.explanation)}</div>`:''}</div></details>`;
+  return `<details class="sim-qr ${it.ok?'ok':'bad'}"><summary>${st}<span class="sn">Questão ${it.pos+1} · ${escapeHtml((q.statement||'').slice(0,90))}</span><span class="muted" style="white-space:nowrap">${fmtT(it.time)}</span></summary><div class="sim-qb"><div style="white-space:pre-wrap">${escapeHtml(q.statement||'')}</div>${opts.map(o=>`<div class="sim-opt${o.L===corr?' c':(o.L===it.sel?' w':'')}"><i>${o.L}</i><span>${escapeHtml(o.t)}</span>${o.L===corr?'<em style="color:#0f6b43">Correta</em>':(o.L===it.sel?'<em style="color:#a02222">Sua resposta</em>':'')}</div>`).join('')}${q.explanation?`<div class="explain" style="margin-top:10px"><b>💡 Explicação</b>${escapeHtml(q.explanation)}</div>`:''}<div style="margin-top:10px">${matBtnSmall(q.subject_id,'review')}</div></div></details>`;
 }
 function simRenderResult(){
   const R=window._simRes,v=document.getElementById('simView');if(!R||!v)return;
@@ -3869,6 +3967,449 @@ async function resendConfirmation(email,statusId){
   else if(L.error&&L.type!=='recovery')showVerifyScreen('error');
 })();
 
+/* ===== Materiais (resumos, mapas e quadros) ===== */
+window._mats=[];window._matOk=null;window._matAt=0;window._matProg={};window._matBody={};
+window._mf={insts:[],periods:[],modules:[],disciplines:[],q:'',kind:'',fav:false,unread:false};
+window._matView='list';window._matCur=null;window._matPanel=null;
+const MAT_COLS='id,title,kind,institution_id,period_id,module_id,discipline_id,subject_id,read_minutes,sort_order,is_published,is_free,updated_at';
+const MAT_KIND={resumo:['Resumo','note'],mapa:['Mapa mental','box'],quadro:['Quadro comparativo','chart']};
+/* --- texto formatado (seguro): títulos, listas, tabelas, destaques e imagens --- */
+function mdEsc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function mdInline(raw){
+  let t=mdEsc(raw);
+  t=t.replace(/\*\*([^*\n]+?)\*\*/g,'<b>$1</b>');
+  t=t.replace(/(^|[^*\w])\*([^*\s][^*\n]*?)\*(?![*\w])/g,'$1<i>$2</i>');
+  t=t.replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)<]+)\)/g,(m,a,u)=>`<a href="${u}" target="_blank" rel="noopener noreferrer">${a}</a>`);
+  return t;
+}
+function mdRender(src,imgMap,ctx){
+  ctx=ctx||'m';imgMap=imgMap||{};
+  const L=String(src==null?'':src).replace(/\r\n?/g,'\n').split('\n'),out=[],toc=[];let i=0,h=0;
+  const CALL={dica:['Dica','tip'],atencao:['Atenção','warn'],importante:['Importante','imp'],exemplo:['Exemplo','ex']};
+  const norm=x=>x.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const special=l=>/^\s*(#{1,3}\s|[-*]\s|\d+[.)]\s|>|\||:::|!\[|---+\s*$)/.test(l);
+  while(i<L.length){
+    const ln=L[i];
+    if(/^\s*$/.test(ln)){i++;continue}
+    let m;
+    if((m=ln.match(/^:::\s*([^\s:]+)\s*$/))&&CALL[norm(m[1])]){
+      const key=norm(m[1]),buf=[];i++;
+      while(i<L.length&&!/^:::\s*$/.test(L[i])){buf.push(L[i]);i++}
+      i++;
+      out.push(`<div class="md-call md-${CALL[key][1]}"><div class="md-call-h">${CALL[key][0]}</div>${mdRender(buf.join('\n'),imgMap,ctx+'c').html}</div>`);continue;
+    }
+    if((m=ln.match(/^(#{1,3})\s+(.+?)\s*#*\s*$/))){
+      const lvl=m[1].length,txt=mdInline(m[2]);
+      if(lvl<=2){const id=ctx+'-h'+(h++);toc.push({id,text:txt,lvl});out.push(`<h${lvl+1} id="${id}">${txt}</h${lvl+1}>`)}
+      else out.push(`<h4>${txt}</h4>`);
+      i++;continue;
+    }
+    if(/^\s*---+\s*$/.test(ln)){out.push('<hr>');i++;continue}
+    if((m=ln.match(/^\s*!\[([^\]]*)\]\(img:(\d+)\)\s*$/))){
+      const im=imgMap[m[2]];
+      out.push(im&&im.url?`<figure class="q-img"><img src="${mdEsc(im.url)}" alt="${mdEsc(im.alt||m[1]||'Imagem do material')}" loading="lazy" onclick="openLightbox(this.src,this.alt)">${im.caption?`<figcaption>${mdEsc(im.caption)}</figcaption>`:''}</figure>`:'<div class="md-missing">Imagem indisponível</div>');
+      i++;continue;
+    }
+    if(/^\s*>/.test(ln)){const buf=[];while(i<L.length&&/^\s*>/.test(L[i])){buf.push(L[i].replace(/^\s*>\s?/,''));i++}out.push(`<blockquote>${mdRender(buf.join('\n'),imgMap,ctx+'q').html}</blockquote>`);continue}
+    if(/^\s*\|/.test(ln)&&i+1<L.length&&/^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/.test(L[i+1])){
+      const cells=r=>r.trim().replace(/^\|/,'').replace(/\|$/,'').split('|').map(c=>c.trim());
+      const head=cells(ln);i+=2;const rows=[];
+      while(i<L.length&&/^\s*\|/.test(L[i])){rows.push(cells(L[i]));i++}
+      out.push(`<div class="md-tablewrap"><table><thead><tr>${head.map(c=>`<th>${mdInline(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${head.map((_,k)=>`<td>${mdInline(r[k]||'')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);continue;
+    }
+    if(/^\s*[-*]\s+/.test(ln)){const it=[];while(i<L.length&&/^\s*[-*]\s+/.test(L[i])){it.push(L[i].replace(/^\s*[-*]\s+/,''));i++}out.push('<ul>'+it.map(x=>`<li>${mdInline(x)}</li>`).join('')+'</ul>');continue}
+    if(/^\s*\d+[.)]\s+/.test(ln)){const it=[];while(i<L.length&&/^\s*\d+[.)]\s+/.test(L[i])){it.push(L[i].replace(/^\s*\d+[.)]\s+/,''));i++}out.push('<ol>'+it.map(x=>`<li>${mdInline(x)}</li>`).join('')+'</ol>');continue}
+    const buf=[];
+    while(i<L.length&&!/^\s*$/.test(L[i])&&(buf.length===0||!special(L[i]))){buf.push(L[i]);i++}
+    out.push('<p>'+buf.map(mdInline).join('<br>')+'</p>');
+  }
+  return {html:out.join(''),toc};
+}
+/* --- catálogo, ordem e filtros --- */
+async function loadMaterialsCatalog(force){
+  if(!sb||!currentUser)return;
+  if(!force&&window._matOk!==null&&Date.now()-window._matAt<600000)return;
+  await ensureAllQ();
+  const r=await sb.from('materials').select(MAT_COLS).order('sort_order',{ascending:true}).order('id',{ascending:true});
+  if(r.error){window._matOk=false;window._mats=[];return}
+  window._matOk=true;window._matAt=Date.now();window._mats=r.data||[];
+  const p=await sb.from('material_progress').select('material_id,read_at,favorite');
+  window._matProg={};if(!p.error)(p.data||[]).forEach(x=>{window._matProg[x.material_id]={read:!!x.read_at,fav:!!x.favorite}});
+  matSort();
+  const pg=document.getElementById('materials');if(pg&&pg.classList.contains('active')&&window._matView==='list')renderMaterials();
+  if(document.getElementById('matCta'))paintMatCta();
+}
+function matInvalidate(){window._matAt=0;window._matBody={}}
+function matInstId(m){return m.institution_id!=null?m.institution_id:(window._pInst||{})[String(m.period_id)]}
+function matSort(){
+  const io={},po={},mo={},so={};
+  (window._institutions||[]).forEach((x,i)=>{io[String(x.id)]=[x.sort_order||0,i]});
+  (window._periods||[]).forEach((x,i)=>{po[String(x.id)]=[x.sort_order||0,i]});
+  (window._modules||[]).forEach((x,i)=>{mo[String(x.id)]=[x.sort_order||0,i]});
+  (window._subjects||[]).forEach((x,i)=>{so[String(x.id)]=[x.sort_order||0,i]});
+  const k=(m,id)=>{const v=id==null?null:m[String(id)];return v||[1e9,1e9]},c=(a,b)=>a[0]-b[0]||a[1]-b[1];
+  window._mats.sort((a,b)=>c(k(io,matInstId(a)),k(io,matInstId(b)))||c(k(po,a.period_id),k(po,b.period_id))||c(k(mo,a.module_id),k(mo,b.module_id))||c(k(so,a.subject_id),k(so,b.subject_id))||((a.sort_order||0)-(b.sort_order||0))||String(a.title).localeCompare(String(b.title)));
+}
+function matVisible(){
+  const H=window._hidden||{p:new Set(),m:new Set(),s:new Set(),i:new Set()};
+  return (window._mats||[]).filter(m=>isAdmin||!((m.period_id!=null&&H.p.has(String(m.period_id)))||(m.module_id!=null&&H.m.has(String(m.module_id)))||(m.subject_id!=null&&H.s.has(String(m.subject_id)))||(m.institution_id!=null&&H.i.has(String(m.institution_id)))));
+}
+function matName(arr,id){const x=(arr||[]).find(y=>String(y.id)===String(id));return x?x.name:''}
+function matTrail(m){return [matName(window._institutions,matInstId(m)),matName(window._periods,m.period_id),matName(window._modules,m.module_id),matName(window._disciplines,m.discipline_id),matName(window._subjects,m.subject_id)].filter(Boolean)}
+function matsForSubject(sid){
+  if(sid==null||!window._matOk)return [];
+  return matVisible().filter(m=>String(m.subject_id)===String(sid)&&(isAdmin||m.is_published!==false));
+}
+function matFiltered(){
+  const F=window._mf,q=F.q.trim().toLowerCase();
+  return matVisible().filter(m=>{
+    if(F.insts.length&&!qfHas(F.insts,matInstId(m)))return false;
+    if(F.periods.length&&!qfHas(F.periods,m.period_id))return false;
+    if(F.modules.length&&!F.modules.some(x=>x==='none'?m.module_id==null:String(m.module_id)===String(x)))return false;
+    if(F.disciplines.length&&!qfHas(F.disciplines,m.discipline_id))return false;
+    if(F.kind&&m.kind!==F.kind)return false;
+    const pr=window._matProg[m.id]||{};
+    if(F.fav&&!pr.fav)return false;
+    if(F.unread&&pr.read)return false;
+    if(q&&!(String(m.title).toLowerCase().includes(q)||matTrail(m).join(' ').toLowerCase().includes(q)))return false;
+    return true;
+  });
+}
+const MF_KEYS={inst:'insts',period:'periods',module:'modules',discipline:'disciplines'};
+function matPrune(){
+  const F=window._mf,all=matVisible();
+  const pv=new Set(qfPeriodsFor(F.insts).map(p=>String(p.id)));F.periods=F.periods.filter(p=>pv.has(String(p)));
+  const mv=new Set((window._modules||[]).filter(m=>qfHas(F.periods,m.period_id)).map(m=>String(m.id)));F.modules=F.modules.filter(m=>m==='none'||mv.has(String(m)));
+  if(!F.periods.length)F.modules=[];
+  const dv=new Set(all.map(m=>String(m.discipline_id)));F.disciplines=F.disciplines.filter(d=>dv.has(String(d)));
+}
+function matPick(k,v){
+  const F=window._mf,key=MF_KEYS[k];v=String(v);
+  const i=F[key].findIndex(x=>String(x)===v);if(i>=0)F[key].splice(i,1);else F[key].push(v);
+  matPrune();renderMaterials();
+}
+function matToggleFilter(k){window._mf[k]=!window._mf[k];renderMaterials()}
+function matSetKind(v){window._mf.kind=window._mf.kind===v?'':v;renderMaterials()}
+function matSetQ(v){window._mf.q=v||'';matRefreshList()}
+function matChips(kind,items,sel){return `<div class="qf-chips" style="justify-content:flex-start">${items.map(it=>`<button type="button" class="qf-chip${qfHas(sel,it.id)?' on':''}" aria-pressed="${qfHas(sel,it.id)?'true':'false'}" onclick="matPick('${kind}','${it.id}')">${escapeHtml(it.name)}</button>`).join('')}</div>`}
+function matCardHtml(m){
+  const pr=window._matProg[m.id]||{},kd=MAT_KIND[m.kind]||MAT_KIND.resumo;
+  return `<div class="mat-card" role="button" tabindex="0" onclick="openMaterial(${m.id},'list')" onkeydown="if(event.key==='Enter')openMaterial(${m.id},'list')"><div class="mat-ico"><span class="ic" data-i="${kd[1]}"></span></div><div class="mat-info">${matTrail(m).slice(3).length?`<div class="mat-trail">${matTrail(m).slice(3).map(escapeHtml).join(' › ')}</div>`:''}<h3>${escapeHtml(m.title)}</h3><div class="mat-meta"><span class="badge blue">${kd[0]}</span><span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min</span>${pr.read?'<span class="badge green">✓ Lido</span>':''}${pr.fav?'<span class="badge amber">★ Favorito</span>':''}${m.is_free?'<span class="badge green">Amostra grátis</span>':''}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div></div><span class="primary mat-go">Ler →</span></div>`;
+}
+function matListHtml(){
+  const list=matFiltered();
+  if(!list.length)return '<div class="empty"><strong>Nenhum material encontrado.</strong><span>Mude os filtros ou a busca.</span></div>';
+  let h='',last='';
+  list.forEach(m=>{
+    const g=matTrail(m).slice(0,3).join(' › ');
+    if(g!==last){h+=`<h3 class="mat-group">${escapeHtml(g||'Sem classificação')}</h3>`;last=g}
+    h+=matCardHtml(m);
+  });
+  return h;
+}
+function matRefreshList(){const el=document.getElementById('matList');if(el)el.innerHTML=matListHtml();const c=document.getElementById('matCount');if(c)c.textContent=matFiltered().length+' material(is)'}
+function matFilterHtml(){
+  const F=window._mf,all=matVisible();
+  const instIds=new Set(all.map(m=>String(matInstId(m))));
+  const insts=(window._institutions||[]).filter(i=>instIds.has(String(i.id))).map(i=>({id:String(i.id),name:i.name}));
+  const perIds=new Set(all.map(m=>String(m.period_id)));
+  const pers=qfPeriodsFor(F.insts).filter(p=>perIds.has(String(p.id))).map(p=>({id:String(p.id),name:(F.insts.length>1?matName(window._institutions,p.institution_id)+' · ':'')+p.name}));
+  const modIds=new Set(all.map(m=>String(m.module_id)));
+  const mods=F.periods.length?(window._modules||[]).filter(m=>qfHas(F.periods,m.period_id)&&modIds.has(String(m.id))).map(m=>({id:String(m.id),name:m.name})):[];
+  const dis=[...new Set(all.map(m=>m.discipline_id).filter(x=>x!=null))].map(id=>({id:String(id),name:matName(window._disciplines,id)})).filter(x=>x.name).sort((a,b)=>a.name.localeCompare(b.name));
+  const blk=(label,inner)=>inner?`<div class="sim-field" style="gap:8px"><span>${label}</span>${inner}</div>`:'';
+  return `<div class="mat-filters"><div class="mat-search"><span class="ic" data-i="search"></span><input id="matQ" type="search" placeholder="Buscar por título ou assunto..." value="${escapeHtml(F.q)}" oninput="matSetQ(this.value)"></div><div class="qf-chips" style="justify-content:flex-start">${Object.keys(MAT_KIND).map(k=>`<button type="button" class="qf-chip${F.kind===k?' on':''}" onclick="matSetKind('${k}')">${MAT_KIND[k][0]}</button>`).join('')}<button type="button" class="qf-chip${F.fav?' on':''}" onclick="matToggleFilter('fav')">★ Favoritos</button><button type="button" class="qf-chip${F.unread?' on':''}" onclick="matToggleFilter('unread')">Não lidos</button></div>${blk('Instituição',insts.length>1?matChips('inst',insts,F.insts):'')}${blk('Período',pers.length>1?matChips('period',pers,F.periods):'')}${blk('Módulo',mods.length?matChips('module',mods,F.modules):'')}${blk('Matéria',dis.length>1?matChips('discipline',dis,F.disciplines):'')}</div>`;
+}
+function renderMaterials(){
+  const v=document.getElementById('matView');if(!v)return;
+  if(window._matView==='reader'&&window._matCur&&window._matBody[window._matCur]){matRenderReader(window._matBody[window._matCur].m);return}
+  window._matView='list';
+  const hero=`<div class="mg-hero"><div class="mg-ico"><span class="ic" data-i="books"></span></div><div class="mg-hero-text"><span class="mg-kicker">Estudo</span><h2>Materiais</h2><p>Resumos e conteúdos organizados por instituição, período, módulo e assunto.</p></div></div>`;
+  if(window._matOk===null){v.innerHTML='<div class="empty"><strong>Carregando materiais...</strong></div>';loadMaterialsCatalog().then(()=>{if(window._matView==='list')renderMaterials()});return}
+  if(window._matOk===false){v.innerHTML=hero+'<div class="card" style="margin-top:14px"><b>Os materiais ainda não estão disponíveis.</b><div class="muted" style="margin-top:6px">Peça à administração para executar o materials_migration.sql no Supabase.</div></div>';return}
+  const note=(window._access&&window._access.allowed===false)?paywallNote():'';
+  v.innerHTML=hero+note+matFilterHtml()+`<div class="muted" id="matCount" style="margin:6px 4px 10px;font-weight:700">${matFiltered().length} material(is)</div><div id="matList">${matListHtml()}</div>`;
+}
+/* --- progresso, leitura e registro --- */
+async function matSetProgress(id,patch){
+  const cur=window._matProg[id]||{read:false,fav:false};
+  window._matProg[id]={...cur,...patch};
+  const row={user_id:currentUser.id,material_id:id,updated_at:new Date().toISOString()};
+  if('read' in patch)row.read_at=patch.read?new Date().toISOString():null;
+  if('fav' in patch)row.favorite=!!patch.fav;
+  if('note' in patch)row.note=patch.note||null;
+  const r=await sb.from('material_progress').upsert(row,{onConflict:'user_id,material_id'});
+  if(r.error){window._matProg[id]=cur;toast('Não foi possível salvar: '+r.error.message);return false}
+  return true;
+}
+async function matToggleRead(id){const p=window._matProg[id]||{};if(await matSetProgress(id,{read:!p.read}))matPaintActions(id)}
+async function matToggleFav(id){const p=window._matProg[id]||{};if(await matSetProgress(id,{fav:!p.fav}))matPaintActions(id)}
+async function matSaveNote(id){const el=document.getElementById('matNote');if(!el)return;const v=el.value.trim();const c=window._matBody[id];if(c&&c.m.note===v)return;if(await matSetProgress(id,{note:v})&&c)c.m.note=v}
+function matPaintActions(id){
+  const p=window._matProg[id]||{};
+  document.querySelectorAll('[data-mat-read="'+id+'"]').forEach(b=>{b.classList.toggle('on',!!p.read);b.innerHTML=p.read?'<span class="ic" data-i="check-circle"></span> Lido':'<span class="ic" data-i="check-circle"></span> Marcar como lido'});
+  document.querySelectorAll('[data-mat-fav="'+id+'"]').forEach(b=>{b.classList.toggle('on',!!p.fav);b.innerHTML=(p.fav?'★':'☆')+' '+(p.fav?'Favorito':'Favoritar')});
+}
+function matRecord(id,src,qid){if(!sb||!currentUser)return;try{sb.from('material_views').insert({material_id:id,source:src||'list',question_id:qid||null}).then(()=>{},()=>{})}catch(e){}}
+async function getMaterial(id){
+  const c=window._matBody[id];if(c&&Date.now()-c.t<600000)return c.m;
+  const r=await sb.from('materials').select('id,title,kind,institution_id,period_id,module_id,discipline_id,subject_id,minimum,body,sources,read_minutes,is_published,is_free,updated_at').eq('id',id).maybeSingle();
+  if(r.error||!r.data)return null;
+  const m=r.data;m.imgMap={};
+  const im=await sb.from('material_images').select('id,path,alt,caption,position').eq('material_id',id).order('position',{ascending:true});
+  if(!im.error&&(im.data||[]).length){
+    const su=await sb.storage.from('material-images').createSignedUrls(im.data.map(x=>x.path),3600),urls={};
+    if(!su.error)(su.data||[]).forEach(x=>{if(x&&x.path&&x.signedUrl)urls[x.path]=x.signedUrl});
+    im.data.forEach(x=>{if(urls[x.path])m.imgMap[x.id]={url:urls[x.path],alt:x.alt||'',caption:x.caption||''}});
+  }
+  const pr=await sb.from('material_progress').select('note').eq('material_id',id).maybeSingle();
+  m.note=(!pr.error&&pr.data&&pr.data.note)||'';
+  window._matBody[id]={t:Date.now(),m};
+  return m;
+}
+function matGoto(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+function matArticleHtml(m,ctx){
+  const md=mdRender(m.body,m.imgMap,ctx),mn=m.minimum?mdRender(m.minimum,m.imgMap,ctx+'n').html:'';
+  const toc=md.toc.length>=3?`<nav class="mat-toc" aria-label="Neste material"><b>Neste material</b>${md.toc.map(t=>`<a href="#${t.id}" class="${t.lvl===2?'sub':''}" onclick="matGoto('${t.id}');return false">${t.text}</a>`).join('')}</nav>`:'';
+  return `${mn?`<section class="mat-min"><div class="mat-min-h"><span class="ic" data-i="bulb"></span> O mínimo que precisa saber</div>${mn}</section>`:''}${toc}<div class="mat-body">${md.html||'<p class="muted">Este material ainda não tem conteúdo.</p>'}</div>${m.sources?`<section class="mat-src"><b>Fontes</b>${mdRender(m.sources,{},ctx+'s').html}</section>`:''}`;
+}
+/* --- leitor em tela cheia --- */
+async function openMaterial(id,src,qid){
+  const v=document.getElementById('matView');
+  const pg=document.getElementById('materials');
+  if(pg.classList.contains('active'))v.innerHTML='<div class="empty"><strong>Abrindo o material...</strong></div>';
+  const m=await getMaterial(id);
+  if(!m){toast('Não foi possível abrir este material.');if(pg.classList.contains('active')){window._matView='list';renderMaterials()}return}
+  window._matView='reader';window._matCur=id;
+  if(!pg.classList.contains('active'))go('materials');else matRenderReader(m);
+  window.scrollTo({top:0});
+  matRecord(id,src,qid);
+}
+function matBack(){window._matView='list';window._matCur=null;renderMaterials();window.scrollTo({top:0,behavior:'smooth'})}
+function matRenderReader(m){
+  const v=document.getElementById('matView');if(!v)return;
+  const pr=window._matProg[m.id]||{},kd=MAT_KIND[m.kind]||MAT_KIND.resumo;
+  const sib=matVisible().filter(x=>String(x.module_id)===String(m.module_id)&&String(x.period_id)===String(m.period_id));
+  const ix=sib.findIndex(x=>x.id===m.id),prev=ix>0?sib[ix-1]:null,next=ix>=0&&ix<sib.length-1?sib[ix+1]:null;
+  const qs=m.subject_id!=null?(window._allQ||[]).filter(q=>String(q.subject_id)===String(m.subject_id)):[];
+  const lat=window._latest||{},done=qs.filter(q=>lat[q.id]!==undefined),okc=done.filter(q=>lat[q.id]===true).length;
+  const study=qs.length?`<section class="mat-study"><div><b>Fixe com questões</b><div class="muted">${plQ(qs.length)} deste assunto${done.length?' · você acertou '+Math.round(okc/done.length*100)+'% de '+done.length+' respondida(s)':''}</div></div><button class="primary" type="button" onclick="matStudy(${m.subject_id})">Fazer questões deste assunto →</button></section>`:'';
+  v.innerHTML=`<div class="mat-reader"><div class="mat-bar"><button class="small-btn" type="button" onclick="matBack()">← Voltar aos materiais</button><div class="mat-actions"><button type="button" class="small-btn mat-tg${pr.fav?' on':''}" data-mat-fav="${m.id}" onclick="matToggleFav(${m.id})">${pr.fav?'★ Favorito':'☆ Favoritar'}</button><button type="button" class="small-btn mat-tg${pr.read?' on':''}" data-mat-read="${m.id}" onclick="matToggleRead(${m.id})"><span class="ic" data-i="check-circle"></span> ${pr.read?'Lido':'Marcar como lido'}</button><button type="button" class="small-btn" onclick="window.print()">Imprimir</button></div></div>
+  <article class="mat-article"><div class="mat-trail">${matTrail(m).map(escapeHtml).join(' › ')}</div><h1>${escapeHtml(m.title)}</h1><div class="mat-meta"><span class="badge blue">${kd[0]}</span><span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min de leitura</span>${m.is_free?'<span class="badge green">Amostra grátis</span>':''}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div>${matArticleHtml(m,'r')}${study}<section class="mat-note"><label for="matNote"><b>Minhas anotações</b> <span class="muted">(só você vê)</span></label><textarea id="matNote" rows="4" placeholder="Escreva aqui o que quiser lembrar..." onblur="matSaveNote(${m.id})">${escapeHtml(m.note||'')}</textarea></section><div class="mat-nav">${prev?`<button class="small-btn" type="button" onclick="openMaterial(${prev.id},'list')">← ${escapeHtml(prev.title.slice(0,40))}</button>`:'<span></span>'}${next?`<button class="primary" type="button" onclick="openMaterial(${next.id},'list')">${escapeHtml(next.title.slice(0,40))} →</button>`:'<span></span>'}</div></article></div>`;
+}
+function matStudy(sid){
+  const ids=(window._allQ||[]).filter(q=>String(q.subject_id)===String(sid)).map(q=>q.id);
+  if(!ids.length){toast('Ainda não há questões deste assunto.');return}
+  const lat=window._latest||{},first=Math.max(0,ids.findIndex(id=>lat[id]===undefined));
+  go('questions');openQuestion(ids[first],ids,'materials');
+}
+/* --- painel de resumo dentro da questão (a questão fica por baixo, intacta) --- */
+function paintMatCta(){
+  const el=document.getElementById('matCta');if(!el)return;
+  const q=solverQ;if(!q){el.innerHTML='';return}
+  const ms=matsForSubject(q.subject_id);
+  if(ms.length)el.innerHTML=`<button type="button" class="mat-cta-btn" onclick="openMatPanel(${Number(q.subject_id)},'question')"><span class="ic" data-i="books"></span> Ler o resumo deste assunto${ms.length>1?' ('+ms.length+')':''}</button>`;
+  else if(isAdmin&&q.subject_id!=null)el.innerHTML=`<button type="button" class="small-btn" onclick="admMatFromQuestion()">+ Criar resumo deste assunto</button>`;
+  else el.innerHTML='';
+}
+function matBtnSmall(sid,src){
+  if(sid==null||!window._matOk)return '';
+  return matsForSubject(sid).length?`<button class="small-btn" type="button" onclick="openMatPanel(${Number(sid)},'${src||'review'}')"><span class="ic" data-i="books"></span> Resumo</button>`:'';
+}
+async function openMatPanel(sid,src,startId){
+  const ms=matsForSubject(sid);
+  if(!ms.length){toast('Este assunto ainda não tem resumo.');return}
+  closeMatPanel(true);
+  const opener=document.activeElement;
+  const o=document.createElement('div');o.id='matPanel';o.className='mat-panel';
+  o.innerHTML=`<div class="mat-scrim" onclick="closeMatPanel()"></div><aside class="mat-sheet" role="dialog" aria-modal="true" aria-label="Resumo do assunto"><header class="mat-sheet-h"><div class="mat-sheet-t"><span class="mg-kicker">Resumo do assunto</span><b id="matPTitle">Carregando...</b></div><button type="button" class="mat-x" id="matPClose" onclick="closeMatPanel()" aria-label="Fechar"><span class="ic" data-i="x"></span></button></header><div class="mat-tabs" id="matPTabs"></div><div class="mat-pbody" id="matPBody"><div class="muted" style="padding:20px">Carregando...</div></div><footer class="mat-sheet-f" id="matPFoot"></footer></aside>`;
+  document.body.appendChild(o);document.body.classList.add('mat-panel-open');
+  try{history.pushState({mqPanel:1},'')}catch(e){}
+  window._matPanel={sid,src:src||'review',ids:ms.map(m=>m.id),cur:startId||ms[0].id,opener,qid:solverQ?solverQ.id:null};
+  const x=document.getElementById('matPClose');if(x)x.focus();
+  await matPanelShow(window._matPanel.cur);
+}
+async function matPanelShow(id){
+  const P=window._matPanel;if(!P)return;
+  P.cur=id;
+  const m=await getMaterial(id);if(window._matPanel!==P)return;
+  const body=document.getElementById('matPBody');if(!body)return;
+  if(!m){body.innerHTML='<div class="muted" style="padding:20px">Não foi possível abrir este material.</div>';return}
+  const pr=window._matProg[id]||{};
+  document.getElementById('matPTitle').textContent=m.title;
+  document.getElementById('matPTabs').innerHTML=P.ids.length>1?P.ids.map(i=>{const x=(window._mats||[]).find(y=>y.id===i);return `<button type="button" class="${i===id?'on':''}" onclick="matPanelShow(${i})">${escapeHtml(x?x.title:'Material')}</button>`}).join(''):'';
+  body.innerHTML=`<article class="mat-article mat-compact"><div class="mat-meta"><span class="badge blue">${(MAT_KIND[m.kind]||MAT_KIND.resumo)[0]}</span><span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min</span></div>${matArticleHtml(m,'p')}</article>`;
+  body.scrollTop=0;
+  const canRedo=P.src==='question'&&solverQ&&solverQ.id===P.qid;
+  document.getElementById('matPFoot').innerHTML=`<button type="button" class="small-btn mat-tg${pr.read?' on':''}" data-mat-read="${id}" onclick="matToggleRead(${id})"><span class="ic" data-i="check-circle"></span> ${pr.read?'Lido':'Marcar como lido'}</button><span class="grow"></span><button type="button" class="small-btn" onclick="matPanelFull(${id})">Abrir em tela cheia</button>${canRedo?'<button type="button" class="small-btn" onclick="matPanelRedo()">Refazer esta questão</button>':''}<button type="button" class="primary" onclick="closeMatPanel()">${P.src==='question'?'Voltar à questão':'Fechar'}</button>`;
+  matRecord(id,P.src==='question'?'question':(P.src==='review'?'review':'panel'),P.qid);
+}
+function closeMatPanel(fromPop){
+  const o=document.getElementById('matPanel');
+  const P=window._matPanel;window._matPanel=null;
+  if(o)o.remove();
+  document.body.classList.remove('mat-panel-open');
+  if(P&&P.opener&&P.opener.focus&&document.contains(P.opener))try{P.opener.focus()}catch(e){}
+  if(P&&!fromPop&&history.state&&history.state.mqPanel){try{history.back()}catch(e){}}
+}
+function matPanelFull(id){closeMatPanel();closeSolver&&closeSolver(true);openMaterial(id,'panel')}
+function matPanelRedo(){const P=window._matPanel,q=solverQ;closeMatPanel();if(q){const ids=solverIds.slice(),from=solverFrom;openQuestion(q.id,ids,from)}}
+window.addEventListener('popstate',()=>{if(window._matPanel)closeMatPanel(true)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&window._matPanel&&!document.getElementById('lightbox'))closeMatPanel()});
+/* ===== administração dos materiais ===== */
+window._admMat={id:null,imgs:[]};
+async function loadAdminMaterials(){
+  if(!isAdmin)return;
+  const box=document.getElementById('adminMat');if(!box)return;
+  await loadMaterialsCatalog(true);
+  if(window._matOk===false){box.innerHTML='<div class="card"><b>Materiais indisponíveis por enquanto.</b><div class="muted" style="margin-top:6px">Execute o <b>materials_migration.sql</b> no Supabase (depois do server_migration.sql).</div></div>';return}
+  const list=window._mats||[];
+  box.innerHTML=`<div class="dash-head"><div><h2 style="margin:0">Materiais</h2><div class="muted">${list.length} no total · ${list.filter(m=>m.is_published).length} publicados</div></div><button class="primary" type="button" onclick="admMatNew()">+ Novo material</button></div>${list.length?`<div class="dash-wrong">${list.map(m=>{const kd=MAT_KIND[m.kind]||MAT_KIND.resumo;return `<div class="dash-wrow"><div><b>${escapeHtml(m.title)}</b><div class="muted" style="font-size:12.5px">${matTrail(m).map(escapeHtml).join(' › ')}</div><div class="mat-meta" style="margin-top:6px"><span class="badge blue">${kd[0]}</span><span class="badge ${m.is_published?'green':'amber'}">${m.is_published?'Publicado':'Rascunho'}</span>${m.is_free?'<span class="badge green">Amostra grátis</span>':''}<span class="badge">${m.read_minutes} min</span></div></div><div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end"><button class="small-btn" type="button" onclick="admMatEdit(${m.id})">Editar</button><button class="small-btn" type="button" onclick="admMatFlag(${m.id},'is_published',${!m.is_published})">${m.is_published?'Despublicar':'Publicar'}</button><button class="small-btn" type="button" onclick="admMatFlag(${m.id},'is_free',${!m.is_free})">${m.is_free?'Tirar da amostra':'Amostra grátis'}</button><button class="small-btn" type="button" style="color:#b42318" onclick="admMatDelete(${m.id})">Excluir</button></div></div>`}).join('')}</div>`:'<div class="empty"><strong>Nenhum material ainda.</strong><span>Clique em "+ Novo material" para escrever o primeiro resumo.</span></div>'}`;
+}
+async function admMatFlag(id,col,val){
+  const r=await sb.from('materials').update({[col]:val}).eq('id',id).select('id');
+  if(r.error){alert('Erro: '+r.error.message);return}
+  matInvalidate();await loadAdminMaterials();
+}
+async function admMatDelete(id){
+  if(!confirm('Excluir este material e as imagens dele? Esta ação não pode ser desfeita.'))return;
+  const ip=await sb.from('material_images').select('path').eq('material_id',id);
+  const r=await sb.from('materials').delete().eq('id',id).select('id');
+  if(r.error){alert('Erro: '+r.error.message);return}
+  const paths=(ip.data||[]).map(x=>x.path);if(paths.length)sb.storage.from('material-images').remove(paths);
+  matInvalidate();await loadAdminMaterials();toast('Material excluído.');
+}
+function mOpts(list,cur,label){return `<option value="">${label}</option>`+list.map(x=>`<option value="${x.id}"${String(x.id)===String(cur)?' selected':''}>${escapeHtml(x.name)}</option>`).join('')}
+function mCascade(changed){
+  const g=id=>document.getElementById(id);
+  const v={inst:g('mInst').value,per:g('mPeriod').value,mod:g('mModule').value,dis:g('mDiscipline').value,sub:g('mSubject').value};
+  if(changed==='sub'&&v.sub){const sj=(window._subjects||[]).find(x=>String(x.id)===v.sub);if(sj){if(sj.module_id!=null)v.mod=String(sj.module_id);if(sj.discipline_id!=null)v.dis=String(sj.discipline_id);const md=(window._modules||[]).find(x=>String(x.id)===v.mod);if(md)v.per=String(md.period_id)}}
+  const pers=qfPeriodsFor(v.inst?[v.inst]:[]);if(v.per&&!pers.some(p=>String(p.id)===v.per))v.per='';
+  const mods=v.per?(window._modules||[]).filter(m=>String(m.period_id)===v.per):[];if(v.mod&&!mods.some(m=>String(m.id)===v.mod))v.mod='';
+  const subs=(window._subjects||[]).filter(x=>(!v.mod||String(x.module_id)===v.mod)&&(!v.dis||String(x.discipline_id)===v.dis));if(v.sub&&!subs.some(x=>String(x.id)===v.sub))v.sub='';
+  g('mPeriod').innerHTML=mOpts(pers,v.per,'Período...');g('mModule').innerHTML=mOpts(mods,v.mod,'Módulo (opcional)');
+  g('mDiscipline').innerHTML=mOpts(window._disciplines||[],v.dis,'Matéria (opcional)');g('mSubject').innerHTML=mOpts(subs,v.sub,'Assunto (liga o resumo às questões)');
+}
+function admMatNew(pre){window._admMat={id:null,imgs:[]};admMatRenderEditor(null,pre||{})}
+async function admMatEdit(id){
+  const r=await sb.from('materials').select('*').eq('id',id).maybeSingle();
+  if(r.error||!r.data){toast('Não foi possível abrir o material.');return}
+  window._admMat={id,imgs:[]};
+  await admMatLoadImgs(id);
+  admMatRenderEditor(r.data,{});
+}
+async function admMatLoadImgs(id){
+  const r=await sb.from('material_images').select('id,path,alt,caption,position').eq('material_id',id).order('position',{ascending:true});
+  const rows=(!r.error&&r.data)?r.data:[];let urls={};
+  if(rows.length){const su=await sb.storage.from('material-images').createSignedUrls(rows.map(x=>x.path),3600);if(!su.error)(su.data||[]).forEach(x=>{if(x&&x.path&&x.signedUrl)urls[x.path]=x.signedUrl})}
+  window._admMat.imgs=rows.map(x=>({id:x.id,path:x.path,url:urls[x.path]||'',alt:x.alt||'',caption:x.caption||''}));
+}
+function admMatRenderEditor(m,pre){
+  const box=document.getElementById('adminMat');if(!box)return;
+  const v=m||{},id=window._admMat.id;
+  const sel={inst:v.institution_id||pre.inst||'',per:v.period_id||pre.period||'',mod:v.module_id||pre.module||'',dis:v.discipline_id||pre.discipline||'',sub:v.subject_id||pre.subject||''};
+  const insts=window._institutions||[];
+  box.innerHTML=`<div class="card"><div class="dash-head"><h2 style="margin:0">${id?'Editar material #'+id:'Novo material'}</h2><button class="small-btn" type="button" onclick="loadAdminMaterials()">← Voltar à lista</button></div>
+  <div class="adm-mgrid"><label>Instituição<select id="mInst" onchange="mCascade('inst')">${mOpts(insts,sel.inst,'Instituição (opcional)')}</select></label><label>Período<select id="mPeriod" onchange="mCascade('per')"></select></label><label>Módulo<select id="mModule" onchange="mCascade('mod')"></select></label><label>Matéria<select id="mDiscipline" onchange="mCascade('dis')"></select></label><label style="grid-column:1/-1">Assunto<select id="mSubject" onchange="mCascade('sub')"></select></label></div>
+  <label>Título<input id="mTitle" maxlength="200" value="${escapeHtml(v.title||'')}" placeholder="Ex.: Regulação da pressão arterial"></label>
+  <label>Tipo<select id="mKind">${Object.keys(MAT_KIND).map(k=>`<option value="${k}"${(v.kind||'resumo')===k?' selected':''}>${MAT_KIND[k][0]}</option>`).join('')}</select></label>
+  <label>O mínimo que precisa saber <small class="muted">(aparece em destaque, antes do texto)</small><textarea id="mMin" rows="5" oninput="admMatPreview()" placeholder="- Ponto principal 1&#10;- Ponto principal 2">${escapeHtml(v.minimum||'')}</textarea></label>
+  <div class="mat-tools" role="toolbar" aria-label="Formatação">${[['h2','Título'],['h3','Subtítulo'],['b','Negrito'],['i','Itálico'],['ul','Lista'],['ol','Numerada'],['quote','Citação'],['table','Tabela'],['dica','Dica'],['atencao','Atenção'],['importante','Importante'],['hr','Linha'],['link','Link']].map(t=>`<button type="button" class="small-btn" onclick="admMd('${t[0]}')">${t[1]}</button>`).join('')}</div>
+  <div class="mat-edit-grid"><label>Texto completo<textarea id="mBody" rows="20" oninput="admMatPreview()" placeholder="# Introdução&#10;Escreva aqui. Use a barra acima para formatar.">${escapeHtml(v.body||'')}</textarea></label><div><div class="muted" style="font-weight:800;font-size:12.5px;margin-bottom:6px">PRÉVIA</div><div id="mPreview" class="mat-preview mat-body"></div></div></div>
+  <details class="muted" style="margin:6px 0 12px"><summary style="cursor:pointer;font-weight:800">Como formatar</summary><div style="font-size:13px;line-height:1.7;margin-top:6px"><code># Título</code> · <code>## Subtítulo</code> · <code>**negrito**</code> · <code>*itálico*</code> · <code>- item</code> · <code>1. item</code> · <code>&gt; citação</code> · <code>[texto](https://endereço)</code> · <code>---</code> linha · tabela: <code>| A | B |</code> e logo abaixo <code>|---|---|</code> · destaque: uma linha <code>:::dica</code>, o texto, e uma linha <code>:::</code> (também <code>atencao</code>, <code>importante</code>, <code>exemplo</code>) · imagem: botão "Inserir no texto" abaixo.</div></details>
+  <label>Fontes <small class="muted">(livros, capítulos, páginas)</small><textarea id="mSrc" rows="3" placeholder="- Guyton &amp; Hall, Tratado de Fisiologia Médica, cap. 19">${escapeHtml(v.sources||'')}</textarea></label>
+  ${id?`<div class="adm-images"><label style="margin-bottom:8px">Imagens <small class="muted">(esquemas, mapas mentais, quadros em imagem)</small></label><input id="mImgFile" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden onchange="admMatPickImages(this.files);this.value=''"><div class="adm-drop" tabindex="0" role="button" onclick="document.getElementById('mImgFile').click()"><span class="ic" data-i="plus"></span> Clique para enviar imagens</div><div id="mImgList"></div></div>`:'<div class="muted" style="margin:6px 0 12px">Salve o material para poder enviar imagens.</div>'}
+  <label class="check-row"><input id="mPub" type="checkbox" ${v.is_published?'checked':''}> <span>Publicar para os alunos</span></label>
+  <label class="check-row"><input id="mFree" type="checkbox" ${v.is_free?'checked':''}> <span>Amostra grátis (abre mesmo sem assinatura)</span></label>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><button class="primary" type="button" onclick="admMatSave()">Salvar material</button><button class="small-btn" type="button" onclick="loadAdminMaterials()">Cancelar</button></div><div id="mStatus" class="status"></div></div>`;
+  mCascade('init');
+  const g=x=>document.getElementById(x);
+  // aplica a seleção salva (os selects acabaram de ser criados)
+  g('mPeriod').value=String(sel.per||'');mCascade('per');g('mModule').value=String(sel.mod||'');mCascade('mod');g('mDiscipline').value=String(sel.dis||'');mCascade('dis');g('mSubject').value=String(sel.sub||'');
+  admMatImgList();admMatPreview();
+}
+function admMatImgMap(){const mp={};(window._admMat.imgs||[]).forEach(x=>{if(x.url)mp[x.id]={url:x.url,alt:x.alt,caption:x.caption}});return mp}
+function admMatPreview(){
+  const p=document.getElementById('mPreview');if(!p)return;
+  const mn=((document.getElementById('mMin')||{}).value||'').trim(),body=(document.getElementById('mBody')||{}).value||'';
+  const mp=admMatImgMap();
+  p.innerHTML=(mn?`<section class="mat-min"><div class="mat-min-h">O mínimo que precisa saber</div>${mdRender(mn,mp,'pv').html}</section>`:'')+mdRender(body,mp,'pb').html;
+}
+function admMd(kind){
+  const ta=document.getElementById('mBody');if(!ta)return;
+  const a=ta.selectionStart,b=ta.selectionEnd,sel=ta.value.slice(a,b),before=ta.value.slice(0,a),after=ta.value.slice(b);
+  const lineStart=before.lastIndexOf('\n')+1;
+  let ins='',selStart=null;
+  const wrap=(l,r,ph)=>{ins=l+(sel||ph)+r};
+  const prefix=(p)=>{const lines=(sel||'item').split('\n').map((x,n)=>(p==='1. '?(n+1)+'. ':p)+x).join('\n');ins=lines};
+  if(kind==='b')wrap('**','**','texto');else if(kind==='i')wrap('*','*','texto');
+  else if(kind==='h2')ins='\n# '+(sel||'Título')+'\n';else if(kind==='h3')ins='\n## '+(sel||'Subtítulo')+'\n';
+  else if(kind==='ul')prefix('- ');else if(kind==='ol')prefix('1. ');else if(kind==='quote')prefix('> ');
+  else if(kind==='hr')ins='\n---\n';
+  else if(kind==='link')ins='['+(sel||'texto')+'](https://)';
+  else if(kind==='table')ins='\n| Característica | A | B |\n|---|---|---|\n| Exemplo | valor | valor |\n';
+  else ins='\n:::'+kind+'\n'+(sel||'Texto do destaque')+'\n:::\n';
+  ta.value=before+ins+after;ta.focus();const pos=before.length+ins.length;ta.selectionStart=ta.selectionEnd=pos;admMatPreview();
+}
+function admMatImgList(){
+  const box=document.getElementById('mImgList');if(!box)return;
+  box.innerHTML=(window._admMat.imgs||[]).map((x,i)=>`<div class="adm-img"><img src="${escapeHtml(x.url)}" alt=""><div class="adm-img-f"><input type="text" placeholder="Texto alternativo (descreva a imagem)" value="${escapeHtml(x.alt)}" onchange="admMatImgSet(${i},'alt',this.value)"><input type="text" placeholder="Legenda (opcional)" value="${escapeHtml(x.caption)}" onchange="admMatImgSet(${i},'caption',this.value)"><div class="muted" style="font-size:12px">Código no texto: <code>![${escapeHtml(x.alt||'imagem')}](img:${x.id})</code></div></div><div class="adm-img-a"><button type="button" class="small-btn" onclick="admMatInsertImg(${i})">Inserir no texto</button><button type="button" class="small-btn" style="color:#b42318" onclick="admMatDelImg(${i})">Remover</button></div></div>`).join('');
+}
+async function admMatImgSet(i,k,v){const x=window._admMat.imgs[i];if(!x)return;x[k]=v;await sb.from('material_images').update({[k]:v||null}).eq('id',x.id);matInvalidate();admMatPreview()}
+function admMatInsertImg(i){const x=window._admMat.imgs[i],ta=document.getElementById('mBody');if(!x||!ta)return;const p=ta.selectionStart,txt='\n![' +(x.alt||'imagem')+'](img:'+x.id+')\n';ta.value=ta.value.slice(0,p)+txt+ta.value.slice(p);admMatPreview();ta.focus()}
+async function admMatDelImg(i){
+  const x=window._admMat.imgs[i];if(!x)return;
+  await sb.storage.from('material-images').remove([x.path]);
+  const r=await sb.from('material_images').delete().eq('id',x.id);
+  if(r.error){toast('Erro: '+r.error.message);return}
+  window._admMat.imgs.splice(i,1);matInvalidate();admMatImgList();admMatPreview();
+}
+async function admMatPickImages(files){
+  const id=window._admMat.id;if(!id)return;
+  for(const f of Array.from(files||[])){
+    if(!/^image\/(jpeg|png|webp)$/.test(f.type)){status('mStatus','Use imagens JPG, PNG ou WebP.');continue}
+    try{
+      const c=await imgCompress(f,1600,0.84);
+      const path=id+'/'+Date.now()+'-'+Math.random().toString(36).slice(2,8)+'.jpg';
+      const up=await sb.storage.from('material-images').upload(path,c.blob,{contentType:'image/jpeg',upsert:false});
+      if(up.error){status('mStatus','Erro no envio: '+escapeHtml(up.error.message));continue}
+      const ins=await sb.from('material_images').insert({material_id:id,path,position:(window._admMat.imgs||[]).length}).select('id');
+      if(ins.error){status('mStatus','Erro ao registrar: '+escapeHtml(ins.error.message));continue}
+    }catch(e){status('mStatus','Não foi possível ler a imagem: '+escapeHtml(e.message))}
+  }
+  await admMatLoadImgs(id);admMatImgList();admMatPreview();matInvalidate();
+}
+async function admMatSave(){
+  const g=id=>document.getElementById(id);
+  const title=g('mTitle').value.trim(),per=g('mPeriod').value;
+  if(!title){status('mStatus','Digite o título.');return}
+  if(!per){status('mStatus','Escolha o período.');return}
+  const body=g('mBody').value,minimum=g('mMin').value.trim()||null,sources=g('mSrc').value.trim()||null;
+  const words=(body+' '+(minimum||'')).trim().split(/\s+/).filter(Boolean).length;
+  const payload={title,kind:g('mKind').value,institution_id:g('mInst').value?Number(g('mInst').value):((window._pInst||{})[per]||null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum,body,sources,read_minutes:Math.max(1,Math.min(600,Math.ceil(words/200))),is_published:g('mPub').checked,is_free:g('mFree').checked};
+  const id=window._admMat.id;let r;
+  if(id)r=await sb.from('materials').update(payload).eq('id',id).select('id');
+  else r=await sb.from('materials').insert({...payload,created_by:currentUser.id}).select('id');
+  if(r.error){status('mStatus','Erro ao salvar: '+escapeHtml(r.error.message));return}
+  const newId=id||(r.data&&r.data[0]&&r.data[0].id);
+  matInvalidate();await loadMaterialsCatalog(true);
+  if(!id&&newId){await admMatEdit(newId);status('mStatus','✅ Material criado. Agora você já pode enviar imagens.','ok')}
+  else status('mStatus','✅ Material atualizado.','ok');
+}
+function admMatFromQuestion(){
+  const q=solverQ;if(!q)return;
+  const sj=(window._subjects||[]).find(x=>String(x.id)===String(q.subject_id));
+  const md=sj&&sj.module_id!=null?(window._modules||[]).find(x=>String(x.id)===String(sj.module_id)):null;
+  const pre={period:(md&&md.period_id)||q.period_id||'',module:(sj&&sj.module_id)||q.module_id||'',discipline:(sj&&sj.discipline_id)||q.discipline_id||'',subject:q.subject_id||''};
+  closeSolver(true);go('admin');
+  const btn=document.querySelector('.admin-tab[data-pane="adminMatPane"]');if(btn)adminTab('adminMatPane',btn);
+  setTimeout(()=>admMatNew(pre),60);
+}
+function matStatsHtml(d){
+  if(!d||!d.totals)return '';
+  const t=d.totals,top=d.top||[];
+  return `<div class="sim-card"><h3>Materiais mais lidos</h3><div class="sub">${t.views} leituras de ${t.readers} aluno(s) no período · ${t.from_questions} vindas de questões · ${t.published} de ${t.materials} materiais publicados.</div>${top.length?`<div class="dash-wrong">${top.map(x=>`<div class="dash-wrow" style="grid-template-columns:1fr auto"><div><b>${escapeHtml(x.title)}</b></div><div style="text-align:right;white-space:nowrap"><b>${x.views} leituras</b><div class="muted" style="font-size:12px">${x.readers} aluno(s) · ${x.marked_read} marcaram como lido</div></div></div>`).join('')}</div>`:'<div class="muted">Ainda não há leituras no período.</div>'}</div>`;
+}
 /* ===== Ícones de linha (substituem os emojis da interface) ===== */
 const IC={
 'home':'<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/>',
