@@ -1229,11 +1229,11 @@ window.MEDQUEST_CONFIG={
         <div class="lp-brand"><img src="medquest-mark.png" alt="MedGO"><div><div class="wm2">Med<b>GO</b></div><small>ESTUDOS EM MEDICINA</small></div></div>
         <span class="lp-kicker">Banco de questões de Medicina</span>
         <h1>Cada erro de hoje é um <em>diagnóstico certo</em> amanhã.</h1>
-        <p>Questões organizadas por período, matéria e assunto, com caderno de erros automático e desempenho por matéria. Você sabe o que revisar antes de a prova chegar.</p>
+        <p>Questões organizadas por período, módulo e assunto, com caderno de erros automático e desempenho por módulo. Você sabe o que revisar antes de a prova chegar.</p>
         <ul class="lp-checks">
           <li>Treine exatamente o conteúdo do seu período</li>
           <li>Seus erros viram material de revisão, sem anotar nada</li>
-          <li>Descubra em qual matéria seu aproveitamento está mais baixo</li>
+          <li>Descubra em qual módulo seu aproveitamento está mais baixo</li>
         </ul>
         <div class="lp-pills"><span>📚 Por período e assunto</span><span>🧠 Caderno de erros</span><span>📈 Desempenho</span></div>
       </div>
@@ -1296,7 +1296,7 @@ window.MEDQUEST_CONFIG={
       </div>
       <div class="lp-tiles">
         <div class="lp-tile"><strong>Período</strong><span>Questões organizadas do jeito que a grade da faculdade cobra.</span></div>
-        <div class="lp-tile"><strong>Assunto</strong><span>Escolha a matéria e o tema e vá direto ao que precisa revisar.</span></div>
+        <div class="lp-tile"><strong>Assunto</strong><span>Escolha o módulo e o assunto e vá direto ao que precisa revisar.</span></div>
         <div class="lp-tile"><strong>Revisão</strong><span>Seus erros voltam como missão até você acertar, sem anotar nada.</span></div>
       </div>
     </section>
@@ -1304,9 +1304,9 @@ window.MEDQUEST_CONFIG={
     <section class="lp-section">
       <div class="lp-title"><h2>Tudo o que você precisa para estudar com direção</h2><p>Menos tempo procurando material, mais tempo resolvendo questões que importam.</p></div>
       <div class="lp-grid">
-        <div class="lp-feat"><div class="lp-ico">📚</div><h3>Questões por período e assunto</h3><p>Filtre por período, matéria e dificuldade e vá direto ao conteúdo da sua prova.</p></div>
+        <div class="lp-feat"><div class="lp-ico">📚</div><h3>Questões por período e assunto</h3><p>Filtre por período, módulo e assunto e vá direto ao conteúdo da sua prova.</p></div>
         <div class="lp-feat"><div class="lp-ico">🧠</div><h3>Caderno de erros</h3><p>As questões que você errou ficam guardadas para você revisar até dominar.</p></div>
-        <div class="lp-feat"><div class="lp-ico">📈</div><h3>Desempenho por matéria</h3><p>Veja sua taxa de acerto e descubra onde revisar primeiro.</p></div>
+        <div class="lp-feat"><div class="lp-ico">📈</div><h3>Desempenho por módulo</h3><p>Veja sua taxa de acerto e descubra onde revisar primeiro.</p></div>
         <div class="lp-feat"><div class="lp-ico">💡</div><h3>Explicação em cada questão</h3><p>Entenda por que a alternativa está correta, em vez de apenas decorar a resposta.</p></div>
         <div class="lp-feat"><div class="lp-ico">🎯</div><h3>Simulados</h3><p>Monte provas para testar seu ritmo e sua preparação.</p></div>
         <div class="lp-feat"><div class="lp-ico">📱</div><h3>No celular ou no computador</h3><p>Estude no intervalo da aula ou em casa, com modo claro e escuro.</p></div>
@@ -1317,7 +1317,7 @@ window.MEDQUEST_CONFIG={
       <div class="lp-title"><h2>Como funciona</h2><p>Em três passos você já está estudando.</p></div>
       <div class="lp-steps">
         <div class="lp-step"><h3>Crie sua conta</h3><p>Use seu e-mail e comece em segundos.</p></div>
-        <div class="lp-step"><h3>Escolha o que estudar</h3><p>Selecione o período, a matéria e o assunto da sua prova.</p></div>
+        <div class="lp-step"><h3>Escolha o que estudar</h3><p>Selecione o período, o módulo e o assunto da sua prova.</p></div>
         <div class="lp-step"><h3>Resolva, erre e revise</h3><p>Seus erros e seu desempenho aparecem automaticamente para guiar a revisão.</p></div>
       </div>
     </section>
@@ -1402,7 +1402,7 @@ window.MEDQUEST_CONFIG={
           <div class="weakness-icon">📚</div>
           <div class="weakness-copy">
             <h3>Vamos descobrir onde revisar</h3>
-            <p>Responda algumas questões para o MedGO identificar a matéria em que seu aproveitamento está mais baixo.</p>
+            <p>Responda algumas questões para o MedGO identificar o módulo em que seu aproveitamento está mais baixo.</p>
           </div>
           <button class="primary weakness-action" onclick="go('questions')">Começar questões →</button>
         </div>
@@ -1431,7 +1431,7 @@ window.MEDQUEST_CONFIG={
       <div class="cards stats">
         <div class="card stat-card"><div><div class="stat-title">Questões</div><div class="stat-value" id="adminQuestionCount">0</div></div><div class="stat-icon">📝</div></div>
         <div class="card stat-card"><div><div class="stat-title">Publicadas</div><div class="stat-value" id="adminPublishedCount">0</div></div><div class="stat-icon">🌐</div></div>
-        <div class="card stat-card"><div><div class="stat-title">Matérias</div><div class="stat-value" id="adminDisciplineCount">0</div></div><div class="stat-icon">📚</div></div>
+        <div class="card stat-card"><div><div class="stat-title">Assuntos</div><div class="stat-value" id="adminDisciplineCount">0</div></div><div class="stat-icon">📚</div></div>
         <div class="card stat-card"><div><div class="stat-title">Alunos</div><div class="stat-value" id="adminStudentCount">0</div></div><div class="stat-icon">👥</div></div>
       </div>
       <div class="admin-tabs" style="margin-top:20px">
@@ -1458,8 +1458,8 @@ window.MEDQUEST_CONFIG={
             <div class="card-head"><h2 id="aFormTitle">➕ Cadastrar questão</h2></div>
             <form class="admin-form" onsubmit="createQuestion(event)">
               <div class="admin-two"><label id="aInstWrap">Instituição<select id="aInst" onchange="clsRefresh('a','inst');loadAdminExams()"><option value="">Escolha a instituição</option></select></label><label>Período<select id="aPeriod" required onchange="clsRefresh('a','per');loadAdminExams()"></select></label></div>
-              <div class="admin-two"><label id="aModuleWrap">Módulo <small style="font-weight:500;color:var(--muted)">(opcional)</small><select id="aModule" onchange="clsRefresh('a','mod')"><option value="">Sem módulo (geral)</option></select></label><label>Matéria<select id="aDiscipline" required onchange="clsRefresh('a','dis')"></select></label></div>
-              <div class="admin-two"><label>Assunto <small style="font-weight:500;color:var(--muted)">(opcional)</small><select id="aSubject" onchange="clsRefresh('a','sub')"></select></label><label>Prova<select id="aExam"></select></label></div>
+              <div class="admin-two"><label id="aModuleWrap">Módulo <small style="font-weight:500;color:var(--muted)">(opcional)</small><select id="aModule" onchange="clsRefresh('a','mod')"><option value="">Sem módulo (geral)</option></select></label><label>Assunto <small style="font-weight:500;color:var(--muted)">(opcional)</small><select id="aSubject" onchange="clsRefresh('a','sub')"></select></label></div>
+              <div class="admin-two"><label>Prova<select id="aExam"></select></label><span></span></div>
               <div class="admin-two"><label id="aYearWrap">Ano <small style="font-weight:500;color:var(--muted)">(opcional)</small><input id="aYear" type="text" inputmode="numeric" maxlength="7" placeholder="2025 ou 2025/1" pattern="[0-9]{4}(/[0-9]{1,2})?"></label><label id="aTypeWrap">Tipo da questão<select id="aType" onchange="adminTypeChange()"><option value="objetiva">Objetiva (alternativas)</option><option value="discursiva">Discursiva (resposta escrita)</option></select></label></div>
               <label>Enunciado<textarea id="aStatement" placeholder="Digite o enunciado da questão..." required></textarea></label>
               <div id="aObjFields"><div class="admin-two"><label>A<input id="aA" required></label><label>B<input id="aB" required></label></div>
@@ -1475,16 +1475,15 @@ window.MEDQUEST_CONFIG={
               <div id="adminQuestionStatus"></div>
             </form>
           </div>
-          <div class="card"><div class="card-head"><h2>Como funciona</h2></div><p class="admin-note">Cadastre primeiro os períodos, matérias, assuntos e provas na aba <b>Cadastros</b>. Depois eles aparecem automaticamente nos campos desta tela.</p><div class="mini-card" style="margin-top:12px"><b>Rascunho</b><p class="admin-note">A questão fica guardada no banco mas não aparece para os alunos.</p></div><div class="mini-card" style="margin-top:10px"><b>Publicada</b><p class="admin-note">A questão aparece na área de questões para alunos autenticados.</p></div></div>
+          <div class="card"><div class="card-head"><h2>Como funciona</h2></div><p class="admin-note">Cadastre primeiro as instituições, períodos, módulos, assuntos e provas na aba <b>Cadastros</b>. Depois eles aparecem automaticamente nos campos desta tela.</p><div class="mini-card" style="margin-top:12px"><b>Rascunho</b><p class="admin-note">A questão fica guardada no banco mas não aparece para os alunos.</p></div><div class="mini-card" style="margin-top:10px"><b>Publicada</b><p class="admin-note">A questão aparece na área de questões para alunos autenticados.</p></div></div>
         </div>
       </div>
 
       <div id="adminCatalogPane" class="admin-pane">
         <div class="catalog-grid">
           <div class="card" style="grid-column:1/-1"><div class="card-head"><h3 style="margin:0">🌳 Estrutura do conteúdo</h3><button class="primary" type="button" onclick="admAdd('inst',null)">+ Instituição</button></div><p class="admin-note">Organize em árvore: <b>Instituição → Períodos → Módulos → Assuntos</b>. Use os botões de cada linha para adicionar, editar, mover (▲▼), ocultar dos alunos (👁) ou excluir. O que você criar aparece para os alunos na hora.</p><div id="adminTree" class="admin-list"><div class="empty">Carregando...</div></div></div>
-          <div class="card"><h3>📚 Nova matéria</h3><form class="admin-form" onsubmit="createDiscipline(event)"><label>Nome<input id="cDisciplineName" placeholder="Ex.: Fisiologia" required></label><button class="primary">Adicionar matéria</button><div id="disciplineStatus"></div></form></div>
           <div class="card"><h3>🧪 Nova prova</h3><form class="admin-form" onsubmit="createExam(event)"><label>Período<select id="cExamPeriod"></select></label><label>Nome<input id="cExamName" placeholder="Ex.: Integradora 1"></label><button class="primary">Adicionar prova</button><div id="examStatus"></div></form></div>
-          <div class="card" id="clsCard"><h3>✅ Conferir classificação</h3><p class="muted" style="margin:0 0 10px">Procura questões e materiais com instituição, período, módulo, matéria ou assunto que não combinam entre si (por exemplo, um módulo que é de outro período).</p><button class="small-btn" type="button" onclick="admClsCheck()">Verificar agora</button><div id="clsResult" style="margin-top:12px"></div></div>
+          <div class="card" id="clsCard"><h3>✅ Conferir classificação</h3><p class="muted" style="margin:0 0 10px">Procura questões e materiais com instituição, período, módulo ou assunto que não combinam entre si (por exemplo, um módulo que é de outro período).</p><button class="small-btn" type="button" onclick="admClsCheck()">Verificar agora</button><div id="clsResult" style="margin-top:12px"></div></div>
         </div>
       </div>
 
@@ -1619,8 +1618,10 @@ async function loadProfile(){
    a cada 15 segundos, ao trocar de página e ao voltar para a aba; se outro aparelho entrou depois, ele sai sozinho.
    Admin não tem limite. (Celulares pausam a página em segundo plano: aí a conferência acontece ao voltar para ela.) */
 var _devTimer=null,_devLast=0;
-function stopDeviceWatch(){if(_devTimer){clearInterval(_devTimer);_devTimer=null}}
-function startDeviceWatch(){stopDeviceWatch();_devTimer=setInterval(checkDevice,15000);checkDevice()}
+var _subTimer=null;
+function stopDeviceWatch(){if(_devTimer){clearInterval(_devTimer);_devTimer=null}if(_subTimer){clearInterval(_subTimer);_subTimer=null}}
+// também reconfere a assinatura a cada minuto: cancelar/encurtar no admin bloqueia quem já está com o site aberto
+function startDeviceWatch(){stopDeviceWatch();_devTimer=setInterval(checkDevice,15000);_subTimer=setInterval(()=>{if(currentUser&&!isAdmin)loadSubscription()},60000);checkDevice()}
 function checkDeviceSoon(){if(_devTimer&&Date.now()-_devLast>3000)checkDevice()}
 async function checkDevice(){
   if(!sb||!currentUser||isAdmin)return;
@@ -1735,6 +1736,16 @@ async function showSolver(id){
   if(error||!data){view.innerHTML='<div class="empty"><strong>Não foi possível abrir a questão.</strong><span>'+escapeHtml(error?rpcErrText(error):'Questão não encontrada.')+'</span><br><br><button class="primary" onclick="closeSolver()">← Voltar</button></div>';return}
   solverQ=data;solverPicked=null;solverDone=false;renderSolver();paintSolverImages();
 }
+/* módulo de uma questão (id ou objeto): é o agrupamento usado no lugar da antiga "matéria".
+   Questão sem módulo cai em "Questões gerais" do seu período. */
+function qModInfo(q){
+  if(q==null||typeof q!=='object')q=(window._qById||{})[q];
+  q=q||{};
+  const m=q.module_id!=null?(window._modules||[]).find(x=>String(x.id)===String(q.module_id)):null;
+  if(m)return {k:'m'+m.id,module_id:m.id,period_id:m.period_id,name:m.name};
+  const p=(window._periods||[]).find(x=>String(x.id)===String(q.period_id));
+  return {k:'p'+(q.period_id!=null?q.period_id:''),module_id:null,period_id:q.period_id,name:p?'Questões gerais · '+p.name:'Questões gerais'};
+}
 function qBadges(q){
   const esc=escapeHtml,per=window._periods||[],mods=window._modules||[];
   const inst=solverInstName(q);
@@ -1746,7 +1757,6 @@ function qBadges(q){
     inst?`<span class="badge"><span class="ic" data-i="building"></span> ${esc(inst)}</span>`:'',
     pn?`<span class="badge">${esc(pn)}</span>`:'',
     m?`<span class="badge">${esc(m.name)}</span>`:'',
-    q.disciplines&&q.disciplines.name?`<span class="badge blue">${esc(q.disciplines.name)}</span>`:'',
     q.subjects&&q.subjects.name?`<span class="badge">${esc(q.subjects.name)}</span>`:'',
     q.year?`<span class="badge">${esc(q.year)}</span>`:'',
     q.qtype==='discursiva'?'<span class="badge">Discursiva</span>':'',
@@ -1953,7 +1963,7 @@ const ACH=[
   {ico:'🎯',n:'Mira certeira',d:'10 acertos seguidos',ok:g=>g.bestRun>=10},
   {ico:'🔥',n:'Pegando fogo',d:'3 dias seguidos estudando',ok:g=>g.bestDays>=3},
   {ico:'⚡',n:'Semana de fogo',d:'7 dias seguidos estudando',ok:g=>g.bestDays>=7},
-  {ico:'🧠',n:'Matéria dominada',d:'80%+ de acerto numa matéria (mín. 10 questões)',ok:g=>!!g.master},
+  {ico:'🧠',n:'Módulo dominado',d:'80%+ de acerto num módulo (mín. 10 questões)',ok:g=>!!g.master},
   {ico:'✨',n:'Caderno limpo',d:'Zere os erros pendentes (mín. 10 questões)',ok:g=>g.total>=10&&g.wrongCount===0},
   {ico:'✅',n:'Meta batida',d:'Cumpra sua meta diária',ok:g=>g.maxDay>=g.goal}
 ];
@@ -2067,7 +2077,7 @@ function renderWeakness(){
   const H=(icon,title,text,score,btn)=>`<div class="weakness-top"><div class="weakness-icon">${icon}</div><div class="weakness-copy"><h3>${title}</h3><p>${text}</p></div></div><div class="weakness-bottom">${score||'<span></span>'}${btn}</div>`;
   if(!weak){
     weakestDisciplineId=null;
-    box.innerHTML=H('🌱','Vamos descobrir seu ponto de atenção','Responda algumas questões para identificar automaticamente a matéria em que seu desempenho está mais baixo.','',`<button class="primary weakness-action" onclick="go('questions')">Começar questões →</button>`);
+    box.innerHTML=H('🌱','Vamos descobrir seu ponto de atenção','Responda algumas questões para identificar automaticamente o módulo em que seu desempenho está mais baixo.','',`<button class="primary weakness-action" onclick="go('questions')">Começar questões →</button>`);
   }else if(allDone){
     weakestDisciplineId=null;
     box.innerHTML=H('🏆','Parabéns por todos os acertos!',`Você respondeu as ${all.length} questões publicadas e acertou todas. Quando novas questões forem publicadas, seu menor desempenho volta a aparecer aqui.`,'',`<button class="primary weakness-action" onclick="go('questions')">Revisar questões →</button>`);
@@ -2077,7 +2087,7 @@ function renderWeakness(){
     box.innerHTML=H('🌟','Parabéns! Todas as suas respostas estão certas','Nenhum ponto fraco até agora.'+(faltam?' Ainda faltam '+plQ(faltam)+' para você responder.':''),'',`<button class="primary weakness-action" onclick="continueStudying()">Continuar estudando →</button>`);
   }else{
     weakestDisciplineId=weak.id;
-    box.innerHTML=H('🧠',escapeHtml(weak.name)+' merece uma revisão','É a matéria com menor desempenho até agora: '+weak.total+' questão(ões) respondida(s).',`<div class="weakness-score ${weak.rate>=75?'good':''}">${weak.rate}%</div>`,`<button class="primary weakness-action" onclick="reviewWeakest()">Revisar agora →</button>`);
+    box.innerHTML=H('🧠',escapeHtml(weak.name)+' merece uma revisão','É o módulo com menor desempenho até agora: '+weak.total+' questão(ões) respondida(s).',`<div class="weakness-score ${weak.rate>=75?'good':''}">${weak.rate}%</div>`,`<button class="primary weakness-action" onclick="reviewWeakest()">Revisar agora →</button>`);
   }
 }
 async function selLayers(table,layers){
@@ -2250,7 +2260,7 @@ function updateHome(){
   const un=all.filter(q=>lat[q.id]===undefined);
   let label=g.total?'Continuar estudando →':'Começar a estudar →',next='';
   if(!all.length){label='Ver questões →';next='Ainda não há questões publicadas.'}
-  else if(un.length){const q=un[0];next='Próxima: '+(q.disciplines&&q.disciplines.name||'Matéria')+(q.subjects&&q.subjects.name?' · '+q.subjects.name:'')+' · '+un.length+' restante(s)'}
+  else if(un.length){const q=un[0];next='Próxima: '+qModInfo(q).name+(q.subjects&&q.subjects.name?' · '+q.subjects.name:'')+' · '+un.length+' restante(s)'}
   else if(wrong.length){label='Revisar meus erros →';next='Você respondeu todas! Hora de derrotar os erros.'}
   else{label='Refazer questões →';next='Você respondeu todo o banco sem erros pendentes. 👏'}
   $('heroCta').textContent=g.total?'Escolher o que estudar →':'Começar a estudar →';$('heroNext').textContent=next;{const rs=$('heroResume');if(rs)rs.classList.toggle('hidden',!(un.length&&g.total))}
@@ -2298,7 +2308,7 @@ function gameFx(ok){
   if(!ok){const w=document.querySelector('#optList .opt.wrong');if(w)w.classList.add('mq-shake')}
 }
 const ONB=[
-  {i:'📚',t:'Escolha o que estudar',p:'Filtre por período, matéria e dificuldade na aba Questões, ou toque em "Continuar estudando" e o MedGO escolhe a próxima para você.'},
+  {i:'📚',t:'Escolha o que estudar',p:'Filtre por período, módulo e assunto na aba Questões, ou toque em "Continuar estudando" e o MedGO escolhe a próxima para você.'},
   {i:'💡',t:'Responda e entenda',p:'Marque a alternativa, confirme e veja a explicação na hora. Cada resposta rende XP e ajuda você a subir de nível.'},
   {i:'⚔️',t:'Revise e mantenha a chama',p:'Seus erros viram uma missão de revisão. Bata a meta diária e estude todo dia para manter a sequência 🔥 acesa.'}
 ];
@@ -2313,7 +2323,7 @@ function renderOnb(){
 function nextOnb(){onbStep++;renderOnb()}
 function closeOnboarding(){const o=document.getElementById('onbOverlay');if(o)o.remove();mqLS.set('mq_onb_'+(currentUser?currentUser.id:''),'1')}
 
-/* ===== Questões: etapas com seleção múltipla (instituição → período → módulo → matéria) ===== */
+/* ===== Questões: etapas com seleção múltipla (instituição → período → módulo → assuntos) ===== */
 window._gradeFilter=null;
 window._qf={insts:[],periods:[],modules:[],disciplines:[],years:[],status:'all',type:'all',diff:'',section:'all',sel:{},open:{},more:false,step:1};
 let _qfInit=false;
@@ -2359,11 +2369,12 @@ function qfNextStep(from){
   const F=window._qf;let n=from+1;
   if(n===2&&!qfPeriodsFor(F.insts).length)n=3;
   if(n===3&&!qfHasModules())n=4;
-  if(n===4&&F.modules.length)n=5; // módulo escolhido: vai direto para os assuntos, sem a etapa de matéria
+  if(n===4)n=5; // não há mais etapa de matéria: depois do módulo vêm os assuntos
   return Math.min(n,5);
 }
 function qfInit(){
   const F=window._qf;
+  if(F.step===4)F.step=5; // etapa de matéria removida
   if(!qfNeedsInst()){
     if(!F.insts.length){F.insts=['any'];F.step=Math.max(F.step,2);if(F.step===2&&!qfPeriodsFor(['any']).length)F.step=4}
     return;
@@ -2469,7 +2480,7 @@ function qfItems(){
   scoped.forEach(q=>{
     if(q.subject_id==null||seen[q.subject_id])return;seen[q.subject_id]=1;
     const sj=subs.find(x=>String(x.id)===String(q.subject_id));
-    const sec=(sj&&sj.section)?sj.section:(modIds.length?'Outros assuntos':((q.disciplines&&q.disciplines.name)||'Assuntos'));
+    const sec=(sj&&sj.section)?sj.section:(modIds.length?'Outros assuntos':qModInfo(q).name);
     items.push({id:q.subject_id,name:sj?sj.name:((q.subjects&&q.subjects.name)||'Assunto'),section:sec,sort_order:sj?(sj.sort_order||0):0,objectives:sj?sj.objectives:null,qs:scoped.filter(x=>String(x.subject_id)===String(q.subject_id))});
   });
   return items;
@@ -2505,7 +2516,6 @@ function renderGrade(){
   if(needInst&&F.insts.length)crumbs.push([1,'🏛️',qfNames(F.insts,insName)||'Instituição']);
   if(F.step>2&&gateOk)crumbs.push([2,'📅',F.periods.length?qfNames(F.periods,id=>{const p=per.find(x=>String(x.id)===String(id));return p?p.name:''}):'Todos os períodos']);
   if(gateOk&&(F.modules.length||(F.step>3&&F.periods.length&&qfHasModules())))crumbs.push([3,'🧩',F.modules.length?qfNames(F.modules,id=>{if(id==='none')return 'Questões gerais';const m=(window._modules||[]).find(x=>String(x.id)===String(id));return m?m.name:''}):'Todos os módulos']);
-  if(gateOk&&F.step>4&&(F.disciplines.length||!F.modules.length))crumbs.push([4,'📘',F.disciplines.length?qfNames(F.disciplines,id=>{const q=(window._allQ||[]).find(x=>String(x.discipline_id)===String(id));return q&&q.disciplines?q.disciplines.name:''}):'Todas as matérias']);
   if(crumbs.length)h+=`<div class="qf-crumbs">${crumbs.map((c,i)=>`${i?'<span class="qf-sep">›</span>':''}<button type="button" class="qf-crumb" onclick="qfGoStep(${c[0]})" title="Voltar a esta etapa">${c[1]} ${escapeHtml(c[2])} <em>✎</em></button>`).join('')}</div>`;
   // painel da etapa atual (cada opção pode ser marcada; "Continuar" confirma)
   const skipBtn=`<button class="small-btn skip" type="button" onclick="qfSkip()">Pular etapa →</button>`;
@@ -2525,11 +2535,6 @@ function renderGrade(){
     const baseM=qfCount(qfApply(['module','discipline']),q=>q.module_id==null?'none':String(q.module_id));
     const multiP=F.periods.length>1;
     h+=`<div class="qf-panel"><div class="qf-panel-h"><span class="qf-num">3</span><h3>Escolha o módulo</h3><span class="qf-tag">Opcional</span>${skipBtn}</div><div class="qf-cards">${mods.map(m=>{const p=per.find(x=>String(x.id)===String(m.period_id));return pickCard('module',m.id,'🧩',(multiP&&p?p.name+' · ':'')+m.name,fmtN(baseM[String(m.id)]||0),m.is_hidden,qfHas(F.modules,m.id))}).join('')}${baseM.none?pickCard('module','none','★','Questões gerais',fmtN(baseM.none),false,qfHas(F.modules,'none')):''}<button type="button" class="qf-card all" onclick="qfSkip()"><span class="ic">🧩</span><b>Todos os módulos</b><small>sem filtrar por módulo</small></button></div>${foot(F.modules.length,false)}</div>`;
-  }else if(F.step===4){
-    const scopeD=qfApply(['discipline']);
-    const dMap={};scopeD.forEach(q=>{if(q.discipline_id==null)return;const k=String(q.discipline_id);if(!dMap[k])dMap[k]={name:(q.disciplines&&q.disciplines.name)||'Matéria',n:0};dMap[k].n++});
-    const dKeys=Object.keys(dMap).sort((a,b)=>dMap[a].name.localeCompare(dMap[b].name));
-    h+=`<div class="qf-panel"><div class="qf-panel-h"><span class="qf-num">4</span><h3>Escolha a matéria</h3><span class="qf-tag">Opcional</span>${skipBtn}</div>${dKeys.length?`<div class="qf-cards">${dKeys.map(k=>pickCard('discipline',k,discIcon(dMap[k].name),dMap[k].name,plQ(dMap[k].n),false,qfHas(F.disciplines,k))).join('')}<button type="button" class="qf-card all" onclick="qfSkip()"><span class="ic">📚</span><b>Todas as matérias</b><small>sem filtrar por matéria</small></button></div>${foot(F.disciplines.length,false)}`:'<div class="qf-hint">Nenhuma matéria disponível com as escolhas anteriores.</div>'}</div>`;
   }
   // números
   h+=`<div class="mg-stats" style="margin-top:14px"><div class="mg-stat first"><i>🎯</i><div><small>Questões encontradas</small><b>${st.n}</b></div></div><div class="mg-stat"><i>📝</i><div><small>Respondidas</small><b>${st.done}</b></div></div><div class="mg-stat"><i>✅</i><div><small>Corretas (última)</small><b>${st.ok}</b></div></div><div class="mg-stat"><i>❌</i><div><small>Erros (última)</small><b>${st.bad}</b></div></div></div>`;
@@ -2653,7 +2658,9 @@ function dparse(v){if(!v)return null;const p=String(v).slice(0,10).split('-');re
 function dfmt(v){const d=dparse(v);return d?pad2(d.getDate())+'/'+pad2(d.getMonth()+1)+'/'+d.getFullYear():'—'}
 function subInfo(rows){
   if(!rows||!rows.length)return {st:'none'};
-  const cur=rows.slice().sort((a,b)=>String(b.expires_at).localeCompare(String(a.expires_at)))[0];
+  // a "atual" é a não cancelada que vence por último; só sem nenhuma assim é que vale a cancelada
+  const live=rows.filter(r=>r.status!=='cancelled');
+  const cur=(live.length?live:rows).slice().sort((a,b)=>String(b.expires_at).localeCompare(String(a.expires_at)))[0];
   const today=new Date();today.setHours(0,0,0,0);
   const days=Math.round((dparse(cur.expires_at)-today)/864e5);
   if(cur.status==='cancelled')return {st:'cancelled',cur,days};
@@ -2706,7 +2713,7 @@ function dismissSubBanner(){mqLS.set('mq_subban_'+qfUid(),dayKey(new Date()));re
 let weakestDisciplineId=null;
 function reviewWeakest(){
   const F=window._qf;
-  if(weakestDisciplineId){F.insts=F.insts.length?F.insts:['any'];F.disciplines=[String(weakestDisciplineId)];F.periods=[];F.modules=[];F.status='all';F.sel={};F.step=5}
+  {const w=(window._discList||[]).find(x=>x.id===weakestDisciplineId);if(w){F.insts=['any'];F.disciplines=[];F.periods=w.period_id!=null?[String(w.period_id)]:[];F.modules=w.module_id!=null?[String(w.module_id)]:(w.period_id!=null?['none']:[]);F.status='all';F.sel={};F.step=5}}
   go('questions');
   if(weakestDisciplineId)qfStart();
 }
@@ -2768,51 +2775,13 @@ function renderAttempts(){
   if(wrongRows.length){
     eb.className='question-list';eb.style.marginTop='15px';
     window._errLimit=window._errLimit||40;
-    eb.innerHTML=wrongRows.slice(0,window._errLimit).map((r,wi)=>{const q=r.questions||{};const sv=(window._stmt||{})[r.question_id];const st=sv===undefined?'Carregando enunciado...':sv;return `<div class="card question-row qcard"><div class="q-num">${wi+1}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(q.disciplines?.name||'Matéria')}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge red">✗ Errou</span></div><p>${escapeHtml(st.slice(0,200))}${st.length>200?'...':''}</p></div><div class="mat-rowbtns">${matBtnQ(r.question_id,'review')}<button class="primary" onclick="reviewError(${r.question_id})">Refazer →</button></div></div>`}).join('')+(wrongRows.length>window._errLimit?`<div style="text-align:center;margin:14px 0"><button class="small-btn" type="button" onclick="window._errLimit+=40;renderAttempts()">Mostrar mais (${wrongRows.length-window._errLimit})</button></div>`:'');
+    eb.innerHTML=wrongRows.slice(0,window._errLimit).map((r,wi)=>{const q=r.questions||{};const sv=(window._stmt||{})[r.question_id];const st=sv===undefined?'Carregando enunciado...':sv;return `<div class="card question-row qcard"><div class="q-num">${wi+1}</div><div class="q-info"><div class="q-meta"><span class="badge blue">${escapeHtml(qModInfo(r.question_id).name)}</span>${q.subjects?.name?`<span class="badge">${escapeHtml(q.subjects.name)}</span>`:''}<span class="badge red">✗ Errou</span></div><p>${escapeHtml(st.slice(0,200))}${st.length>200?'...':''}</p></div><div class="mat-rowbtns">${matBtnQ(r.question_id,'review')}<button class="primary" onclick="reviewError(${r.question_id})">Refazer →</button></div></div>`}).join('')+(wrongRows.length>window._errLimit?`<div style="text-align:center;margin:14px 0"><button class="small-btn" type="button" onclick="window._errLimit+=40;renderAttempts()">Mostrar mais (${wrongRows.length-window._errLimit})</button></div>`:'');
   }else{
     eb.className='empty';eb.style.marginTop='15px';
     eb.innerHTML=total?'<strong>🎉 Nenhum erro pendente.</strong><span>Quando você errar uma questão, ela aparece aqui para revisão.</span>':'Ainda não há tentativas registradas.';
   }
 
   {const miss=wrongRows.slice(0,window._errLimit||40).map(r=>r.question_id).filter(id=>(window._stmt||{})[id]===undefined);if(miss.length)ensureStatements(miss).then(()=>{if(window._attRows)renderAttempts()})}
-  const byDiscipline={};
-  rows.forEach(r=>{
-    const q=r.questions;
-    const id=q?.discipline_id;
-    const name=q?.disciplines?.name;
-    if(!id||!name)return;
-    if(!byDiscipline[id])byDiscipline[id]={id,name,total:0,correct:0};
-    byDiscipline[id].total++;
-    if(r.is_correct)byDiscipline[id].correct++;
-  });
-
-  const list=Object.values(byDiscipline)
-    .map(x=>({...x,rate:Math.round(x.correct/x.total*100)}))
-    .sort((a,b)=>a.rate-b.rate || b.total-a.total);
-
-  const weak=list[0];
-  const box=document.getElementById('weaknessContent');
-
-  if(!weak){
-    weakestDisciplineId=null;
-    box.innerHTML=`<div class="weakness-icon">🌱</div>
-      <div class="weakness-copy">
-        <h3>Vamos descobrir seu ponto de atenção</h3>
-        <p>Responda algumas questões para o MedGO identificar automaticamente a matéria em que seu desempenho está mais baixo.</p>
-      </div>
-      <button class="primary weakness-action" onclick="go('questions')">Começar questões →</button>`;
-  }else{
-    weakestDisciplineId=weak.id;
-    const scoreClass=weak.rate>=75?'good':'';
-    box.innerHTML=`<div class="weakness-icon">🧠</div>
-      <div class="weakness-copy">
-        <h3>${escapeHtml(weak.name)} merece uma revisão</h3>
-        <p>É a matéria com menor desempenho até agora: ${weak.total} questão(ões) respondida(s).</p>
-      </div>
-      <div class="weakness-score ${scoreClass}">${weak.rate}%</div>
-      <button class="primary weakness-action" onclick="reviewWeakest()">Revisar agora →</button>`;
-  }
-
   // desempenho por módulo, na ordem da grade (instituição › período › módulo)
   const byModule={};
   rows.forEach(r=>{
@@ -2836,6 +2805,8 @@ function renderAttempts(){
   }else{
     perfBox.innerHTML='<div class="empty">Ainda não há dados suficientes.</div>';
   }
+  // a mesma lista por módulo alimenta o ponto fraco da tela inicial, as conquistas e o foco do simulado
+  const list=modList.map(x=>({id:x.k,module_id:x.module_id,period_id:x.period_id,name:x.name+(x.where?' ('+x.where+')':''),total:x.total,correct:x.correct,rate:x.rate}));
   computeGame(rows,wrongRows,list);
   updateHome();
   if(typeof refreshGrade==='function')refreshGrade();
@@ -2849,7 +2820,7 @@ function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;',
 
 function adminTab(pane,button){document.querySelectorAll('.admin-pane').forEach(x=>x.classList.remove('active'));document.getElementById(pane).classList.add('active');document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');if(pane==='adminDashPane')loadAdminDash();if(pane==='adminMatPane')loadAdminMaterials();if(pane==='adminQuestionsPane')loadAdminQuestions();if(pane==='adminNewPane'&&!editingQuestionId)loadAdminFormOptions();if(pane==='adminCatalogPane')loadAdminCatalogOptions();if(pane==='adminUsersPane')loadAdminUsers();if(pane==='adminReportsPane')loadAdminReports()}
 async function loadAdminAll(){if(!isAdmin)return;invalidateCatalog();admReportCount();await ensureAllQ(true);await loadAdminStats();await loadAdminCatalogOptions();await loadAdminFormOptions();await loadAdminQuestions()}
-async function loadAdminStats(){try{const [q,p,d,s]=await Promise.all([sb.from('questions').select('id,is_published',{count:'exact',head:true}),sb.from('questions').select('id',{count:'exact',head:true}).eq('is_published',true),sb.from('disciplines').select('id',{count:'exact',head:true}),sb.from('profiles').select('id',{count:'exact',head:true}).eq('role','student')]);document.getElementById('adminQuestionCount').textContent=q.count||0;document.getElementById('adminPublishedCount').textContent=p.count||0;document.getElementById('adminDisciplineCount').textContent=d.count||0;document.getElementById('adminStudentCount').textContent=s.count||0}catch(e){}}
+async function loadAdminStats(){try{const [q,p,d,s]=await Promise.all([sb.from('questions').select('id,is_published',{count:'exact',head:true}),sb.from('questions').select('id',{count:'exact',head:true}).eq('is_published',true),sb.from('subjects').select('id',{count:'exact',head:true}),sb.from('profiles').select('id',{count:'exact',head:true}).eq('role','student')]);document.getElementById('adminQuestionCount').textContent=q.count||0;document.getElementById('adminPublishedCount').textContent=p.count||0;document.getElementById('adminDisciplineCount').textContent=d.count||0;document.getElementById('adminStudentCount').textContent=s.count||0}catch(e){}}
 /* ===== Reportes de erro (aba admin) ===== */
 window._repFilter='aberto';
 async function admReportCount(){
@@ -2896,7 +2867,7 @@ async function loadAdminFormOptions(){admShowNewBlocks();if(!isAdmin)return;clsR
 async function loadAdminSubjects(){clsRefresh('a','mod')}
 function syncDisciplineFromSubject(){clsRefresh('a','sub')}
 async function loadAdminExams(){const p=document.getElementById('aPeriod').value;let q=sb.from('exams').select('id,name').order('name');if(p)q=q.or(`period_id.eq.${Number(p)},period_id.is.null`);const {data}=await q;document.getElementById('aExam').innerHTML='<option value="">Sem prova</option>'+(data||[]).map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('')}
-async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};{const cv=clsGet('a');clsNormalize(cv,'init');const bad=clsCheck(cv,true);if(bad){status('adminQuestionStatus',bad);return}payload.period_id=Number(cv.per);payload.discipline_id=cv.dis?Number(cv.dis):(admFind('subject',cv.sub)||{}).discipline_id;payload.subject_id=cv.sub?Number(cv.sub):null;if(window._modulesOk)payload.module_id=cv.mod?Number(cv.mod):null}
+async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const payload={period_id:numOrNull('aPeriod'),discipline_id:numOrNull('aDiscipline'),subject_id:numOrNull('aSubject'),exam_id:numOrNull('aExam'),statement:document.getElementById('aStatement').value.trim(),option_a:document.getElementById('aA').value.trim(),option_b:document.getElementById('aB').value.trim(),option_c:document.getElementById('aC').value.trim(),option_d:document.getElementById('aD').value.trim(),option_e:document.getElementById('aE').value.trim()||null,correct_option:document.getElementById('aCorrect').value,explanation:document.getElementById('aExplanation').value.trim()||null,difficulty:document.getElementById('aDifficulty').value,is_published:document.getElementById('aPublished').checked};{const cv=clsGet('a');clsNormalize(cv,'init');const bad=clsCheck(cv,false);if(bad){status('adminQuestionStatus',bad);return}payload.period_id=Number(cv.per);{const sd=(admFind('subject',cv.sub)||{}).discipline_id;payload.discipline_id=sd!=null?sd:(editingQuestionId&&window._aEditDis!=null?window._aEditDis:null)}payload.subject_id=cv.sub?Number(cv.sub):null;if(window._modulesOk)payload.module_id=cv.mod?Number(cv.mod):null}
   if(window._v3ok){
     {const pp=admFind('period',payload.period_id);payload.institution_id=(pp&&pp.institution_id!=null)?pp.institution_id:numOrNull('aInst')}payload.year=yearOrNull();if(!yearValid(payload.year)){status('adminQuestionStatus','Ano inválido. Use 2025 ou, com semestre, 2025/1.');return}payload.qtype=document.getElementById('aType').value;
     if(payload.qtype==='discursiva'){
@@ -2916,9 +2887,9 @@ async function createQuestion(e){e.preventDefault();if(!isAdmin)return;const pay
   status('adminQuestionStatus',editing?'✅ Questão #'+editing+' atualizada.':'✅ Questão salva com sucesso.','ok');if(imgErr)toast('Questão salva, mas houve erro nas imagens: '+imgErr.message);
   e.target.reset();resetEditState();
   if(editing)clsPopulate('a',{});else{const sb_=document.getElementById('aSubject');if(sb_)sb_.value=''}
-  if(!editing)status('adminQuestionStatus','✅ Questão salva com sucesso. Instituição, período, módulo e matéria foram mantidos para a próxima.','ok');
+  if(!editing)status('adminQuestionStatus','✅ Questão salva com sucesso. Instituição, período e módulo foram mantidos para a próxima.','ok');
   await loadAdminAll();if(typeof loadQuestions==='function')loadQuestions();}
-async function loadAdminQuestions(){if(!isAdmin)return;const box=document.getElementById('adminQuestionList');const {data,error}=await sb.from('questions').select('id,statement,difficulty,is_published,created_at,disciplines(name),subjects(name),periods(name),exams(name)'+(window._modulesOk?',modules(name)':'')+(window._v3ok?',institutions(name),year,qtype':'')).order('id',{ascending:false}).limit(100);if(error){box.innerHTML='<div class="error-box">'+escapeHtml(error.message)+'</div>';return}if(!data?.length){box.innerHTML='<div class="empty"><strong>Nenhuma questão cadastrada.</strong><span>Crie a primeira na aba “Nova questão”.</span></div>';return}box.innerHTML=data.map(x=>`<div class="admin-q"><div><div class="q-meta"><span class="badge blue">${escapeHtml(x.disciplines?.name||'')}</span><span class="badge">${escapeHtml(x.periods?.name||'')}</span>${x.modules?.name?`<span class="badge">🧩 ${escapeHtml(x.modules.name)}</span>`:''}${x.institutions?.name?`<span class="badge">🏛️ ${escapeHtml(x.institutions.name)}</span>`:''}${x.year?`<span class="badge">${x.year}</span>`:''}${x.qtype==='discursiva'?'<span class="badge">Discursiva</span>':''}<span class="badge ${x.is_published?'green':'amber'}">${x.is_published?'Publicada':'Rascunho'}</span></div><h4>#${x.id} — ${escapeHtml(x.subjects?.name||'Sem assunto')}</h4><p>${escapeHtml(x.statement).slice(0,220)}${x.statement.length>220?'...':''}</p></div><div class="admin-actions"><button class="small-btn" onclick="editQuestion(${x.id})">✏️ Editar</button><button class="small-btn ${x.is_published?'unpublish':'publish'}" onclick="toggleQuestion(${x.id},${!x.is_published})">${x.is_published?'Despublicar':'Publicar'}</button><button class="small-btn" style="color:#b42318;border-color:#f3c9c9" onclick="deleteQuestion(${x.id})">🗑 Excluir</button></div></div>`).join('')}
+async function loadAdminQuestions(){if(!isAdmin)return;const box=document.getElementById('adminQuestionList');const {data,error}=await sb.from('questions').select('id,statement,difficulty,is_published,created_at,period_id,subject_id,subjects(name),periods(name),exams(name)'+(window._modulesOk?',module_id':'')+(window._v3ok?',institution_id,year,qtype':'')).order('id',{ascending:false}).limit(100);if(error){box.innerHTML='<div class="error-box">'+escapeHtml(error.message)+'</div>';return}if(!data?.length){box.innerHTML='<div class="empty"><strong>Nenhuma questão cadastrada.</strong><span>Crie a primeira na aba “Nova questão”.</span></div>';return}box.innerHTML=data.map(x=>`<div class="admin-q"><div><div class="q-meta">${qBadges(x)}<span class="badge ${x.is_published?'green':'amber'}">${x.is_published?'Publicada':'Rascunho'}</span></div><h4>#${x.id} — ${escapeHtml(x.subjects?.name||'Sem assunto')}</h4><p>${escapeHtml(x.statement).slice(0,220)}${x.statement.length>220?'...':''}</p></div><div class="admin-actions"><button class="small-btn" onclick="editQuestion(${x.id})">✏️ Editar</button><button class="small-btn ${x.is_published?'unpublish':'publish'}" onclick="toggleQuestion(${x.id},${!x.is_published})">${x.is_published?'Despublicar':'Publicar'}</button><button class="small-btn" style="color:#b42318;border-color:#f3c9c9" onclick="deleteQuestion(${x.id})">🗑 Excluir</button></div></div>`).join('')}
 async function toggleQuestion(id,published){
   if(!isAdmin)return;
   const {data,error}=await sb.from('questions').update({is_published:published}).eq('id',id).select('id');
@@ -3011,7 +2982,7 @@ async function admSaveImages(qid){
   return err;
 }
 function resetEditState(){
-  editingQuestionId=null;admImgReset();
+  editingQuestionId=null;admImgReset();window._aEditDis=null;
   const t=document.getElementById('aFormTitle'),b=document.getElementById('aSubmitBtn'),c=document.getElementById('aCancelBtn');
   if(t)t.textContent='➕ Cadastrar questão';if(b)b.textContent='💾 Salvar questão';if(c)c.classList.add('hidden');if(typeof adminTypeChange==='function')adminTypeChange();
 }
@@ -3034,7 +3005,8 @@ async function editQuestion(id){
   document.querySelectorAll('.admin-tab').forEach(x=>x.classList.toggle('active',x.dataset.pane==='adminNewPane'));
   await loadAdminFormOptions();
   const set=(i,v)=>{document.getElementById(i).value=(v==null?'':String(v))};
-  {const pp=admFind('period',q.period_id);const ii=(pp&&pp.institution_id!=null)?pp.institution_id:q.institution_id;window._clsNotice=clsPopulate('a',{inst:ii,per:q.period_id,mod:q.module_id,dis:q.discipline_id,sub:q.subject_id})}
+  window._aEditDis=q.discipline_id; // matéria atual: mantida se o assunto escolhido não tiver uma
+  {const pp=admFind('period',q.period_id);const ii=(pp&&pp.institution_id!=null)?pp.institution_id:q.institution_id;window._clsNotice=clsPopulate('a',{inst:ii,per:q.period_id,mod:q.module_id,dis:'',sub:q.subject_id})}
   await loadAdminExams();set('aExam',q.exam_id);set('aYear',q.year);set('aType',q.qtype||'objetiva');set('aExpected',q.expected_answer);adminTypeChange();
   set('aStatement',q.statement);set('aA',q.option_a);set('aB',q.option_b);set('aC',q.option_c);set('aD',q.option_d);set('aE',q.option_e);
   set('aCorrect',q.correct_option);set('aDifficulty',q.difficulty||'medio');set('aExplanation',q.explanation);
@@ -3123,8 +3095,8 @@ async function loadAdminModules(){
 }
 function admTable(kind){return {period:'periods',module:'modules',subject:'subjects',inst:'institutions'}[kind]}
 /* ===== Classificação: a MESMA regra para questão, material e PDF =====
-   Instituição → Período → Módulo → Matéria → Assunto (opcional).
-   O assunto manda sobre módulo e matéria; o módulo manda sobre o período; o período manda sobre a instituição. */
+   Instituição → Período → Módulo → Assunto (opcional). A matéria não aparece mais no site: vem do assunto.
+   O assunto manda sobre o módulo; o módulo manda sobre o período; o período manda sobre a instituição. */
 function clsGet(p){const g=id=>document.getElementById(p+id);const v=id=>(g(id)||{}).value||'';return {inst:v('Inst'),per:v('Period'),mod:v('Module'),dis:v('Discipline'),sub:v('Subject')}}
 function clsLists(v){
   const pers=qfPeriodsFor(v.inst?[v.inst]:[]);
@@ -3179,7 +3151,7 @@ function clsPopulate(p,v){
   if(g('Inst'))g('Inst').innerHTML=opts(window._institutions||[],v.inst,'Escolha a instituição');
   g('Period').innerHTML=opts(L.pers,v.per,'Escolha o período');
   if(g('Module'))g('Module').innerHTML=opts(L.mods,v.mod,v.per?'Sem módulo (geral)':'Escolha o período primeiro');
-  g('Discipline').innerHTML=opts(window._disciplines||[],v.dis,'Escolha a matéria');
+  if(g('Discipline'))g('Discipline').innerHTML=opts(window._disciplines||[],v.dis,'Escolha a matéria'); // a questão não tem mais o campo: a matéria vem do assunto
   g('Subject').innerHTML=opts(L.subs,v.sub,v.per?'Sem assunto':'Escolha o período primeiro',x=>(x.module_id&&x.sort_order>0?String(x.sort_order).padStart(2,'0')+' - ':'')+escapeHtml(x.name));
   return notice;
 }
@@ -3272,10 +3244,8 @@ async function admAdd(kind,pid){
   if(kind==='period'){admModal('📅 Novo período',admF('Nome','ad_name','','text','Ex.: 3º PERÍODO')+admTA('Módulos <span style="font-weight:500;color:var(--muted)">(opcional — um por linha)</span>','ad_mods','','SOI 3\nHAM 3\nIESC 3',90),`admAddSave('period',${pid===null||pid===undefined?'null':pid})`);return}
   if(kind==='module'){admModal('🧩 Novo módulo',admF('Nome','ad_name','','text','Ex.: SOI 3'),`admAddSave('module',${pid})`);return}
   if(kind==='subject'){
-    const d=await sb.from('disciplines').select('id,name').order('name');
-    const opts=(d.data||[]).map(x=>[x.id,x.name]);
     const secs=[...new Set((window._subjects||[]).map(x=>x.section).filter(Boolean))];
-    admModal('🧠 Novo assunto',admSel('Matéria','ad_disc',opts,'')+admF('Seção <span style="font-weight:500;color:var(--muted)">(opcional — ex.: APG)</span>','ad_sec','','text','APG')+admF('Assunto','ad_name','','text','Ex.: 01 - Fisiologia Cardiovascular')+admTA('Objetivos de aprendizagem <span style="font-weight:500;color:var(--muted)">(opcional)</span>','ad_obj','','',70)+`<details><summary style="cursor:pointer;font-weight:800">➕ Adicionar vários de uma vez</summary>${admTA('Lista de assuntos','ad_bulk','','01 - Título | objetivo 1; objetivo 2\n02 - Outro assunto',110)}<small class="muted">Um por linha. O número do começo vira a ordem. Tudo depois de | vira os objetivos.</small></details>`,`admAddSave('subject',${pid})`);
+    admModal('🧠 Novo assunto',admF('Seção <span style="font-weight:500;color:var(--muted)">(opcional — ex.: APG)</span>','ad_sec','','text','APG')+admF('Assunto','ad_name','','text','Ex.: 01 - Fisiologia Cardiovascular')+admTA('Objetivos de aprendizagem <span style="font-weight:500;color:var(--muted)">(opcional)</span>','ad_obj','','',70)+`<details><summary style="cursor:pointer;font-weight:800">➕ Adicionar vários de uma vez</summary>${admTA('Lista de assuntos','ad_bulk','','01 - Título | objetivo 1; objetivo 2\n02 - Outro assunto',110)}<small class="muted">Um por linha. O número do começo vira a ordem. Tudo depois de | vira os objetivos.</small></details>`,`admAddSave('subject',${pid})`);
   }
 }
 async function admAddSave(kind,pid){
@@ -3310,16 +3280,15 @@ async function admAddSave(kind,pid){
     await ok('✅ Módulo adicionado.');return;
   }
   if(kind==='subject'){
-    const disc=v('ad_disc'),sec=v('ad_sec'),single=v('ad_name'),obj=v('ad_obj');
+    const sec=v('ad_sec'),single=v('ad_name'),obj=v('ad_obj');
     const bulk=v('ad_bulk').split('\n').map(x=>x.trim()).filter(Boolean);
-    if(!disc){status('admModalMsg','Escolha a matéria.');return}
     const lines=bulk.length?bulk:(single?[single+(obj?' | '+obj.split('\n').map(x=>x.trim()).filter(Boolean).join('; '):'')]:[]);
     if(!lines.length){status('admModalMsg','Digite o assunto ou cole uma lista.');return}
     if(!window._assuntosOk){status('admModalMsg','Execute o <b>modules_migration.sql</b> no Supabase e atualize a página.');return}
     const rows=lines.map((ln,i)=>{
       const parts=ln.split('|');let name=parts[0].trim(),order=i+1;
       const mm=name.match(/^(\d+)\s*[-–.)]\s*(.+)$/);if(mm){order=Number(mm[1]);name=mm[2].trim()}
-      const row={discipline_id:Number(disc),module_id:pid,sort_order:order,name};
+      const row={module_id:pid,sort_order:order,name};
       if(sec)row.section=sec;const o=parts.slice(1).join('|').trim();if(o)row.objectives=o;
       return row;
     });
@@ -3445,11 +3414,10 @@ async function loadAdminDash(days){
   const acc=a.answers_period?Math.round(a.correct_period/a.answers_period*100):0;
   const wrong=(!tw.error&&tw.data)?tw.data:[],bk=(!bd.error&&bd.data)?bd.data:{disciplines:[],institutions:[]};
   box.innerHTML=`<div class="dash-head"><div><h2 style="margin:0">Visão geral</h2><div class="muted">Números dos últimos ${days} dias, calculados no servidor.</div></div><div class="dash-range">${[7,30,90].map(d=>`<button type="button" class="qf-chip${d===days?' on':''}" onclick="loadAdminDash(${d})">${d} dias</button>`).join('')}<button type="button" class="small-btn" onclick="exportUsersCsv()">Baixar alunos (CSV)</button></div></div>
-  <div class="dash-kpis">${dashKpi('Alunos',u.students,u.admins+' administrador(es)')}${dashKpi('Ativos (7 dias)',a.active_7,a.active_30+' nos últimos 30 dias')}${dashKpi('Novos cadastros',u.new_in_period,'no período')}${dashKpi('Respostas',a.answers_period,acc+'% de acerto no período')}${dashKpi('Simulados',o.simulados_period,'concluídos no período')}${dashKpi('Assinaturas ativas',sb2.active+sb2.expiring,sb2.expiring+' vencendo em 7 dias')}${dashKpi('Receita mensal estimada',fmtBRL(sb2.mrr_cents),'das assinaturas vigentes')}${dashKpi('Questões',q.published,q.total+' no total · '+q.free+' grátis')}</div>
+  <div class="dash-kpis">${dashKpi('Alunos',u.students,u.admins+' administrador(es)')}${dashKpi('Ativos (7 dias)',a.active_7,a.active_30+' nos últimos 30 dias')}${dashKpi('Novos cadastros',u.new_in_period,'no período')}${dashKpi('Respostas',a.answers_period,acc+'% de acerto no período')}${dashKpi('Simulados',o.simulados_period,'concluídos no período')}${dashKpi('Assinaturas ativas',sb2.active+sb2.expiring,sb2.expiring+' vencendo em 7 dias')}${dashKpi('Receita mensal estimada',fmtBRL(sb2.mrr_cents),'das assinaturas vigentes')}${dashKpi('Questões',q.published,q.total+' no total')}</div>
   <div class="dash-grid"><div class="sim-card" style="margin-top:0"><h3>Respostas por dia</h3>${dashChart(ser.days,[{v:ser.answers,color:'#20b5a2',bars:true}])}</div><div class="sim-card" style="margin-top:0"><h3>Alunos ativos e cadastros por dia</h3>${dashChart(ser.days,[{v:ser.active,color:'#0b6e8e'},{v:ser.signups,color:'#e3a008'}])}<div class="muted" style="font-size:12px"><span style="color:#0b6e8e">●</span> alunos ativos &nbsp; <span style="color:#e3a008">●</span> novos cadastros</div></div></div>
   <div class="dash-grid"><div class="sim-card"><h3>Situação das assinaturas</h3><div class="dash-subs">${[['Ativas',sb2.active,'#1a9c62'],['Vencendo',sb2.expiring,'#e3a008'],['Vencidas',sb2.expired,'#d9534f'],['Canceladas',sb2.cancelled,'#8a99a8'],['Sem assinatura',sb2.none,'#5a6b7d']].map(x=>`<div><b style="color:${x[2]}">${x[1]}</b><span>${x[0]}</span></div>`).join('')}</div></div><div class="sim-card"><h3>Acerto por instituição</h3><div class="sim-w">${dashBarRows(bk.institutions)}</div></div></div>
-  <div class="sim-card"><h3>Acerto por matéria</h3><div class="sub">Da matéria com mais respostas para a que tem menos.</div><div class="sim-w">${dashBarRows(bk.disciplines)}</div></div>
-  <div class="sim-card"><h3>Questões mais erradas</h3><div class="sub">Com pelo menos 5 respostas. Acima de 60% de erro (com 20 ou mais respostas) vale conferir o gabarito.</div>${wrong.length?`<div class="dash-wrong">${wrong.map(w=>{const alert=Number(w.error_rate)>=60&&w.attempts>=20;return `<div class="dash-wrow${alert?' alert':''}"><div><b>#${w.question_id}</b> <span class="muted">${escapeHtml(w.discipline||'')}</span>${alert?' <span class="tagx f">Conferir gabarito</span>':''}<div class="muted" style="font-size:13px">${escapeHtml(w.snippet||'')}</div></div><div style="text-align:right;white-space:nowrap"><b>${w.error_rate}% de erro</b><div class="muted" style="font-size:12px">${w.wrong} de ${w.attempts}</div></div><button class="small-btn" type="button" onclick="editQuestion(${w.question_id})">Editar</button></div>`}).join('')}</div>`:'<div class="muted">Ainda não há respostas suficientes.</div>'}</div>`;
+  <div class="sim-card"><h3>Questões mais erradas</h3><div class="sub">Com pelo menos 5 respostas. Acima de 60% de erro (com 20 ou mais respostas) vale conferir o gabarito.</div>${wrong.length?`<div class="dash-wrong">${wrong.map(w=>{const alert=Number(w.error_rate)>=60&&w.attempts>=20;return `<div class="dash-wrow${alert?' alert':''}"><div><b>#${w.question_id}</b> <span class="muted">${escapeHtml(qModInfo(w.question_id).name)}</span>${alert?' <span class="tagx f">Conferir gabarito</span>':''}<div class="muted" style="font-size:13px">${escapeHtml(w.snippet||'')}</div></div><div style="text-align:right;white-space:nowrap"><b>${w.error_rate}% de erro</b><div class="muted" style="font-size:12px">${w.wrong} de ${w.attempts}</div></div><button class="small-btn" type="button" onclick="editQuestion(${w.question_id})">Editar</button></div>`}).join('')}</div>`:'<div class="muted">Ainda não há respostas suficientes.</div>'}</div>`;
   msP.then(ms=>{if(!ms.error&&ms.data)box.insertAdjacentHTML('beforeend',matStatsHtml(ms.data))}).catch(()=>{});
 }
 async function exportUsersCsv(){
@@ -3506,9 +3474,14 @@ function admSubOpen(uid){
   const rows=(window._userSubs||{})[String(uid)]||[],inf=subInfo(rows);
   const cur=inf.cur||{};
   const today=new Date();today.setHours(0,0,0,0);
+  // com assinatura vigente, o formulário abre com as datas dela (salvar = editar); sem ela, sugere hoje + 30 dias
+  const editing=inf.st!=='none'&&inf.st!=='cancelled';
+  const dStart=editing&&cur.starts_at?String(cur.starts_at).slice(0,10):ymd(today);
+  const dEnd=editing?String(cur.expires_at).slice(0,10):ymd(new Date(today.getTime()+30*864e5));
   const fields=`<div class="muted" style="text-align:left;font-size:13px;line-height:1.5"><b>${escapeHtml(u.full_name||u.email||'')}</b><br>${inf.st==='none'?'Sem assinatura cadastrada.':'Atual: '+escapeHtml(cur.plan||'')+' · vence em '+dfmt(cur.expires_at)}</div>`
    +`<label style="display:grid;gap:6px;text-align:left;font-weight:700;font-size:13px">Plano<input id="ad_plan" list="planList" value="${escapeHtml(cur.plan||'Mensal')}" style="${admStyleIn}"></label><datalist id="planList"><option value="Mensal"><option value="Trimestral"><option value="Semestral"><option value="Anual"></datalist>`
-   +`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">${admF('Início','ad_start',ymd(today),'date')}${admF('Vencimento','ad_end',ymd(new Date(today.getTime()+30*864e5)),'date')}</div>`
+   +`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">${admF('Início','ad_start',dStart,'date')}${admF('Vencimento','ad_end',dEnd,'date')}</div>`
+   +(editing?`<div class="muted" style="font-size:12px;text-align:left">Mudar as datas e salvar <b>altera a assinatura atual</b>. Os atalhos abaixo criam uma <b>renovação</b> começando no fim da atual.</div>`:'')
    +`<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="muted" style="font-size:12px">Atalhos (a partir do vencimento atual, ou de hoje):</span>${[30,90,180,365].map(n=>`<button type="button" class="small-btn" onclick="admSubQuick('${uid}',${n})">+${n} dias</button>`).join('')}</div>`
    +admF('Valor pago em R$ (opcional, para o painel de receita)','ad_price','')+admF('Observação (opcional)','ad_note','')
    +(inf.st!=='none'&&inf.st!=='cancelled'?`<button type="button" class="small-btn" style="color:#b42318;border-color:#f3c9c9" onclick="admSubCancel('${uid}')">Cancelar a assinatura atual</button>`:'');
@@ -3530,15 +3503,32 @@ async function admSubSave(uid){
   if(!plan){status('admModalMsg','Escolha o plano.');return}
   if(!st||!en){status('admModalMsg','Informe as datas de início e vencimento.');return}
   if(en<st){status('admModalMsg','O vencimento precisa ser depois do início.');return}
-  const {error}=await sb.from('subscriptions').insert({user_id:uid,plan,status:'active',starts_at:st,expires_at:en,note:note||null,created_by:currentUser?currentUser.id:null,...(price!=null?{price_cents:price}:{})});
+  // Começa depois do fim da assinatura vigente = renovação (nova linha, entra no histórico e na receita).
+  // Senão = edição da vigente (antes isso criava outra linha e a antiga, com vencimento maior, continuava valendo).
+  const inf=subInfo((window._userSubs||{})[String(uid)]||[]);
+  const cur=inf.st!=='none'&&inf.st!=='cancelled'?inf.cur:null;
+  const renewal=!cur||st>String(cur.expires_at).slice(0,10);
+  let error,edited=false;
+  if(renewal){
+    ({error}=await sb.from('subscriptions').insert({user_id:uid,plan,status:'active',starts_at:st,expires_at:en,note:note||null,created_by:currentUser?currentUser.id:null,...(price!=null?{price_cents:price}:{})}));
+  }else{
+    const patch={plan,starts_at:st,expires_at:en,...(note?{note}:{}),...(price!=null?{price_cents:price}:{})};
+    const r=await sb.from('subscriptions').update(patch).eq('id',cur.id).select('id');
+    error=r.error;
+    if(!error&&!(r.data||[]).length){status('admModalMsg','Nada foi alterado. Confirme que sua conta é administradora.');return}
+    // outras assinaturas ativas que vençam depois desta ainda dariam acesso: são canceladas para a data valer
+    if(!error){const o=await sb.from('subscriptions').update({status:'cancelled'}).eq('user_id',uid).neq('id',cur.id).neq('status','cancelled').gt('expires_at',en);error=o.error}
+    edited=true;
+  }
   if(error){status('admModalMsg',escapeHtml(error.message));return}
   document.getElementById('admModal').remove();
-  await loadAdminUsers();toast('✅ Assinatura registrada.');
+  await loadAdminUsers();toast(edited?'✅ Assinatura atualizada.':'✅ Assinatura registrada.');
 }
 async function admSubCancel(uid){
   const inf=subInfo((window._userSubs||{})[String(uid)]||[]);if(!inf.cur)return;
-  if(!confirm('Cancelar a assinatura atual deste usuário? O histórico é mantido.'))return;
-  const {data,error}=await sb.from('subscriptions').update({status:'cancelled'}).eq('id',inf.cur.id).select('id');
+  if(!confirm('Cancelar a assinatura deste usuário? Ele perde o acesso na hora. O histórico é mantido.'))return;
+  // cancela TODAS as assinaturas não canceladas (antes só a mais recente; uma segunda ativa mantinha o acesso)
+  const {data,error}=await sb.from('subscriptions').update({status:'cancelled'}).eq('user_id',uid).neq('status','cancelled').select('id');
   if(error){status('admModalMsg',escapeHtml(error.message));return}
   if(!data||!data.length){status('admModalMsg','Nada foi alterado.');return}
   document.getElementById('admModal').remove();
@@ -3563,7 +3553,6 @@ function adminTypeChange(){
   ['aInstWrap','aYearWrap','aTypeWrap'].forEach(i=>{const e=document.getElementById(i);if(e)e.style.display=window._v3ok?'':'none'});
 }
 async function loadAdminModuleSelect(){clsRefresh('a','per')}
-async function createDiscipline(e){e.preventDefault();const {error}=await sb.from('disciplines').insert({name:document.getElementById('cDisciplineName').value.trim()});if(error){status('disciplineStatus',error.message);return}status('disciplineStatus','✅ Matéria adicionada.','ok');e.target.reset();await loadAdminAll()}
 async function createSubject(e){
   e.preventDefault();
   const g=id=>document.getElementById(id);
@@ -3728,7 +3717,7 @@ function simTabs(){return ''}
 function simShuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function simWeighted(pool,n){
   const rate={};(window._discList||[]).forEach(d=>{rate[String(d.id)]=d.rate});
-  const keyed=pool.map(q=>{const r=rate[String(q.discipline_id)];const w=r==null?1.5:1+((100-r)/100)*4;return {q,k:Math.pow(Math.random(),1/w)}});
+  const keyed=pool.map(q=>{const r=rate[qModInfo(q).k];const w=r==null?1.5:1+((100-r)/100)*4;return {q,k:Math.pow(Math.random(),1/w)}});
   keyed.sort((a,b)=>b.k-a.k);return keyed.slice(0,n).map(x=>x.q);
 }
 /* ----- escopo e quantidade ----- */
@@ -3827,7 +3816,6 @@ function simRenderSetup(){
   const pers=qfPeriodsFor(S.insts);
   const mods=(window._modulesOk&&S.periods.length)?(window._modules||[]).filter(m=>qfHas(S.periods,m.period_id)):[];
   const multiP=S.periods.length>1;
-  const dMap={};simPool('discipline').forEach(q=>{if(q.discipline_id==null)return;const k=String(q.discipline_id);if(!dMap[k])dMap[k]={name:(q.disciplines&&q.disciplines.name)||'Matéria',n:0};dMap[k].n++});
   if(N>0&&S.n>N)S.n=N;
   const n=N?Math.max(1,Math.min(S.n||10,N)):0;
   const goal=S.goalMin>0?S.goalMin:n*3;
@@ -3839,10 +3827,8 @@ function simRenderSetup(){
   if(needInst)h+=simFieldBlock('Instituição <span style="font-weight:600;text-transform:none">(obrigatória)</span>','',simChips('inst',instOpts.map(o=>({id:o.id,name:o.name})),S.insts));
   if(gateOk&&pers.length)h+=simFieldBlock('Período','(opcional)',simChips('period',pers.map(p=>({id:String(p.id),name:(S.insts.length>1&&window._instLinkOk&&p.institution_id!=null?((instOpts.find(o=>o.id===String(p.institution_id))||{}).name||'')+' · ':'')+p.name})),S.periods));
   if(gateOk&&mods.length)h+=simFieldBlock('Módulo','(opcional)',simChips('module',mods.map(m=>{const p=(window._periods||[]).find(x=>String(x.id)===String(m.period_id));return {id:String(m.id),name:(multiP&&p?p.name+' · ':'')+m.name}}),S.modules));
-  const dKeys=Object.keys(dMap).sort((a,b)=>dMap[a].name.localeCompare(dMap[b].name));
-  if(gateOk&&dKeys.length)h+=simFieldBlock('Matéria','(opcional)',simChips('discipline',dKeys.map(k=>({id:k,name:dMap[k].name,n:dMap[k].n})),S.disciplines));
   h+=`<label class="sim-switch"><input type="checkbox" ${S.unanswered?'checked':''} onchange="simToggle('unanswered')"><span><b>Só questões inéditas</b><small>Sorteia apenas questões que você ainda não respondeu.</small></span></label>
-    <label class="sim-switch${hasWeak?'':' dis'}"><input type="checkbox" ${S.weak?'checked':''} ${hasWeak?'':'disabled'} onchange="simToggle('weak')"><span><b>Foco nos meus pontos fracos</b><small>${hasWeak?'Sorteia mais questões das matérias em que você mais erra.':'Disponível depois que você responder algumas questões.'}</small></span></label></div>`;
+    <label class="sim-switch${hasWeak?'':' dis'}"><input type="checkbox" ${S.weak?'checked':''} ${hasWeak?'':'disabled'} onchange="simToggle('weak')"><span><b>Foco nos meus pontos fracos</b><small>${hasWeak?'Sorteia mais questões dos módulos em que você mais erra.':'Disponível depois que você responder algumas questões.'}</small></span></label></div>`;
   h+=`<div class="sim-card" style="margin-top:0"><h3>2. Gerar o simulado</h3>${!gateOk?'<div class="sub">Escolha a instituição para ver quantas questões estão disponíveis.</div>':`<div class="sim-avail"><b>${N}</b><span>questõe${N===1?'':'s'} disponíve${N===1?'l':'is'}</span></div>`}`;
   if(gateOk&&N>0){
     const presets=[10,20,30,50].filter(x=>x<N);
@@ -4089,8 +4075,8 @@ function simRenderResult(){
   const pct=R.n?Math.round(R.correct/R.n*100):0,nota=(R.n?R.correct/R.n*10:0).toFixed(1).replace('.',',');
   const col=pct>=70?'#1a9c62':(pct>=50?'#e3a008':'#d9534f');
   const diff=R.duration-R.goal,inGoal=diff<=0;
-  // por matéria
-  const g={};R.items.forEach(it=>{const k=String(it.did==null?'x':it.did);const o=g[k]=g[k]||{id:k,name:it.dname,total:0,correct:0,items:[]};o.total++;if(it.ok)o.correct++;o.items.push(it)});
+  // por módulo (o registro antigo do simulado guarda a matéria; o agrupamento usa o módulo atual da questão)
+  const g={};R.items.forEach(it=>{const mi=qModInfo((window._qById||{})[it.id]||it.q||{});it.mname=mi.name;const k=mi.k;const o=g[k]=g[k]||{id:k,name:mi.name,total:0,correct:0,items:[]};o.total++;if(it.ok)o.correct++;o.items.push(it)});
   const groups=Object.values(g).map(o=>({...o,wrong:o.total-o.correct,pct:Math.round(o.correct/o.total*100)}));
   groups.sort((a,b)=>b.wrong-a.wrong||a.pct-b.pct||a.name.localeCompare(b.name));
   const fracos=groups.filter(x=>x.wrong>0&&x.pct<50),atencao=groups.filter(x=>x.wrong>0&&x.pct>=50&&x.pct<70),strong=groups.filter(x=>x.pct>=70).sort((a,b)=>b.pct-a.pct);
@@ -4098,10 +4084,10 @@ function simRenderResult(){
   const slow=R.items.filter(x=>x.time>0).slice().sort((a,b)=>b.time-a.time).slice(0,3);
   let h=simTabs('s')+`<div class="sim-res-hero"><div class="sim-ring"><svg width="148" height="148" viewBox="0 0 148 148"><circle cx="74" cy="74" r="62" fill="none" stroke="#dfeaf0" stroke-width="13"/><circle cx="74" cy="74" r="62" fill="none" stroke="${col}" stroke-width="13" stroke-linecap="round" stroke-dasharray="389.56" stroke-dashoffset="${389.56*(1-pct/100)}"/></svg><div class="t"><div><b>${pct}%</b><br><span>${R.correct} de ${R.n}</span></div></div></div><div style="width:100%"><span class="mg-kicker">Resultado do simulado</span><h2 style="margin:8px 0 4px;font-size:28px;letter-spacing:-.04em">Nota ${nota} de 10</h2><div class="muted">${escapeHtml(R.scope||'Simulado')} · ${dtFmt(R.at)}${R.fromHistory?'':(R.saved?' · salvo no seu histórico':'')}</div><div class="sim-kpis"><div><small>Acertos</small><b>${R.correct}</b></div><div><small>Erros</small><b>${R.answered-R.correct}</b></div><div><small>Em branco</small><b>${R.n-R.answered}</b></div><div><small>Tempo</small><b>${fmtT(R.duration)}</b><small>${inGoal?'dentro da meta de '+fmtT(R.goal):fmtT(diff)+' acima da meta de '+fmtT(R.goal)}</small></div></div>${R.xp>0?`<div class="muted" style="margin-top:10px;font-weight:700">+${R.xp} XP pelas respostas deste simulado</div>`:''}${R.timedOut?'<div class="muted" style="margin-top:8px;font-weight:700;color:#a02222">⏱ Enviado depois do tempo limite do modo prova.</div>':''}</div></div>`;
   // pontos fortes e fracos
-  h+=`<div class="sim-card"><h3>Pontos fortes e fracos</h3><div class="sub">${fracos.length?'<b>Pontos fracos:</b> '+fracos.slice(0,3).map(x=>escapeHtml(x.name)+' ('+x.wrong+' erro'+(x.wrong===1?'':'s')+')').join(', ')+'.':''}${atencao.length?(fracos.length?'<br>':'')+'<b>Para ficar de olho:</b> '+atencao.slice(0,3).map(x=>escapeHtml(x.name)+' ('+x.wrong+' erro'+(x.wrong===1?'':'s')+')').join(', ')+'.':''}${!fracos.length&&!atencao.length?'Nenhum ponto fraco neste simulado: todas as matérias ficaram em 70% ou mais. 🎉':''}${strong.length?'<br><b>Pontos fortes:</b> '+strong.slice(0,3).map(x=>escapeHtml(x.name)+' ('+x.pct+'%)').join(', ')+'.':''}</div><div class="sim-w">${groups.map(x=>{const c=cls(x.pct),bc=x.pct>=70?'#1a9c62':(x.pct>=50?'#e3a008':'#d9534f');return `<div class="row"><p><span class="perf-ico">${discIcon(x.name)}</span><b style="margin:0;font-size:15px">${escapeHtml(x.name)}</b><span class="tagx ${c[0]}">${c[1]}</span><b>${x.wrong} erro${x.wrong===1?'':'s'} de ${x.total} · ${x.pct}%</b></p><div class="perf-bar"><span style="width:${x.pct}%;background:${bc}"></span></div></div>`}).join('')}</div></div>`;
-  // questões por matéria
-  h+=`<div class="sim-card"><h3>Ver as questões por matéria</h3><div class="sub">Da matéria em que você mais errou para a que menos errou. Abra para revisar as questões e as explicações.</div>${groups.map((x,k)=>{const its=x.items.slice().sort((a,b)=>(a.ok-b.ok)||(a.pos-b.pos));return `<details class="sim-grp hideok"${k===0&&x.wrong>0?' open':''}><summary><span class="perf-ico" style="width:30px;height:30px">${discIcon(x.name)}</span>${escapeHtml(x.name)}<span class="meta">${x.wrong} erro${x.wrong===1?'':'s'} de ${x.total} · ${x.pct}%</span></summary><div class="sim-grp-body">${x.correct>0?`<div style="text-align:right;margin-top:-2px"><button type="button" class="link-btn" onclick="simToggleOk(this)">Mostrar também as acertadas</button></div>`:''}${its.map(simQReview).join('')}</div></details>`}).join('')}</div>`;
-  if(slow.length)h+=`<div class="sim-card"><h3>Onde você demorou mais</h3><div class="sub">Questões que consumiram mais tempo (meta: 3 minutos por questão).</div><div class="sim-w">${slow.map(it=>`<div class="row"><p><b style="margin:0">Questão ${it.pos+1}</b><span class="muted">${escapeHtml(it.dname)}</span><b>${fmtT(it.time)}</b></p></div>`).join('')}</div></div>`;
+  h+=`<div class="sim-card"><h3>Pontos fortes e fracos</h3><div class="sub">${fracos.length?'<b>Pontos fracos:</b> '+fracos.slice(0,3).map(x=>escapeHtml(x.name)+' ('+x.wrong+' erro'+(x.wrong===1?'':'s')+')').join(', ')+'.':''}${atencao.length?(fracos.length?'<br>':'')+'<b>Para ficar de olho:</b> '+atencao.slice(0,3).map(x=>escapeHtml(x.name)+' ('+x.wrong+' erro'+(x.wrong===1?'':'s')+')').join(', ')+'.':''}${!fracos.length&&!atencao.length?'Nenhum ponto fraco neste simulado: todos os módulos ficaram em 70% ou mais. 🎉':''}${strong.length?'<br><b>Pontos fortes:</b> '+strong.slice(0,3).map(x=>escapeHtml(x.name)+' ('+x.pct+'%)').join(', ')+'.':''}</div><div class="sim-w">${groups.map(x=>{const c=cls(x.pct),bc=x.pct>=70?'#1a9c62':(x.pct>=50?'#e3a008':'#d9534f');return `<div class="row"><p><span class="perf-ico">${discIcon(x.name)}</span><b style="margin:0;font-size:15px">${escapeHtml(x.name)}</b><span class="tagx ${c[0]}">${c[1]}</span><b>${x.wrong} erro${x.wrong===1?'':'s'} de ${x.total} · ${x.pct}%</b></p><div class="perf-bar"><span style="width:${x.pct}%;background:${bc}"></span></div></div>`}).join('')}</div></div>`;
+  // questões por módulo
+  h+=`<div class="sim-card"><h3>Ver as questões por módulo</h3><div class="sub">Do módulo em que você mais errou para o que menos errou. Abra para revisar as questões e as explicações.</div>${groups.map((x,k)=>{const its=x.items.slice().sort((a,b)=>(a.ok-b.ok)||(a.pos-b.pos));return `<details class="sim-grp hideok"${k===0&&x.wrong>0?' open':''}><summary><span class="perf-ico" style="width:30px;height:30px">${discIcon(x.name)}</span>${escapeHtml(x.name)}<span class="meta">${x.wrong} erro${x.wrong===1?'':'s'} de ${x.total} · ${x.pct}%</span></summary><div class="sim-grp-body">${x.correct>0?`<div style="text-align:right;margin-top:-2px"><button type="button" class="link-btn" onclick="simToggleOk(this)">Mostrar também as acertadas</button></div>`:''}${its.map(simQReview).join('')}</div></details>`}).join('')}</div>`;
+  if(slow.length)h+=`<div class="sim-card"><h3>Onde você demorou mais</h3><div class="sub">Questões que consumiram mais tempo (meta: 3 minutos por questão).</div><div class="sim-w">${slow.map(it=>`<div class="row"><p><b style="margin:0">Questão ${it.pos+1}</b><span class="muted">${escapeHtml(it.mname||it.dname)}</span><b>${fmtT(it.time)}</b></p></div>`).join('')}</div></div>`;
   const wrongN=R.items.filter(x=>!x.ok&&x.q).length;
   h+=`<div class="sim-actions" style="margin-top:18px"><button class="small-btn" type="button" onclick="simBackToSetup()">← Voltar aos simulados</button><span style="display:flex;gap:10px;flex-wrap:wrap">${wrongN?`<button class="primary" type="button" onclick="simRedo()">Refazer só os ${wrongN} erro${wrongN===1?'':'s'}</button>`:''}<button class="small-btn" type="button" onclick="simBackToSetup()">Novo simulado</button></span></div>`;
   v.innerHTML=h;
@@ -4270,7 +4256,7 @@ function matVisible(){
   return (window._mats||[]).filter(m=>textOn()||m.kind==='pdf').filter(m=>isAdmin||!((m.period_id!=null&&H.p.has(String(m.period_id)))||(m.module_id!=null&&H.m.has(String(m.module_id)))||(m.subject_id!=null&&H.s.has(String(m.subject_id)))||(matInstId(m)!=null&&H.i.has(String(matInstId(m))))));
 }
 function matName(arr,id){const x=(arr||[]).find(y=>String(y.id)===String(id));return x?x.name:''}
-function matTrail(m){return [matName(window._institutions,matInstId(m)),matName(window._periods,m.period_id),matName(window._modules,m.module_id),matName(window._disciplines,m.discipline_id),matName(window._subjects,m.subject_id)].filter(Boolean)}
+function matTrail(m){return [matName(window._institutions,matInstId(m)),matName(window._periods,m.period_id),matName(window._modules,m.module_id),matName(window._subjects,m.subject_id)].filter(Boolean)}
 function matsForQuestion(q0){
   if(!q0||!window._matOk)return [];
   const q=Object.assign({},(window._qById||{})[q0.id]||{},q0);
@@ -4310,17 +4296,17 @@ function matHasModules(){
   const F=window._mf;if(!window._modulesOk||!F.periods.length)return false;
   return (window._modules||[]).some(m=>qfHas(F.periods,m.period_id))||matApply(['module','discipline']).some(m=>m.module_id==null);
 }
-function matHasDisciplines(){return matApply(['discipline']).some(m=>m.discipline_id!=null)}
 function matNextStep(from){
   const F=window._mf;let n=from+1;
   if(n===2&&!qfPeriodsFor(F.insts).length)n=3;
   if(n===3&&!matHasModules())n=4;
-  if(n===4&&(F.modules.length||!matHasDisciplines()))n=5; // igual a Questões: módulo escolhido pula a etapa de matéria
+  if(n===4)n=5; // igual a Questões: sem etapa de matéria
   return Math.min(n,5);
 }
 function matSave(){const F=window._mf;if(F.insts.length&&!F.insts.includes('any'))mqLS.set('mq_mf_'+qfUid(),JSON.stringify({insts:F.insts,periods:F.periods}))}
 function matInit(){
   const F=window._mf,opts=matInstOptions();
+  if(F.step===4)F.step=5;
   if(opts.length<=1){
     if(!F.insts.length){F.insts=opts.length?[opts[0].id]:['any'];F.step=Math.max(F.step,matNextStep(1))}
     return;
@@ -4369,7 +4355,6 @@ function matStepsHtml(){
   if(needInst&&F.insts.length)crumbs.push([1,'🏛️',qfNames(F.insts,insName)||'Instituição']);
   if(F.step>2&&F.insts.length)crumbs.push([2,'📅',F.periods.length?qfNames(F.periods,id=>matName(per,id)):'Todos os períodos']);
   if(F.insts.length&&(F.modules.length||(F.step>3&&matHasModules())))crumbs.push([3,'🧩',F.modules.length?qfNames(F.modules,id=>id==='none'?'Materiais gerais':matName(window._modules,id)):'Todos os módulos']);
-  if(F.insts.length&&F.step>4&&(F.disciplines.length||!F.modules.length))crumbs.push([4,'📘',F.disciplines.length?qfNames(F.disciplines,id=>matName(window._disciplines,id)):'Todas as matérias']);
   if(crumbs.length)h+=`<div class="qf-crumbs">${crumbs.map((c,i)=>`${i?'<span class="qf-sep">›</span>':''}<button type="button" class="qf-crumb" onclick="matGoStep(${c[0]})" title="Voltar a esta etapa">${c[1]} ${escapeHtml(c[2])} <em>✎</em></button>`).join('')}</div>`;
   const skipBtn=`<button class="small-btn skip" type="button" onclick="matSkip()">Pular etapa →</button>`;
   const card=(kind,id,icon,name,small,off,sel)=>`<button type="button" class="qf-card${sel?' sel':''}${off?' off':''}" aria-pressed="${sel?'true':'false'}" onclick="matPick('${kind}','${id}')"><span class="ic">${icon}</span><b>${escapeHtml(name)}${off?' (oculto)':''}</b><small>${small}</small>${sel?'<span class="qf-check"><span class="ic" data-i="check-circle"></span></span>':''}</button>`;
@@ -4384,10 +4369,7 @@ function matStepsHtml(){
     const mods=(window._modules||[]).filter(m=>qfHas(F.periods,m.period_id)).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0)||a.id-b.id);
     const cnt=qfCount(matApply(['module','discipline']),m=>m.module_id==null?'none':String(m.module_id)),multiP=F.periods.length>1;
     h+=`<div class="qf-panel">${head(3,'Escolha o módulo')}<div class="qf-cards">${mods.map(m=>card('module',m.id,'🧩',(multiP?matName(per,m.period_id)+' · ':'')+m.name,plM(cnt[String(m.id)]||0),m.is_hidden,qfHas(F.modules,m.id))).join('')}${cnt.none?card('module','none','★','Materiais gerais',plM(cnt.none),false,qfHas(F.modules,'none')):''}<button type="button" class="qf-card all" onclick="matSkip()"><span class="ic">🧩</span><b>Todos os módulos</b><small>sem filtrar por módulo</small></button></div>${foot(F.modules.length,false)}</div>`;
-  }else if(F.step===4){
-    const cnt=qfCount(matApply(['discipline']).filter(m=>m.discipline_id!=null),m=>String(m.discipline_id));
-    const ids=Object.keys(cnt).map(id=>({id,name:matName(window._disciplines,id)||'Matéria'})).sort((a,b)=>a.name.localeCompare(b.name));
-    h+=`<div class="qf-panel">${head(4,'Escolha a matéria')}<div class="qf-cards">${ids.map(d=>card('discipline',d.id,discIcon(d.name),d.name,plM(cnt[d.id]),false,qfHas(F.disciplines,d.id))).join('')}<button type="button" class="qf-card all" onclick="matSkip()"><span class="ic">📚</span><b>Todas as matérias</b><small>sem filtrar por matéria</small></button></div>${foot(F.disciplines.length,false)}</div>`;
+
   }
   return h;
 }
@@ -4570,7 +4552,7 @@ function matRenderReader(m){
   const ix=sib.findIndex(x=>x.id===m.id),prev=ix>0?sib[ix-1]:null,next=ix>=0&&ix<sib.length-1?sib[ix+1]:null;
   const qs=matQuestionsOf(m);
   const lat=window._latest||{},done=qs.filter(q=>lat[q.id]!==undefined),okc=done.filter(q=>lat[q.id]===true).length;
-  const study=qs.length?`<section class="mat-study"><div><b>Fixe com questões</b><div class="muted">${plQ(qs.length)} ${m.subject_id!=null?'deste assunto':'desta matéria neste módulo'}${done.length?' · você acertou '+Math.round(okc/done.length*100)+'% de '+done.length+' respondida(s)':''}</div></div><button class="primary" type="button" onclick="matStudyM(${m.id})">${m.subject_id!=null?'Fazer questões deste assunto →':'Fazer questões desta matéria →'}</button></section>`:'';
+  const study=qs.length?`<section class="mat-study"><div><b>Fixe com questões</b><div class="muted">${plQ(qs.length)} ${m.subject_id!=null?'deste assunto':'deste módulo'}${done.length?' · você acertou '+Math.round(okc/done.length*100)+'% de '+done.length+' respondida(s)':''}</div></div><button class="primary" type="button" onclick="matStudyM(${m.id})">${m.subject_id!=null?'Fazer questões deste assunto →':'Fazer questões deste módulo →'}</button></section>`:'';
   v.innerHTML=`<div class="mat-reader"><div class="mat-bar"><button class="small-btn" type="button" onclick="matBack()">← Voltar aos materiais</button><div class="mat-actions"><button type="button" class="small-btn mat-tg${pr.fav?' on':''}" data-mat-fav="${m.id}" onclick="matToggleFav(${m.id})">${pr.fav?'★ Favorito':'☆ Favoritar'}</button><button type="button" class="small-btn mat-tg${pr.read?' on':''}" data-mat-read="${m.id}" onclick="matToggleRead(${m.id})"><span class="ic" data-i="check-circle"></span> ${pr.read?'Lido':'Marcar como lido'}</button>${m.kind==='pdf'?'':'<button type="button" class="small-btn" onclick="window.print()">Imprimir</button>'}</div></div>
   <article class="mat-article"><div class="mat-trail">${matTrail(m).map(escapeHtml).join(' › ')}</div><h1>${escapeHtml(m.title)}</h1><div class="mat-meta"><span class="badge blue">${kd[0]}</span>${m.kind==='pdf'?`<span class="badge">${fmtBytes(m.file_size)}</span>`:`<span class="badge"><span class="ic" data-i="clock"></span> ${m.read_minutes||1} min de leitura</span>`}${m.is_published===false?'<span class="badge amber">Rascunho</span>':''}</div>${m.kind==='pdf'?matPdfHtml(m,'r',false):matArticleHtml(m,'r')}${study}<section class="mat-note"><label for="matNote"><b>Minhas anotações</b> <span class="muted">(só você vê)</span></label><textarea id="matNote" rows="4" placeholder="Escreva aqui o que quiser lembrar..." onblur="matSaveNote(${m.id})">${escapeHtml(m.note||'')}</textarea></section><div class="mat-nav">${prev?`<button class="small-btn" type="button" onclick="openMaterial(${prev.id},'list')">← ${escapeHtml(prev.title.slice(0,40))}</button>`:'<span></span>'}${next?`<button class="primary" type="button" onclick="openMaterial(${next.id},'list')">${escapeHtml(next.title.slice(0,40))} →</button>`:'<span></span>'}</div></article></div>`;
 }
@@ -4659,7 +4641,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&window._matPanel&&!
 /* ===== administração dos materiais ===== */
 window._admMat={id:null,imgs:[]};window._admMatTab='text';window._admPdf={id:null,file:null,existing:null};
 /* ----- conferir classificação (administração > cadastros) ----- */
-const CLS_WHY={modulo_de_outro_periodo:'módulo de outro período',assunto_de_outro_modulo:'assunto de outro módulo',materia_diferente_do_assunto:'matéria diferente da do assunto',instituicao_diferente_do_periodo:'instituição diferente da do período'};
+const CLS_WHY={modulo_de_outro_periodo:'módulo de outro período',assunto_de_outro_modulo:'assunto de outro módulo',materia_diferente_do_assunto:'classificação diferente da do assunto',instituicao_diferente_do_periodo:'instituição diferente da do período'};
 async function admClsCheck(){
   const box=document.getElementById('clsResult');if(!box)return;
   box.innerHTML='<div class="muted">Verificando...</div>';
@@ -4668,10 +4650,10 @@ async function admClsCheck(){
   const d=r.data||{},q=d.questions||{bad:0,total:0,items:[]},m=d.materials||{bad:0,total:0,items:[]};
   if(!q.bad&&!m.bad){box.innerHTML=`<div class="success-box">✅ Tudo certo: ${q.total} questão(ões) e ${m.total} material(is) com classificação coerente.</div>`;return}
   const list=(items,kind)=>items.map(x=>`<div class="dash-wrow" style="grid-template-columns:1fr auto"><div><b>${kind==='q'?'Questão #'+x.id:escapeHtml(x.title||('Material #'+x.id))}</b><div class="muted" style="font-size:12.5px">${(x.reasons||[]).map(k=>CLS_WHY[k]||k).join(' · ')}</div></div><button class="small-btn" type="button" onclick="${kind==='q'?'editQuestion('+x.id+')':'goEditMaterial('+x.id+')'}">Abrir</button></div>`).join('');
-  box.innerHTML=`<div class="save-warn" style="margin-bottom:10px">${q.bad} questão(ões) e ${m.bad} material(is) com problema (de ${q.total} e ${m.total}).</div>${q.bad?`<div class="dash-wrong">${list(q.items,'q')}</div>`:''}${m.bad?`<div class="dash-wrong" style="margin-top:8px">${list(m.items,'m')}</div>`:''}<div style="margin-top:12px"><button class="primary" type="button" onclick="admClsFix()">Corrigir automaticamente</button><div class="muted" style="font-size:12.5px;margin-top:6px">A correção segue a regra: o assunto define o módulo e a matéria; o módulo define o período; o período define a instituição.</div></div>`;
+  box.innerHTML=`<div class="save-warn" style="margin-bottom:10px">${q.bad} questão(ões) e ${m.bad} material(is) com problema (de ${q.total} e ${m.total}).</div>${q.bad?`<div class="dash-wrong">${list(q.items,'q')}</div>`:''}${m.bad?`<div class="dash-wrong" style="margin-top:8px">${list(m.items,'m')}</div>`:''}<div style="margin-top:12px"><button class="primary" type="button" onclick="admClsFix()">Corrigir automaticamente</button><div class="muted" style="font-size:12.5px;margin-top:6px">A correção segue a regra: o assunto define o módulo; o módulo define o período; o período define a instituição.</div></div>`;
 }
 async function admClsFix(){
-  if(!confirm('Corrigir automaticamente a classificação das questões e materiais listados?\n\nO assunto define o módulo e a matéria, o módulo define o período e o período define a instituição. Isso pode mudar onde estas questões aparecem para os alunos.'))return;
+  if(!confirm('Corrigir automaticamente a classificação das questões e materiais listados?\n\nO assunto define o módulo, o módulo define o período e o período define a instituição. Isso pode mudar onde estas questões aparecem para os alunos.'))return;
   const r=await sb.rpc('admin_fix_classification');
   if(r.error){alert('Erro: '+r.error.message);return}
   const d=r.data||{};matInvalidate();await loadAdminAll();
@@ -4731,10 +4713,10 @@ async function admMatLoadImgs(id){
 function admMatRenderEditor(m,pre){
   const box=document.getElementById('adminMat');if(!box)return;
   const v=m||{},id=window._admMat.id;
-  const sel={inst:v.institution_id||pre.inst||'',per:v.period_id||pre.period||'',mod:v.module_id||pre.module||'',dis:v.discipline_id||pre.discipline||'',sub:v.subject_id||pre.subject||''};
+  const sel={inst:v.institution_id||pre.inst||'',per:v.period_id||pre.period||'',mod:v.module_id||pre.module||'',dis:'',sub:v.subject_id||pre.subject||''};
   const insts=window._institutions||[];
   box.innerHTML=`<div class="card"><div class="dash-head"><h2 style="margin:0">${id?'Editar material #'+id:'Novo material'}</h2><button class="small-btn" type="button" onclick="loadAdminMaterials()">← Voltar à lista</button></div>
-  <div class="adm-mgrid"><label>Instituição<select id="mInst" onchange="mCascade('inst')">${mOpts(insts,sel.inst,'Instituição (opcional)')}</select></label><label>Período<select id="mPeriod" onchange="mCascade('per')"></select></label><label>Módulo<select id="mModule" onchange="mCascade('mod')"></select></label><label>Matéria<select id="mDiscipline" onchange="mCascade('dis')"></select></label><label style="grid-column:1/-1">Assunto<select id="mSubject" onchange="mCascade('sub')"></select></label></div>
+  <div class="adm-mgrid"><label>Instituição<select id="mInst" onchange="mCascade('inst')">${mOpts(insts,sel.inst,'Instituição (opcional)')}</select></label><label>Período<select id="mPeriod" onchange="mCascade('per')"></select></label><label>Módulo<select id="mModule" onchange="mCascade('mod')"></select></label><label style="grid-column:1/-1">Assunto<select id="mSubject" onchange="mCascade('sub')"></select></label></div>
   <label>Título<input id="mTitle" maxlength="200" value="${escapeHtml(v.title||'')}" placeholder="Ex.: Regulação da pressão arterial"></label>
   <label>Tipo<select id="mKind">${MAT_TEXT_KINDS.map(k=>`<option value="${k}"${(v.kind||'resumo')===k?' selected':''}>${MAT_KIND[k][0]}</option>`).join('')}</select></label>
   <label>O mínimo que precisa saber <small class="muted">(aparece em destaque, antes do texto)</small><textarea id="mMin" rows="5" oninput="admMatPreview()" placeholder="- Ponto principal 1&#10;- Ponto principal 2">${escapeHtml(v.minimum||'')}</textarea></label>
@@ -4806,7 +4788,7 @@ async function admMatSave(){
   {const cv=clsGet('m');clsNormalize(cv,'init');const bad=clsCheck(cv,true);if(bad){status('mStatus',bad);return}}
   const body=g('mBody').value,minimum=g('mMin').value.trim()||null,sources=g('mSrc').value.trim()||null;
   const words=(body+' '+(minimum||'')).trim().split(/\s+/).filter(Boolean).length;
-  const payload={title,kind:g('mKind').value,institution_id:(window._pInst||{})[per]!=null?window._pInst[per]:(g('mInst').value?Number(g('mInst').value):null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum,body,sources,read_minutes:Math.max(1,Math.min(600,Math.ceil(words/200))),is_published:g('mPub').checked};
+  const payload={title,kind:g('mKind').value,institution_id:(window._pInst||{})[per]!=null?window._pInst[per]:(g('mInst').value?Number(g('mInst').value):null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:(admFind('subject',g('mSubject').value)||{}).discipline_id??null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum,body,sources,read_minutes:Math.max(1,Math.min(600,Math.ceil(words/200))),is_published:g('mPub').checked};
   const id=window._admMat.id;let r;
   if(id)r=await sb.from('materials').update(payload).eq('id',id).select('id');
   else r=await sb.from('materials').insert({...payload,created_by:currentUser.id}).select('id');
@@ -4823,9 +4805,9 @@ function readHead(file,n){return new Promise((res,rej)=>{try{const fr=new FileRe
 function admPdfRenderEditor(m,pre){
   const box=document.getElementById('adminMat');if(!box)return;
   const v=m||{},id=window._admPdf.id;
-  const sel={inst:v.institution_id||pre.inst||'',per:v.period_id||pre.period||'',mod:v.module_id||pre.module||'',dis:v.discipline_id||pre.discipline||'',sub:v.subject_id||pre.subject||''};
+  const sel={inst:v.institution_id||pre.inst||'',per:v.period_id||pre.period||'',mod:v.module_id||pre.module||'',dis:'',sub:v.subject_id||pre.subject||''};
   box.innerHTML=`<div class="card"><div class="dash-head"><h2 style="margin:0">${id?'Editar PDF #'+id:'Enviar PDF'}</h2><button class="small-btn" type="button" onclick="admMatSetTab('pdf')">← Voltar à lista</button></div>
-  <div class="adm-mgrid"><label>Instituição<select id="mInst" onchange="mCascade('inst')">${mOpts(window._institutions||[],sel.inst,'Instituição (opcional)')}</select></label><label>Período<select id="mPeriod" onchange="mCascade('per')"></select></label><label>Módulo<select id="mModule" onchange="mCascade('mod')"></select></label><label>Matéria<select id="mDiscipline" onchange="mCascade('dis')"></select></label><label style="grid-column:1/-1">Assunto<select id="mSubject" onchange="mCascade('sub')"></select></label></div>
+  <div class="adm-mgrid"><label>Instituição<select id="mInst" onchange="mCascade('inst')">${mOpts(window._institutions||[],sel.inst,'Instituição (opcional)')}</select></label><label>Período<select id="mPeriod" onchange="mCascade('per')"></select></label><label>Módulo<select id="mModule" onchange="mCascade('mod')"></select></label><label style="grid-column:1/-1">Assunto<select id="mSubject" onchange="mCascade('sub')"></select></label></div>
   <label>Título<input id="mTitle" maxlength="200" value="${escapeHtml(v.title||'')}" placeholder="Ex.: Apostila de Fisiologia Renal"></label>
   <label>O mínimo que precisa saber <small class="muted">(3 a 5 linhas: aparece dentro da questão e no topo do PDF)</small><textarea id="mMin" rows="5" placeholder="- Ponto principal 1&#10;- Ponto principal 2&#10;- Ponto principal 3" oninput="admPdfMinHint()">${escapeHtml(v.minimum||'')}</textarea></label><div id="mMinHint" class="muted" style="font-size:12.5px;margin-top:4px"></div>
   <label style="margin-top:12px">Arquivo PDF <small class="muted">(até 25 MB)</small></label>
@@ -4876,7 +4858,7 @@ async function admPdfSave(){
     const up=await sb.storage.from('material-files').upload(path,P.file,{contentType:'application/pdf',upsert:false});
     if(up.error){btn.disabled=false;status('mStatus','Erro no envio: '+escapeHtml(up.error.message));return}
   }
-  const payload={title,kind:'pdf',institution_id:(window._pInst||{})[per]!=null?window._pInst[per]:(g('mInst').value?Number(g('mInst').value):null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:g('mDiscipline').value?Number(g('mDiscipline').value):null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum:g('mMin').value.trim()||null,body:'',sources:g('mSrc').value.trim()||null,read_minutes:1,is_published:g('mPub').checked};
+  const payload={title,kind:'pdf',institution_id:(window._pInst||{})[per]!=null?window._pInst[per]:(g('mInst').value?Number(g('mInst').value):null),period_id:Number(per),module_id:g('mModule').value?Number(g('mModule').value):null,discipline_id:(admFind('subject',g('mSubject').value)||{}).discipline_id??null,subject_id:g('mSubject').value?Number(g('mSubject').value):null,minimum:g('mMin').value.trim()||null,body:'',sources:g('mSrc').value.trim()||null,read_minutes:1,is_published:g('mPub').checked};
   if(P.file){payload.file_path=path;payload.file_name=P.file.name.slice(0,255);payload.file_size=P.file.size}
   let r;
   if(P.id)r=await sb.from('materials').update(payload).eq('id',P.id).select('id');
