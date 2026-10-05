@@ -1530,7 +1530,19 @@ function clearLocalUserData(uid){try{Object.keys(localStorage).forEach(k=>{if(k.
 async function signOut(){const uid=currentUser?currentUser.id:'';if(sb)await sb.auth.signOut();clearLocalUserData(uid);window._allQ=null;window._attRows=null;window._catAt=0;window._sim=null;window._stmt={};window._mats=[];window._matOk=null;window._matProg={};window._matBody={};currentUser=null;isAdmin=false;document.getElementById('app').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden')}
 let _bootP=null;
 function bootstrap(){if(_bootP)return _bootP;_bootP=_bootstrap().finally(()=>{_bootP=null});return _bootP}
-async function _bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(!session)return;currentUser=session.user;document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');await loadProfile();await loadAttempts();go('home')}
+async function _bootstrap(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(!session)return;currentUser=session.user;document.getElementById('loginScreen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');bootFromCache();go('home');const att=fetchAttemptRows();await loadProfile();await loadAttempts(att)}
+/* abre a tela na hora com o que ficou salvo neste aparelho; os dados novos chegam em seguida e redesenham */
+function bootFromCache(){
+  const uid=currentUser.id;
+  try{
+    const nm=mqLS.get('mq_name_'+uid);if(nm){window._myName=nm;document.getElementById('accountName').textContent=nm}
+    const av=safeAvatar(mqLS.get('mq_avatar_'+uid)||'');if(av){window._myAvatar=av;applyAvatar()}
+    window._bootAdm=mqLS.get('mq_role_'+uid)==='admin';
+    catRestore(true,window._bootAdm);
+    const rows=JSON.parse(mqLS.get('mq_att_'+uid)||'null');
+    if(Array.isArray(rows)){window._attRows=rows;renderAttempts()}
+  }catch(e){}
+}
 async function loadProfile(){
   if(!currentUser)return;
   let r=await sb.from('profiles').select('full_name,role,email,institution_id,period_id,avatar_url').eq('id',currentUser.id).maybeSingle();
@@ -1542,6 +1554,9 @@ async function loadProfile(){
   const data=r.data,error=r.error;
   let name=(data?.full_name||currentUser.email?.split('@')[0]||'Aluno');
   isAdmin=!error&&data?.role==='admin';
+  // o catálogo salvo é separado para admin e aluno: se o papel mudou, descarta o que veio do cache
+  if(window._bootAdm!==undefined&&window._bootAdm!==isAdmin){window._allQ=null;window._catAt=0}
+  window._bootAdm=isAdmin;
   const meta=(currentUser.user_metadata&&currentUser.user_metadata.full_name)||'';
   const patch={};
   if(meta&&meta!=='Aluno'&&(!data?.full_name||data.full_name==='Aluno')){patch.full_name=meta;name=meta}
@@ -1557,11 +1572,9 @@ async function loadProfile(){
   document.getElementById('accountName').textContent=name;document.getElementById('profileName').value=name;document.getElementById('profileEmail').value=currentUser.email||'';
   applyAvatar();
   document.getElementById('adminNav').style.display=isAdmin?'flex':'none';
-  await loadSubscription();
-  await loadAccess();
-  loadMaterialsCatalog();
-  if(typeof simLoadHist==='function')await simLoadHist();
-  if(isAdmin)await loadAdminAll();
+  if(!error){mqLS.set('mq_role_'+currentUser.id,isAdmin?'admin':'student');mqLS.set('mq_name_'+currentUser.id,name)}
+  // assinatura, acesso, materiais e simulados chegam juntos, em segundo plano (o painel admin carrega ao abrir a aba)
+  Promise.all([loadSubscription(),loadAccess(),loadMaterialsCatalog(),typeof simLoadHist==='function'?simLoadHist():null]).catch(()=>{});
 }
 /* ===== Foto de perfil ===== */
 function safeAvatar(u){return (typeof u==='string'&&u.length<300000&&/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(u))?u:''}
@@ -2011,19 +2024,21 @@ function qListOrder(list){
 }
 function orderByList(ids){const pos={};(window._allQ||[]).forEach((q,i)=>{pos[q.id]=i});return ids.slice().sort((a,b)=>(pos[a]===undefined?1e9:pos[a])-(pos[b]===undefined?1e9:pos[b])||a-b)}
 const CAT_TTL=10*60*1000;
-function catKey(){return 'mq_cat_v3_'+(isAdmin?'a':'s')+'_'+qfUid()}
-function invalidateCatalog(){window._catAt=0;try{sessionStorage.removeItem(catKey())}catch(e){}}
+/* o catálogo fica no localStorage para abrir na hora na próxima visita; depois de CAT_TTL ele ainda é mostrado, mas é baixado de novo */
+function catKey(adm){return 'mq_cat_v3_'+((adm===undefined?isAdmin:adm)?'a':'s')+'_'+qfUid()}
+function invalidateCatalog(){window._catAt=0;try{localStorage.removeItem(catKey())}catch(e){}}
 function buildQIndex(){window._qById={};(window._allQ||[]).forEach(q=>{window._qById[q.id]=q})}
 function catSave(){
   try{
     const H=window._hidden||{p:new Set(),m:new Set(),s:new Set(),i:new Set()};
-    sessionStorage.setItem(catKey(),JSON.stringify({t:window._catAt,f:[window._modulesOk,window._assuntosOk,window._hideOk,window._instLinkOk,window._v3ok],P:window._periods,M:window._modules,S:window._subjects,I:window._institutions,D:window._disciplines,pi:window._pInst,H:{p:[...H.p],m:[...H.m],s:[...H.s],i:[...H.i]},Q:window._allQ}));
-  }catch(e){}
+    localStorage.setItem(catKey(),JSON.stringify({t:window._catAt,f:[window._modulesOk,window._assuntosOk,window._hideOk,window._instLinkOk,window._v3ok],P:window._periods,M:window._modules,S:window._subjects,I:window._institutions,D:window._disciplines,pi:window._pInst,H:{p:[...H.p],m:[...H.m],s:[...H.s],i:[...H.i]},Q:window._allQ}));
+  }catch(e){try{localStorage.removeItem(catKey())}catch(e2){}}
 }
-function catRestore(){
+/* stale=true aceita um catálogo vencido só para desenhar a tela; _catAt antigo faz o ensureAllQ baixar de novo */
+function catRestore(stale,adm){
   try{
-    const raw=sessionStorage.getItem(catKey());if(!raw)return false;
-    const c=JSON.parse(raw);if(!c||!c.t||Date.now()-c.t>CAT_TTL||!c.Q)return false;
+    const raw=localStorage.getItem(catKey(adm));if(!raw)return false;
+    const c=JSON.parse(raw);if(!c||!c.t||!c.Q||(!stale&&Date.now()-c.t>CAT_TTL))return false;
     window._modulesOk=c.f[0];window._assuntosOk=c.f[1];window._hideOk=c.f[2];window._instLinkOk=c.f[3];window._v3ok=c.f[4];
     window._periods=c.P;window._modules=c.M;window._subjects=c.S;window._institutions=c.I;window._disciplines=c.D;window._pInst=c.pi;
     window._hidden={p:new Set(c.H.p),m:new Set(c.H.m),s:new Set(c.H.s),i:new Set(c.H.i)};
@@ -2633,17 +2648,20 @@ async function fetchAttemptRows(){
   }
   return out;
 }
-async function loadAttempts(){
+/* pre: busca já em andamento (a abertura do site começa a baixar as tentativas junto com o perfil) */
+async function loadAttempts(pre){
   if(!sb||!currentUser)return;
-  const rows=await fetchAttemptRows();if(rows===null)return;
-  window._attRows=rows;
+  const rows=await (pre||fetchAttemptRows());if(rows===null)return;
+  window._attRows=rows;attSave();
   await ensureAllQ();
   renderAttempts();
 }
+function attSave(){if(currentUser&&window._attRows)try{localStorage.setItem('mq_att_'+currentUser.id,JSON.stringify(window._attRows))}catch(e){}}
 function attemptsAdd(newRows){
   if(!window._attRows){loadAttempts();return}
   const base=Date.now()*1000;
   newRows.forEach((r,i)=>window._attRows.push({id:base+i,question_id:r.question_id,is_correct:!!r.is_correct,answered_at:new Date().toISOString()}));
+  attSave();
   renderAttempts();
 }
 function renderAttempts(){
