@@ -190,6 +190,23 @@ body.dark .small-btn.unpublish{
 
 @media(max-width:1050px){.admin-grid{grid-template-columns:1fr}.catalog-grid{grid-template-columns:1fr}}
 @media(max-width:650px){.admin-two{grid-template-columns:1fr}.admin-q{flex-direction:column}.admin-actions{width:100%}}
+/* fundo escuro também atrás do body (antes, qualquer sobra lateral aparecia como faixa clara no tema escuro) */
+html:has(body.dark){background:#0f1720}
+/* admin no celular: nada pode ficar mais largo que a tela */
+.admin-grid>*,.catalog-grid>*,.admin-two>*{min-width:0}
+.adm-det>summary{flex-wrap:wrap}
+.adm-row h4,.adm-det>summary>span:first-child,.adm-sub>span:first-child{min-width:0;overflow-wrap:anywhere}
+.admin-form select{max-width:100%}
+@media(max-width:1050px){.admin-grid,.catalog-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:760px){
+  .main{overflow-x:clip}
+  .adm-actions{flex-wrap:wrap}
+  #adminTree .adm-block .adm-block{margin-left:0!important}
+  .adm-block{padding:10px 11px}
+  .adm-det{margin-left:0}
+  .adm-sub{padding-left:8px}
+  #admin [style*="min-width"]{min-width:0!important}
+}
 
 @media(max-width:1050px){.stats{grid-template-columns:repeat(2,1fr)}.content-grid{grid-template-columns:1fr}.subjects{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){:root{--sidebar:0px}.main{margin:0;width:100%;padding:18px}.login-shell{grid-template-columns:1fr;min-height:auto}.login-visual{padding:26px}.logo-hero{width:min(300px,70%)}.login-card{width:min(440px,calc(100% - 35px));padding:26px}.stats{grid-template-columns:1fr 1fr}.subjects{grid-template-columns:1fr}}
